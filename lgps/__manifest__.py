@@ -25,5 +25,6 @@
         'security/ir.model.access.csv',
         'views/main_menu.xml',
         'views/accessory.xml',
+        'views/cellchip.xml',
     ],
 }
