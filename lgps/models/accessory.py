@@ -34,13 +34,13 @@ class Accessory(models.Model):
         tracking=True
     )
 
-    # device_id = fields.Many2one(
-    #     comodel_name="lgps.device",
-    #     ondelete="set null",
-    #     string=_("Installed On"),
-    #     index=True,
-    #     tracking=True,
-    # )
+    device_id = fields.Many2one(
+        comodel_name="lgps.device",
+        ondelete="set null",
+        string=_("Installed On"),
+        index=True,
+        tracking=True,
+    )
 
     installation_date = fields.Date(
         default=fields.Date.today,

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="device_form_view">
+    <field name="name">device.form</field>
+    <field name="model">lgps.device</field>
+    <field name="arch" type="xml">
+      <form string="Gps Device Form">
+        <header>
+        </header>
+
+        <sheet>
+          <div name="button_box" class="oe_button_box">
+
+          </div>
+
+          <group>
+            <group string="Device Info">
+              <separator/>
+              <field name="name"/>
+              <field name="client_id"/>
+              <field name="nick"/>
+              <field name="serial_number_id"/>
+              <field name="imei"/>
+              <field name="idf"/>
+              <field name="device_pin"/>
+            </group>
+            <group string="More Info">
+              <separator/>
+              <field name="status"/>
+              <field name="platform_list_id"/>
+              <field name="product_id"/>
+              <field name="invoice_id"/>
+              <field name="cell_chip_id"/>
+              <field name="purchase_date"/>
+              <field name="installation_date"/>
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Warranty">
+              <group>
+                <group string="Warranty Information">
+                  <separator/>
+                  <field name="warranty_start_date"/>
+                  <field name="warranty_end_date"/>
+                </group>
+                <group string="Term">
+                  <separator/>
+                  <field name="warranty_term"/>
+                </group>
+              </group>
+            </page>
+
+            <page string="Services">
+              <group>
+                <group string="Funciones">
+                  <field name="tracking"/>
+                  <field name="fuel"/>
+                  <field name="fuel_hall"/>
+                  <field name="temperature"/>
+                  <field name="collective"/>
+                  <field name="fleetrun"/>
+                  <field name="scanner"/>
+                  <field name="logistic"/>
+                  <field name="electronics"/>
+                </group>
+                <group string="Complementos">
+                  <group>
+                    <field name="speaker"/>
+                    <field name="anti_jammer_blocker"/>
+                    <field name="smart_blocker"/>
+                    <field name="blocker"/>
+                    <field name="padlock"/>
+                    <field name="disengagement_sensor"/>
+                  </group>
+                  <group>
+                    <field name="solar_panel"/>
+                    <field name="sheet"/>
+                    <field name="opening_sensor"/>
+                    <field name="ibutton"/>
+                    <field name="microphone"/>
+                  </group>
+                </group>
+              </group>
+            </page>
+            <page string="Accessories">
+              <field name="accessory_ids">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="serial_number_id"/>
+                <field name="installation_date"/>
+                <field name="status"/>
+                <field name="product_id"/>
+                <field name="invoice_id"/>
+              </field>
+            </page>
+            <page string="Posicionamiento">
+              <group>
+                <group string="Last Report">
+                  <separator/>
+                  <field name="datetime_gps"/>
+                  <field name="datetime_server"/>
+                </group>
+                <group string="Mapa">
+                  <separator/>
+                  <field name="last_position" widget="url" text="See on the Map"/>
+                  <field name="last_report"/>
+                </group>
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+          <field name="activity_ids" widget="mail_activity"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="device_search_view">
+    <field name="name">device.search</field>
+    <field name="model">lgps.device</field>
+    <field name="arch" type="xml">
+      <search>
+        <filter string="Activos" name="devices_active"  domain="[('platform_list_id', '!=', 'Drop')]"/>
+        <filter string="Baja" name="devices_inactive"  domain="[('platform_list_id', '=', 'Drop')]"/>
+        <separator/>
+        <filter string="Comodatos" name="devices_comodato"  domain="[('status', '=', 'comodato')]"/>
+        <filter string="Demos" name="devices_demo"  domain="[('status', '=', 'demo')]"/>
+        <separator/>
+        <filter string="RMA" name="devices_rmas"  domain="[('status', '=', 'rma')]"/>
+        <filter string="Vendidos" name="devices_solds"  domain="[('status', '=', 'sold')]"/>
+        <field name="name"/>
+        <field name="nick"/>
+        <field name="client_id"/>
+        <field name="status"/>
+        <field name="cell_chip_id"/>
+        <field name="serial_number_id"/>
+        <field name="imei"/>
+        <field name="installation_date"/>
+        <field name="platform_list_id"/>
+        <field name="product_id"/>
+        <field name="warranty_end_date"/>
+        <field name="message_ids" string="Chatter Messages" filter_domain="[('message_ids.body', 'ilike', self)]"/>
+        <group expand="1" string="Group By">
+          <filter string="Cliente" name="cliente" context="{'group_by':'client_id'}"/>
+          <filter string="Producto" name="producto" context="{'group_by':'product_id'}"/>
+          <separator orientation="vertical" />
+          <filter string="Plataforma" name="platform_list_id" context="{'group_by':'platform_list_id'}"/>
+          <filter string="Estatus" name="status" context="{'group_by':'status'}"/>
+          <separator orientation="vertical" />
+          <filter string="Fecha Instalación" name="installation_date" context="{'group_by':'installation_date'}"/>
+          <filter string="Fin de Garantía" name="end_warranty" context="{'group_by':'warranty_end_date'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="device_tree_view">
+    <field name="name">device.tree</field>
+    <field name="model">lgps.device</field>
+    <field name="arch" type="xml">
+      <tree string="GpsDevices Tree"
+            decoration-muted="platform_list_id=='Drop'"
+            decoration-info="platform_list_id != 'Drop' and (last_report&gt;48)"
+            decoration-warning="platform_list_id != 'Drop' and (last_report&gt;72)"
+            decoration-danger="platform_list_id != 'Drop' and (last_report&gt;120)">
+        <field name="name"/>
+        <field name="nick"/>
+        <field name="client_id"/>
+        <field name="status"/>
+        <field name="cell_chip_id"/>
+        <field name="serial_number_id"/>
+        <field name="imei"/>
+        <field name="installation_date"/>
+        <field name="platform_list_id"/>
+        <field name="product_id"/>
+        <field name="warranty_end_date"/>
+        <field name="last_report" invisible="1"/>
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="device_list_action">
+    <field name="name">GpsDevices</field>
+    <field name="res_model">lgps.device</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- Menu items -->
+  <menuitem id="gps_devices_menu" name="Gps Devices" parent="lgps_menu" action="device_list_action"/>
+</odoo>

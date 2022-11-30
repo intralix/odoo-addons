@@ -26,5 +26,7 @@
         'views/main_menu.xml',
         'views/accessory.xml',
         'views/cellchip.xml',
+        'views/platform_list.xml',
+        'views/device.xml',
     ],
 }

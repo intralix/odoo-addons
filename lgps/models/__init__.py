@@ -2,3 +2,5 @@
 
 from . import accessory
 from . import cellchip
+from . import platform_list
+from . import device
