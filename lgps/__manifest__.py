@@ -23,5 +23,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'views/main_menu.xml',
+        'views/accessory.xml',
     ],
 }
