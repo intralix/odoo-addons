@@ -13,14 +13,15 @@ class Cellchip(models.Model):
         string=_("Line Number"),
     )
 
-    # device_id = fields.One2many(
-    #     comodel_name='lgps.gpsdevice',
-    #     inverse_name='cellchip_id',
-    #     string=_("Installed On"),
-    #     help="GPS Device where the cell chip is on.",
-    #     readonly=True,
-    #     tracking=True
-    # )
+    device_id = fields.One2many(
+        comodel_name='lgps.device',
+        inverse_name='cell_chip_id',
+        string=_("Installed On"),
+        help="GPS Device where the cell chip is on.",
+        readonly=True,
+        tracking=True
+    )
+
     # Estatus de la Línea
     status = fields.Selection(
         selection=[

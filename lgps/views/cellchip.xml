@@ -34,8 +34,7 @@
 
           <notebook>
             <page string="GPS Device">
-              <group>
-                <!--
+
                 <field name="device_id">
                   <tree>
                     <field name="name" string="Device"/>
@@ -50,8 +49,7 @@
                     <field name="client_id"/>
                   </tree>
                 </field>
-                -->
-              </group>
+
             </page>
           </notebook>
         </sheet>
@@ -88,7 +86,7 @@
         <field name="status_date"/>
         <field name="provider"/>
         <field name="purchase_date"/>
-        <!--<field name="device_id"/>-->
+        <field name="device_id"/>
          <group expand="1" string="Group By">
           <filter string="Proveedor" name="proveedor" context="{'group_by':'provider'}"/>
           <filter string="Estatus" name="estatus" context="{'group_by':'status'}"/>
@@ -101,7 +99,7 @@
   </record>
 
   <record model="ir.ui.view" id="cellchip_tree_view">
-    <field name="name">gpsdevice.tree</field>
+    <field name="name">cellchip.tree</field>
     <field name="model">lgps.cellchip</field>
     <field name="arch" type="xml">
       <tree string="Cellchips Tree" decoration-danger="days_suspended&gt;31">
@@ -114,7 +112,7 @@
         <field name="voice"/>
         <field name="purchase_date"/>
         <field name="days_suspended" invisible="1"/>
-        <!--<field name="device_id"/>-->
+        <field name="device_id"/>
       </tree>
     </field>
   </record>
