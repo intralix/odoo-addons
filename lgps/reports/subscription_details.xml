@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="paperformat_lgps_letter" model="report.paperformat">
+        <field name="name">Lgps Custom Letter</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">279</field>
+        <field name="page_width">215</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="report_subscriptions_detail"
+            model="sale.subscription"
+            string="Subscription Details"
+            name="lgps.report_subscriptions_detail_view"
+            file="lgps.report_subscriptions_detail"
+            report_type="qweb-pdf"
+            paperformat="paperformat_lgps_letter"
+    />
+
+    <template id="report_subscriptions_detail_view" name="Custom Subscription Details">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="container" style="font-size:1em;">
+                        <div class="row bg-primary">
+                            <div class="col-3">Económico</div>
+                            <div class="col-3">Equipo</div>
+                            <div class="col-6">Servicios Registrados</div>
+                        </div>
+                        <t t-foreach="docs" t-as="doc">
+                            <div class="row">
+                                <div class="col-3">
+                                    <t t-if="doc.device_id.nick">
+                                        <span t-field="doc.device_id.nick" />
+                                    </t>
+                                    <t t-if="not doc.device_id.nick">
+                                        <span>~</span>
+                                    </t>
+                                </div>
+                                <div class="col-3">
+                                    <t t-if="doc.device_id.nick">
+                                        <span t-field="doc.device_id.name" />
+                                    </t>
+                                    <t t-if="not doc.device_id.nick">
+                                        <span>~</span>
+                                    </t>
+                                </div>
+                                <div class="col-6">
+                                    <t t-if="doc.recurring_invoice_line_ids">
+                                        <t t-foreach="doc.recurring_invoice_line_ids" t-as="line">
+                                            <span t-field="line.product_id.name"/><br></br>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                            <hr></hr>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

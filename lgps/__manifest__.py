@@ -23,6 +23,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'reports/subscription_details.xml',
         'views/main_menu.xml',
         'views/accessory.xml',
         'views/cellchip.xml',
