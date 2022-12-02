@@ -31,5 +31,7 @@
         'views/device.xml',
         'views/accessory_history.xml',
         'views/custom_subscription.xml',
+        'views/tracking.xml',
+        'views/tracking_logs.xml',
     ],
 }

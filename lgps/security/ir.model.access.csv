@@ -19,3 +19,10 @@ accessory_log_manager,Accessory Logs Manager,model_lgps_accessory_history,lgps_g
 accessory_log_read_all,Accessory Log All,model_lgps_accessory_history,lgps_group_user,1,1,1,0
 accessory_log_maintainer,Accessory Log Maintainer,model_lgps_accessory_history,lgps_group_maintainer,1,0,0,0
 accessory_log_guest,Accessory Log Guest,model_lgps_accessory_history,lgps_group_guest,1,0,0,0
+tracking_manager,Tracking manager,model_lgps_tracking,lgps_group_manager,1,1,1,1
+tracking_read_all,Tracking all,model_lgps_tracking,lgps_group_user,1,1,1,0
+tracking_maintainer,Tracking Maintainer,model_lgps_tracking,lgps_group_maintainer,1,1,0,0
+tracking_guest,Tracking guest,model_lgps_tracking,lgps_group_guest,1,0,0,0
+tracking_logs_read_all,Tracking Logs all,model_lgps_tracking_logs,lgps_group_user,1,1,1,0
+tracking_logs_maintainer,Tracking Logs Maintainer,model_lgps_tracking_logs,lgps_group_maintainer,1,1,0,0
+tracking_logs_guest,Tracking Logs guest,model_lgps_tracking_logs,lgps_group_guest,1,0,0,0

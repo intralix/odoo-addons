@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models, fields, _
-import logging
-_logger = logging.getLogger(__name__)
 
 
 class PlatformList(models.Model):

@@ -260,12 +260,12 @@ class Device(models.Model):
         tracking=True
     )
 
-    # subscription_id = fields.One2many(
-    #     comodel_name='sale.subscription',
-    #     inverse_name='device_id',
-    #     string=_("Subscription"),
-    #     readonly=True
-    # )
+    subscription_id = fields.One2many(
+        comodel_name='sale.subscription',
+        inverse_name='device_id',
+        string=_("Subscription"),
+        readonly=True
+    )
 
     serial_number_id = fields.Many2one(
         comodel_name="stock.production.lot",
@@ -344,10 +344,10 @@ class Device(models.Model):
     #     compute='_compute_trackings_count',
     # )
 
-    # subscriptions_count = fields.Integer(
-    #     string=_('Subscriptions'),
-    #     compute='_compute_subscriptions_count',
-    # )
+    subscriptions_count = fields.Integer(
+        string=_('Subscriptions'),
+        compute='_compute_subscriptions_count',
+    )
 
     # tasks_count = fields.Integer(
     #     string=_('Tasks Count'),
@@ -418,10 +418,10 @@ class Device(models.Model):
     #         rec.trackings_count = self.env['lgps.tracking'].search_count(
     #             [('device_id', '=', rec.id)])
 
-    # def _compute_subscriptions_count(self):
-    #     for rec in self:
-    #         rec.subscriptions_count = self.env['sale.subscription'].search_count(
-    #             [('device_id', '=', rec.id)])
+    def _compute_subscriptions_count(self):
+        for rec in self:
+            rec.subscriptions_count = self.env['sale.subscription'].search_count(
+                [('device_id', '=', rec.id)])
 
     # def _compute_tasks_count(self):
     #     for rec in self:

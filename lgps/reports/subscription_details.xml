@@ -29,8 +29,8 @@
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <div class="page">
-                    <div class="container" style="font-size:1em;">
-                        <div class="row bg-primary">
+                    <div class="container" style="font-size:.8em;">
+                        <div class="row bg-primary" style="font-size:1em;">
                             <div class="col-3">Económico</div>
                             <div class="col-3">Equipo</div>
                             <div class="col-6">Servicios Registrados</div>
