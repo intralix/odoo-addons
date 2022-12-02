@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_subscription_form_view">
+    <field name="name">sale.subscription.gpsdevice</field>
+    <field name="model">sale.subscription</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='date_start']" position="after">
+        <field name="device_id"/>
+        <field name="billing_cycle"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

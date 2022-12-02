@@ -164,7 +164,7 @@ msgstr "Formulario de Accesorios"
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.accessory_history_list_action
 msgid "Accessory History"
-msgstr "_Histórico de Accesorios"
+msgstr "Histórico de Accesorios"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_history_form_view

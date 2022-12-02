@@ -28,6 +28,7 @@
         'views/cellchip.xml',
         'views/platform_list.xml',
         'views/device.xml',
-        'views/accessory_history.xml'
+        'views/accessory_history.xml',
+        'views/custom_subscription.xml',
     ],
 }
