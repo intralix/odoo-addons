@@ -8,3 +8,4 @@ from . import accesory_history
 from . import custom_subscriptions
 from . import tracking
 from . import tracking_logs
+from . import custom_partner

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_partner_form_view">
+    <field name="name">custom.partner</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <notebook position="inside">
+        <page string="Devices">
+          <group>
+            <field name="gpsdevice_ids">
+              <tree string="GpsDevices Tree">
+                <field name="name"/>
+                <field name="nick"/>
+                <field name="status"/>
+                <field name="installation_date"/>
+                <field name="platform_list_id"/>
+              </tree>
+            </field>
+          </group>
+        </page>
+        <page string="Executives">
+          <group>
+            <field name="credit_collection_executive"/>
+            <field name="coordination_executive"/>
+            <field name="after_sales_executive"/>
+          </group>
+        </page>
+        <page string="Negotiations">
+          <group>
+            <field name="special_negotiations"/>
+            <field name="special_negotiation_notes"/>
+          </group>
+        </page>
+      </notebook>
+      <xpath expr="//field[@name='category_id']" position="after">
+        <field name="client_type"/>
+        <field name="first_installation_day"/>
+        <field name="custom_status"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
