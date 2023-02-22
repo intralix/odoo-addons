@@ -56,7 +56,7 @@
                                 <div class="col-6">
                                     <t t-if="doc.recurring_invoice_line_ids">
                                         <t t-foreach="doc.recurring_invoice_line_ids" t-as="line">
-                                            <span t-field="line.product_id.name"/></br></br>
+                                            <span t-field="line.product_id.name"/><br></br>
                                         </t>
                                     </t>
                                 </div>
