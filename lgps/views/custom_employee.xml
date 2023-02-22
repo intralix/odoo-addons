@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_lmmx_employee_form_view">
+    <field name="name">lmmx.custom.employee</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//form//sheet//notebook//page[@name='personal_information']//field[@name='bank_account_id']"
+               position="after">
+          <field name="curp"/>
+          <field name="social_security_number"/>
+        </xpath>
+    </field>
+  </record>
+</odoo>

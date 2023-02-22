@@ -34,5 +34,6 @@
         'views/tracking.xml',
         'views/tracking_logs.xml',
         'views/custom_partner.xml',
+        'views/custom_employee.xml',
     ],
 }
