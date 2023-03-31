@@ -6,6 +6,12 @@
               view_mode="tree,form"
               domain="[('device_id', '=', active_id)]"/>
 
+      <act_window id="action_counter_tasks_button"
+              name="Tasks"
+              res_model="project.task"
+              view_mode="tree,form"
+              domain="[('device_id', '=', active_id)]"/>
+
   <record model="ir.ui.view" id="device_form_view">
     <field name="name">device.form</field>
     <field name="model">lgps.device</field>
@@ -24,6 +30,16 @@
                     context="{'default_device_id': active_id, 'default_partner_id': client_id}">
 
               <field string="Subscriptions" name="subscriptions_count" widget="statinfo"/>
+            </button>
+
+            <button class="oe_stat_button"
+                    icon="fa-list-alt"
+                    type="action"
+                    attrs="{'invisible': [('tasks_count', '&lt;', 1)]}"
+                    name="%(action_counter_tasks_button)d"
+                    context="{'default_device_id': active_id,'default_partner_id': client_id, 'default_name': 'Servicio: '+current_date+' / '+name}">
+
+              <field string="Services" name="tasks_count" widget="statinfo"/>
             </button>
           </div>
 

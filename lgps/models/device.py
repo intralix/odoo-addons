@@ -355,10 +355,10 @@ class Device(models.Model):
         compute='_compute_subscriptions_count',
     )
 
-    # tasks_count = fields.Integer(
-    #     string=_('Tasks Count'),
-    #     compute='_compute_tasks_count',
-    # )
+    tasks_count = fields.Integer(
+        string=_('Tasks Count'),
+        compute='_compute_tasks_count',
+    )
 
     fuel_tank_type_one_id = fields.Many2one(
         comodel_name="product.product",
@@ -429,10 +429,10 @@ class Device(models.Model):
             rec.subscriptions_count = self.env['sale.subscription'].search_count(
                 [('device_id', '=', rec.id)])
 
-    # def _compute_tasks_count(self):
-    #     for rec in self:
-    #         rec.tasks_count = self.env['project.task'].search_count(
-    #             [('device_id', '=', rec.id)])
+    def _compute_tasks_count(self):
+        for rec in self:
+            rec.tasks_count = self.env['project.task'].search_count(
+                [('device_id', '=', rec.id)])
 
     @api.model
     @api.depends('datetime_gps')
