@@ -10,3 +10,4 @@ from . import tracking
 from . import tracking_logs
 from . import custom_partner
 from . import custom_employee
+from . import custom_fsm

@@ -280,6 +280,12 @@ class Device(models.Model):
         string=_("Accessories"),
     )
 
+    fsm_ids = fields.One2many(
+        comodel_name="project.task",
+        inverse_name="device_id",
+        string=_("Field Services"),
+    )
+
     # tracking_ids = fields.One2many(
     #     comodel_name="lgps.tracking",
     #     inverse_name="gpsdevice_id",

@@ -6,7 +6,7 @@
     'application': True,
     'website': 'https://www.intralix.com',
     'category': 'Uncategorized',
-    'version': '0.0.2',
+    'version': '0.0.3',
     'depends': [
         'base',
         'stock',
@@ -18,7 +18,8 @@
         'helpdesk',
         'mail',
         'project',
-        'sale'
+        'sale',
+        'industry_fsm',
     ],
     'data': [
         'security/security.xml',
@@ -35,5 +36,6 @@
         'views/tracking_logs.xml',
         'views/custom_partner.xml',
         'views/custom_employee.xml',
+        'views/custom_fsm.xml',
     ],
 }
