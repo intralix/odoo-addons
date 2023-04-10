@@ -62,6 +62,11 @@ class Cellchip(models.Model):
         string=_("SIMCARD"),
         index=True,
     )
+
+    historic_line_number = fields.Char(
+        required=False,
+        string=_("Historic Line Number"),
+    )
     # Si la línea Voz
     voice = fields.Boolean(
         default=False,

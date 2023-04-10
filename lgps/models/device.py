@@ -274,6 +274,11 @@ class Device(models.Model):
         index=True,
     )
 
+    historic_serial_number = fields.Char(
+        required=False,
+        string=_("Historic Serial Number"),
+    )
+
     accessory_ids = fields.One2many(
         comodel_name="lgps.accessory",
         inverse_name="device_id",

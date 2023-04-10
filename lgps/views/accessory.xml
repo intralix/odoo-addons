@@ -21,7 +21,8 @@
               <separator/>
               <field name="name"/>
               <field name="client_id"/>
-              <field name="serial_number_id"/>
+              <field name="historic_serial_number" readonly="1"/>
+              <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
               <field name="installation_date"/>
             </group>
             <group string="More Info">
@@ -67,7 +68,8 @@
     <field name="model">lgps.accessory</field>
     <field name="arch" type="xml">
       <search>
-        <field name="serial_number_id"/>
+        <field name="historic_serial_number" readonly="1"/>
+        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
         <field name="name"/>
         <field name="client_id"/>
         <field name="installation_date"/>
@@ -86,7 +88,8 @@
       <tree string="accessories Tree">
         <field name="name"/>
         <field name="client_id"/>
-        <field name="serial_number_id"/>
+        <field name="historic_serial_number" readonly="1"/>
+        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
         <field name="installation_date"/>
         <field name="status"/>
         <field name="product_id"/>

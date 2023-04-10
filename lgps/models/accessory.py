@@ -23,6 +23,11 @@ class Accessory(models.Model):
         tracking=True
     )
 
+    historic_serial_number = fields.Char(
+        required=False,
+        string=_("Historic Serial Number"),
+    )
+
     client_id = fields.Many2one(
         comodel_name="res.partner",
         string=_("Client"),

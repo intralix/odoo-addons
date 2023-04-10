@@ -12,7 +12,8 @@
               <field name="name"/>
               <field name="status"/>
               <field name="plan"/>
-              <field name="line_number_id"/>
+              <field name="line_number_id" attrs="{'invisible':[('historic_line_number', '!=', '')]}"/>
+              <field name="historic_line_number"/>
               <field name="purchase_date"/>
               <field name="voice"/>
               <field name="term"/>
@@ -39,7 +40,8 @@
                   <tree>
                     <field name="name" string="Device"/>
                     <field name="nick"/>
-                    <field name="serial_number_id"/>
+                    <field name="historic_serial_number"/>
+                    <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
                     <field name="imei"/>
                     <field name="idf"/>
                     <field name="status"/>
@@ -80,7 +82,8 @@
         <filter string="Telcel" name="provider_telcel"  domain="[('provider', '=', 'Telcel')]"/>
 
         <field name="name"/>
-        <field name="line_number_id"/>
+        <field name="historic_line_number"/>
+        <field name="line_number_id" attrs="{'invisible':[('historic_line_number', '!=', '')]}"/>
         <field name="status"/>
         <field name="cell_chip_owner_id"/>
         <field name="status_date"/>
@@ -105,7 +108,8 @@
       <tree string="Cellchips Tree" decoration-danger="days_suspended&gt;31">
         <field name="name"/>
         <field name="plan"/>
-        <field name="line_number_id"/>
+        <field name="historic_line_number"/>
+        <field name="line_number_id" attrs="{'invisible':[('historic_line_number', '!=', '')]}"/>
         <field name="status"/>
         <field name="provider"/>
         <field name="cell_chip_owner_id"/>
