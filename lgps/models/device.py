@@ -269,7 +269,7 @@ class Device(models.Model):
 
     serial_number_id = fields.Many2one(
         comodel_name="stock.production.lot",
-        required=True,
+        required=False,
         string=_("Serial Number"),
         index=True,
     )
