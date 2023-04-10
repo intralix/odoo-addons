@@ -35,7 +35,6 @@
             <button class="oe_stat_button"
                     icon="fa-list-alt"
                     type="action"
-                    attrs="{'invisible': [('tasks_count', '&lt;', 1)]}"
                     name="%(action_counter_tasks_button)d"
                     context="{'default_device_id': active_id,'default_partner_id': client_id, 'default_name': 'Servicio: '+current_date+' / '+name}">
 

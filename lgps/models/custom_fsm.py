@@ -26,3 +26,9 @@ class LgpsFSM(models.Model):
         index=True,
         tracking=True,
     )
+
+    nick = fields.Char(
+        string=_('Nick'),
+        related="device_id.nick",
+        store=True
+    )
