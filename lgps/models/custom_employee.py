@@ -2,7 +2,7 @@ from odoo import api, models, fields, _
 
 
 class LgpsEmployee(models.Model):
-    _inherit = 'hr.employee'
+    _inherit = 'hr.employee.public'
 
     curp = fields.Char(
         string=_("CURP"),
