@@ -19,4 +19,7 @@ class LgpsEmployeePublic(models.Model):
     curp = fields.Char(
         string=_("CURP"),
     )
-    
+
+    social_security_number = fields.Char(
+        string=_("Security Social Number"),
+    )
