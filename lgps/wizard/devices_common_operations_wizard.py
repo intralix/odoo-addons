@@ -198,7 +198,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         # We get the seleteced Ids
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        drop_platform = self.env['lgps.platform_list'].search([['name', '=', 'drop']], limit=1)
+        drop_platform = self.env['lgps.platform_list'].search([['name', '=', 'Sin Plataforma']], limit=1)
 
         # Buffer Vars
         cellchips_ids = []
@@ -281,7 +281,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             'logistic': False,
             'collective': False,
             'fleetrun': False,
-            'platform_list_id': drop_platform,
+            'platform_list_id': drop_platform.id,
             # 'notify_offline': False,
         })
 
