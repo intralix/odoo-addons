@@ -24,8 +24,10 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'reports/subscription_details.xml',
+        'wizard/devices_common_operations.xml',
         'views/main_menu.xml',
+        'views/res_config_settings_views.xml',
+        'reports/subscription_details.xml',
         'views/accessory.xml',
         'views/cellchip.xml',
         'views/platform_list.xml',
@@ -36,5 +38,6 @@
         'views/tracking_logs.xml',
         'views/custom_partner.xml',
         'views/custom_fsm.xml',
+        'views/device_history.xml',
     ],
 }

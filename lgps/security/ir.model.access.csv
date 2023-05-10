@@ -26,3 +26,8 @@ tracking_guest,Tracking guest,model_lgps_tracking,lgps_group_guest,1,0,0,0
 tracking_logs_read_all,Tracking Logs all,model_lgps_tracking_logs,lgps_group_user,1,1,1,0
 tracking_logs_maintainer,Tracking Logs Maintainer,model_lgps_tracking_logs,lgps_group_maintainer,1,1,0,0
 tracking_logs_guest,Tracking Logs guest,model_lgps_tracking_logs,lgps_group_guest,1,0,0,0
+device_operations, Device Wizard Operations Manager,model_lgps_device_operations,lgps_group_wizard_manager,1,1,1,1
+device_log_manager,Logs manager,model_lgps_device_history,lgps_group_manager,1,1,1,1
+device_log_read_all,Device Log all,model_lgps_device_history,lgps_group_user,1,1,1,0
+device_log_maintainer,Device Log Maintainer,model_lgps_device_history,lgps_group_maintainer,1,0,0,0
+device_log_guest,Device Log guest,model_lgps_device_history,lgps_group_guest,1,0,0,0

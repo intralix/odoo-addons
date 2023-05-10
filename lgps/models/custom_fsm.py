@@ -32,3 +32,18 @@ class LgpsFSM(models.Model):
         related="device_id.nick",
         store=True
     )
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        domain = {}
+        if self.partner_id:
+            list_ids = []
+            values = self.env['lgps.device'].search([('client_id', '=', self.partner_id.id)])
+
+            for value in values:
+                list_ids.append(value.id)
+
+            self.device_id = []
+            domain = {'device_id': [('id', 'in', list_ids)]}
+
+            return {'domain': domain}

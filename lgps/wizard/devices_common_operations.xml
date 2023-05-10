@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Split Record -->
+  <record id="wizard_device_operations_form_view" model="ir.ui.view">
+    <field name="name">lgps.device_operations.form</field>
+    <field name="model">lgps.device_operations</field>
+    <field name="arch" type="xml">
+       <form string="Drop Process">
+           <group><p class="text-primary"> Selecciona el proceso a ejecutar en los equipos seleccionados:</p></group>
+           <group>
+               <field name="operation_mode"/>
+           </group>
+           <hr/>
+           <group><p class="text-primary"> Dispositivo(s) Seleccionado(s):</p></group>
+        <group>
+             <field name="gpsdevice_ids" readonly="1" string="Procesando para">
+                <tree string="GPS Devices to Process">
+                  <field name="name"/>
+                  <field name="nick"/>
+                  <field name="installation_date"/>
+                  <field name="platform_list_id"/>
+                  <field name="cell_chip_id"/>
+                  <field name="serial_number_id"/>
+                </tree>
+            </field>
+        </group>
+          <group><p class="text-primary"> Ingresa la información requerida para el proceso selecionado:</p></group>
+           <group>
+               <group>
+                   <field name="requested_by"
+                          attrs="{
+                          'invisible':[('operation_mode', 'in', ['substitution','replacement', 'loan_substitution'])],
+                          'required':[('operation_mode', 'not in', ['substitution','replacement', 'loan_substitution'])]
+                          }"/>
+
+                   <field name="reason" attrs="{
+                   'invisible':[('operation_mode', 'not in', ['drop'])]}"/>
+                   <field name="comment" string="Comentario / Falla Presentada"/>
+               </group>
+               <group>
+                   <field name="destination_gpsdevice_ids"
+                          attrs="{
+                          'invisible':[('operation_mode', 'in', ['drop','hibernation','wakeup','add_reactivate'])],
+                          'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
+                          }"/>
+
+                   <field name="related_odt"
+                          attrs="{
+                          'invisible':[('operation_mode', 'in', ['drop','hibernation','wakeup','add_reactivate'])],
+                          'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
+                          }"/>
+
+                   <field name="cell_chip_id" attrs="{
+                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
+                          }"
+                   />
+
+                   <field name="reactivation_reason" attrs="{
+                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
+                          'required':[('operation_mode', 'in', ['add_reactivate'])]
+                          }"
+                   />
+
+               </group>
+
+           </group>
+
+           <notebook  attrs="{'invisible':[('operation_mode', 'not in', ['wakeup','add_reactivate'])]}">
+           <page string="Services">
+               <group>
+                   <p class="text-primary"> Selecciona los servicios que serán reactivados en los dispositivos</p>
+               </group>
+              <group>
+                  <group>
+                      <field name="tracking"/>
+                      <field name="fuel"/>
+                      <field name="fuel_hall"/>
+                      <field name="fleetrun"/>
+                      <field name="scanner"/>
+                  </group>
+                  <group>
+                      <field name="temperature"/>
+                      <field name="logistic"/>
+                      <field name="collective"/>
+                      <field name="device_status"
+                             attrs="{
+                          'invisible':[('operation_mode', 'not in', ['wakeup'])],
+                          'required':[('operation_mode', 'in', ['wakeup'])]
+                          }"/>
+                      <field name="platform"
+                      attrs="{
+                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
+                          'required':[('operation_mode', 'in', ['add_reactivate'])]
+                          }"
+                      />
+                  </group>
+              </group>
+            </page>
+           </notebook>
+
+        <footer>
+          <button name="execute_operation" type="object" string="Execute Process" class="oe_highlight" default_focus="1"/>
+          <button special="cancel" string="Cancel" class="oe_link"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+    <record id="action_window_device_operations" model="ir.actions.act_window">
+        <field name="name">Device Common Operation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lgps.device_operations</field>
+        <field name="view_id" ref="wizard_device_operations_form_view"/>
+        <field name="binding_model_id" ref="lgps.model_lgps_device"/>
+        <field name="target">new</field>
+    </record>
+<!--
+    <menuitem id="menu_wizard_device_operations"
+              name="Device Operations"
+              parent="lgps_menu"
+              action="action_window_device_operations"
+              sequence="25"
+    />
+    -->
+</odoo>

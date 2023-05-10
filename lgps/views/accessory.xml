@@ -22,7 +22,7 @@
               <field name="name"/>
               <field name="client_id"/>
               <field name="historic_serial_number" readonly="1"/>
-              <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+              <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', False)]}"/>
               <field name="installation_date"/>
             </group>
             <group string="More Info">
