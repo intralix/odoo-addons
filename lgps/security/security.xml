@@ -46,4 +46,12 @@
             (4, ref('base.user_admin'))
         ]"/>
   </record>
+
+  <record id="lgps_group_field_service_operations" model="res.groups">
+    <field name="name">LGPS / Field Service Details</field>
+    <field name="users" eval="[
+            (4, ref('base.user_root')),
+            (4, ref('base.user_admin'))
+        ]"/>
+  </record>
 </odoo>
