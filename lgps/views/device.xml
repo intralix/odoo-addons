@@ -227,5 +227,5 @@
   </record>
 
   <!-- Menu items -->
-  <menuitem id="gps_devices_menu" name="Gps Devices" parent="lgps_menu" action="device_list_action"/>
+  <menuitem id="gps_devices_menu" name="Gps Devices" parent="lgps_menu" action="device_list_action" sequence="10"/>
 </odoo>

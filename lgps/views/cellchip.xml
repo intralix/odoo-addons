@@ -127,5 +127,5 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="cell_chips_menu" name="Cellchips" parent="lgps_menu" action="cell_chip_list_action"/>
+  <menuitem id="cell_chips_menu" name="Cellchips" parent="lgps_menu" action="cell_chip_list_action" sequence="30"/>
 </odoo>

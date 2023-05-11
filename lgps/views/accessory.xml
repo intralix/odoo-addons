@@ -105,5 +105,5 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="accessory_menu" name="Accessories" parent="lgps_menu" action="accessory_list_action"/>
+  <menuitem id="accessory_menu" name="Accessories" parent="lgps_menu" action="accessory_list_action" sequence="20"/>
 </odoo>

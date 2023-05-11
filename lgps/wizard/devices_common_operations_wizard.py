@@ -70,7 +70,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     )
 
     related_field_service = fields.Many2one(
-        comodel_name="field.service",
+        comodel_name="industry_fsm",
         string=_("Related work order")
     )
 
