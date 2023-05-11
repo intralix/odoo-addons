@@ -36,7 +36,7 @@
                     icon="fa-list-alt"
                     type="action"
                     name="%(action_counter_tasks_button)d"
-                    context="{'default_device_id': active_id,'default_partner_id': client_id, 'default_name': 'Servicio: '+current_date+' / '+name}">
+                    context="{'default_device_id': active_id,'default_partner_id': client_id, 'default_name': 'ODT '+current_date+'/'+name}">
 
               <field string="Services" name="tasks_count" widget="statinfo"/>
             </button>
