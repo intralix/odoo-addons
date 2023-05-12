@@ -33,13 +33,8 @@ class Tracking(models.Model):
         required=True,
     )
 
-    applicant_id = fields.Many2one(
-        comodel_name="res.partner",
-        string=_("Client Account"),
-        domain=[
-            ('active', '=', True),
-            ('company_type', '=', 'person')
-        ],
+    applicant = fields.Char(
+        string=_("Applicant"),
     )
 
     state = fields.Selection(
@@ -49,6 +44,7 @@ class Tracking(models.Model):
             ('paused', _('Detenido')),
             ('finished', _('Finalizado')),
             ('billed', _('Facturado')),
+            ('cancelled', _('Cancelled')),
         ],
         string=_("State"),
         default="registered",
@@ -59,7 +55,7 @@ class Tracking(models.Model):
     category = fields.Selection(
         [
             ('event', _('Per Event')),
-            ('permanent', _('Permanente')),
+            ('permanent', _('Permanent')),
             ('uninterrupted ', _('Uninterrupted')),
         ],
         string=_("Category"),
@@ -113,6 +109,10 @@ class Tracking(models.Model):
         string=_("Observations"),
     )
 
+    emails = fields.Text(
+        string=_("Additional Emails"),
+    )
+
     start_date = fields.Datetime(
         string=_("Activity Started at"),
         readonly=True
@@ -146,6 +146,13 @@ class Tracking(models.Model):
         string=_("Freight cost"),
         help=_("Freight costs")
     )
+
+    comment_period = fields.Integer(
+        string=_('Comment Period'),
+        default=0,
+    )
+
+    active = fields.Boolean(default=True)
 
     @api.model
     def create(self, vals):
@@ -187,4 +194,10 @@ class Tracking(models.Model):
     def button_do_finish(self):
         for tracking in self:
             tracking.state = 'finished'
+        return True
+
+    def button_do_cancel(self):
+        for tracking in self:
+            tracking.state = 'cancelled'
+            tracking.active = False
         return True
