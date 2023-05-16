@@ -13,4 +13,5 @@ from . import custom_partner
 # from . import custom_employee
 from . import custom_fsm
 from . import device_history
+from . import custom_help_desk
 

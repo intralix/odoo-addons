@@ -94,11 +94,11 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     # Available services
     tracking = fields.Boolean(default=False, string=_("Tracking"))
     fuel = fields.Boolean(default=False, string=_("Fuel"))
-    fuel_hall = fields.Boolean(default=False,string=_("Efecto Hall"))
+    fuel_hall = fields.Boolean(default=False, string=_("Efecto Hall"))
     scanner = fields.Boolean(default=False, string="Scanner")
     temperature = fields.Boolean(default=False, string=_("Temperature"))
     logistic = fields.Boolean(default=False, string=_("Logistic"))
-    collective = fields.Boolean(default=False,string=_("Collective"))
+    collective = fields.Boolean(default=False, string=_("Collective"))
     fleetrun = fields.Boolean(default=False, string=_("Fleetrun"))
     device_status = fields.Selection(
         selection=[
@@ -1201,7 +1201,13 @@ class CommonDevicesOperationsWizard(models.TransientModel):
            )
         else:
             channel_notifier = self.sudo().env['mail.channel'].search([('id', '=', channel_id)])
-            channel_notifier.message_post(body=channel_msn, subtype_xmlid='mail.mt_comment', partner_ids=[self.env.uid])
+            channel_notifier.message_post(
+                body=channel_msn,
+                message_type='comment',
+                subtype_xmlid='mail.mt_comment',
+                partner_ids=[self.env.uid],
+                notify_by_email=False,
+            )
 
         return {}
 

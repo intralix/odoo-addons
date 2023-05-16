@@ -291,11 +291,11 @@ class Device(models.Model):
         string=_("Field Services"),
     )
 
-    # tracking_ids = fields.One2many(
-    #     comodel_name="lgps.tracking",
-    #     inverse_name="gpsdevice_id",
-    #     string=_("Trackings"),
-    # )
+    tracking_ids = fields.One2many(
+        comodel_name="lgps.tracking",
+        inverse_name="device_id",
+        string=_("Trackings"),
+    )
 
     # state = fields.Selection(
     #     [
@@ -323,11 +323,11 @@ class Device(models.Model):
     #     string=_("ODT"),
     # )
 
-    # helpdesk_tickets_ids = fields.One2many(
-    #     comodel_name="helpdesk.ticket",
-    #     inverse_name="gpsdevice_id",
-    #     string=_("Tickets"),
-    # )
+    helpdesk_tickets_ids = fields.One2many(
+        comodel_name="helpdesk.ticket",
+        inverse_name="device_id",
+        string=_("Tickets"),
+    )
 
     # tasks_ids = fields.One2many(
     #     comodel_name="project.task",
@@ -345,10 +345,10 @@ class Device(models.Model):
     #     compute='_compute_repairs_count',
     # )
 
-    # tickets_count = fields.Integer(
-    #     string=_("Tickets Count"),
-    #     compute='_compute_tickets_count',
-    # )
+    tickets_count = fields.Integer(
+        string=_("Tickets Count"),
+        compute='_compute_tickets_count',
+    )
 
     # trackings_count = fields.Integer(
     #     string=_("Trackings Count"),
@@ -419,10 +419,10 @@ class Device(models.Model):
     #         rec.repairs_count = self.env['repair.order'].search_count(
     #             [('device_id', '=', rec.id)])
 
-    # def _compute_tickets_count(self):
-    #     for rec in self:
-    #         rec.tickets_count = self.env['helpdesk.ticket'].search_count(
-    #             [('device_id', '=', rec.id)])
+    def _compute_tickets_count(self):
+        for rec in self:
+            rec.tickets_count = self.env['helpdesk.ticket'].search_count(
+                [('device_id', '=', rec.id)])
 
     # def _compute_trackings_count(self):
     #     for rec in self:

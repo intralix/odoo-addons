@@ -12,6 +12,12 @@
               view_mode="tree,form"
               domain="[('device_id', '=', active_id)]"/>
 
+    <act_window id="action_counter_help_desk_button"
+              name="Tickets"
+              res_model="helpdesk.ticket"
+              view_mode="tree,form"
+              domain="[('device_id', '=', active_id)]"/>
+    
   <record model="ir.ui.view" id="device_form_view">
     <field name="name">device.form</field>
     <field name="model">lgps.device</field>
@@ -39,6 +45,15 @@
                     context="{'default_device_id': active_id,'default_partner_id': client_id, 'default_name': 'ODT '+current_date+'/'+name}">
 
               <field string="Services" name="tasks_count" widget="statinfo"/>
+            </button>
+
+            <button class="oe_stat_button"
+                    icon="fa-life-ring"
+                    type="action"
+                    name="%(action_counter_help_desk_button)d"
+                    context="{'default_device_id': active_id,'default_partner_id': client_id}">
+
+              <field string="Tickets" name="tickets_count" widget="statinfo"/>
             </button>
           </div>
 

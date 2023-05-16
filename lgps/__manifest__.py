@@ -39,5 +39,6 @@
         'views/custom_partner.xml',
         'views/custom_fsm.xml',
         'views/device_history.xml',
+        'views/custom_help_desk.xml',
     ],
 }
