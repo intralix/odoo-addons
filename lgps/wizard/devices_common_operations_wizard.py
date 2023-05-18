@@ -266,8 +266,9 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             if additional_functions:
                 body += gps_functions_summary
 
-            odoobot = self.env.ref("base.partner_root")
-            r.message_post(author_id=odoobot.id, body=body)
+            # odoobot = self.env.ref("base.partner_root")
+            # r.message_post(author_id=odoobot.id, body=body)
+            r.message_post(body=body)
             # Create Object Log
             self.create_device_log(r, body)
 
