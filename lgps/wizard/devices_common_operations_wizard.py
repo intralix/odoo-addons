@@ -230,7 +230,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             acumulador += '<br/><b>Línea:</b> ' + chip
             acumulador += '<br/><b>Prov. Linea:</b> ' + pchip
 
-            if(r.cell_chip_id):
+            if r.cell_chip_id:
                 cellchips_ids.append(r.cell_chip_id.id)
                 notify_cellchisp_list += '<br/>' + r.cell_chip_id.name + ' - ' + r.cell_chip_id.provider
 
@@ -301,9 +301,10 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         channel_msn += self.cellchips_list
 
         # Log to Channel
-        lgps_config = self.sudo().env['ir.config_parameter']
-        channel_id = lgps_config.get_param('lgps.device_wizard.drop_default_channel')
-        self.log_to_channel(channel_id, channel_msn)
+        # Deactivated due to use and some error that is hard to track to resolve
+        # lgps_config = self.sudo().env['ir.config_parameter']
+        # channel_id = lgps_config.get_param('lgps.device_wizard.drop_default_channel')
+        # self.log_to_channel(channel_id, channel_msn)
 
         return {}
 
