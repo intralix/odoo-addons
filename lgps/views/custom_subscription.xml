@@ -12,4 +12,16 @@
       </xpath>
     </field>
   </record>
+
+  <record model="ir.ui.view" id="custom_subscription_list_view">
+    <field name="name">sale.subscription.custom.device.list.view</field>
+    <field name="model">sale.subscription</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="device_nick"/>
+        <field name="billing_cycle"/>
+      </xpath>
+    </field>
+  </record>
 </odoo>
