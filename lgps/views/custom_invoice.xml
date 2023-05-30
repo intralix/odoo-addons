@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_tickets_form_view">
+    <field name="name">intx.custom.account.move</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account_edi.view_move_form_inherit"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='button_cancel_posted_moves']" position="attributes">
+            <attribute name="groups">lgps.lgps_group_cancel_posted_invoice</attribute>
+        </xpath>
+    </field>
+  </record>
+</odoo>
