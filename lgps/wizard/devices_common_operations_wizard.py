@@ -318,40 +318,43 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
 
         # LGPS Global Configuration
-        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
-
-        # LGPS Global Configuration
         lgps_config = self.sudo().env['ir.config_parameter']
 
+        # Obtenemos la etaba de hibernación configurada
         subscription_hibernate_stage_id = lgps_config.get_param(
             'lgps.device_wizard.hibernate_default_subscription_stage')
-        #_logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
+        _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
         if not subscription_hibernate_stage_id:
             raise UserError(_(
-                'There is not configuration for default stage on new subscription.\nConfigure this in order to send the notification.'))
-
+                'There is not configuration for default stage on new subscription.'
+                '\nConfigure this in order to send the notification.'))
         subscription_current_hibernate_stage_id = lgps_config.get_param(
             'lgps.device_wizard.hibernate_current_subscription_stage')
-        #_logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
+        _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
         if not subscription_current_hibernate_stage_id:
             raise UserError(_(
-                'There is not configuration for default current subscriptions stage.\nConfigure this in order to send the notification.'))
+                'There is not configuration for default current subscriptions stage.'
+                '\nConfigure this in order to send the notification.'))
 
         subscription_hibernate_template_id = lgps_config.get_param(
             'lgps.device_wizard.hibernate_default_subscription_template')
-        #_logger.warning('subscription_hibernate_template_id: %s', subscription_hibernate_template_id)
+        _logger.warning('subscription_hibernate_template_id: %s', subscription_hibernate_template_id)
         if not subscription_hibernate_template_id:
             raise UserError(_(
                 'There is not configuration for default channel.\n Configure this in order to send the notification.'))
 
         channel_id = lgps_config.get_param('lgps.hibernate_device_wizard.default_channel')
-        #_logger.warning('lgps_default_channel_id: %s', lgps_default_channel_id)
+        _logger.warning('lgps_default_channel_id: %s', channel_id)
         if not channel_id:
             raise UserError(_(
                 'There is not configuration for default channel.\n Configure this in order to send the notification.'))
 
+
+
+        raise UserError('Stop Execution')
+
         hibernate_product_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_service')
-        #_logger.warning('hibernate_product_id: %s', hibernate_product_id)
+        _logger.warning('hibernate_product_id: %s', hibernate_product_id)
         if not hibernate_product_id:
             raise UserError(_(
                 'There is not configuration for default service.'
@@ -498,13 +501,13 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 subscription_current_hibernate_stage_id
             )
 
-        #Log Channel
-        channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para ser hibernados por motivo de:<br/>'
-        channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
-        channel_msn += self.devices_list
+        # Log Channel
+        # channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para ser hibernados por motivo de:<br/>'
+        # channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
+        # channel_msn += self.devices_list
 
         # Send Message
-        self.log_to_channel(channel_id, channel_msn)
+        # self.log_to_channel(channel_id, channel_msn)
 
         return {}
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_fsm_quotation_button_form_view">
+    <field name="name">intx.custom.fsm.quotation.button</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_fsm_view_quotations']" position="attributes">
+          <attribute name="groups">industry_fsm.group_fsm_manager,lgps.lgps_group_field_service_operations</attribute>
+        </xpath>
+    </field>
+  </record>
+</odoo>

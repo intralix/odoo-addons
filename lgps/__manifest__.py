@@ -6,7 +6,7 @@
     'application': True,
     'website': 'https://www.intralix.com',
     'category': 'Uncategorized',
-    'version': '0.0.4',
+    'version': '0.0.6',
     'depends': [
         'base',
         'stock',
@@ -38,8 +38,8 @@
         'views/tracking_logs.xml',
         'views/custom_partner.xml',
         'views/custom_fsm.xml',
-        'views/device_history.xml',
         'views/custom_help_desk.xml',
+        'views/device_history.xml',
         'views/custom_invoice.xml',
     ],
 }
