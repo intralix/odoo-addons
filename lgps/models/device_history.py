@@ -8,6 +8,7 @@ from odoo.exceptions import Warning
 class DeviceHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device_history'
+    _description = 'Intx Devices logs Internal Module'
 
     name = fields.Char(
         required=True,

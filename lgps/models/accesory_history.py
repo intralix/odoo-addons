@@ -6,6 +6,7 @@ from odoo import api, models, fields, _
 class AccessoryHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.accessory_history'
+    _description = 'Intx Accessories logs Internal Module'
 
     name = fields.Char(
         required=True,
