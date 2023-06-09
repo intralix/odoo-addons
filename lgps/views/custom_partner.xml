@@ -37,6 +37,7 @@
         <field name="client_type"/>
         <field name="first_installation_day"/>
         <field name="custom_status"/>
+        <field name="client_rank"/>
       </xpath>
     </field>
   </record>
