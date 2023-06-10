@@ -64,7 +64,7 @@
               <field name="client_id"/>
               <field name="nick"/>
               <field name="historic_serial_number" readonly="1"/>
-              <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+              <field name="serial_number_id"/>
               <field name="imei"/>
               <field name="idf"/>
               <field name="device_pin"/>
@@ -133,7 +133,7 @@
                 <field name="name"/>
                 <field name="client_id"/>
                 <field name="historic_serial_number" readonly="1"/>
-                <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+                <field name="serial_number_id"/>
                 <field name="installation_date"/>
                 <field name="status"/>
                 <field name="product_id"/>
@@ -188,7 +188,7 @@
         <field name="status"/>
         <field name="cell_chip_id"/>
         <field name="historic_serial_number" readonly="1"/>
-        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+        <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>
         <field name="platform_list_id"/>
@@ -224,7 +224,7 @@
         <field name="status"/>
         <field name="cell_chip_id"/>
         <field name="historic_serial_number" readonly="1"/>
-        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+        <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>
         <field name="platform_list_id"/>

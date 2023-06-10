@@ -26,6 +26,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/devices_common_operations.xml',
+        'wizard/assign_accessories_wizard.xml',
         'views/main_menu.xml',
         'views/res_config_settings_views.xml',
         'reports/subscription_details.xml',
