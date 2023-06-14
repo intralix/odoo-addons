@@ -722,12 +722,12 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         else:
             channel_notifier = self.sudo().env['mail.channel'].search([('id', '=', channel_id)])
 
-            notification_ids = [((0, 0, {
-                'res_partner_id': self.env.user.partner_id.id,
-                'notification_type': 'inbox'}))]
+            # notification_ids = [((0, 0, {
+            #     'res_partner_id': self.env.user.partner_id.id,
+            #     'notification_type': 'inbox'}))]
 
-            channel_notifier.message_post(
-                author_id=self.env.user.id,
+            channel_notifier.with_user(self.env.user).message_post(
+                #author_id=self.env.user.id,
                 body=channel_msn,
                 #message_type='comment',
                 #subtype_xmlid='mail.mt_comment',
