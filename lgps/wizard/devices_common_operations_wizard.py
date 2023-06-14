@@ -729,11 +729,11 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             channel_notifier.message_post(
                 author_id=self.env.user.id,
                 body=channel_msn,
-                message_type='comment',
-                subtype_xmlid='mail.mt_comment',
-                notification_ids=notification_ids,
-                partner_ids=[self.env.uid],
-                notify_by_email=False,
+                #message_type='comment',
+                #subtype_xmlid='mail.mt_comment',
+                #notification_ids=notification_ids,
+                #partner_ids=[self.env.uid],
+                #notify_by_email=False,
             )
 
         return {}
