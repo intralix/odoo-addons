@@ -180,8 +180,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             #self.execute_substitution()
         # Wakeup
         if self.operation_mode == 'wakeup':
-            raise UserError('El proceso de deshibernación esta siendo revisado por lo que no esta disponible')
-            #self.execute_wakeup()
+            # raise UserError('El proceso de deshibernación esta siendo revisado por lo que no esta disponible')
+            self.execute_wakeup()
         # Reactivate
         if self.operation_mode == 'add_reactivate':
             raise UserError('El proceso de reactivación esta siendo revisado por lo que no esta disponible')
@@ -474,6 +474,131 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         return {}
 
     def execute_wakeup(self):
+        body = ''
+        notify_gps_list = ''
+
+        active_records = self.return_active_records()
+        self.chek_status_before_further_process(active_records, 'hibernate')
+
+        # LGPS Global Configuration
+        lgps_config = self.sudo().env['ir.config_parameter']
+
+        subscription_hibernate_stage_id = lgps_config.get_param(
+            'lgps.device_wizard.hibernate_current_subscription_stage')
+        if not subscription_hibernate_stage_id:
+            raise UserError(_(
+                'There is not configuration for default current subscriptions stage.\n'
+                'Configure this in order to send the notification.'))
+
+        channel_id = lgps_config.get_param('lgps.hibernate_device_wizard.default_channel')
+        if not channel_id:
+            raise UserError(_(
+                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
+
+        subscription_in_progress_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_in_progress')
+        subscription_hibernate_stage_id = self.sudo().env['sale.subscription.stage'].search([
+            ('id', '=', subscription_hibernate_stage_id)], limit=1)
+
+        # Procesamos los quipos seleccionados:
+        for r in active_records:
+            acumulador = ""
+            body = "[Proceso de Deshibernación]<br/><br/>" + self.comment + '<br/>'
+            body += '<br/><b>Solicitado por</b>: '
+            body += self.requested_by + '<br/>'
+            gps_functions_summary = "<hr/>Se activan las funciones de:<br/><br/>"
+            additional_functions = False
+
+            platform = r.platform_list_id.name if r.platform_list_id.name else 'Sin Plataforma'
+            client = r.client_id.name if r.client_id else 'Sin Cliente'
+            equipo = r.name
+            nick = r.nick if r.nick else 'NA'
+
+            acumulador += '<br/><b>Plataforma:</b> ' + platform
+            acumulador += '<br/><b>Cliente:</b> ' + client
+            acumulador += '<br/><b>Solicitado Por:</b> ' + self.requested_by
+            acumulador += '<br/><b>Equipo:</b> ' + equipo
+            acumulador += '<br/><b>Nick:</b> ' + nick
+            notify_gps_list += '<br/>' + client + ' || ' + equipo + ' || ' + nick + ' || ' + platform
+
+            if self.tracking:
+                additional_functions = True
+                gps_functions_summary += "Rastreo<br/>"
+            if self.fuel:
+                additional_functions = True
+                gps_functions_summary += "Combustible<br/>"
+            if self.fuel_hall:
+                additional_functions = True
+                gps_functions_summary += "Combustible Efecto Hall<br/>"
+            if self.scanner:
+                additional_functions = True
+                gps_functions_summary += "Escánner<br/>"
+            if self.temperature:
+                additional_functions = True
+                gps_functions_summary += "Temperatura<br/>"
+            if self.logistic:
+                additional_functions = True
+                gps_functions_summary += "Logística<br/>"
+            if self.collective:
+                additional_functions = True
+                gps_functions_summary += "Colectivos Boson<br/>"
+            if self.fleetrun:
+                additional_functions = True
+                gps_functions_summary += "Mantenimiento de Flotilla<br/>"
+
+            body += '<br/>' + acumulador
+            if additional_functions:
+                body += gps_functions_summary
+
+            # Activando el equipo
+            r.write({
+                'fuel': self.fuel if self.fuel else r.fuel,
+                'fuel_hall': self.fuel_hall if self.fuel_hall else r.fuel_hall,
+                'scanner': self.scanner if self.scanner else r.scanner,
+                'temperature': self.temperature if self.temperature else r.temperature,
+                'logistic': self.logistic if self.logistic else r.logistic,
+                'collective': self.collective if self.collective else r.collective,
+                'tracking': self.tracking if self.tracking else r.tracking,
+                'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
+                'status': self.device_status,
+                # 'notify_offline': True,
+            })
+            # write Comment
+            r.message_post(body=body)
+
+            # Buscamos las suscripciones que estén en el estatus marcado para hibernación y las pasamos a progreso
+            hibernated_subscriptions = self.env['sale.subscription'].search([
+                ['device_id', '=', r.id],
+                ['stage_id', '=', subscription_hibernate_stage_id.id]
+            ])
+            # _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
+            # _logger.warning('hibernated_subscriptions: %s', hibernated_subscriptions)
+
+            # Buscamos la suscripción que este en progreso y la pasamos a cerrada
+            in_progress_subscriptions = self.env['sale.subscription'].search([
+                ['device_id', '=', r.id],
+                ['stage_id', '=', subscription_in_progress_stage.id]
+            ])
+
+            # _logger.warning('in_progress_subscriptions: %s', in_progress_subscriptions)
+            if in_progress_subscriptions:
+                self._change_subscriptions_stage(in_progress_subscriptions,
+                                                 "El equipo se ha deshibernado en el sistema.")
+
+            if hibernated_subscriptions:
+                self._change_subscriptions_stage(
+                    subscriptions=hibernated_subscriptions,
+                    comment="Se reactiva la suscripción por que el equipo fue deshibernado en el sistema",
+                    default_stage=subscription_in_progress_stage
+                )
+            # Create Object Log
+            self.create_device_log(r, body)
+
+        channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para ser deshibernados por motivo de:<br/>'
+        channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
+        channel_msn += notify_gps_list
+
+        self.log_to_channel(channel_id, channel_msn)
+
         return {}
 
     def execute_add_reactivate(self):
@@ -491,18 +616,14 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     def chek_status_before_further_process(self, devices, status):
         error = False
         buffer =''
-        #row_list = []
 
         for device in devices:
-            if device.status != status or device.platform == 'Drop':
+            if device.status != status or device.platform_list_id.name == 'Drop':
                 error = True
-                buffer += device.name + '  /  ' + device.status + '  /  ' + device.platform + '\n'
-                #row_list.append([device.name, device.nick, device.status])
+                buffer += device.name + '  /  ' + device.status + '  /  ' + device.platform_list_id.name + '\n'
 
         if error:
-            #_logger.warning('row_list: %s', row_list)
             raise UserError(
-                #_('Some devices does not has the right status for this operation.\n\n ' + self.cool_format(row_list))
                 _('Some devices does not has the right status for this operation.\n\n ' + buffer)
             )
 
