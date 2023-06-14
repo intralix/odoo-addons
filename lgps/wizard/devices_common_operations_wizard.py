@@ -168,8 +168,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             self.execute_deactivation()
         # Hibernation
         if self.operation_mode == 'hibernation':
-            raise UserError('El proceso de hibernación esta siendo revisado por lo que no esta disponible')
-            #self.execute_hibernation()
+            # raise UserError('El proceso de hibernación esta siendo revisado por lo que no esta disponible')
+            self.execute_hibernation()
         # Replacement
         if self.operation_mode == 'replacement':
             raise UserError('El proceso de reemplazo esta siendo revisado por lo que no esta disponible')
@@ -180,8 +180,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             #self.execute_substitution()
         # Wakeup
         if self.operation_mode == 'wakeup':
-            raise UserError('El proceso de deshibernación esta siendo revisado por lo que no esta disponible')
-            #self.execute_wakeup()
+            # raise UserError('El proceso de deshibernación esta siendo revisado por lo que no esta disponible')
+            self.execute_wakeup()
         # Reactivate
         if self.operation_mode == 'add_reactivate':
             raise UserError('El proceso de reactivación esta siendo revisado por lo que no esta disponible')
@@ -295,93 +295,47 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             self._change_subscriptions_stage(subscriptions, "El equipo se ha dado de baja en el sistema.")
 
         # Log para Internos
-        channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para dar de baja por motivo de:<br/>'
+        channel_msn = '<br/>Los equipos listados a continuación se procesaron para dar de baja por motivo de:<br/>'
         channel_msn += self.comment + '<br/>'
         channel_msn += self.devices_list
-        channel_msn += '<br/><br/>Se requiere dar de baja la siguientes líneas:<br/>'
+        channel_msn += '<br/><br/>Favor de ejecutar la baja la siguientes líneas:<br/>'
         channel_msn += self.cellchips_list
 
         # Log to Channel
         # Deactivated due to use and some error that is hard to track to resolve
-        # lgps_config = self.sudo().env['ir.config_parameter']
-        # channel_id = lgps_config.get_param('lgps.device_wizard.drop_default_channel')
-        # self.log_to_channel(channel_id, channel_msn)
+        lgps_config = self.sudo().env['ir.config_parameter']
+        channel_id = lgps_config.get_param('lgps.device_wizard.drop_default_channel')
+        self.log_to_channel(channel_id, channel_msn)
 
         return {}
 
     def execute_hibernation(self):
-        # Check Rules
-        self._check_mandatory_fields(['comment', 'requested_by'])
+        # raise UserError(_('Mensaje de pruebas para detener la ejecuión del código'))
 
-        # Obtenemos los Ids seleccionados
+        # We get selected Ids that we'll process for hibernation
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
 
-        # LGPS Global Configuration
+        # Get global configuration object to retrieve options from settings
         lgps_config = self.sudo().env['ir.config_parameter']
 
-        # Obtenemos la etaba de hibernación configurada
-        subscription_hibernate_stage_id = lgps_config.get_param(
-            'lgps.device_wizard.hibernate_default_subscription_stage')
-        _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
-        if not subscription_hibernate_stage_id:
-            raise UserError(_(
-                'There is not configuration for default stage on new subscription.'
-                '\nConfigure this in order to send the notification.'))
-        subscription_current_hibernate_stage_id = lgps_config.get_param(
-            'lgps.device_wizard.hibernate_current_subscription_stage')
-        _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
-        if not subscription_current_hibernate_stage_id:
-            raise UserError(_(
-                'There is not configuration for default current subscriptions stage.'
-                '\nConfigure this in order to send the notification.'))
-
-        subscription_hibernate_template_id = lgps_config.get_param(
-            'lgps.device_wizard.hibernate_default_subscription_template')
-        _logger.warning('subscription_hibernate_template_id: %s', subscription_hibernate_template_id)
-        if not subscription_hibernate_template_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
-
+        # We get all configuration parameters
         channel_id = lgps_config.get_param('lgps.hibernate_device_wizard.default_channel')
-        _logger.warning('lgps_default_channel_id: %s', channel_id)
-        if not channel_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
-
-
-
-        raise UserError('Stop Execution')
-
+        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
+        subscription_hibernate_stage_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_subscription_stage')
+        subscription_current_hibernate_stage_id = lgps_config.get_param('lgps.device_wizard.hibernate_current_subscription_stage')
+        subscription_hibernate_template_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_subscription_template')
+        hibernation_commercial_id = lgps_config.get_param('lgps.device_wizard.hibernate_commercial_default')
+        hibernate_user_id = lgps_config.get_param('lgps.device_wizard.hibernate_user_default')
+        hibernate_price_list_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_price_list_id')
         hibernate_product_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_service')
-        _logger.warning('hibernate_product_id: %s', hibernate_product_id)
+
         if not hibernate_product_id:
             raise UserError(_(
                 'There is not configuration for default service.'
                 '\n Configure this in order to create subscription successfully.'))
         else:
             product = self.sudo().env['product.product'].search([('id', '=', hibernate_product_id)], limit=1)
-
-        hibernation_commercial_id = lgps_config.get_param('lgps.device_wizard.hibernate_commercial_default')
-        #_logger.warning('hibernation_commercial_id: %s', hibernation_commercial_id)
-        if not hibernation_commercial_id:
-            raise UserError(_(
-                'There is not configuration for default commercial team.'
-                '\n Configure this in order to create subscription successfully.'))
-
-        hibernate_user_id = lgps_config.get_param('lgps.device_wizard.hibernate_user_default')
-        #_logger.warning('hibernate_user_id: %s', hibernate_user_id)
-        if not hibernate_user_id:
-            raise UserError(_(
-                'There is not configuration for default user as responsable.'
-                '\n Configure this in order to create subscription successfully.'))
-
-        hibernate_price_list_id = lgps_config.get_param('lgps.device_wizard.hibernate_default_price_list_id')
-        #_logger.warning('hibernate_price_list_id: %s', hibernate_price_list_id)
-        if not hibernate_price_list_id:
-            raise UserError(_(
-                'There is not configuration for default price list.'
-                '\n Configure this in order to create subscription successfully.'))
 
         # Buffer Vars
         notify_gps_list = ""
@@ -396,7 +350,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             acumulador = ""
             additional_functions = False
 
-            platform = r.platform if r.platform else 'Sin Plataforma'
+            platform = r.platform_list_id.name if r.platform_list_id.name else 'Sin Plataforma'
             chip = r.cell_chip_id.name if r.cell_chip_id else 'Sin chip'
             client = r.client_id.name if r.client_id else 'Sin Cliente'
             equipo = r.name
@@ -436,6 +390,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             body += '<br/>' + acumulador
             if additional_functions:
                 body += gps_functions_summary
+
             # Desactivamos funciones e hibernamos
             r.write({
                 'fuel': False,
@@ -447,32 +402,34 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'tracking': True,
                 'fleetrun': False,
                 'status': "hibernate",
-                'notify_offline': False,
+                # 'notify_offline': False,
             })
+
             r.message_post(body=body)
             self.create_device_log(r, body)
 
-            # revisamos el tema de las suscripciones:
+            # Revisamos el tema de las suscripciones:
             default = dict(None or {})
             new_subscription = self.env['sale.subscription']
 
             if not subscription_hibernate_template_id:
-                self.message_post(body="<b style='color:red'>AVISO</b>"
-                                       "<br>No se pudo crear la subscripción de Hibernación automáticamente en el equipo."
-                                       "<br>Deberá crearla manualmente."
-                                       "<br>Es probable que ninguna plantilla de subscripción esta activa.")
+                self.message_post(
+                    body="<b style='color:red'>AVISO</b>"
+                         "<br>No se pudo crear la subscripción de Hibernación automáticamente en el equipo."
+                         "<br>Deberá crearla manualmente."
+                         "<br>Es probable que ninguna plantilla de subscripción esta activa.")
             else:
                 n = new_subscription.create({
                     'name': 'New Subscription',
                     'code': 'Hibernación ' + r.name,
-                    'stage_id': subscription_hibernate_stage_id,
-                    'template_id': subscription_hibernate_template_id,
-                    'pricelist_id': hibernate_price_list_id,
-                    'partner_id': r.client_id.id,
-                    'gpsdevice_id': r.id,
-                    'user_id': hibernate_user_id,
-                    'team_id': hibernation_commercial_id,
-                    'recurring_invoice_line_ids': [(0, _, {
+                    'stage_id': int(subscription_hibernate_stage_id),
+                    'template_id': int(subscription_hibernate_template_id),
+                    'pricelist_id': int(hibernate_price_list_id),
+                    'partner_id': int(r.client_id.id),
+                    'device_id': r.id,
+                    'user_id': int(hibernate_user_id),
+                    'team_id': int(hibernation_commercial_id),
+                    'recurring_invoice_line_ids': [(0, 0, {
                         'product_id': product.id,
                         'quantity': 1,
                         'uom_id': product.uom_id.id,
@@ -483,12 +440,11 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 })
 
                 skip_subscription_ids.append(n.id)
-
+                # raise UserError(_('Mensaje de pruebas para detener la ejecuión del código'))
         self.devices_list = notify_gps_list
-
         # Alterando las suscripciones encontradas
         subscriptions = self.env['sale.subscription'].search([
-            ['gpsdevice_id', 'in', active_records.ids],
+            ['device_id', 'in', active_records.ids],
             ['id', 'not in', skip_subscription_ids],
             ['stage_id', '!=', subscription_close_stage.id],
         ])
@@ -501,270 +457,25 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 subscription_current_hibernate_stage_id
             )
 
-        # Log Channel
-        # channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para ser hibernados por motivo de:<br/>'
-        # channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
-        # channel_msn += self.devices_list
+        #Log Channel
+        channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para ser hibernados por motivo de:<br/>'
+        channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
+        channel_msn += self.devices_list
 
         # Send Message
-        # self.log_to_channel(channel_id, channel_msn)
-
+        self.log_to_channel(channel_id, channel_msn)
         return {}
 
     def execute_replacement(self):
-        lgps_config = self.sudo().env['ir.config_parameter']
-        channel_id = lgps_config.get_param('lgps.device_wizard.replacement_default_channel')
-        if not channel_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
-        self._check_mandatory_fields(['comment', 'related_odt'])
-
-        # Obtenemos los Ids seleccionados
-        active_model = self._context.get('active_model')
-        active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
-        subscription_in_progress_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_in_progress')
-
-        repair_internal_notes = 'El equipo REEMPLAZADO se reemplazó con el equipo: EQUIPO con la ODT: RELATED_ODT'
-        operation_log_comment = 'El equipo <strong>REEMPLAZADO</strong> se reemplaza con el equipo '
-        operation_log_comment += '<strong>EQUIPO</strong> con número de ODT <strong>RELATED_ODT</strong>. <br/>'
-        operation_log_comment += 'El equipo pasa a propiedad de la empresa.<br/>'
-        operation_log_comment += 'Se entrega equipo a Soporte para revisión.<br/><br/>Comentario: ' + self.comment
-        operation_log_comment_device = 'Se coloca <strong>REEMPLAZADO</strong> como reemplazo para <strong>EQUIPO</strong> '
-        operation_log_comment_device += 'con la ODT <strong>RELATED_ODT</strong><br/><br/>Comentario: ' + self.comment
-
-        for device in active_records:
-            if not device.warranty_start_date:
-                raise UserError(_(
-                    'The device does not have Warranty Start Date.\n'
-                    'Complete this first in order to process the Replacement Operation.'))
-
-            # Preparando Datos para la suscripcion
-            product_id = device.product_id
-            serial_number_id = device.serial_number_id
-            client_id = self.env.user.company_id
-            device_current_client = device.client_id
-            device_id = device.id
-
-            repair_internal_notes = repair_internal_notes.replace("REEMPLAZADO", device.name)
-            repair_internal_notes = repair_internal_notes.replace("EQUIPO", self.destination_gpsdevice_ids.name)
-            repair_internal_notes = repair_internal_notes.replace("RELATED_ODT", self.related_odt.name)
-
-            odt_name = self.env['ir.sequence'].sudo().next_by_code('repair.order')
-            odt_name = odt_name.replace('ODT', 'RMA')
-
-            odt_object = self.env['repair.order']
-            dictionary = {
-                'name': odt_name,
-                'product_id': product_id.id,
-                'product_qty': 1,
-                'lot_id': serial_number_id.id,
-                'partner_id': client_id.id,
-                'gpsdevice_id': device_id,
-                'invoice_method': "after_repair",
-                'product_uom': product_id.uom_id.id,
-                'location_id': odt_object._default_stock_location(),
-                'pricelist_id': self.env['product.pricelist'].search([], limit=1).id,
-                'quotation_notes': repair_internal_notes,
-                'installer_id': self.related_odt.installer_id.id,
-                'assistant_a_id': self.related_odt.assistant_a_id.id,
-                'assistant_b_id': self.related_odt.assistant_b_id.id,
-                'service_date': fields.Date.today()
-            }
-            nodt = self.create_odt(dictionary)
-
-            # Cerramos las Suscripciones del equipo que sustituye
-            subscription_to_close = self.destination_gpsdevice_ids.suscription_id
-            if subscription_to_close:
-                self._change_subscriptions_stage(subscription_to_close, repair_internal_notes)
-
-            operation_log_comment = operation_log_comment.replace("REEMPLAZADO", device.name)
-            operation_log_comment = operation_log_comment.replace('EQUIPO', self.destination_gpsdevice_ids.name)
-            operation_log_comment = operation_log_comment.replace('RELATED_ODT', self.related_odt.name)
-
-            # Check subscriptions
-            if device.suscription_id:
-                # Recorremos las suscripciones asociadas al equipos GPS.
-                for s in device.suscription_id:
-                    # Si alguna subscripción esta en progreso vamos a copiarla:
-                    if s.stage_id.id == subscription_in_progress_stage.id:
-                        s.message_post(body='Se cierra suscripción por motivo de: <br/><br/>' + operation_log_comment)
-                        _logger.warning('Subscription Recurring invoice line ids: %s', s.recurring_invoice_line_ids)
-
-                        subscription_copy = self.copy_subscription(s, {
-                            'name': 'Reemplazo ' + self.destination_gpsdevice_ids.name,
-                            'code': 'Reemplazo ' + self.destination_gpsdevice_ids.name,
-                            'stage_id': subscription_in_progress_stage.id,
-                            'gpsdevice_id': self.destination_gpsdevice_ids.id,
-                        })
-
-                        #_logger.warning('subscription_copy: %s', subscription_copy)
-                        s.write({'stage_id': subscription_close_stage.id})
-                    else:
-                        operation_log_comment_device += '<p style="color:red">La suscripción ' + s.code
-                        operation_log_comment_device += ' de el equipo reemplazado ' + device.name
-                        operation_log_comment_device += ' tiene el estatus de ' + s.stage_id.name + '</p>'
-            else:
-                operation_log_comment_device += '<p style="color:red">El equipo reemplazado '
-                operation_log_comment_device += device.name + ' no tiene suscripciones.</p>'
-
-            operation_log_comment_device = operation_log_comment_device.replace('EQUIPO', device.name)
-            operation_log_comment_device = operation_log_comment_device.replace('REEMPLAZADO', self.destination_gpsdevice_ids.name)
-            operation_log_comment_device = operation_log_comment_device.replace('RELATED_ODT', self.related_odt.name)
-
-            # Estatus del Equipo como desinstalado
-            device.write({
-                'status': "uninstalled",
-                "client_id": self.env.user.company_id.id,
-                'notify_offline': False,
-            })
-
-            device.message_post(body=operation_log_comment)
-
-            self.create_device_log(device, operation_log_comment)
-            self.log_to_channel(channel_id, operation_log_comment)
-
-            self.destination_gpsdevice_ids.write({
-                'warranty_start_date': device.warranty_start_date,
-                'client_id': device_current_client.id,
-                'status': 'replacement',
-                'notify_offline': True,
-            })
-
-            operation_log_comment_device += '<br/>Fecha de garantía de <strong>'
-            operation_log_comment_device += self.destination_gpsdevice_ids.warranty_start_date.strftime('%Y-%m-%d')
-            operation_log_comment_device += '</strong> a <strong>'
-            operation_log_comment_device +=self.destination_gpsdevice_ids.warranty_end_date.strftime('%Y-%m-%d') + '</strong>'
-
-            self.destination_gpsdevice_ids.message_post(body=operation_log_comment_device)
-
         return {}
 
     def execute_substitution(self):
         # Check mandatory fields
-        self._check_mandatory_fields(['comment', 'related_odt'])
-
-        lgps_config = self.sudo().env['ir.config_parameter']
-        channel_id = lgps_config.get_param('lgps.device_wizard.substitution_default_channel')
-        if not channel_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n '
-                'Configure this in order to send the notification.'
-            ))
-
-        # Obtenemos los Ids seleccionados
-        active_model = self._context.get('active_model')
-        active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
-        subscription_in_progress_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_in_progress')
-
-        # Messages to Log on Models
-        repair_internal_notes = 'El equipo SUSTITUIDO se sustituyó con el equipo: EQUIPO con la ODT: RELATED_ODT'
-        operation_log_comment = 'El equipo <strong>SUSTITUIDO</strong> se retira mientras que esta en revisión con ODT'
-        operation_log_comment +=' <strong>RMA_ODT</strong>. Se instala el equipo: <strong>EQUIPO</strong> en su lugar'
-        operation_log_comment +=' con la ODT <strong>RELATED_ODT</strong>. <br/>'
-        operation_log_comment +='Se entrega equipo a Soporte para revisión.'
-        operation_log_comment_device = 'Se coloca <strong>SUSTITUIDO</strong> como sustituto de <strong>EQUIPO</strong>  mientras está en '
-        operation_log_comment_device +='revisión con la ODT <strong>RMA_ODT</strong><br/><br/> '
-        operation_log_comment_device += 'Comentario: ' + self.comment
-
-        for device in active_records:
-            if not device.warranty_start_date:
-                raise UserError(_(
-                    'The device does not have Warranty Start Date. \n'
-                    'Complete this first in order to process the Substitution Operation.'
-                ))
-
-            # Preparando Datos para la ODT
-            product_id = device.product_id
-            serial_number_id = device.serial_number_id
-            client_id = device.client_id
-            device_id = device.id
-
-            repair_internal_notes = repair_internal_notes.replace("SUSTITUIDO", device.name)
-            repair_internal_notes = repair_internal_notes.replace("EQUIPO", self.destination_gpsdevice_ids.name)
-            repair_internal_notes = repair_internal_notes.replace("RELATED_ODT", self.related_odt.name)
-
-            odt_name = self.env['ir.sequence'].sudo().next_by_code('repair.order')
-            odt_name = odt_name.replace('ODT', 'RMA')
-
-            odt_object = self.env['repair.order']
-            nodt = self.create_odt({
-                'name': odt_name,
-                'product_id': product_id.id,
-                'product_qty': 1,
-                'lot_id': serial_number_id.id,
-                'partner_id': client_id.id,
-                'gpsdevice_id': device_id,
-                'invoice_method': "after_repair",
-                'product_uom': product_id.uom_id.id,
-                'location_id': odt_object._default_stock_location(),
-                'pricelist_id': self.env['product.pricelist'].search([], limit=1).id,
-                'quotation_notes': repair_internal_notes,
-                'installer_id': self.related_odt.installer_id.id,
-                'assistant_a_id': self.related_odt.assistant_a_id.id,
-                'assistant_b_id': self.related_odt.assistant_b_id.id,
-                'service_date': fields.Date.today()
-            })
-            # Comments to log on the operation log comment
-            repair_internal_notes = repair_internal_notes.replace("RMA_ODT", nodt.name)
-            operation_log_comment = operation_log_comment.replace("RMA_ODT", nodt.name)
-            operation_log_comment = operation_log_comment.replace("SUSTITUIDO", device.name)
-            operation_log_comment = operation_log_comment.replace('EQUIPO', self.destination_gpsdevice_ids.name)
-            operation_log_comment = operation_log_comment.replace('RELATED_ODT', self.related_odt.name)
-
-            # Cerramos las Suscripciones del equipo que sustituye
-            subscription_to_close = self.destination_gpsdevice_ids.suscription_id
-            if subscription_to_close:
-                self._change_subscriptions_stage(subscription_to_close, repair_internal_notes)
-
-            # Check subscriptions
-            if device.suscription_id:
-                # Recorremos las suscripciones asociadas al equipos GPS.
-                for s in device.suscription_id:
-                    # Si alguna subscripción esta en progreso vamos a copiarla:
-                    if s.stage_id.id == subscription_in_progress_stage.id:
-                        s.message_post(body='Se cierra suscripción por motivo de: <br/><br/>' + operation_log_comment)
-                        _logger.warning('Subscription Recurring invoice line ids: %s', s.recurring_invoice_line_ids)
-
-                        subscription_copy = self.copy_subscription(s, {
-                            'name': 'Sustitución ' + self.destination_gpsdevice_ids.name,
-                            'code': 'Sustitución ' + self.destination_gpsdevice_ids.name,
-                            'stage_id': subscription_in_progress_stage.id,
-                            'gpsdevice_id': self.destination_gpsdevice_ids.id,
-                        })
-
-                        _logger.warning('subscription_copy: %s', subscription_copy)
-                        s.write({'stage_id': subscription_close_stage.id})
-                    else:
-                        operation_log_comment_device += '<p style="color:red">La suscripción ' + s.code
-                        operation_log_comment_device += ' de el equipo sustituido ' + device.name
-                        operation_log_comment_device += ' tiene el estatus de ' + s.stage_id.name + '</p>'
-            else:
-                operation_log_comment_device += '<p style="color:red">El equipo sustituido '
-                operation_log_comment_device += device.name + ' no tiene suscripciones.</p>'
-
-            # Estatus del Equipo como desinstalado
-            device.write({'status': "uninstalled"})
-            device.message_post(body=operation_log_comment)
-
-            operation_log_comment_device = operation_log_comment_device.replace('EQUIPO', device.name)
-            operation_log_comment_device = operation_log_comment_device.replace('SUSTITUIDO', self.destination_gpsdevice_ids.name)
-            operation_log_comment_device = operation_log_comment_device.replace('RMA_ODT', nodt.name)
-            self.destination_gpsdevice_ids.write({
-                'status': "borrowed",
-                'client_id': client_id.id,
-            })
-            self.destination_gpsdevice_ids.message_post(body=operation_log_comment_device)
-            self.create_device_log(device, operation_log_comment)
-            self.log_to_channel(channel_id, operation_log_comment)
-
         return {}
 
     def execute_wakeup(self):
         body = ''
         notify_gps_list = ''
-
 
         active_records = self.return_active_records()
         self.chek_status_before_further_process(active_records, 'hibernate')
@@ -788,7 +499,6 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         subscription_hibernate_stage_id = self.sudo().env['sale.subscription.stage'].search([
             ('id', '=', subscription_hibernate_stage_id)], limit=1)
 
-
         # Procesamos los quipos seleccionados:
         for r in active_records:
             acumulador = ""
@@ -798,7 +508,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             gps_functions_summary = "<hr/>Se activan las funciones de:<br/><br/>"
             additional_functions = False
 
-            platform = r.platform if r.platform else 'Sin Plataforma'
+            platform = r.platform_list_id.name if r.platform_list_id.name else 'Sin Plataforma'
             client = r.client_id.name if r.client_id else 'Sin Cliente'
             equipo = r.name
             nick = r.nick if r.nick else 'NA'
@@ -809,7 +519,6 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             acumulador += '<br/><b>Equipo:</b> ' + equipo
             acumulador += '<br/><b>Nick:</b> ' + nick
             notify_gps_list += '<br/>' + client + ' || ' + equipo + ' || ' + nick + ' || ' + platform
-
 
             if self.tracking:
                 additional_functions = True
@@ -851,31 +560,29 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'tracking': self.tracking if self.tracking else r.tracking,
                 'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
                 'status': self.device_status,
-                'notify_offline': True,
+                # 'notify_offline': True,
             })
             # write Comment
             r.message_post(body=body)
 
-            # Suscripciones
-
             # Buscamos las suscripciones que estén en el estatus marcado para hibernación y las pasamos a progreso
             hibernated_subscriptions = self.env['sale.subscription'].search([
-                ['gpsdevice_id', '=', r.id],
+                ['device_id', '=', r.id],
                 ['stage_id', '=', subscription_hibernate_stage_id.id]
             ])
-            _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
-            _logger.warning('hibernated_subscriptions: %s', hibernated_subscriptions)
+            # _logger.warning('subscription_hibernate_stage_id: %s', subscription_hibernate_stage_id)
+            # _logger.warning('hibernated_subscriptions: %s', hibernated_subscriptions)
 
             # Buscamos la suscripción que este en progreso y la pasamos a cerrada
             in_progress_subscriptions = self.env['sale.subscription'].search([
-                ['gpsdevice_id', '=', r.id],
+                ['device_id', '=', r.id],
                 ['stage_id', '=', subscription_in_progress_stage.id]
             ])
 
-            _logger.warning('in_progress_subscriptions: %s', in_progress_subscriptions)
-
+            # _logger.warning('in_progress_subscriptions: %s', in_progress_subscriptions)
             if in_progress_subscriptions:
-                self._change_subscriptions_stage(in_progress_subscriptions, "El equipo se ha deshibernado en el sistema.")
+                self._change_subscriptions_stage(in_progress_subscriptions,
+                                                 "El equipo se ha deshibernado en el sistema.")
 
             if hibernated_subscriptions:
                 self._change_subscriptions_stage(
@@ -883,7 +590,6 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                     comment="Se reactiva la suscripción por que el equipo fue deshibernado en el sistema",
                     default_stage=subscription_in_progress_stage
                 )
-
             # Create Object Log
             self.create_device_log(r, body)
 
@@ -896,196 +602,9 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         return {}
 
     def execute_add_reactivate(self):
-        body = ''
-        notify_gps_list = ''
-        active_records = self.return_active_records()
-
-        # LGPS Global Configuration
-        lgps_config = self.sudo().env['ir.config_parameter']
-
-        channel_id = lgps_config.get_param('lgps.add_reactivation_device_wizard.default_channel')
-        if not channel_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
-
-        for r in active_records:
-            acumulador = ""
-            body = "[Proceso de Alta/Reactivación]<br/><br/>" + self.comment + '<br/>'
-            gps_functions_summary = "<hr/>Se activan las funciones de:<br/><br/>"
-            additional_functions = False
-            reactivation_reason = dict(self._fields['reactivation_reason']._description_selection(self.env)).get(self.reactivation_reason)
-
-            platform = self.platform if self.platform else 'Sin Plataforma'
-            client = r.client_id.name if r.client_id else 'Sin Cliente'
-            equipo = r.name
-            nick = r.nick if r.nick else 'NA'
-
-            acumulador += '<br/><b>Plataforma:</b> ' + platform
-            acumulador += '<br/><b>Cliente:</b> ' + client
-            acumulador += '<br/><b>Solicitado Por:</b> ' + self.requested_by
-            acumulador += '<br/><b>Motivo:</b> ' + reactivation_reason
-            acumulador += '<br/><b>Equipo:</b> ' + equipo
-            #acumulador += '<br/><b>Nick:</b> ' + nick
-            if self.cell_chip_id:
-                acumulador += '<br/><b>Línea Asignada:</b> ' + self.cell_chip_id.name
-
-            notify_gps_list += '<br/>' + client + ' || ' + equipo + ' || ' + nick + ' || ' + platform
-            if self.tracking:
-                additional_functions = True
-                gps_functions_summary += "Rastreo<br/>"
-            if self.fuel:
-                additional_functions = True
-                gps_functions_summary += "Combustible<br/>"
-            if self.fuel_hall:
-                additional_functions = True
-                gps_functions_summary += "Combustible Efecto Hall<br/>"
-            if self.scanner:
-                additional_functions = True
-                gps_functions_summary += "Escánner<br/>"
-            if self.temperature:
-                additional_functions = True
-                gps_functions_summary += "Temperatura<br/>"
-            if self.logistic:
-                additional_functions = True
-                gps_functions_summary += "Logística<br/>"
-            if self.collective:
-                additional_functions = True
-                gps_functions_summary += "Colectivos Boson<br/>"
-            if self.fleetrun:
-                additional_functions = True
-                gps_functions_summary += "Mantenimiento de Flotilla<br/>"
-
-            body += '<br/>' + acumulador
-            if additional_functions:
-                body += gps_functions_summary
-
-            # Activando el equipo
-            r.write({
-                'fuel': self.fuel if self.fuel else r.fuel,
-                'fuel_hall': self.fuel_hall if self.fuel_hall else r.fuel_hall,
-                'scanner': self.scanner if self.scanner else r.scanner,
-                'temperature': self.temperature if self.temperature else r.temperature,
-                'logistic': self.logistic if self.logistic else r.logistic,
-                'collective': self.collective if self.collective else r.collective,
-                'tracking': self.tracking if self.tracking else r.tracking,
-                'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
-                'platform': self.platform,
-                'cell_chip_id': self.cell_chip_id.id if self.cell_chip_id else None
-            })
-            # write Comment
-            r.message_post(body=body)
-            self.create_device_log(r, body)
-
-            channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para Alta/Reactivación por motivo de:<br/>'
-            channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
-            channel_msn += notify_gps_list
-
-            self.log_to_channel(channel_id, channel_msn)
-
         return {}
 
     def execute_loan_substitution(self):
-
-        lgps_config = self.sudo().env['ir.config_parameter']
-        channel_id = lgps_config.get_param('lgps.device_wizard.replacement_default_channel')
-        if not channel_id:
-            raise UserError(_(
-                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
-        self._check_mandatory_fields(['comment', 'related_odt'])
-
-        # Obtenemos los Ids seleccionados
-        active_model = self._context.get('active_model')
-        active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
-        subscription_in_progress_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_in_progress')
-
-        repair_internal_notes = 'El equipo REEMPLAZADO se cambia por servicio en comodato con el equipo: '
-        repair_internal_notes += 'EQUIPO en la ODT: RELATED_ODT'
-
-        operation_log_comment = 'El equipo <strong>REEMPLAZADO</strong> se cambia por servicio en comodato con el  '
-        operation_log_comment += 'equipo <strong>EQUIPO</strong> con número de ODT <strong>RELATED_ODT</strong>. <br/>'
-        operation_log_comment += 'Se entrega equipo a Soporte para revisión.<br/><br/>Comentario: ' + self.comment
-
-        operation_log_comment_device = 'Se coloca <strong>REEMPLAZADO</strong> como cambio de servicio en comodato para '
-        operation_log_comment_device += ' <strong>EQUIPO</strong> con la ODT <strong>RELATED_ODT</strong><br/><br/>'
-        operation_log_comment_device += 'Comentario: ' + self.comment
-
-        for device in active_records:
-            if device.status != "comodato":
-                raise UserError(_(
-                    'The device does not have status COMODATO.\n'
-                    'Choose the right device or make sure the device status is correct to proceed.'))
-
-            # Preparando Datos para la suscripcion
-            product_id = device.product_id
-            serial_number_id = device.serial_number_id
-            client_id = self.env.user.company_id
-            device_current_client = device.client_id
-            device_id = device.id
-
-            repair_internal_notes = repair_internal_notes.replace("REEMPLAZADO", device.name)
-            repair_internal_notes = repair_internal_notes.replace("EQUIPO", self.destination_gpsdevice_ids.name)
-            repair_internal_notes = repair_internal_notes.replace("RELATED_ODT", self.related_odt.name)
-
-            # Cerramos las Suscripciones del equipo que sustituye
-            subscription_to_close = self.destination_gpsdevice_ids.suscription_id
-            if subscription_to_close:
-                self._change_subscriptions_stage(subscription_to_close, repair_internal_notes)
-
-            operation_log_comment = operation_log_comment.replace("REEMPLAZADO", device.name)
-            operation_log_comment = operation_log_comment.replace('EQUIPO', self.destination_gpsdevice_ids.name)
-            operation_log_comment = operation_log_comment.replace('RELATED_ODT', self.related_odt.name)
-
-            # Check subscriptions
-            if device.suscription_id:
-                # Recorremos las suscripciones asociadas al equipos GPS.
-                for s in device.suscription_id:
-                    # Si alguna subscripción esta en progreso vamos a copiarla:
-                    if s.stage_id.id == subscription_in_progress_stage.id:
-                        s.message_post(body='Se cierra suscripción por motivo de: <br/><br/>' + operation_log_comment)
-
-
-                        subscription_copy = self.copy_subscription(s, {
-                            'name': 'Reemplazo ' + self.destination_gpsdevice_ids.name,
-                            'code': 'Reemplazo ' + self.destination_gpsdevice_ids.name,
-                            'stage_id': subscription_in_progress_stage.id,
-                            'gpsdevice_id': self.destination_gpsdevice_ids.id,
-                        })
-
-                        #_logger.warning('subscription_copy: %s', subscription_copy)
-                        s.write({'stage_id': subscription_close_stage.id})
-                    else:
-                        operation_log_comment_device += '<p style="color:red">La suscripción ' + s.code
-                        operation_log_comment_device += ' de el equipo reemplazado ' + device.name
-                        operation_log_comment_device += ' tiene el estatus de ' + s.stage_id.name + '</p>'
-            else:
-                operation_log_comment_device += '<p style="color:red">El equipo reemplazado '
-                operation_log_comment_device += device.name + ' no tiene suscripciones.</p>'
-
-            operation_log_comment_device = operation_log_comment_device.replace('EQUIPO', device.name)
-            operation_log_comment_device = operation_log_comment_device.replace('REEMPLAZADO', self.destination_gpsdevice_ids.name)
-            operation_log_comment_device = operation_log_comment_device.replace('RELATED_ODT', self.related_odt.name)
-
-            # Estatus del Equipo como desinstalado
-            device.write({
-                'status': "uninstalled",
-                "client_id": self.env.user.company_id.id,
-                'notify_offline': False,
-            })
-
-            device.message_post(body=operation_log_comment)
-
-            self.create_device_log(device, operation_log_comment)
-            self.log_to_channel(channel_id, operation_log_comment)
-
-            self.destination_gpsdevice_ids.write({
-                'client_id': device_current_client.id,
-                'status': 'comodato',
-                'notify_offline': True,
-            })
-
-            self.destination_gpsdevice_ids.message_post(body=operation_log_comment_device)
-
         return {}
 
     def return_active_records(self):
@@ -1097,18 +616,14 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     def chek_status_before_further_process(self, devices, status):
         error = False
         buffer =''
-        #row_list = []
 
         for device in devices:
-            if device.status != status or device.platform == 'Drop':
+            if device.status != status or device.platform_list_id.name == 'Drop':
                 error = True
-                buffer += device.name + '  /  ' + device.status + '  /  ' + device.platform + '\n'
-                #row_list.append([device.name, device.nick, device.status])
+                buffer += device.name + '  /  ' + device.status + '  /  ' + device.platform_list_id.name + '\n'
 
         if error:
-            #_logger.warning('row_list: %s', row_list)
             raise UserError(
-                #_('Some devices does not has the right status for this operation.\n\n ' + self.cool_format(row_list))
                 _('Some devices does not has the right status for this operation.\n\n ' + buffer)
             )
 

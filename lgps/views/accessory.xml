@@ -22,7 +22,7 @@
               <field name="name"/>
               <field name="client_id"/>
               <field name="historic_serial_number" readonly="1"/>
-              <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', False)]}"/>
+              <field name="serial_number_id"/>
               <field name="installation_date"/>
             </group>
             <group string="More Info">
@@ -69,7 +69,7 @@
     <field name="arch" type="xml">
       <search>
         <field name="historic_serial_number" readonly="1"/>
-        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+        <field name="serial_number_id"/>
         <field name="name"/>
         <field name="client_id"/>
         <field name="installation_date"/>
@@ -89,7 +89,7 @@
         <field name="name"/>
         <field name="client_id"/>
         <field name="historic_serial_number" readonly="1"/>
-        <field name="serial_number_id" attrs="{'invisible':[('historic_serial_number', '!=', '')]}"/>
+        <field name="serial_number_id"/>
         <field name="installation_date"/>
         <field name="status"/>
         <field name="product_id"/>
