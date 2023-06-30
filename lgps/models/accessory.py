@@ -72,6 +72,7 @@ class Accessory(models.Model):
             ("backup", _("Backup")),
             ("rma", _("RMA")),
             ("sold", _("Sold")),
+            ("foreign_inventory", _("Foreing Inventory"))
         ],
         default="inventory",
         string=_("Status"),

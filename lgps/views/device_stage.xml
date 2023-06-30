@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="action_device_stage" model="ir.actions.act_window" >
+    <field name="name">Stages</field>
+    <field name="res_model">lgps.device_stage</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+    <record id="action_device_stage_list_tree_view" model="ir.ui.view" >
+    <field name="name">device_stage.tree</field>
+    <field name="model">lgps.device_stage</field>
+    <field name="arch" type="xml">
+      <tree string="Platform List Tree">
+        <field name="name"/>
+        <field name="active"/>
+        <field name="fold"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Menu items -->
+  <menuitem id="menu_device_stage"
+            name="Stages"
+            parent="lgps_configuration_menu"
+            action="action_device_stage"/>
+</odoo>

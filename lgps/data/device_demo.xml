@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <record model="res.partner" id="res_partner_logica_mobile">
+        <field name="name">Logica Mobile Mexico</field>
+    </record>
+
+    <record model="lgps.platform_list" id="lgps_platform_list_gurtam">
+        <field name="name">Gurtam</field>
+    </record>
+
+    <!--PRODUCT CATEGORY DEMO DATA -->
+    <record id="product_category_test" model="product.category">
+        <field name="parent_id" ref="product.product_category_all"/>
+        <field name="name">Devices Category</field>
+    </record>
+
+    <record id="gps_device_model_01" model="product.product">
+        <field name="name">Equipo de Rastreo GV300W</field>
+        <field name="categ_id" ref="product_category_test"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">1000</field>
+        <field name="list_price">125</field>
+        <field name="weight">0.300</field>
+        <field name="description_sale">Productos de seguimiento y rastreo satelital</field>
+        <field name="default_code">GPSGV300W</field>
+    </record>
+
+    <record id="gps_device_001" model="lgps.device">
+        <field name="name">990199000123450</field>
+        <field name="client_id"  ref="lgps.res_partner_logica_mobile"/>
+        <field name="nick">TR-901</field>
+        <field name="product_id" ref="lgps.gps_device_model_01"/>
+        <field name="status">sold</field>
+        <field name="idf">990199000123450</field>
+        <field name="imei">990199000123450</field>
+        <field name="platform_list_id" ref="lgps.lgps_platform_list_gurtam"/>
+    </record>
+
+</odoo>

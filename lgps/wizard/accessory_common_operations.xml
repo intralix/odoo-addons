@@ -50,12 +50,13 @@
       </form>
     </field>
   </record>
-    <act_window id="action_view_common_operations_accessory_wizard"
-                name="Accessory Common Operations"
-                src_model="lgps.accessory"
-                res_model="lgps.common_operations_accessory_wizard"
-                view_mode="form"
-                target="new"
-                key2="client_action_multi"
-    />
+
+    <record id="action_view_common_operations_accessory_wizard">
+        <field name="name">Accessory Common Operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lgps.common_operations_accessory_wizard</field>
+        <field name="view_id" ref="wizard_device_operations_form_view"/>
+        <field name="binding_model_id" ref="lgps.model_lgps_device"/>
+        <field name="target">new</field>
+    </record>
 </odoo>

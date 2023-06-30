@@ -60,7 +60,6 @@
                           'required':[('operation_mode', 'in', ['add_reactivate'])]
                           }"
                    />
-
                </group>
 
            </group>
@@ -82,12 +81,13 @@
                       <field name="temperature"/>
                       <field name="logistic"/>
                       <field name="collective"/>
+                      <field name="electronics"/>
                       <field name="device_status"
                              attrs="{
                           'invisible':[('operation_mode', 'not in', ['wakeup'])],
                           'required':[('operation_mode', 'in', ['wakeup'])]
                           }"/>
-                      <field name="platform"
+                      <field name="platform_list_id"
                       attrs="{
                           'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
                           'required':[('operation_mode', 'in', ['add_reactivate'])]
@@ -114,12 +114,4 @@
         <field name="binding_model_id" ref="lgps.model_lgps_device"/>
         <field name="target">new</field>
     </record>
-<!--
-    <menuitem id="menu_wizard_device_operations"
-              name="Device Operations"
-              parent="lgps_menu"
-              action="action_window_device_operations"
-              sequence="25"
-    />
-    -->
 </odoo>

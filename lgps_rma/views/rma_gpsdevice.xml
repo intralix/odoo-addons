@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-  <act_window id="action_counter_rma_button"
-              name="RMA"
-              res_model="lgps.rma_process"
-              view_mode="tree,form"
-              domain="[('device_id', '=', active_id)]"
-  />
+  <record id="action_counter_rma_button" model="ir.actions.act_window">
+    <field name="name">RMA</field>
+    <field name="res_model">lgps.rma_process</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('device_id', '=', active_id)]</field>
+  </record>
 
   <record model="ir.ui.view" id="lgps_rma_device_form_view">
     <field name="name">lgps.rma_process.form</field>

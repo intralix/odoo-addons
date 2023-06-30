@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+    <record id="stage_ready_to_install" model="lgps.device_stage">
+        <field name="name">Ready to Install</field>
+        <field name="sequence">10</field>
+        <field name="state">ready_to_install</field>
+    </record>
+
+    <record id="stage_installed" model="lgps.device_stage">
+        <field name="name">Installed</field>
+        <field name="sequence">20</field>
+        <field name="state">installed</field>
+    </record>
+
+    <record id="stage_replacement" model="lgps.device_stage">
+        <field name="name">Replacement</field>
+        <field name="sequence">30</field>
+        <field name="state">replacement</field>
+    </record>
+
+    <record id="stage_hibernated" model="lgps.device_stage">
+        <field name="name">Hibernated</field>
+        <field name="sequence">40</field>
+        <field name="state">hibernated</field>
+    </record>
+
+    <record id="stage_asset_loan" model="lgps.device_stage">
+        <field name="name">Asset loan</field>
+        <field name="sequence">50</field>
+        <field name="state">asset_loan</field>
+    </record>
+
+    <record id="stage_rma" model="lgps.device_stage">
+        <field name="name">RMA</field>
+        <field name="sequence">60</field>
+        <field name="state">rma</field>
+    </record>
+
+    <record id="stage_cancel" model="lgps.device_stage">
+        <field name="name">Canceled</field>
+        <field name="sequence">90</field>
+        <field name="state">cancel</field>
+    </record>
+</odoo>

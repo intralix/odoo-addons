@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <act_window id="action_counter_subscriptions_button"
-              name="Subscriptions"
-              res_model="sale.subscription"
-              view_mode="tree,form"
-              domain="[('device_id', '=', active_id)]"/>
 
-      <act_window id="action_counter_tasks_button"
-              name="Tasks"
-              res_model="project.task"
-              view_mode="tree,form"
-              domain="[('device_id', '=', active_id)]"/>
+  <record id="action_counter_subscriptions_button" model="ir.actions.act_window">
+    <field name="name">Subscriptions</field>
+    <field name="res_model">sale.subscription</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('device_id', '=', active_id)]</field>
+  </record>
 
-    <act_window id="action_counter_help_desk_button"
-              name="Tickets"
-              res_model="helpdesk.ticket"
-              view_mode="tree,form"
-              domain="[('device_id', '=', active_id)]"/>
-    
+    <record id="action_counter_tasks_button" model="ir.actions.act_window">
+    <field name="name">Tasks</field>
+    <field name="res_model">project.task</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('device_id', '=', active_id)]</field>
+  </record>
+
+  <record id="action_counter_help_desk_button" model="ir.actions.act_window">
+    <field name="name">Tickets</field>
+    <field name="res_model">helpdesk.ticket</field>
+    <field name="view_mode">tree,form,kanban</field>
+    <field name="domain">[('device_id', '=', active_id)]</field>
+  </record>
+
+  <record id="action_counter_tracking_button" model="ir.actions.act_window">
+    <field name="name">Trackings</field>
+    <field name="res_model">lgps.tracking</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('device_id', '=', active_id)]</field>
+  </record>
+
   <record model="ir.ui.view" id="device_form_view">
     <field name="name">device.form</field>
     <field name="model">lgps.device</field>
     <field name="arch" type="xml">
       <form string="Gps Device Form">
         <header>
+          <field name="state"
+                 widget="statusbar"
+                 options="{'clickable':False}"
+          />
         </header>
 
         <sheet>
@@ -54,6 +69,15 @@
 
               <field string="Tickets" name="tickets_count" widget="statinfo"/>
             </button>
+
+            <button class="oe_stat_button"
+                    icon="fa-globe"
+                    type="action"
+                    name="%(action_counter_tracking_button)d"
+                    context="{'default_device_id': active_id,'default_client_id': client_id}">
+
+              <field string="Trackings" name="trackings_count" widget="statinfo"/>
+            </button>
           </div>
 
           <group>
@@ -71,6 +95,7 @@
             <group string="More Info">
               <separator/>
               <field name="status"/>
+              <field name="stage_id"/>
               <field name="platform_list_id"/>
               <field name="product_id"/>
               <field name="invoice_id"/>
@@ -185,6 +210,7 @@
         <field name="nick"/>
         <field name="client_id"/>
         <field name="status"/>
+        <field name="stage_id"/>
         <field name="cell_chip_id"/>
         <field name="historic_serial_number" readonly="1"/>
         <field name="serial_number_id"/>
@@ -200,6 +226,7 @@
           <separator orientation="vertical" />
           <filter string="Plataforma" name="platform_list_id" context="{'group_by':'platform_list_id'}"/>
           <filter string="Estatus" name="status" context="{'group_by':'status'}"/>
+          <filter string="Estatus Operativo" name="state" context="{'group_by':'stage_id'}"/>
           <separator orientation="vertical" />
           <filter string="Fecha Instalación" name="installation_date" context="{'group_by':'installation_date'}"/>
           <filter string="Fin de Garantía" name="end_warranty" context="{'group_by':'warranty_end_date'}"/>
@@ -221,6 +248,7 @@
         <field name="nick"/>
         <field name="client_id"/>
         <field name="status"/>
+        <field name="stage_id"/>
         <field name="cell_chip_id"/>
         <field name="historic_serial_number" readonly="1"/>
         <field name="serial_number_id"/>
@@ -237,7 +265,7 @@
   <record model="ir.actions.act_window" id="device_list_action">
     <field name="name">GpsDevices</field>
     <field name="res_model">lgps.device</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree,form,kanban</field>
   </record>
 
   <!-- Menu items -->

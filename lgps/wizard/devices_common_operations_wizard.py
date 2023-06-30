@@ -100,6 +100,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     logistic = fields.Boolean(default=False, string=_("Logistic"))
     collective = fields.Boolean(default=False, string=_("Collective"))
     fleetrun = fields.Boolean(default=False, string=_("Fleetrun"))
+    electronics = fields.Boolean(default=False, string=_("Electronics"))
+
     device_status = fields.Selection(
         selection=[
             ("drop", _("Drop")),
@@ -139,6 +141,14 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             ("Utrax", "Utrax"),
         ],
         string=_("Platform"),
+    )
+
+    platform_list_id = fields.Many2one(
+        comodel_name="lgps.platform_list",
+        string=_("Platform List"),
+        ondelete="set null",
+        index=True,
+        domain=[('active', '=', True)],
     )
 
     cell_chip_id = fields.Many2one(
@@ -184,8 +194,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             self.execute_wakeup()
         # Reactivate
         if self.operation_mode == 'add_reactivate':
-            raise UserError('El proceso de reactivación esta siendo revisado por lo que no esta disponible')
-            #self.execute_add_reactivate()
+            # raise UserError('El proceso de reactivación esta siendo revisado por lo que no esta disponible')
+            self.execute_add_reactivate()
         # Loan Substitution
         if self.operation_mode == 'loan_substitution':
             raise UserError('El proceso de reemplazo por sustitución esta siendo revisado por lo que no esta disponible')
@@ -602,6 +612,93 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         return {}
 
     def execute_add_reactivate(self):
+        body = ''
+        notify_gps_list = ''
+        active_records = self.return_active_records()
+
+        # LGPS Global Configuration
+        lgps_config = self.sudo().env['ir.config_parameter']
+
+        channel_id = lgps_config.get_param('lgps.add_reactivation_device_wizard.default_channel')
+        if not channel_id:
+            raise UserError(_(
+                'There is not configuration for default channel.\n Configure this in order to send the notification.'))
+
+        for r in active_records:
+            acumulador = ""
+            body = "[Proceso de Alta/Reactivación]<br/><br/>" + self.comment + '<br/>'
+            gps_functions_summary = "<hr/>Se activan las funciones de:<br/><br/>"
+            additional_functions = False
+            reactivation_reason = dict(self._fields['reactivation_reason']._description_selection(self.env)).get(
+                self.reactivation_reason)
+
+            platform = self.platform_list_id.name if self.platform_list_id.name else 'Sin Plataforma'
+            client = r.client_id.name if r.client_id else 'Sin Cliente'
+            equipo = r.name
+            nick = r.nick if r.nick else 'NA'
+
+            acumulador += '<br/><b>Plataforma:</b> ' + platform
+            acumulador += '<br/><b>Cliente:</b> ' + client
+            acumulador += '<br/><b>Solicitado Por:</b> ' + self.requested_by
+            acumulador += '<br/><b>Motivo:</b> ' + reactivation_reason
+            acumulador += '<br/><b>Equipo:</b> ' + equipo
+            # acumulador += '<br/><b>Nick:</b> ' + nick
+            if self.cell_chip_id:
+                acumulador += '<br/><b>Línea Asignada:</b> ' + self.cell_chip_id.name
+
+            notify_gps_list += '<br/>' + client + ' || ' + equipo + ' || ' + nick + ' || ' + platform
+            if self.tracking:
+                additional_functions = True
+                gps_functions_summary += "Rastreo<br/>"
+            if self.fuel:
+                additional_functions = True
+                gps_functions_summary += "Combustible<br/>"
+            if self.fuel_hall:
+                additional_functions = True
+                gps_functions_summary += "Combustible Efecto Hall<br/>"
+            if self.scanner:
+                additional_functions = True
+                gps_functions_summary += "Escánner<br/>"
+            if self.temperature:
+                additional_functions = True
+                gps_functions_summary += "Temperatura<br/>"
+            if self.logistic:
+                additional_functions = True
+                gps_functions_summary += "Logística<br/>"
+            if self.collective:
+                additional_functions = True
+                gps_functions_summary += "Colectivos Boson<br/>"
+            if self.fleetrun:
+                additional_functions = True
+                gps_functions_summary += "Mantenimiento de Flotilla<br/>"
+
+            body += '<br/>' + acumulador
+            if additional_functions:
+                body += gps_functions_summary
+
+            # Activando el equipo
+            r.write({
+                'fuel': self.fuel if self.fuel else r.fuel,
+                'fuel_hall': self.fuel_hall if self.fuel_hall else r.fuel_hall,
+                'scanner': self.scanner if self.scanner else r.scanner,
+                'temperature': self.temperature if self.temperature else r.temperature,
+                'logistic': self.logistic if self.logistic else r.logistic,
+                'collective': self.collective if self.collective else r.collective,
+                'tracking': self.tracking if self.tracking else r.tracking,
+                'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
+                'platform_list_id': self.platform_list_id.id if self.platform_list_id else None,
+                'cell_chip_id': self.cell_chip_id.id if self.cell_chip_id else None
+            })
+            # write Comment
+            r.message_post(body=body)
+            self.create_device_log(r, body)
+
+            channel_msn = '<br/>Los equipos mencionados a continuación se procesaron para Alta/Reactivación por motivo de:<br/>'
+            channel_msn += self.comment + '<br/> soliciato por: ' + self.requested_by + '<br/>'
+            channel_msn += notify_gps_list
+
+            self.log_to_channel(channel_id, channel_msn)
+
         return {}
 
     def execute_loan_substitution(self):

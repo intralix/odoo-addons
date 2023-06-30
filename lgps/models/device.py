@@ -11,6 +11,17 @@ class Device(models.Model):
     _name = 'lgps.device'
     _description = 'Intx Gps Devices Internal Module'
 
+    @api.model
+    def _default_stage_id(self):
+        stage = self.env["lgps.device_stage"]
+        return stage.search([
+            ("state", "=", "ready_to_install")
+        ], limit=1)
+
+    @api.model
+    def _group_expand_stage_id(self, stages, domain, order):
+        return stages.search([], order=order)
+
     name = fields.Char(
         required=True,
         string=_("Dispositivo GPS"),
@@ -194,30 +205,12 @@ class Device(models.Model):
             ("backup", _("Backup")),
             ("rma", _("RMA")),
             ("sold", _("Sold")),
+            ("foreign_inventory", _("Foreing Inventory"))
         ],
         default="inventory",
         string=_("Status"),
         tracking=True
     )
-
-    # platform = fields.Selection(
-    #     selection=[
-    #         ("Ceiba2", "Ceiba2"),
-    #         ("Cybermapa", "Cybermapa"),
-    #         ("Drop", _("Drop")),
-    #         ("Gurtam", "Gurtam"),
-    #         ("Gurtam_Utrax", "Gurtam/Utrax"),
-    #         ("Lkgps", "Lkgps"),
-    #         ("Mapaloc", "Mapaloc"),
-    #         ("Novit", "Novit"),
-    #         ("Position Logic", "Position Logic"),
-    #         ("Sosgps", "Sosgps"),
-    #         ("Tracksolid", "Tracksolid"),
-    #         ("Utrax", "Utrax"),
-    #     ],
-    #     string=_("Platform"),
-    #     tracking=True
-    # )
 
     platform_list_id = fields.Many2one(
         comodel_name="lgps.platform_list",
@@ -297,16 +290,36 @@ class Device(models.Model):
         string=_("Trackings"),
     )
 
-    # state = fields.Selection(
-    #     [
-    #         ('create', _('Crear')),
-    #         ('assign', _('Asignar')),
-    #         ('program', _('Programar')),
-    #         ('tests', _('Programar')),
-    #         ('installed', _('Instalado')),
-    #     ],
-    #     default='create'
-    # )
+    stage_id = fields.Many2one(
+        "lgps.device_stage",
+        default=_default_stage_id,
+        group_expand="_group_expand_stage_id"
+    )
+
+    state = fields.Selection(
+        related="stage_id.state",
+        store=True,
+        string=_("Operative Status")
+    )
+
+    kanban_state = fields.Selection([
+        ("normal", "In Progress"),
+        ("blocked", "Blocked"),
+        ("done", "Ready for next stage")],
+        "Kanban State",
+        default="normal"
+    )
+
+    color = fields.Integer()
+
+    priority = fields.Selection([
+        ('0', "Normal"),
+        ('1', "Medium"),
+        ('2', "High"),
+        ('3', "Critical")],
+        string='Priority',
+        default='0'
+    )
 
     active = fields.Boolean(
         default=True
@@ -317,43 +330,26 @@ class Device(models.Model):
         string=_("Purchase Date"),
     )
 
-    # repairs_ids = fields.One2many(
-    #     comodel_name="repair.order",
-    #     inverse_name="gpsdevice_id",
-    #     string=_("ODT"),
-    # )
-
     helpdesk_tickets_ids = fields.One2many(
         comodel_name="helpdesk.ticket",
         inverse_name="device_id",
         string=_("Tickets"),
     )
 
-    # tasks_ids = fields.One2many(
-    #     comodel_name="project.task",
-    #     inverse_name="gpsdevice_id",
-    #     string=_("Tasks"),
-    # )
-
     accessories_count = fields.Integer(
         string=_("Accessories Count"),
         compute='_compute_accessories_count',
     )
-
-    # repairs_count = fields.Integer(
-    #     string=_("ODTs"),
-    #     compute='_compute_repairs_count',
-    # )
 
     tickets_count = fields.Integer(
         string=_("Tickets Count"),
         compute='_compute_tickets_count',
     )
 
-    # trackings_count = fields.Integer(
-    #     string=_("Trackings Count"),
-    #     compute='_compute_trackings_count',
-    # )
+    trackings_count = fields.Integer(
+        string=_("Trackings Count"),
+        compute='_compute_trackings_count',
+    )
 
     subscriptions_count = fields.Integer(
         string=_('Subscriptions'),
@@ -414,20 +410,15 @@ class Device(models.Model):
                 [('device_id', '=', rec.id)]
             )
 
-    # def _compute_repairs_count(self):
-    #     for rec in self:
-    #         rec.repairs_count = self.env['repair.order'].search_count(
-    #             [('device_id', '=', rec.id)])
-
     def _compute_tickets_count(self):
         for rec in self:
             rec.tickets_count = self.env['helpdesk.ticket'].search_count(
                 [('device_id', '=', rec.id)])
 
-    # def _compute_trackings_count(self):
-    #     for rec in self:
-    #         rec.trackings_count = self.env['lgps.tracking'].search_count(
-    #             [('device_id', '=', rec.id)])
+    def _compute_trackings_count(self):
+        for rec in self:
+            rec.trackings_count = self.env['lgps.tracking'].search_count(
+                [('device_id', '=', rec.id)])
 
     def _compute_subscriptions_count(self):
         for rec in self:

@@ -5,6 +5,7 @@ from odoo import api, models, fields, _
 class RmaProcess(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.rma_process'
+    _description = 'Intx RMA Tracking for Gps Devices'
 
     name = fields.Char(
         required=True,

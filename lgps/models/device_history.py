@@ -35,6 +35,7 @@ class DeviceHistory(models.Model):
         comodel_name='lgps.device',
         string="Gps Device",
         required=True,
+        ondelete='cascade'
     )
 
     destination_gpsdevice_ids = fields.Many2one(
@@ -119,5 +120,5 @@ class DeviceHistory(models.Model):
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
-         "The accessory id must be unique"),
+         "The id must be unique"),
     ]
