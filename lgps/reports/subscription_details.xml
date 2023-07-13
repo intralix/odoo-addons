@@ -16,14 +16,15 @@
         <field name="dpi">90</field>
     </record>
 
-    <report id="report_subscriptions_detail"
-            model="sale.subscription"
-            string="Subscription Details"
-            name="lgps.report_subscriptions_detail_view"
-            file="lgps.report_subscriptions_detail"
-            report_type="qweb-pdf"
-            paperformat="paperformat_lgps_letter"
-    />
+    <record id="report_subscriptions_detail" model="ir.actions.report">
+        <field name="name">Subscription Details</field>
+        <field name="model">sale.subscription</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">lgps.report_subscriptions_detail_view</field>
+        <field name="binding_model_id" ref="model_sale_subscription"/>
+        <field name="binding_type">report</field>
+    </record>
+
 
     <template id="report_subscriptions_detail_view" name="Custom Subscription Details">
         <t t-call="web.html_container">
@@ -46,10 +47,10 @@
                                     </t>
                                 </div>
                                 <div class="col-3">
-                                    <t t-if="doc.device_id.nick">
+                                    <t t-if="doc.device_id.name">
                                         <span t-field="doc.device_id.name" />
                                     </t>
-                                    <t t-if="not doc.device_id.nick">
+                                    <t t-if="not doc.device_id.name">
                                         <span>~</span>
                                     </t>
                                 </div>

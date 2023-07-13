@@ -44,7 +44,7 @@
                           'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
                           }"/>
 
-                   <field name="related_odt"
+                   <field name="related_field_service"
                           attrs="{
                           'invisible':[('operation_mode', 'in', ['drop','hibernation','wakeup','add_reactivate'])],
                           'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
@@ -60,6 +60,8 @@
                           'required':[('operation_mode', 'in', ['add_reactivate'])]
                           }"
                    />
+
+                   <field name="allowed_field_services_ids" invisible="1"/>
                </group>
 
            </group>

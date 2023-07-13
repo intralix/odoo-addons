@@ -40,7 +40,7 @@
     <field name="name">platform_list.tree</field>
     <field name="model">lgps.platform_list</field>
     <field name="arch" type="xml">
-      <tree string="Platform List Tree">
+      <tree string="Platform List Tree" editable="top">
         <field name="name"/>
         <field name="active"/>
       </tree>

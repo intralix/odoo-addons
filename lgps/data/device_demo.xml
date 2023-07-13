@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="0">
+<odoo noupdate="1">
     <record model="res.partner" id="res_partner_logica_mobile">
         <field name="name">Logica Mobile Mexico</field>
     </record>
@@ -14,16 +14,39 @@
         <field name="name">Devices Category</field>
     </record>
 
+    <record id="gps_cell_chip_product" model="product.product">
+        <field name="name">Chip celular</field>
+        <field name="categ_id" ref="product_category_test"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="standard_price">35.65</field>
+        <field name="list_price">73.08</field>
+        <field name="description_sale">Chip para comunicación celular</field>
+        <field name="default_code">ACCCHIP</field>
+    </record>
+
     <record id="gps_device_model_01" model="product.product">
         <field name="name">Equipo de Rastreo GV300W</field>
         <field name="categ_id" ref="product_category_test"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
-        <field name="standard_price">1000</field>
+        <field name="standard_price">100</field>
         <field name="list_price">125</field>
-        <field name="weight">0.300</field>
+        <field name="weight">0.400</field>
         <field name="description_sale">Productos de seguimiento y rastreo satelital</field>
         <field name="default_code">GPSGV300W</field>
+    </record>
+
+    <!-- Chip data -->
+    <record id="gps_cell_chip_001" model="lgps.cellchip">
+        <field name="name">3399887766</field>
+        <field name="status">active</field>
+        <field name="plan">10MB</field>
+        <field name="client_id"  ref="lgps.res_partner_logica_mobile"/>
+        <field name="cell_chip_owner_id"  ref="lgps.res_partner_logica_mobile"/>
+        <field name="provider">Telcel</field>
+        <field name="major_account">052229629</field>
+        <field name="line_account">52215210</field>
     </record>
 
     <record id="gps_device_001" model="lgps.device">
@@ -35,6 +58,7 @@
         <field name="idf">990199000123450</field>
         <field name="imei">990199000123450</field>
         <field name="platform_list_id" ref="lgps.lgps_platform_list_gurtam"/>
+        <field name="cell_chip_id" ref="lgps.gps_cell_chip_001"/>
     </record>
 
 </odoo>

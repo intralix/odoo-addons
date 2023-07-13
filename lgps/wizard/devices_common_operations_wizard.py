@@ -71,7 +71,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
 
     related_field_service = fields.Many2one(
         comodel_name="project.task",
-        string=_("Related work order")
+        string=_("Related work order"),
+        domain="[('id', 'in', allowed_field_services_ids)]",
     )
 
     requested_by = fields.Char(
@@ -90,6 +91,23 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     cellchips_list = fields.Text(
         string=_("Cellchips List")
     )
+
+    allowed_field_services_ids = fields.Many2many(
+        comodel_name="project.task",
+        compute="_compute_allowed_value_ids"
+    )
+
+    @api.depends("related_field_service")
+    def _compute_allowed_value_ids(self):
+        active_model = self._context.get('active_model')
+        active_records = self.env[active_model].browse(self._context.get('active_ids'))
+        _logger.warning('active_model: %s', active_model)
+        if not active_model:
+            raise UserError('No active model detected')
+
+        for record in self:
+            record.allowed_field_services_ids = self.env["project.task"].search([['device_id', 'in', [active_records.id]]])
+            _logger.warning('record: %s', record)
 
     # Available services
     tracking = fields.Boolean(default=False, string=_("Tracking"))
@@ -182,8 +200,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             self.execute_hibernation()
         # Replacement
         if self.operation_mode == 'replacement':
-            raise UserError('El proceso de reemplazo esta siendo revisado por lo que no esta disponible')
-            #self.execute_replacement()
+            # raise UserError('El proceso de reemplazo esta siendo revisado por lo que no esta disponible')
+            self.execute_replacement()
         # Substitution
         if self.operation_mode == 'substitution':
             raise UserError('El proceso de sustitución esta siendo revisado por lo que no esta disponible')
@@ -477,9 +495,135 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         return {}
 
     def execute_replacement(self):
+
+        # Check mandatory fields
+        self._check_mandatory_fields(['comment', 'related_field_service'])
+
+        lgps_config = self.sudo().env['ir.config_parameter']
+        channel_id = lgps_config.get_param('lgps.device_wizard.substitution_default_channel')
+        if not channel_id:
+            raise UserError(_(
+                'There is not configuration for default channel.\n '
+                'Configure this in order to send the notification.'
+            ))
+
+        # Obtenemos los Ids seleccionados
+        active_model = self._context.get('active_model')
+        active_records = self.env[active_model].browse(self._context.get('active_ids'))
+        subscription_close_stage = self.sudo().env.ref('sale_subscription.sale_subscription_stage_closed')
+        subscription_in_progress_stage = self.sudo().env.ref(
+            'sale_subscription.sale_subscription_stage_in_progress')
+
+        # Messages to Log on Models
+        repair_internal_notes = 'El equipo SUSTITUIDO se sustituyó con el equipo: EQUIPO con la orden: RELATED_ODT'
+        operation_log_comment = 'El equipo <strong>SUSTITUIDO</strong> se retira mientras que esta en revisión con registro'
+        operation_log_comment += ' <strong>RMA_ODT</strong>. Se instala el equipo: <strong>EQUIPO</strong> en su lugar'
+        operation_log_comment += ' con la ODT <strong>RELATED_ODT</strong>. <br/>'
+        operation_log_comment += 'Se entrega equipo a Soporte para revisión.'
+        operation_log_comment_device = 'Se coloca <strong>SUSTITUIDO</strong> como sustituto de <strong>EQUIPO</strong>  mientras está en '
+        operation_log_comment_device += 'revisión con la ODT <strong>RMA_ODT</strong><br/><br/> '
+        operation_log_comment_device += 'Comentario: ' + self.comment
+        for device in active_records:
+            if not device.warranty_start_date:
+                raise UserError(_(
+                    'The device does not have Warranty Start Date. \n'
+                    'Complete this first in order to process the Substitution Operation.'
+                ))
+
+            # Preparando Datos para la ODT
+            product_id = device.product_id
+            serial_number_id = device.serial_number_id
+            client_id = device.client_id
+            device_id = device.id
+
+            repair_internal_notes = repair_internal_notes.replace("SUSTITUIDO", device.name)
+            repair_internal_notes = repair_internal_notes.replace("EQUIPO", self.destination_gpsdevice_ids.name)
+            repair_internal_notes = repair_internal_notes.replace("RELATED_ODT", self.related_field_service.name)
+
+            # Aquí vamos a crear un registro de seguimiento de RMA
+            odt_name = self.env['ir.sequence'].sudo().next_by_code('lgps.rma_process')
+            assigned_to = self.env['hr.employee'].search([], limit=1).id
+
+            nodt = self.create_odt({
+                'name': odt_name,
+                'state': 'reception',
+                'assigned_to': assigned_to,
+                'client_id': client_id.id,
+                'device_id': device_id,
+                # 'accessories_id': '',
+                'delivery_responsible': assigned_to,
+                'problem': repair_internal_notes,
+                'diagnostic': repair_internal_notes,
+                # 'shipped_date': '',
+                # 'track_number': '',
+                # 'provider_reference': '',
+                # 'return_date': '',
+                # 'observations': '',
+                # 'provider': 'logica_mobile',
+                # 'apply_to': 'gps_devices',
+                # 'coordinator': '',
+                #'assistant': '',
+            })
+            # Comments to log on the operation log comment
+            repair_internal_notes = repair_internal_notes.replace("RMA_ODT", nodt.name)
+            operation_log_comment = operation_log_comment.replace("RMA_ODT", nodt.name)
+            operation_log_comment = operation_log_comment.replace("SUSTITUIDO", device.name)
+            operation_log_comment = operation_log_comment.replace('EQUIPO', self.destination_gpsdevice_ids.name)
+            operation_log_comment = operation_log_comment.replace('RELATED_ODT', self.related_field_service.name)
+
+            # Cerramos las Suscripciones del equipo que sustituye
+            subscription_to_close = self.destination_gpsdevice_ids.subscription_id
+            if subscription_to_close:
+                self._change_subscriptions_stage(subscription_to_close, repair_internal_notes)
+
+            # Check subscriptions
+            if device.subscription_id:
+                # Recorremos las suscripciones asociadas al equipos GPS.
+                for s in device.subscription_id:
+                    # Si alguna subscripción esta en progreso vamos a copiarla:
+                    if s.stage_id.id == subscription_in_progress_stage.id:
+                        s.message_post(body='Se cierra suscripción por motivo de: <br/><br/>' + operation_log_comment)
+                        _logger.warning('Subscription Recurring invoice line ids: %s', s.recurring_invoice_line_ids)
+
+                        subscription_copy = self.copy_subscription(s, {
+                            'name': 'Sustitución ' + self.destination_gpsdevice_ids.name,
+                            'code': 'Sustitución ' + self.destination_gpsdevice_ids.name,
+                            'stage_id': subscription_in_progress_stage.id,
+                            'device_id': self.destination_gpsdevice_ids.id,
+                        })
+
+                        _logger.warning('subscription_copy: %s', subscription_copy)
+                        s.write({'stage_id': subscription_close_stage.id})
+                    else:
+                        operation_log_comment_device += '<p style="color:red">La suscripción ' + s.code
+                        operation_log_comment_device += ' de el equipo sustituido ' + device.name
+                        operation_log_comment_device += ' tiene el estatus de ' + s.stage_id.name + '</p>'
+            else:
+                operation_log_comment_device += '<p style="color:red">El equipo sustituido '
+                operation_log_comment_device += device.name + ' no tiene suscripciones.</p>'
+
+            # Estatus del Equipo como desinstalado
+            stage = self.env["lgps.device_stage"].search([("state", "=", "rma")], limit=1)
+            device.write({'status': "uninstalled", 'stage_id': stage.id})
+            device.message_post(body=operation_log_comment)
+
+            operation_log_comment_device = operation_log_comment_device.replace('EQUIPO', device.name)
+            operation_log_comment_device = operation_log_comment_device.replace('SUSTITUIDO', self.destination_gpsdevice_ids.name)
+            operation_log_comment_device = operation_log_comment_device.replace('RMA_ODT', nodt.name)
+            stage = self.env["lgps.device_stage"].search([("state", "=", "replacement")], limit=1)
+            self.destination_gpsdevice_ids.write({
+                'status': "borrowed",
+                'client_id': client_id.id,
+                'stage_id': stage.id,
+            })
+            self.destination_gpsdevice_ids.message_post(body=operation_log_comment_device)
+            self.create_device_log(device, operation_log_comment)
+            self.log_to_channel(channel_id, operation_log_comment)
+
         return {}
 
     def execute_substitution(self):
+
         # Check mandatory fields
         return {}
 
@@ -740,7 +884,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         return price
 
     def create_odt(self, dictionary):
-        odt_object = self.env['repair.order']
+        odt_object = self.env['lgps.rma_process']
         odt = odt_object.create(dictionary)
         return odt
 

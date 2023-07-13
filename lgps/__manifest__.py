@@ -23,7 +23,7 @@
         'industry_fsm',
     ],
     'demo':[
-        # 'data/device_demo.xml'
+        'data/device_demo.xml'
     ],
     'data': [
         'security/security.xml',
