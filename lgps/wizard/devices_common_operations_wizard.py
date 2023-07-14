@@ -58,10 +58,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     destination_gpsdevice_ids = fields.Many2one(
         comodel_name='lgps.device',
         string=_("Substitute equipment"),
-        domain="["
-               "('status', 'in', ['installed', 'demo', 'comodato', 'borrowed','replacement']),"
-               "('platform_list_id', '!=', 'Drop')"
-               "]"
+        domain="[('id', 'in', allowed_devices_ids)]",
     )
 
     related_odt = fields.Many2one(
@@ -97,17 +94,32 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         compute="_compute_allowed_value_ids"
     )
 
+    allowed_devices_ids = fields.Many2many(
+        comodel_name="lgps.device",
+        compute="_compute_allowed_device_ids"
+    )
+
     @api.depends("related_field_service")
     def _compute_allowed_value_ids(self):
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        _logger.warning('active_model: %s', active_model)
         if not active_model:
             raise UserError('No active model detected')
 
         for record in self:
             record.allowed_field_services_ids = self.env["project.task"].search([['device_id', 'in', [active_records.id]]])
-            _logger.warning('record: %s', record)
+
+    @api.depends("destination_gpsdevice_ids")
+    def _compute_allowed_device_ids(self):
+        active_model = self._context.get('active_model')
+        active_records = self.env[active_model].browse(self._context.get('active_ids'))
+
+        for record in self:
+            log = self.env["lgps.device"].search([
+                ['id', 'not in', [active_records.id]],
+                ['status', 'in', ['installed', 'demo', 'comodato', 'borrowed', 'replacement']],
+            ])
+            record.allowed_devices_ids = log
 
     # Available services
     tracking = fields.Boolean(default=False, string=_("Tracking"))
@@ -226,7 +238,9 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         # We get the seleteced Ids
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
-        drop_platform = self.env['lgps.platform_list'].search([['name', '=', 'Sin Plataforma']], limit=1)
+        # drop_platform = self.env['lgps.platform_list'].search([['name', '=', 'Sin Plataforma']], limit=1)
+        drop_platform = False
+        drop_status = self.env.ref('lgps.stage_uninstalled')
 
         # Buffer Vars
         cellchips_ids = []
@@ -311,6 +325,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             'collective': False,
             'fleetrun': False,
             'platform_list_id': drop_platform.id,
+            'stage_id': drop_status.id,
             # 'notify_offline': False,
         })
 
@@ -343,6 +358,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         # We get selected Ids that we'll process for hibernation
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
+        hibernated_status = self.env.ref('lgps.stage_hibernated')
 
         # Get global configuration object to retrieve options from settings
         lgps_config = self.sudo().env['ir.config_parameter']
@@ -430,6 +446,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'tracking': True,
                 'fleetrun': False,
                 'status': "hibernate",
+                'stage_id': hibernated_status.id,
                 # 'notify_offline': False,
             })
 
@@ -506,6 +523,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'There is not configuration for default channel.\n '
                 'Configure this in order to send the notification.'
             ))
+        replacement_status = self.env.ref('lgps.stage_replacement')
+        stage_rma_status = self.env.ref('lgps.stage_rma')
 
         # Obtenemos los Ids seleccionados
         active_model = self._context.get('active_model')
@@ -544,6 +563,16 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             odt_name = self.env['ir.sequence'].sudo().next_by_code('lgps.rma_process')
             assigned_to = self.env['hr.employee'].search([], limit=1).id
 
+            coordinator_user = self.related_field_service.create_uid,
+            coordinator = False
+            for r in coordinator_user:
+                coordinator = r.id
+
+            service_engineers_list = self.related_field_service.user_ids
+            service_engineers = []
+            for r in service_engineers_list:
+                service_engineers.append(r.id)
+
             nodt = self.create_odt({
                 'name': odt_name,
                 'state': 'reception',
@@ -552,8 +581,10 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'device_id': device_id,
                 # 'accessories_id': '',
                 'delivery_responsible': assigned_to,
-                'problem': repair_internal_notes,
+                'problem': self.comment,
                 'diagnostic': repair_internal_notes,
+                'coordinator': coordinator,
+                'user_ids': [(6, 0, service_engineers)],
                 # 'shipped_date': '',
                 # 'track_number': '',
                 # 'provider_reference': '',
@@ -591,8 +622,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                             'stage_id': subscription_in_progress_stage.id,
                             'device_id': self.destination_gpsdevice_ids.id,
                         })
-
-                        _logger.warning('subscription_copy: %s', subscription_copy)
+                        # _logger.warning('subscription_copy: %s', subscription_copy)
                         s.write({'stage_id': subscription_close_stage.id})
                     else:
                         operation_log_comment_device += '<p style="color:red">La suscripción ' + s.code
@@ -603,18 +633,19 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 operation_log_comment_device += device.name + ' no tiene suscripciones.</p>'
 
             # Estatus del Equipo como desinstalado
-            stage = self.env["lgps.device_stage"].search([("state", "=", "rma")], limit=1)
-            device.write({'status': "uninstalled", 'stage_id': stage.id})
+            device.write({
+                'status': "uninstalled",
+                'stage_id': stage_rma_status.id
+            })
             device.message_post(body=operation_log_comment)
 
             operation_log_comment_device = operation_log_comment_device.replace('EQUIPO', device.name)
             operation_log_comment_device = operation_log_comment_device.replace('SUSTITUIDO', self.destination_gpsdevice_ids.name)
             operation_log_comment_device = operation_log_comment_device.replace('RMA_ODT', nodt.name)
-            stage = self.env["lgps.device_stage"].search([("state", "=", "replacement")], limit=1)
             self.destination_gpsdevice_ids.write({
                 'status': "borrowed",
                 'client_id': client_id.id,
-                'stage_id': stage.id,
+                'stage_id': replacement_status.id,
             })
             self.destination_gpsdevice_ids.message_post(body=operation_log_comment_device)
             self.create_device_log(device, operation_log_comment)
@@ -633,6 +664,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
 
         active_records = self.return_active_records()
         self.chek_status_before_further_process(active_records, 'hibernate')
+        installed_status = self.env.ref('lgps.stage_installed')
 
         # LGPS Global Configuration
         lgps_config = self.sudo().env['ir.config_parameter']
@@ -714,6 +746,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'tracking': self.tracking if self.tracking else r.tracking,
                 'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
                 'status': self.device_status,
+                'stage_id': installed_status.id,
                 # 'notify_offline': True,
             })
             # write Comment

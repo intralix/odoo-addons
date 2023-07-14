@@ -60,8 +60,9 @@
                           'required':[('operation_mode', 'in', ['add_reactivate'])]
                           }"
                    />
-
+                    <!-- Insible fields -->
                    <field name="allowed_field_services_ids" invisible="1"/>
+                   <field name="allowed_devices_ids" invisible="1"/>
                </group>
 
            </group>

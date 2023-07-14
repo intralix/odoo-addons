@@ -27,6 +27,7 @@ class DeviceStage(models.Model):
         ('hibernated', _("Hibernated")),
         ('asset_loan', _("Asset loan")),
         ('rma', _("RMA")),
-        ('cancel', _("Canceled"))],
+        ('cancel', _("Canceled")),
+        ('uninstalled', _("Uninstalled"))],
         default="inventory"
     )

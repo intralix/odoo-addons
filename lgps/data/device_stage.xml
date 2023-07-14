@@ -24,15 +24,21 @@
         <field name="state">hibernated</field>
     </record>
 
+    <record id="stage_uninstalled" model="lgps.device_stage">
+        <field name="name">Uninstalled</field>
+        <field name="sequence">50</field>
+        <field name="state">uninstalled</field>
+    </record>
+
     <record id="stage_asset_loan" model="lgps.device_stage">
         <field name="name">Asset loan</field>
-        <field name="sequence">50</field>
+        <field name="sequence">60</field>
         <field name="state">asset_loan</field>
     </record>
 
     <record id="stage_rma" model="lgps.device_stage">
         <field name="name">RMA</field>
-        <field name="sequence">60</field>
+        <field name="sequence">70</field>
         <field name="state">rma</field>
     </record>
 
