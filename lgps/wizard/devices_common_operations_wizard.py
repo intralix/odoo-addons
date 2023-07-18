@@ -103,20 +103,28 @@ class CommonDevicesOperationsWizard(models.TransientModel):
     def _compute_allowed_value_ids(self):
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
+
         if not active_model:
             raise UserError('No active model detected')
 
+        include = []
+        for device in active_records:
+            include.append(device.id)
+
         for record in self:
-            record.allowed_field_services_ids = self.env["project.task"].search([['device_id', 'in', [active_records.id]]])
+            record.allowed_field_services_ids = self.env["project.task"].search([['device_id', 'in', include]])
 
     @api.depends("destination_gpsdevice_ids")
     def _compute_allowed_device_ids(self):
         active_model = self._context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
+        exclude = []
+        for device in active_records:
+            exclude.append(device.id)
 
         for record in self:
             log = self.env["lgps.device"].search([
-                ['id', 'not in', [active_records.id]],
+                ['id', 'not in', exclude],
                 ['status', 'in', ['installed', 'demo', 'comodato', 'borrowed', 'replacement']],
             ])
             record.allowed_devices_ids = log
@@ -324,7 +332,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
             'logistic': False,
             'collective': False,
             'fleetrun': False,
-            'platform_list_id': drop_platform.id,
+            'platform_list_id': drop_platform,
             'stage_id': drop_status.id,
             # 'notify_offline': False,
         })
