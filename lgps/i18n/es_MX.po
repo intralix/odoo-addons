@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 02:50+0000\n"
-"PO-Revision-Date: 2023-06-30 02:50+0000\n"
+"POT-Creation-Date: 2023-08-08 17:27+0000\n"
+"PO-Revision-Date: 2023-08-08 17:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -518,6 +518,16 @@ msgid "After Sales"
 msgstr "Post Venta"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__allowed_devices_ids
+msgid "Allowed Devices"
+msgstr "Dispositivos permitidos"
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__allowed_field_services_ids
+msgid "Allowed Field Services"
+msgstr "Servicios permitidos"
+
+#. module: lgps
 #: code:addons/lgps/models/device_history.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_history__operation_mode__add_reactivate
@@ -554,7 +564,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/tracking.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_tracking__applicant
 #, python-format
 msgid "Applicant"
 msgstr "Solicitante"
@@ -571,7 +580,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/device_stage.py:0
-#: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__asset_loan
 #, python-format
 msgid "Asset loan"
 msgstr "Prestado"
@@ -590,7 +598,7 @@ msgstr "Assignar"
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Assigned to"
-msgstr "Asignado a"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_attachment_count
@@ -835,13 +843,20 @@ msgid "Cellchips model"
 msgstr "Chips"
 
 #. module: lgps
-#: model:ir.model.fields,field_description:lgps.field_lgps_device__sheet
-msgid "Chapa"
+#: model_terms:ir.ui.view,arch_db:lgps.device_search_view
+msgid "Chatter Messages"
 msgstr ""
 
 #. module: lgps
-#: model_terms:ir.ui.view,arch_db:lgps.device_search_view
-msgid "Chatter Messages"
+#: model:product.product,name:lgps.gps_cell_chip_product
+#: model:product.template,name:lgps.gps_cell_chip_product_product_template
+msgid "Chip celular"
+msgstr ""
+
+#. module: lgps
+#: model:product.product,description_sale:lgps.gps_cell_chip_product
+#: model:product.template,description_sale:lgps.gps_cell_chip_product_product_template
+msgid "Chip para comunicación celular"
 msgstr ""
 
 #. module: lgps
@@ -1343,6 +1358,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__uninstalled
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__status__uninstalled
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__uninstalled
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__uninstalled
 msgid "Desinstalado"
 msgstr ""
 
@@ -1621,7 +1637,7 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__destination_gpsdevice_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__destination_gpsdevice_ids
-msgid "Equipo sustito"
+msgid "Equipo sustituto"
 msgstr ""
 
 #. module: lgps
@@ -1871,8 +1887,6 @@ msgstr "Por instalar"
 
 #. module: lgps
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
-#: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__foreign_inventory
-#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__status__foreign_inventory
 #, python-format
 msgid "Foreing Inventory"
 msgstr "Inventario Foráneo"
@@ -2050,6 +2064,11 @@ msgid "Hibernación de Equipos"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__hibernated
+msgid "Hibernado"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__hibernate
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__status__hibernate
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__hibernate
@@ -2065,7 +2084,6 @@ msgstr "Hibernar"
 
 #. module: lgps
 #: code:addons/lgps/models/device_stage.py:0
-#: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__hibernated
 #, python-format
 msgid "Hibernated"
 msgstr "Hibernado"
@@ -2096,6 +2114,11 @@ msgstr "Nùmero de Serie Histórico"
 #: model:ir.ui.menu,name:lgps.device_history_menu
 msgid "History"
 msgstr "Histórico"
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_device__sheet
+msgid "Hoja"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
@@ -2325,6 +2348,12 @@ msgid "Inventario"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__foreign_inventory
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__status__foreign_inventory
+msgid "Inventario Foráneo"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
@@ -2390,7 +2419,7 @@ msgstr "Última posición"
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 #, python-format
 msgid "Last Report"
-msgstr "Úñtimo reporte"
+msgstr "Último reporte"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__write_uid
@@ -2700,7 +2729,7 @@ msgstr "Negociaciones"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "New"
-msgstr "Nuevo"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__activity_calendar_event_id
@@ -3135,6 +3164,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__borrowed
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__status__borrowed
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__borrowed
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__asset_loan
 msgid "Prestado"
 msgstr ""
 
@@ -3561,7 +3591,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
 msgid "Set as Done"
-msgstr ""
+msgstr "Marcar como hecho"
 
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.lgps_config_settings_action
@@ -3573,7 +3603,7 @@ msgstr "Configuraciones"
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Sheet"
-msgstr "Chapa"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__simpacsys
@@ -3619,6 +3649,11 @@ msgstr "Vendido"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__requested_by
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__requested_by
 msgid "Solicitado Por"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_tracking__applicant
+msgid "Solicitante"
 msgstr ""
 
 #. module: lgps
@@ -3904,7 +3939,6 @@ msgstr "Pruebas"
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_history_name_unique
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_name_unique
-#: model:ir.model.constraint,message:lgps.constraint_lgps_device_history_name_unique
 msgid "The accessory id must be unique"
 msgstr "El id del acceorio debe ser único"
 
@@ -3912,6 +3946,23 @@ msgstr "El id del acceorio debe ser único"
 #: model:ir.model.constraint,message:lgps.constraint_lgps_cellchip_name_unique
 msgid "The cellchip id must be unique"
 msgstr "El id del chip debe ser único"
+
+#. module: lgps
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#, python-format
+msgid ""
+"The device does not have Warranty Start Date. \n"
+"Complete this first in order to process the Substitution Operation."
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#, python-format
+msgid ""
+"The device does not have status COMODATO.\n"
+"Choose the right device or make sure the device status is correct to proceed."
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_device_name_unique
@@ -3922,6 +3973,11 @@ msgstr "El id del dispositivo gps debe ser único"
 #: model:ir.model.constraint,message:lgps.constraint_lgps_platform_list_name_unique
 msgid "The gps platform name must be unique"
 msgstr "El nombre de la plataforma debe ser único"
+
+#. module: lgps
+#: model:ir.model.constraint,message:lgps.constraint_lgps_device_history_name_unique
+msgid "The id must be unique"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
@@ -3938,6 +3994,9 @@ msgstr ""
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
@@ -4101,7 +4160,7 @@ msgstr "Monitoreos"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__trackings_count
 #, python-format
 msgid "Trackings Count"
-msgstr ""
+msgstr "Total de seguimientos"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_logs_tree_view
@@ -4167,6 +4226,7 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/device_stage.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Uninstalled"
@@ -4179,10 +4239,12 @@ msgid "Uninterrupted"
 msgstr "Permanente"
 
 #. module: lgps
+#: model:product.product,uom_name:lgps.gps_cell_chip_product
 #: model:product.product,uom_name:lgps.gps_device_model_01
+#: model:product.template,uom_name:lgps.gps_cell_chip_product_product_template
 #: model:product.template,uom_name:lgps.gps_device_model_01_product_template
 msgid "Units"
-msgstr ""
+msgstr "Unidades"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_unread
@@ -4328,8 +4390,13 @@ msgid "You forgot to comment the reason for this process to run."
 msgstr "Olvidaste seleccionar la razón para ejecutar este proceso"
 
 #. module: lgps
-#: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#, python-format
+msgid "You forgot to select the Related Field Service"
+msgstr "Olvidaste seleccionar el servicio relacionado"
+
+#. module: lgps
+#: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #, python-format
 msgid "You forgot to select the Related ODT"
 msgstr "Olvidaste seleccionar la ODT relacionada"

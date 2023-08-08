@@ -248,7 +248,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
         # drop_platform = self.env['lgps.platform_list'].search([['name', '=', 'Sin Plataforma']], limit=1)
         drop_platform = False
-        drop_status = self.env.ref('lgps.stage_uninstalled')
+        drop_status = self.env.ref('lgps.stage_cancel')
 
         # Buffer Vars
         cellchips_ids = []
