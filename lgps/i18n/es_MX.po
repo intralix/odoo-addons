@@ -771,7 +771,7 @@ msgstr ""
 #: code:addons/lgps/models/device_stage.py:0
 #, python-format
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr "Baja"
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
