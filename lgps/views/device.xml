@@ -240,15 +240,15 @@
     <field name="model">lgps.device</field>
     <field name="arch" type="xml">
       <tree string="GpsDevices Tree"
-            decoration-muted="platform_list_id=='Drop'"
-            decoration-info="platform_list_id != 'Drop' and (last_report&gt;48)"
-            decoration-warning="platform_list_id != 'Drop' and (last_report&gt;72)"
-            decoration-danger="platform_list_id != 'Drop' and (last_report&gt;120)">
+            decoration-muted="state=='cancel'"
+            decoration-info="state != 'cancel' and (last_report&gt;48)"
+            decoration-warning="state != 'cancel' and (last_report&gt;72)"
+            decoration-danger="state != 'cancel' and (last_report&gt;120)">
         <field name="name"/>
         <field name="nick"/>
         <field name="client_id"/>
         <field name="status"/>
-        <field name="stage_id"/>
+        <field name="state"/>
         <field name="cell_chip_id"/>
         <field name="historic_serial_number" readonly="1"/>
         <field name="serial_number_id"/>

@@ -29,5 +29,5 @@ class DeviceStage(models.Model):
         ('rma', _("RMA")),
         ('cancel', _("Canceled")),
         ('uninstalled', _("Uninstalled"))],
-        default="inventory"
+        default="ready_to_install"
     )

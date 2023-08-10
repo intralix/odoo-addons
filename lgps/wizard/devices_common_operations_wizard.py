@@ -924,6 +924,7 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         body = ''
         notify_gps_list = ''
         active_records = self.return_active_records()
+        installed_status = self.env.ref('lgps.stage_installed')
 
         # LGPS Global Configuration
         lgps_config = self.sudo().env['ir.config_parameter']
@@ -996,7 +997,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 'tracking': self.tracking if self.tracking else r.tracking,
                 'fleetrun': self.fleetrun if self.fleetrun else r.fleetrun,
                 'platform_list_id': self.platform_list_id.id if self.platform_list_id else None,
-                'cell_chip_id': self.cell_chip_id.id if self.cell_chip_id else None
+                'cell_chip_id': self.cell_chip_id.id if self.cell_chip_id else None,
+                'stage_id': installed_status.id,
             })
             # write Comment
             r.message_post(body=body)
