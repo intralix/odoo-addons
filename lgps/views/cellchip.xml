@@ -30,6 +30,7 @@
               <field name="status_date"/>
               <field name="end_forced_plan_date"/>
               <field name="days_suspended"/>
+              <field name="to_deactivate"/>
             </group>
           </group>
 
@@ -80,6 +81,8 @@
         <filter string="Prossea" name="provider_prossea"  domain="[('provider', '=', 'Prossea')]"/>
         <filter string="Simpacsys" name="provider_simpacsys"  domain="[('provider', '=', 'Simpacsys')]"/>
         <filter string="Telcel" name="provider_telcel"  domain="[('provider', '=', 'Telcel')]"/>
+        <separator/>
+        <filter string="Pendientes para Baja" name="to_deactivate_true"  domain="[('to_deactivate', '=', True)]"/>
 
         <field name="name"/>
         <field name="historic_line_number"/>
@@ -113,10 +116,12 @@
         <field name="status"/>
         <field name="provider"/>
         <field name="cell_chip_owner_id"/>
+        <field name="term"/>
+        <field name="iccid"/>
         <field name="voice"/>
         <field name="purchase_date"/>
         <field name="days_suspended" invisible="1"/>
-        <field name="device_id"/>
+        <field name="device_id" widget="badge"/>
       </tree>
     </field>
   </record>

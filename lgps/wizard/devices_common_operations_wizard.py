@@ -339,6 +339,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
 
         self.cellchips_list = notify_cellchisp_list
         self.devices_list = notify_gps_list
+        # We mark cellchips that need deactivation
+        self.set_cellchips_to_deactivate(cellchips_ids)
 
         # We are going to look for the subscription and make some changes
         subscriptions = self.env['sale.subscription'].search([['device_id', 'in', active_records.ids]])
@@ -1239,3 +1241,10 @@ class CommonDevicesOperationsWizard(models.TransientModel):
         _logger.warning('buffer: %s', buffer)
 
         return buffer
+
+    def set_cellchips_to_deactivate(self, cellchips_list):
+        chips = self.sudo().env['lgps.cellchip'].search([('id', 'in', cellchips_list)])
+        chips.write({
+            'to_deactivate': True,
+
+        })

@@ -171,6 +171,12 @@ class Cellchip(models.Model):
         tracking=True,
     )
 
+    to_deactivate = fields.Boolean(
+        default=False,
+        string=_("Needs Deactivation"),
+        readonly=True,
+    )
+
     @api.onchange('status')
     def onchange_status_date(self):
         if self.status == 'suspended':

@@ -55,8 +55,16 @@
         ]"/>
   </record>
 
-    <record id="lgps_group_cancel_posted_invoice" model="res.groups">
+  <record id="lgps_group_cancel_posted_invoice" model="res.groups">
     <field name="name">LGPS / Cancel Posted Moves</field>
+    <field name="users" eval="[
+            (4, ref('base.user_root')),
+            (4, ref('base.user_admin'))
+        ]"/>
+  </record>
+
+  <record id="lgps_group_deactivate_cellchips" model="res.groups">
+    <field name="name">LGPS / Cellchips Deactivation</field>
     <field name="users" eval="[
             (4, ref('base.user_root')),
             (4, ref('base.user_admin'))
