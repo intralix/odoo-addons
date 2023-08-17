@@ -177,6 +177,11 @@ class Cellchip(models.Model):
         readonly=True,
     )
 
+    deactivation_date = fields.Date(
+        string=_("Deactivation Date"),
+        readonly=True,
+    )
+
     @api.onchange('status')
     def onchange_status_date(self):
         if self.status == 'suspended':
@@ -194,6 +199,13 @@ class Cellchip(models.Model):
             self.days_suspended = difference.total_seconds() / 3600 / 24
         else:
             self.days_suspended = None
+
+    def set_as_deactivated(self):
+        self.ensure_one()
+        self.write({
+            'to_deactivate': False,
+            'deactivation_date': fields.Date.context_today(self)
+        })
 
     def copy(self, default=None):
         default = dict(default or {})

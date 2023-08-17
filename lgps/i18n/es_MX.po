@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 17:27+0000\n"
-"PO-Revision-Date: 2023-08-08 17:27+0000\n"
+"POT-Creation-Date: 2023-08-17 04:50+0000\n"
+"PO-Revision-Date: 2023-08-17 04:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -771,7 +771,7 @@ msgstr ""
 #: code:addons/lgps/models/device_stage.py:0
 #, python-format
 msgid "Canceled"
-msgstr "Baja"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
@@ -779,7 +779,7 @@ msgstr "Baja"
 #: code:addons/lgps/models/tracking.py:0
 #, python-format
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/tracking.py:0
@@ -1208,6 +1208,17 @@ msgstr "Fecha GPS"
 #, python-format
 msgid "DateTime Server"
 msgstr "Fecha Servidor"
+
+#. module: lgps
+#: code:addons/lgps/models/cellchip.py:0
+#, python-format
+msgid "Deactivation Date"
+msgstr "Baja con Proveedor"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.cellchip_form_view
+msgid "Deactivation Information"
+msgstr "Información de la Baja"
 
 #. module: lgps
 #: code:addons/lgps/models/res_config_settings.py:0
@@ -1696,7 +1707,7 @@ msgstr "Ejecutivos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "External"
-msgstr "Externo"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__external
@@ -1757,6 +1768,11 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__activation_date
 msgid "Fecha de Activación"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__deactivation_date
+msgid "Fecha de Baja"
 msgstr ""
 
 #. module: lgps
@@ -2389,6 +2405,11 @@ msgid "LGPS / Cancel Posted Moves"
 msgstr "LGPS / Cancelar Facturas"
 
 #. module: lgps
+#: model:res.groups,name:lgps.lgps_group_deactivate_cellchips
+msgid "LGPS / Cellchips Deactivation"
+msgstr ""
+
+#. module: lgps
 #: model:res.groups,name:lgps.lgps_group_field_service_operations
 msgid "LGPS / Field Service Details"
 msgstr "LGPS / Ver Precios en Field Service"
@@ -2419,7 +2440,7 @@ msgstr "Última posición"
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 #, python-format
 msgid "Last Report"
-msgstr "Último reporte"
+msgstr "Úñtimo reporte"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__write_uid
@@ -2588,6 +2609,11 @@ msgid "Mapaloc"
 msgstr ""
 
 #. module: lgps
+#: model:ir.actions.server,name:lgps.model_cellchip_deativation_action
+msgid "Mark as Deactivated"
+msgstr "Confirmar como Baja"
+
+#. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Mayor Accounte"
@@ -2707,6 +2733,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__log_msn
 msgid "Más Info"
 msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/cellchip.py:0
+#, python-format
+msgid "Needs Deactivation"
+msgstr "Pendiente de Baja"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_partner__special_negotiations
@@ -3002,6 +3034,16 @@ msgstr "Teclado"
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__solar_panel
 msgid "Panel Solar"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__to_deactivate
+msgid "Pendiente de Baja"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
+msgid "Pendientes para Baja"
 msgstr ""
 
 #. module: lgps
@@ -3642,7 +3684,7 @@ msgstr "Panel Solar"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Sold"
-msgstr "Vendido"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__requested_by
@@ -3934,7 +3976,7 @@ msgstr "Términos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Tests"
-msgstr "Pruebas"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_history_name_unique

@@ -30,13 +30,11 @@
               <field name="status_date"/>
               <field name="end_forced_plan_date"/>
               <field name="days_suspended"/>
-              <field name="to_deactivate"/>
             </group>
           </group>
 
           <notebook>
             <page string="GPS Device">
-
                 <field name="device_id">
                   <tree>
                     <field name="name" string="Device"/>
@@ -52,7 +50,14 @@
                     <field name="client_id"/>
                   </tree>
                 </field>
-
+            </page>
+            <page string="Deactivation Information">
+              <group>
+                <group string="Deactivation Information">
+                  <field name="to_deactivate"/>
+                  <field name="deactivation_date"/>
+                </group>
+              </group>
             </page>
           </notebook>
         </sheet>
@@ -132,5 +137,20 @@
     <field name="view_mode">tree,form</field>
   </record>
 
+
   <menuitem id="cell_chips_menu" name="Cellchips" parent="lgps_menu" action="cell_chip_list_action" sequence="30"/>
+
+  <record id="model_cellchip_deativation_action" model="ir.actions.server">
+          <field name="name">Mark as Deactivated</field>
+          <field name="model_id" ref="model_lgps_cellchip"/>
+          <field name="binding_model_id" ref="model_lgps_cellchip"/>
+          <field name="binding_view_types">list,form</field>
+          <field name="state">code</field>
+          <field name="code">
+              if records:
+                  for rec in records:
+                      action = rec.set_as_deactivated()
+          </field>
+  </record>
+
 </odoo>
