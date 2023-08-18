@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 04:50+0000\n"
-"PO-Revision-Date: 2023-08-17 04:50+0000\n"
+"POT-Creation-Date: 2023-08-18 22:55+0000\n"
+"PO-Revision-Date: 2023-08-18 22:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -741,6 +741,7 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Cancel"
 msgstr ""
@@ -815,14 +816,27 @@ msgid "Cellchip Number"
 msgstr ""
 
 #. module: lgps
+#: model:ir.actions.act_window,name:lgps.action_window_cellchip_operations
+msgid "Cellchip Operations"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Cellchip Owner"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
+msgid "Cellchip Process"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: model:ir.actions.act_window,name:lgps.cell_chip_list_action
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__cellchips_ids
 #: model:ir.ui.menu,name:lgps.cell_chips_menu
+#, python-format
 msgid "Cellchips"
 msgstr ""
 
@@ -830,6 +844,11 @@ msgstr ""
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Cellchips List"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model,name:lgps.model_lgps_cellchip_wizard
+msgid "Cellchips Operations Wizard"
 msgstr ""
 
 #. module: lgps
@@ -960,8 +979,10 @@ msgid "Comentario / Falla Presentada"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__comment
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_history_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_history_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 msgid "Comentarios"
 msgstr ""
 
@@ -981,6 +1002,12 @@ msgstr ""
 #: code:addons/lgps/models/tracking_logs.py:0
 #, python-format
 msgid "Commentary"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
+#, python-format
+msgid "Comments"
 msgstr ""
 
 #. module: lgps
@@ -1094,6 +1121,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__create_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__create_uid
@@ -1109,6 +1137,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__create_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__create_date
@@ -1211,6 +1240,7 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
 #, python-format
 msgid "Deactivation Date"
 msgstr ""
@@ -1468,6 +1498,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__display_name
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__display_name
@@ -1693,6 +1724,7 @@ msgid "Etapa por default para suscripción por hibernación"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Execute Process"
 msgstr ""
@@ -1772,6 +1804,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__deactivation_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__deactivation_date
 msgid "Fecha de Baja"
 msgstr ""
 
@@ -2148,6 +2181,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__id
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__id
@@ -2268,6 +2302,11 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Ingresa la información requerida para el proceso selecionado:"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
+msgid "Ingresa la información requerida para el proceso:"
 msgstr ""
 
 #. module: lgps
@@ -2419,6 +2458,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip____last_update
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_device____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations____last_update
@@ -2447,6 +2487,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__write_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__write_uid
@@ -2462,6 +2503,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__write_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__write_date
@@ -2578,6 +2620,11 @@ msgid "Logs"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
+msgid "Línea(s) Seleccionada(s):"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_main_attachment_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__message_main_attachment_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__message_main_attachment_id
@@ -2606,11 +2653,6 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__platform__mapaloc
 msgid "Mapaloc"
-msgstr ""
-
-#. module: lgps
-#: model:ir.actions.server,name:lgps.model_cellchip_deativation_action
-msgid "Mark as Deactivated"
 msgstr ""
 
 #. module: lgps
@@ -3222,6 +3264,7 @@ msgid "Priority"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Procesando para"
 msgstr ""
@@ -3581,6 +3624,7 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Select at least one record."
@@ -4028,6 +4072,7 @@ msgstr ""
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0

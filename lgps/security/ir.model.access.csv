@@ -8,6 +8,7 @@ cellchip_manager,Cellchips Manager,model_lgps_cellchip,lgps_group_manager,1,1,1,
 cellchip_read_all,Cellchips All,model_lgps_cellchip,lgps_group_user,1,1,1,0
 cellchip_maintainer,Cellchips Maintainer,model_lgps_cellchip,lgps_group_maintainer,1,1,0,0
 cellchip_guest,Cellchips Guest,model_lgps_cellchip,lgps_group_guest,1,0,0,0
+cellchip_wizard, Cellchips Wizard Manager,model_lgps_cellchip_wizard,lgps_group_deactivate_cellchips,1,1,1,1
 platform_list_manager,Platform list Manager,model_lgps_platform_list,lgps_group_manager,1,1,1,1
 platform_list_read_all,Platform list All,model_lgps_platform_list,lgps_group_user,1,1,1,0
 platform_list_maintainer,Platform list Maintainer,model_lgps_platform_list,lgps_group_maintainer,1,1,0,0
