@@ -9,6 +9,29 @@
           <field name="device_id"/>
           <field name="nick"/>
         </xpath>
+
+      <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page string="More Data" name="More Data">
+            <group>
+              <group>
+                <field
+                        name="show_timesheet_in_report"
+                        string="Show Timesheet in Report"
+                        force_save="True"
+                        attrs="{}"
+                        readonly="1"
+                        help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
+              </group>
+              <group>
+                <field
+                        name="parent_sales_order_id"
+                        options="{&quot;no_create&quot;:true}"
+                        help="Pedido de Ventas que Originó la instalación"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+
     </field>
   </record>
 </odoo>

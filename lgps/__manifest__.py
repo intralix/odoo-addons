@@ -35,6 +35,7 @@
         'views/main_menu.xml',
         'views/res_config_settings_views.xml',
         'reports/subscription_details.xml',
+        'reports/field_service_timesheet_inherit.xml',
         'views/accessory.xml',
         'views/cellchip.xml',
         'views/platform_list.xml',

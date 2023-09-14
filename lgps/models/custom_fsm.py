@@ -33,6 +33,20 @@ class LgpsFSM(models.Model):
         store=True
     )
 
+    show_timesheet_in_report = fields.Boolean(
+        string=_("Show timesheet in Reports"),
+        default=False
+    )
+
+    parent_sales_order_id = fields.Many2one(
+        comodel_name="sale.order",
+        ondelete="set null",
+        string=_("Device"),
+        help="Project Sales Order to work with",
+        index=True,
+        tracking=True,
+    )
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}
