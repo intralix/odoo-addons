@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-18 22:54+0000\n"
-"PO-Revision-Date: 2023-08-18 22:54+0000\n"
+"POT-Creation-Date: 2023-09-14 18:07+0000\n"
+"PO-Revision-Date: 2023-09-14 18:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -508,7 +508,7 @@ msgstr "Asignar Accesorios al Dispositivo"
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__emails
 #, python-format
 msgid "Additional Emails"
-msgstr ""
+msgstr "Emails Adicionales"
 
 #. module: lgps
 #: code:addons/lgps/models/custom_partner.py:0
@@ -598,7 +598,7 @@ msgstr "Assignar"
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Assigned to"
-msgstr "Asignado a"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_attachment_count
@@ -772,7 +772,7 @@ msgstr ""
 #: code:addons/lgps/models/device_stage.py:0
 #, python-format
 msgid "Canceled"
-msgstr ""
+msgstr "Cancelado"
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
@@ -780,7 +780,7 @@ msgstr ""
 #: code:addons/lgps/models/tracking.py:0
 #, python-format
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #. module: lgps
 #: code:addons/lgps/models/tracking.py:0
@@ -818,7 +818,7 @@ msgstr "Número de Chip"
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.action_window_cellchip_operations
 msgid "Cellchip Operations"
-msgstr ""
+msgstr "Operaciones con Chips Celulares"
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
@@ -829,12 +829,11 @@ msgstr "Dueño del Chip"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 msgid "Cellchip Process"
-msgstr ""
+msgstr "Proceso de Chips Celulares"
 
 #. module: lgps
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: model:ir.actions.act_window,name:lgps.cell_chip_list_action
-#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__cellchips_ids
 #: model:ir.ui.menu,name:lgps.cell_chips_menu
 #, python-format
 msgid "Cellchips"
@@ -849,7 +848,7 @@ msgstr "Listado de Chips"
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_cellchip_wizard
 msgid "Cellchips Operations Wizard"
-msgstr ""
+msgstr "Wizard de Operaciones con Chips"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_tree_view
@@ -876,6 +875,11 @@ msgstr ""
 #: model:product.product,description_sale:lgps.gps_cell_chip_product
 #: model:product.template,description_sale:lgps.gps_cell_chip_product_product_template
 msgid "Chip para comunicación celular"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__cellchips_ids
+msgid "Chips"
 msgstr ""
 
 #. module: lgps
@@ -1008,7 +1012,7 @@ msgstr "Comentario"
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #, python-format
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_device_operations
@@ -2732,6 +2736,11 @@ msgid "Monitorista"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "More Data"
+msgstr "Más Información"
+
+#. module: lgps
 #: code:addons/lgps/models/device_history.py:0
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_history_form_view
@@ -2803,7 +2812,7 @@ msgstr "Negociaciones"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "New"
-msgstr ""
+msgstr "Nuevo"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__activity_calendar_event_id
@@ -3052,6 +3061,11 @@ msgid "Operative Status"
 msgstr "Estatus Operativo"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__parent_sales_order_id
+msgid "Orden de venta"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__origin
 msgid "Origen"
 msgstr ""
@@ -3076,6 +3090,11 @@ msgstr "Teclado"
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__solar_panel
 msgid "Panel Solar"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Pedido de Ventas que Originó la instalación"
 msgstr ""
 
 #. module: lgps
@@ -3292,6 +3311,11 @@ msgstr ""
 #: model:product.template,description_sale:lgps.gps_device_model_01_product_template
 msgid "Productos de seguimiento y rastreo satelital"
 msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,help:lgps.field_project_task__parent_sales_order_id
+msgid "Project Sales Order to work with"
+msgstr "Pedido de Venta del Proyecto"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__prossea
@@ -3544,6 +3568,12 @@ msgid "SMS Delivery error"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#, python-format
+msgid "Sale Order"
+msgstr "Pedido de Venta del Proyecto"
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__scanner
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__scanner
 msgid "Scanner"
@@ -3692,6 +3722,25 @@ msgid "Sheet"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Show Timesheet in Report"
+msgstr "Mostrar Tiempos en Reporte del Cliente"
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
+#, python-format
+msgid "Show timesheet in Reports"
+msgstr "Mostrar Tiempos en Reporte del Cliente"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid ""
+"Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que "
+"se entrega al cliente final"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__simpacsys
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Simpacsys"
@@ -3728,7 +3777,7 @@ msgstr "Panel Solar"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Sold"
-msgstr ""
+msgstr "Vendido"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__requested_by
@@ -4020,7 +4069,7 @@ msgstr "Términos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Tests"
-msgstr ""
+msgstr "Pruebas"
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_history_name_unique
@@ -4041,6 +4090,8 @@ msgid ""
 "The device does not have Warranty Start Date. \n"
 "Complete this first in order to process the Substitution Operation."
 msgstr ""
+"El dispositivo no tiene fecha de inicio de garantía. \n"
+"Completa esta información para pode completar la operación de sustitucion."
 
 #. module: lgps
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
@@ -4049,6 +4100,8 @@ msgid ""
 "The device does not have status COMODATO.\n"
 "Choose the right device or make sure the device status is correct to proceed."
 msgstr ""
+"El dispositivo no tiene el estatus de COMODATO.\n"
+"Selecciona el dispositivo correcto o asegúrese de que el estatus del equipo este correcto antes de continuar."
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_device_name_unique
@@ -4063,7 +4116,7 @@ msgstr "El nombre de la plataforma debe ser único"
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_device_history_name_unique
 msgid "The id must be unique"
-msgstr ""
+msgstr "El identificador debe ser único"
 
 #. module: lgps
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0

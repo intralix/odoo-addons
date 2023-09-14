@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-18 22:55+0000\n"
-"PO-Revision-Date: 2023-08-18 22:55+0000\n"
+"POT-Creation-Date: 2023-09-14 18:07+0000\n"
+"PO-Revision-Date: 2023-09-14 18:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -834,7 +834,6 @@ msgstr ""
 #. module: lgps
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: model:ir.actions.act_window,name:lgps.cell_chip_list_action
-#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__cellchips_ids
 #: model:ir.ui.menu,name:lgps.cell_chips_menu
 #, python-format
 msgid "Cellchips"
@@ -876,6 +875,11 @@ msgstr ""
 #: model:product.product,description_sale:lgps.gps_cell_chip_product
 #: model:product.template,description_sale:lgps.gps_cell_chip_product_product_template
 msgid "Chip para comunicación celular"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_cellchip_wizard__cellchips_ids
+msgid "Chips"
 msgstr ""
 
 #. module: lgps
@@ -2732,6 +2736,11 @@ msgid "Monitorista"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "More Data"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/device_history.py:0
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_history_form_view
@@ -3052,6 +3061,11 @@ msgid "Operative Status"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__parent_sales_order_id
+msgid "Orden de venta"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__origin
 msgid "Origen"
 msgstr ""
@@ -3076,6 +3090,11 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__solar_panel
 msgid "Panel Solar"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Pedido de Ventas que Originó la instalación"
 msgstr ""
 
 #. module: lgps
@@ -3291,6 +3310,11 @@ msgstr ""
 #: model:product.product,description_sale:lgps.gps_device_model_01
 #: model:product.template,description_sale:lgps.gps_device_model_01_product_template
 msgid "Productos de seguimiento y rastreo satelital"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,help:lgps.field_project_task__parent_sales_order_id
+msgid "Project Sales Order to work with"
 msgstr ""
 
 #. module: lgps
@@ -3544,6 +3568,12 @@ msgid "SMS Delivery error"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#, python-format
+msgid "Sale Order"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__scanner
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__scanner
 msgid "Scanner"
@@ -3689,6 +3719,25 @@ msgstr ""
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Sheet"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Show Timesheet in Report"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
+#, python-format
+msgid "Show timesheet in Reports"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid ""
+"Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que "
+"se entrega al cliente final"
 msgstr ""
 
 #. module: lgps

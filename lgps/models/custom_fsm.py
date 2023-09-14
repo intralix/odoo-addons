@@ -41,7 +41,7 @@ class LgpsFSM(models.Model):
     parent_sales_order_id = fields.Many2one(
         comodel_name="sale.order",
         ondelete="set null",
-        string=_("Device"),
+        string=_("Sale Order"),
         help="Project Sales Order to work with",
         index=True,
         tracking=True,
