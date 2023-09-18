@@ -37,7 +37,10 @@ class CellchipWizard(models.TransientModel):
 
         active_records = self.return_active_records()
         # Updating date
-        active_records.write({'deactivation_date': self.deactivation_date})
+        active_records.write({
+            'deactivation_date': self.deactivation_date,
+            'to_deactivate': False
+        })
 
         for record in active_records:
             comment = self.comment if self.comment else ''
