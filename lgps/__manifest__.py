@@ -51,5 +51,6 @@
         'views/custom_help_desk.xml',
         'views/device_history.xml',
         'views/custom_invoice.xml',
+        'views/custom_stocking.xml',
     ],
 }

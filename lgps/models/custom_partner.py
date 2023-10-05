@@ -1,5 +1,8 @@
 from odoo import api, models, fields, _
+from odoo.exceptions import UserError
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class LgpsPartner(models.Model):
     _inherit = 'res.partner'
@@ -75,3 +78,20 @@ class LgpsPartner(models.Model):
         string="Gps Devices",
         readonly=True,
     )
+
+    @api.model
+    def create(self, values):
+        if self._check_if_can_create():
+            new_record = super(LgpsPartner, self).create(values)
+        return new_record
+    
+    # def write(self, values):
+    #    if self._check_if_can_create():
+    #        return super(LgpsPartner, self).write(values)
+
+    def _check_if_can_create(self):
+        user = self.env.user
+        if not user.has_group('lgps.lgps_group_create_contacts'):
+            raise UserError('Solo personal de Administración y Finanzas puede dar alta de Clientes y Proveedores '
+                            'nuevos.')
+        return True

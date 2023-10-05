@@ -35,3 +35,4 @@ device_log_maintainer,Device Log Maintainer,model_lgps_device_history,lgps_group
 device_log_guest,Device Log guest,model_lgps_device_history,lgps_group_guest,1,0,0,0
 device_stage_user,Device Stage User,model_lgps_device_stage,lgps_group_guest,1,0,0,0
 device_stage_manager, Device Stage Manager,model_lgps_device_stage,lgps_group_manager,1,1,1,1
+lgps_create_contacts,Create Contacts,model_res_partner,lgps_group_create_contacts,1,1,1,1
