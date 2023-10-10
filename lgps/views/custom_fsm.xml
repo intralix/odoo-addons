@@ -30,6 +30,12 @@
               </group>
             </group>
           </page>
+        <page string="Warranty" name="Warranty" groups="lgps.lgps_group_quality_operations">
+          <group>
+            <field name="is_warranty"/>
+            <field name="guarantee_justification" widget="html"/>
+          </group>
+        </page>
         </xpath>
 
     </field>

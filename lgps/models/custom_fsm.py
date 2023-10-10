@@ -47,6 +47,15 @@ class LgpsFSM(models.Model):
         tracking=True,
     )
 
+    is_warranty = fields.Boolean(
+        string=_("It's Warranty"),
+        default=False
+    )
+
+    guarantee_justification = fields.Html(
+        string=_("Guarantee Justification"),
+    )
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}

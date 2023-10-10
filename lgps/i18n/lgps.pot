@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-14 18:07+0000\n"
-"PO-Revision-Date: 2023-09-14 18:07+0000\n"
+"POT-Creation-Date: 2023-10-10 05:23+0000\n"
+"PO-Revision-Date: 2023-10-10 05:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2081,6 +2081,13 @@ msgid "Group By"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__guarantee_justification
+#, python-format
+msgid "Guarantee Justification"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__platform__gurtam
 msgid "Gurtam"
 msgstr ""
@@ -2432,6 +2439,13 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__is_warranty
+#, python-format
+msgid "It's Warranty"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__iusacell
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Iusacell"
@@ -2453,8 +2467,28 @@ msgid "LGPS / Cellchips Deactivation"
 msgstr ""
 
 #. module: lgps
+#: model:res.groups,name:lgps.lgps_group_create_contacts
+msgid "LGPS / Create Contacts"
+msgstr ""
+
+#. module: lgps
 #: model:res.groups,name:lgps.lgps_group_field_service_operations
 msgid "LGPS / Field Service Details"
+msgstr ""
+
+#. module: lgps
+#: model:res.groups,name:lgps.lgps_group_inventory_special_operations
+msgid "LGPS / Inventory Special Operations"
+msgstr ""
+
+#. module: lgps
+#: model:res.groups,name:lgps.lgps_group_quality_operations
+msgid "LGPS / Quality Operations"
+msgstr ""
+
+#. module: lgps
+#: model:res.groups,name:lgps.lgps_group_sale_order_special_operations
+msgid "LGPS / Sale Order Special Operations"
 msgstr ""
 
 #. module: lgps
@@ -2753,6 +2787,11 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_form_view
 msgid "More Information"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
+msgid "Mostrar Tiempos en Reporte del Cliente"
 msgstr ""
 
 #. module: lgps
@@ -3728,7 +3767,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
 #, python-format
 msgid "Show timesheet in Reports"
 msgstr ""
@@ -4433,6 +4471,7 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 msgid "Warranty"
 msgstr ""
