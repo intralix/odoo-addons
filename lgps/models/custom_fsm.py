@@ -56,6 +56,15 @@ class LgpsFSM(models.Model):
         string=_("Guarantee Justification"),
     )
 
+    repair_id = fields.Many2one(
+        comodel_name="repair.order",
+        ondelete="set null",
+        string=_("Repair Order"),
+        help=_("When a product it's about treated as warranty, it must have a repair order process associated."),
+        index=True,
+        tracking=True,
+    )
+    
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}

@@ -33,7 +33,17 @@
         <page string="Warranty" name="Warranty" groups="lgps.lgps_group_quality_operations">
           <group>
             <field name="is_warranty"/>
-            <field name="guarantee_justification" widget="html"/>
+            <field name="guarantee_justification"
+                   widget="html"
+                   attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
+          </group>
+        </page>
+        <page string="Repair Order" name="Repair Order" attrs="{'invisible':[('is_warranty','!=', True)]}">
+          <group>
+              <group>
+                <field name="repair_id"
+                       attrs="{'required':[('is_warranty','=', True)]}"/>
+              </group>
           </group>
         </page>
         </xpath>

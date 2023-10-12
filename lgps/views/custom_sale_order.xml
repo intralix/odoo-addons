@@ -7,11 +7,11 @@
     <field name="arch" type="xml">
 
       <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
-        <attribute name="groups">lgps.lgps_group_sale_order_special_operations</attribute>
+        <attribute name="groups">lgps.lgps_group_confirm_sale_orders</attribute>
       </xpath>
 
       <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
-        <attribute name="groups">lgps.lgps_group_sale_order_special_operations</attribute>
+        <attribute name="groups">lgps.lgps_group_confirm_sale_orders</attribute>
       </xpath>
     </field>
   </record>

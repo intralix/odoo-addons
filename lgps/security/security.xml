@@ -95,6 +95,14 @@
         ]"/>
   </record>
 
+  <record id="lgps_group_confirm_sale_orders" model="res.groups">
+    <field name="name">LGPS / Confirm Sale Orders</field>
+    <field name="users" eval="[
+            (4, ref('base.user_root')),
+            (4, ref('base.user_admin'))
+        ]"/>
+  </record>
+
   <record id="lgps_group_quality_operations" model="res.groups">
     <field name="name">LGPS / Quality Operations</field>
     <field name="users" eval="[
