@@ -38,6 +38,7 @@
                    attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
           </group>
         </page>
+        <!--
         <page string="Repair Order" name="Repair Order" attrs="{'invisible':[('is_warranty','!=', True)]}">
           <group>
               <group>
@@ -46,6 +47,7 @@
               </group>
           </group>
         </page>
+        -->
         </xpath>
 
     </field>

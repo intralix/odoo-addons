@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-10 05:23+0000\n"
-"PO-Revision-Date: 2023-10-10 05:23+0000\n"
+"POT-Creation-Date: 2023-10-15 03:51+0000\n"
+"PO-Revision-Date: 2023-10-15 03:51+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1012,7 +1012,7 @@ msgstr "Comentario"
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #, python-format
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_device_operations
@@ -1696,6 +1696,11 @@ msgid "Error administrativo"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__is_warranty
+msgid "Es garantía"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__status
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__status
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__status
@@ -1743,7 +1748,7 @@ msgstr "Ejecutivos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "External"
-msgstr ""
+msgstr "Externo"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__external
@@ -2082,7 +2087,6 @@ msgstr "Agrupar por"
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__guarantee_justification
 #, python-format
 msgid "Guarantee Justification"
 msgstr "Justificación"
@@ -2440,7 +2444,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__is_warranty
 #, python-format
 msgid "It's Warranty"
 msgstr "Es garantía"
@@ -2449,6 +2452,11 @@ msgstr "Es garantía"
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__iusacell
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Iusacell"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__guarantee_justification
+msgid "Justificación"
 msgstr ""
 
 #. module: lgps
@@ -2467,9 +2475,14 @@ msgid "LGPS / Cellchips Deactivation"
 msgstr "LGPS / Baja de Líneas"
 
 #. module: lgps
+#: model:res.groups,name:lgps.lgps_group_confirm_sale_orders
+msgid "LGPS / Confirm Sale Orders"
+msgstr "LGPS / Confirmar Órden de Venta"
+
+#. module: lgps
 #: model:res.groups,name:lgps.lgps_group_create_contacts
 msgid "LGPS / Create Contacts"
-msgstr ""
+msgstr "LGPS / Crear Contactos"
 
 #. module: lgps
 #: model:res.groups,name:lgps.lgps_group_field_service_operations
@@ -2479,17 +2492,17 @@ msgstr "LGPS / Ver Precios en Field Service"
 #. module: lgps
 #: model:res.groups,name:lgps.lgps_group_inventory_special_operations
 msgid "LGPS / Inventory Special Operations"
-msgstr ""
+msgstr "LGPS / Operaciones Delicadas Inventario"
 
 #. module: lgps
 #: model:res.groups,name:lgps.lgps_group_quality_operations
 msgid "LGPS / Quality Operations"
-msgstr ""
+msgstr "LGPS / Operaciones de Calidad"
 
 #. module: lgps
 #: model:res.groups,name:lgps.lgps_group_sale_order_special_operations
 msgid "LGPS / Sale Order Special Operations"
-msgstr ""
+msgstr "LGPS / Operaciones especiales en Orden de Venta"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory____last_update
@@ -3100,11 +3113,6 @@ msgid "Operative Status"
 msgstr "Estatus Operativo"
 
 #. module: lgps
-#: model:ir.model.fields,field_description:lgps.field_project_task__parent_sales_order_id
-msgid "Orden de venta"
-msgstr ""
-
-#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__origin
 msgid "Origen"
 msgstr ""
@@ -3130,6 +3138,13 @@ msgstr "Teclado"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__solar_panel
 msgid "Panel Solar"
 msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__parent_sales_order_id
+#, python-format
+msgid "Parent Sale Order"
+msgstr "Orden de Venta Relacionada"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
@@ -3523,6 +3538,13 @@ msgid "Related work order"
 msgstr "ODT relacionada"
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__repair_id
+#, python-format
+msgid "Repair Order"
+msgstr "Orden de Reaparación"
+
+#. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Replaced"
@@ -3604,12 +3626,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
-
-#. module: lgps
-#: code:addons/lgps/models/custom_fsm.py:0
-#, python-format
-msgid "Sale Order"
 msgstr ""
 
 #. module: lgps
@@ -3815,7 +3831,7 @@ msgstr "Panel Solar"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Sold"
-msgstr ""
+msgstr "Vendido"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__requested_by
@@ -4107,7 +4123,7 @@ msgstr "Términos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Tests"
-msgstr ""
+msgstr "Pruebas"
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_history_name_unique
@@ -4154,7 +4170,7 @@ msgstr "El nombre de la plataforma debe ser único"
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_device_history_name_unique
 msgid "The id must be unique"
-msgstr ""
+msgstr "El Id debe ser único"
 
 #. module: lgps
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
@@ -4543,6 +4559,15 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,help:lgps.field_project_task__repair_id
+#, python-format
+msgid ""
+"When a product it's about treated as warranty, it must have a repair order "
+"process associated."
 msgstr ""
 
 #. module: lgps
