@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <menuitem id="operations_menu" name="Operations" parent="lgps.main_lgps_menu" sequence="10"/>
+  <menuitem id="failures_root_conf_menu" name="Failures Configuration" parent="lgps.lgps_configuration_menu"/>
+  <menuitem id="failures_root_menu" name="Failures Reports" parent="operations_menu"/>
+
+</odoo>

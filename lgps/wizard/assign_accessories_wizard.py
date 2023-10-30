@@ -33,7 +33,8 @@ class AssignAccessoriesWizard(models.TransientModel):
             else:
                 equipo = "No identificado"
 
-            accessory.message_post(body="Accesorio asignado el día: " + today.strftime('%d-%m-%Y') + " al equipo [<strong>" + equipo + "</strong>]")
+            accessory.message_post(body="Accesorio asignado el día: " + today.strftime('%d-%m-%Y')
+                                        + " al equipo [<strong>" + equipo + "</strong>]")
 
         return {}
 

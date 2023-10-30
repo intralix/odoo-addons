@@ -48,6 +48,19 @@
       <xpath expr="//button[@name='action_open_label_layout']" position="attributes">
         <attribute name="groups">lgps.lgps_group_inventory_special_operations</attribute>
       </xpath>
+
     </field>
   </record>
+
+  <record model="ir.actions.server" id="action_link_sales_order">
+     <field name="name">Intx - Link Sales Order</field>
+     <field name="model_id" ref="stock.model_stock_picking"/>
+     <field name="binding_model_id" ref="stock.model_stock_picking"/>
+     <field name="binding_view_types">form</field>
+     <field name="state">code</field>
+     <field name="code">
+         action = records.action_update_device_sale_order()
+     </field>
+ </record>
+
 </odoo>

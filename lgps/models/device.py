@@ -404,6 +404,15 @@ class Device(models.Model):
         tracking=True
     )
 
+    sales_order_id = fields.Many2one(
+        comodel_name="sale.order",
+        ondelete="set null",
+        string=_("Parent Sale Order"),
+        help=_("Realted Sales Order"),
+        index=True,
+        tracking=True,
+    )
+
     def _compute_accessories_count(self):
         for rec in self:
             rec.accessories_count = self.env['lgps.accessory'].search_count(

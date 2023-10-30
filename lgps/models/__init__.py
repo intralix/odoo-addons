@@ -15,4 +15,5 @@ from . import custom_partner
 from . import custom_fsm
 from . import device_history
 from . import custom_help_desk
-
+from . import custom_stocking
+from . import custom_crm_lead
