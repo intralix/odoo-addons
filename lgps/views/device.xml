@@ -56,7 +56,10 @@
                     icon="fa-wrench"
                     type="action"
                     name="%(action_counter_tasks_button)d"
-                    context="{'default_device_id': active_id,'default_partner_id': client_id,'default_name': 'ODT '+current_date+'/'+name}">
+                    context="{'default_device_id': active_id,
+                    'default_partner_id': client_id,
+                    'default_name': 'ODT '+current_date+'/'+name,
+                    'default_parent_sales_order_id': sales_order_id }">
 
               <field string="Services" name="tasks_count" widget="statinfo"/>
             </button>
