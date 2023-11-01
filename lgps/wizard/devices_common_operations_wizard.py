@@ -1244,7 +1244,8 @@ class CommonDevicesOperationsWizard(models.TransientModel):
 
     def set_cellchips_to_deactivate(self, cellchips_list):
         chips = self.sudo().env['lgps.cellchip'].search([('id', 'in', cellchips_list)])
-        chips.write({
-            'to_deactivate': True,
-
-        })
+        for chip in chips:
+            chip.write({
+                'name': chip.name + 'B',
+                'to_deactivate': True,
+            })
