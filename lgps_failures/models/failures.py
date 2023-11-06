@@ -67,7 +67,7 @@ class Failures(models.Model):
     report_date = fields.Date(
         default=fields.Date.today,
         string=_("Report Date"),
-        track_visibility='onchange',
+        tracking=True,
     )
 
     serial_number_id = fields.Many2one(
@@ -98,12 +98,7 @@ class Failures(models.Model):
     time_spent = fields.Float(
         string=_("Time Spent"),
         help='Time spent in solution to this record',
-        track_visibility='onchange'
-    )
-
-    allowed_failure_functionalities_list_ids = fields.Many2many(
-        comodel_name="x",
-        _compute="_compute_allowed_value_ids"
+        tracking=True,
     )
 
     @api.model
