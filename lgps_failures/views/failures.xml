@@ -23,16 +23,13 @@
             <group string="Failure Information">
               <separator/>
               <field name="product_id"/>
-              <field name="failure_symptoms_list_id"/>
-              <field name="failure_functionalities_list_id"/>
-              <field name="failure_components_list_id"/>
-              <field name="failure_root_problem_list_id"/>
+              <field name="repairs_id"/>
+              <field name="serial_number_id"/>
+              <field name="failures_list_id"/>
             </group>
             <group string="More Information">
               <separator/>
               <field name="client_id" readonly="1"/>
-              <field name="repairs_id"/>
-              <field name="serial_number_id"/>
               <field name="report_date" readonly="1"/>
               <field name="manipulation_detected"/>
               <field name="time_spent" attrs="{'invisible': True}" widget="float_time"/>
@@ -76,10 +73,7 @@
         <field name="product_id"/>
         <field name="client_id"/>
         <field name="repairs_id"/>
-        <field name="failure_symptoms_list_id"/>
-        <field name="failure_functionalities_list_id"/>
-        <field name="failure_components_list_id"/>
-        <field name="failure_root_problem_list_id"/>
+        <field name="failures_list_id"/>
         <field name="report_date"/>
       </tree>
     </field>
