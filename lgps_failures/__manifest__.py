@@ -15,10 +15,7 @@
         'security/ir.model.access.csv',
         'views/failures_menu.xml',
         'views/failures.xml',
-        'views/failure_functionalities_list.xml',
-        'views/failure_components_list.xml',
-        'views/failure_root_problem_list.xml',
         'views/failures_odt.xml',
-        'views/failure_symptoms_list.xml'
+        'views/failures_list.xml'
     ],
 }

@@ -36,30 +36,9 @@ class Failures(models.Model):
         tracking=True,
     )
 
-    failure_symptoms_list_id = fields.Many2one(
-        comodel_name="lgps.failure_symptoms_list",
-        string=_("Failure Symptoms List"),
-        ondelete="restrict",
-        index=True,
-    )
-
-    failure_functionalities_list_id = fields.Many2one(
-        comodel_name="lgps.failure_functionalities_list",
-        string=_("Failure Funtionalities List"),
-        ondelete="restrict",
-        index=True,
-    )
-
-    failure_components_list_id = fields.Many2one(
-        comodel_name="lgps.failure_components_list",
-        string=_("Failure Components List"),
-        ondelete="restrict",
-        index=True,
-    )
-
-    failure_root_problem_list_id = fields.Many2one(
-        comodel_name="lgps.failure_root_problem_list",
-        string=_("Failure Root Problem List"),
+    failures_list_id = fields.Many2one(
+        comodel_name="lgps.failures_list",
+        string=_("Failures List"),
         ondelete="restrict",
         index=True,
     )
@@ -76,7 +55,7 @@ class Failures(models.Model):
         ondelete="restrict",
         index=True,
     )
-    # Convertir este campo a una tarea de Field Services
+
     repairs_id = fields.Many2one(
         comodel_name="project.task",
         ondelete="restrict",
@@ -125,65 +104,6 @@ class Failures(models.Model):
          'UNIQUE(name)',
          "The failure id must be unique"),
     ]
-
-    @api.onchange('failure_symptoms_list_id')
-    def _onchange_failure_failure_symptoms_list_id(self):
-        domain = {}
-        if self.failure_symptoms_list_id.name:
-            if re.search('manipulaci', self.failure_symptoms_list_id.name, re.IGNORECASE):
-                self.manipulation_detected = True
-            else:
-                self.manipulation_detected = False
-                self.failure_functionalities_list_id = None
-                self.failure_components_list_id = None
-                self.failure_root_problem_list_id = None
-
-        return domain
-
-    @api.onchange('failure_functionalities_list_id')
-    def _onchange_failure_functionalities_list_id(self):
-        domain = {}
-        if self.failure_functionalities_list_id:
-            list_ids = []
-            values = self.env['lgps.failure_components_list'].search(
-                [('failure_functionalities_list_id', '=', self.failure_functionalities_list_id.id)])
-
-            for value in values:
-                list_ids.append(value.id)
-
-            self._check_no_warranty_rules(self.failure_functionalities_list_id.name)
-            self.failure_components_list_id = []
-            self.failure_root_problem_list_id = []
-
-            domain = {
-                'failure_components_list_id': [('id', 'in', list_ids)],
-            }
-
-        return {'domain': domain}
-
-    @api.onchange('failure_components_list_id')
-    def _onchange_failure_components_list_id(self):
-        domain = {}
-        if self.failure_components_list_id:
-            list_ids = []
-            values = self.env['lgps.failure_root_problem_list'].search(
-                [('failure_components_list_id', '=', self.failure_components_list_id.id)])
-
-            for value in values:
-                list_ids.append(value.id)
-
-            self._check_no_warranty_rules(self.failure_components_list_id.name)
-            self.failure_root_problem_list_id = []
-            domain = {'failure_root_problem_list_id': [('id', 'in', list_ids)]}
-
-        return {'domain': domain}
-
-    @api.onchange('failure_root_problem_list_id')
-    def _onchange_failure_root_problem_list_id(self):
-        if self.failure_root_problem_list_id:
-            self._check_no_warranty_rules(self.failure_root_problem_list_id.name)
-            self._check_if_invalidate(self.failure_root_problem_list_id.invalidate)
-        return
 
     @api.onchange('product_id')
     def onchange_m2o(self):

@@ -14,9 +14,9 @@
                         <tree string="Failures Tree">
                             <field name="name"/>
                             <field name="product_id"/>
-                            <field name="failure_root_problem_list_id"/>
-                            <field name="failure_components_list_id"/>
-                            <field name="failure_functionalities_list_id"/>
+                            <field name="repairs_id"/>
+                            <field name="failures_list_id"/>
+                            <field name="report_date"/>
                         </tree>
                     </field>
                 </page>
