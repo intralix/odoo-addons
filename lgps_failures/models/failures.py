@@ -21,6 +21,10 @@ class Failures(models.Model):
         comodel_name="product.product",
         required=True,
         string=_("Product Type"),
+        domain=[
+            ('sale_ok', '=', True),
+            ('detailed_type', '=', 'product')
+        ],
         ondelete="restrict",
         index=True,
     )
