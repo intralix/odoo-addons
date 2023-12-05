@@ -21,6 +21,11 @@ class FailuresList(models.Model):
         default='New'
     )
 
+    restricted = fields.Boolean(
+        string=_("Restricted Option"),
+        default=False
+    )
+
     def copy(self, default=None):
         default = dict(default or {})
 

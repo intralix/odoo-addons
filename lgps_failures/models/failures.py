@@ -11,6 +11,21 @@ class Failures(models.Model):
     _name = 'lgps.failures'
     _description = "Failures"
 
+    def get_filtered_failures_options(self):
+        selection_list = list()
+
+        if self.env.user.has_group('lgps.lgps_group_quality_operations'):
+            options = self.env['lgps.failures_list'].sudo().search([])
+
+            for option in options:
+                selection_list.append(option.id)
+        else:
+            options = self.env['lgps.failures_list'].sudo().search([('restricted', '=', False)])
+            for option in options:
+                selection_list.append(option.id)
+
+        return selection_list
+
     name = fields.Char(
         required=True,
         string=_("Internal Id"),
@@ -45,6 +60,7 @@ class Failures(models.Model):
         string=_("Failures List"),
         ondelete="restrict",
         index=True,
+        domain=lambda self: [('id', 'in', self.get_filtered_failures_options())]
     )
 
     report_date = fields.Date(
@@ -139,4 +155,3 @@ class Failures(models.Model):
             if invalidate:
                 self.manipulation_detected = True
         return
-

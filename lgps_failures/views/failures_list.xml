@@ -21,6 +21,7 @@
             <group string="List Info">
               <separator/>
               <field name="code"/>
+              <field name="restricted"/>
               <field name="name"/>
             </group>
         </sheet>
@@ -46,6 +47,7 @@
       <tree string="Failure symptoms List Tree">
         <field name="code"/>
         <field name="name"/>
+        <field name="restricted"/>
       </tree>
     </field>
   </record>

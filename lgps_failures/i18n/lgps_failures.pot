@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-24 18:47+0000\n"
-"PO-Revision-Date: 2023-11-24 18:47+0000\n"
+"POT-Creation-Date: 2023-12-05 18:17+0000\n"
+"PO-Revision-Date: 2023-12-05 18:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: code:addons/lgps_failures/models/failures_list.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__name
 #, python-format
 msgid "Failure"
 msgstr ""
@@ -117,7 +116,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: code:addons/lgps_failures/models/failures.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_list_id
 #: model:ir.ui.menu,name:lgps_failures.failures_list_menu
 #, python-format
 msgid "Failures List"
@@ -136,6 +134,11 @@ msgstr ""
 #. module: lgps_failures
 #: model:ir.model,name:lgps_failures.model_lgps_failures_list
 msgid "Failures list"
+msgstr ""
+
+#. module: lgps_failures
+#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__name
+msgid "Falla"
 msgstr ""
 
 #. module: lgps_failures
@@ -284,6 +287,11 @@ msgid "List Info"
 msgstr ""
 
 #. module: lgps_failures
+#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_list_id
+msgid "Lista de Fallas"
+msgstr ""
+
+#. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_main_attachment_id
 msgid "Main Attachment"
 msgstr ""
@@ -417,6 +425,13 @@ msgid "Responsible User"
 msgstr ""
 
 #. module: lgps_failures
+#: code:addons/lgps_failures/models/failures_list.py:0
+#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__restricted
+#, python-format
+msgid "Restricted Option"
+msgstr ""
+
+#. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_has_sms_error
 msgid "SMS Delivery error"
 msgstr ""
@@ -498,11 +513,16 @@ msgid "Website communication history"
 msgstr ""
 
 #. module: lgps_failures
+#: model:ir.actions.act_window,name:lgps_failures.failures_list_action
+msgid "failures"
+msgstr ""
+
+#. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.failures_tree_view
 msgid "failures Tree"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.actions.act_window,name:lgps_failures.failures_list_action
-msgid "failures_list"
+#: model:ir.actions.act_window,name:lgps_failures.failures_list_list_action
+msgid "lgps_failures_list"
 msgstr ""
