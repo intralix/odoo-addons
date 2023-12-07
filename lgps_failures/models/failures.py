@@ -34,7 +34,6 @@ class Failures(models.Model):
 
     product_id = fields.Many2one(
         comodel_name="product.product",
-        required=True,
         string=_("Product Type"),
         domain=[
             ('sale_ok', '=', True),
