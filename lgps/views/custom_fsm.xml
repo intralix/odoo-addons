@@ -41,7 +41,10 @@
         <page string="Repair Order" name="Repair Order" attrs="{'invisible':[('is_warranty','!=', True)]}">
           <group>
               <group>
-                <field name="repair_id"/>
+                <field
+                        name="repair_id"
+                        options="{'no_create': False, 'no_create_edit':False}"
+                        context="{'default_partner_id': partner_id}"/>
                       <!-- attrs="{'required':[('is_warranty','=', True)]}"-->
               </group>
           </group>
