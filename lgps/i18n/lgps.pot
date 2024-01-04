@@ -6,19 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 05:25+0000\n"
-"PO-Revision-Date: 2023-10-29 05:25+0000\n"
+"POT-Creation-Date: 2024-01-04 03:09+0000\n"
+"PO-Revision-Date: 2024-01-04 03:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: lgps
-#: model:ir.actions.server,name:lgps.action_link_sales_order
-msgid "(Intx) Link Sales Order"
-msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__sale_subscription__billing_cycle__01
@@ -343,6 +338,13 @@ msgid "Acc. History"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__accepted
+#, python-format
+msgid "Accepted"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard__accessory_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__accessory_ids
 msgid "Accesorios"
@@ -361,6 +363,20 @@ msgstr ""
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Accessories Count"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__accessories_installation_operation
+#, python-format
+msgid "Accessories installation operation"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__accessories_installation_service
+#, python-format
+msgid "Accessories installation service"
 msgstr ""
 
 #. module: lgps
@@ -513,6 +529,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__emails
 #, python-format
 msgid "Additional Emails"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__administration
+#, python-format
+msgid "Administration"
 msgstr ""
 
 #. module: lgps
@@ -692,6 +715,11 @@ msgstr ""
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Borrowed"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__bounce_spam
+msgid "Bounce/Spam"
 msgstr ""
 
 #. module: lgps
@@ -914,6 +942,7 @@ msgstr ""
 #: code:addons/lgps/models/accesory_history.py:0
 #: code:addons/lgps/models/accessory.py:0
 #: code:addons/lgps/models/device_history.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__client
 #, python-format
 msgid "Client"
 msgstr ""
@@ -1017,6 +1046,11 @@ msgstr ""
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #, python-format
 msgid "Comments"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Commissions"
 msgstr ""
 
 #. module: lgps
@@ -1568,6 +1602,13 @@ msgid "Dueño del Chip"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__dvr_installation_operation
+#, python-format
+msgid "Dvr/Cameras installation operation"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
 msgid "Económico"
 msgstr ""
@@ -1644,6 +1685,11 @@ msgstr ""
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "End Forced Plan Date"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__sent
+msgid "Enviado"
 msgstr ""
 
 #. module: lgps
@@ -1881,6 +1927,13 @@ msgid "Finalizado"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__finance
+#, python-format
+msgid "Finance"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_form_view
 msgid "Finish Tracking"
 msgstr ""
@@ -1901,8 +1954,34 @@ msgid "Fleetrun"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__float_assembly_operation
+#, python-format
+msgid "Float assembly operation"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__float_assembly_service
+#, python-format
+msgid "Float assembly service"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__float_disassembly_service
+#, python-format
+msgid "Float disassembly service"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__fold
 msgid "Fold"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__follow_up
+msgid "Follow Up"
 msgstr ""
 
 #. module: lgps
@@ -1997,6 +2076,13 @@ msgid "Fuel"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__fuel_mgmt
+#, python-format
+msgid "Fuel Mgmt"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Fuel Tank One"
@@ -2012,6 +2098,20 @@ msgstr ""
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Fuel Tank Two"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__fuel_tank_calibration_operation
+#, python-format
+msgid "Fuel tank calibration operation"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__fuel_tank_calibration_service
+#, python-format
+msgid "Fuel tank calibration service"
 msgstr ""
 
 #. module: lgps
@@ -2037,6 +2137,13 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "GPS Devices to Process"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__general_mgmt
+#, python-format
+msgid "General Mgmt"
 msgstr ""
 
 #. module: lgps
@@ -2071,6 +2178,27 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.platform_list_form_view
 msgid "Gps Platform list Form"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__gps_installation_operation
+#, python-format
+msgid "Gps installation operation"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__gps_installation_service
+#, python-format
+msgid "Gps installation service"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__gps_reinstallation_service
+#, python-format
+msgid "Gps reinstallation service"
 msgstr ""
 
 #. module: lgps
@@ -2396,6 +2524,11 @@ msgid "Intx"
 msgstr ""
 
 #. module: lgps
+#: model:ir.actions.server,name:lgps.action_link_sales_order
+msgid "Intx - Link Sales Order"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model,name:lgps.model_lgps_accessory_history
 msgid "Intx Accessories logs Internal Module"
 msgstr ""
@@ -2510,6 +2643,18 @@ msgid "LGPS / Sale Order Special Operations"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__lin
+msgid "LIN"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__lin_connection
+#, python-format
+msgid "LIN Connection"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history____last_update
 #: model:ir.model.fields,field_description:lgps.field_lgps_add_accessories_wizard____last_update
@@ -2571,6 +2716,36 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__lead
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__lead
+#, python-format
+msgid "Lead"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_crm_lead_form_view
+msgid "Lead Gen Data"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__lead_job_department
+msgid "Lead Job Department"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model,name:lgps.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__legal
+#, python-format
+msgid "Legal"
+msgstr ""
+
+#. module: lgps
 #: model:ir.module.category,name:lgps.module_lgps_category
 msgid "Lgps"
 msgstr ""
@@ -2601,6 +2776,13 @@ msgid "Lgps / Wizards "
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__life_cycle_stage
+#, python-format
+msgid "Life Cycle Stage"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Line Account"
@@ -2616,6 +2798,13 @@ msgstr ""
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Line Terms"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__linked_in_profile
+#, python-format
+msgid "LinkedIn Profile"
 msgstr ""
 
 #. module: lgps
@@ -2693,6 +2882,20 @@ msgid "Main Attachment"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__maintenance
+#, python-format
+msgid "Maintenance"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__maintenance_service
+#, python-format
+msgid "Maintenance service"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/device_history.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_history__reason__bad_service
@@ -2761,6 +2964,13 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__microphone
 msgid "Micrófono"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__mobile_two
+#, python-format
+msgid "Mobile 2"
 msgstr ""
 
 #. module: lgps
@@ -2849,6 +3059,11 @@ msgid "Needs Deactivation"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__negative_reply
+msgid "Negative Reply"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_partner__special_negotiations
 #: model:ir.model.fields,field_description:lgps.field_res_users__special_negotiations
 msgid "Negociaciones Especiales"
@@ -2928,6 +3143,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_sale_subscription__device_nick
 #, python-format
 msgid "Nick"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__no_contact
+msgid "No Contact"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__no_replied
+#, python-format
+msgid "No replied"
 msgstr ""
 
 #. module: lgps
@@ -3068,6 +3295,13 @@ msgid "ODT relacionada"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__ops
+#, python-format
+msgid "OPS"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__observations
 msgid "Observaciones"
 msgstr ""
@@ -3081,6 +3315,13 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__taken
 msgid "Ocupado"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__on_campaign
+#, python-format
+msgid "On Campaing"
 msgstr ""
 
 #. module: lgps
@@ -3112,6 +3353,11 @@ msgid "Operation Reason"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
+msgid "Operations"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Operative Status"
@@ -3137,6 +3383,24 @@ msgstr ""
 #: code:addons/lgps/models/tracking.py:0
 #, python-format
 msgid "Origin"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#, python-format
+msgid "Others"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__others
+msgid "Otros"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__owner_ceo_founder
+#, python-format
+msgid "Owner/CEO/Founder"
 msgstr ""
 
 #. module: lgps
@@ -3192,6 +3456,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_tracking__category__permanent
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_tracking__category__uninterrupted_
 msgid "Permanente"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields,field_description:lgps.field_crm_lead__personal_email
+#, python-format
+msgid "Personal Email"
 msgstr ""
 
 #. module: lgps
@@ -3428,6 +3699,13 @@ msgid "Purchase Date"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__quality
+#, python-format
+msgid "Quality"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/models/device_stage.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
@@ -3561,6 +3839,7 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
 #, python-format
 msgid "Repair Order"
 msgstr ""
@@ -3577,6 +3856,11 @@ msgstr ""
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Replacement"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__replied
+msgid "Replied"
 msgstr ""
 
 #. module: lgps
@@ -3653,6 +3937,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__scanner
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__scanner
 msgid "Scanner"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__security
+#, python-format
+msgid "Security"
 msgstr ""
 
 #. module: lgps
@@ -3747,6 +4038,12 @@ msgid "Sensor de desenganche"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#, python-format
+msgid "Sent"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__sequence
 msgid "Sequence"
 msgstr ""
@@ -3760,6 +4057,7 @@ msgid "Serial Number"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lmmx_fsm_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Services"
@@ -4062,6 +4360,13 @@ msgid "Sustitución por nuevo"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_crm_lead.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__ti
+#, python-format
+msgid "TI"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Taken"
@@ -4125,6 +4430,20 @@ msgstr ""
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Temperature"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__temperature_sensor_installation_operation
+#, python-format
+msgid "Temperature sensor installation operation"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__temperature_sensor_installation_service
+#, python-format
+msgid "Temperature sensor installation service"
 msgstr ""
 
 #. module: lgps
@@ -4435,6 +4754,13 @@ msgstr ""
 #: code:addons/lgps/models/tracking.py:0
 #, python-format
 msgid "Uninterrupted"
+msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__unistallation_service
+#, python-format
+msgid "Unistallation service"
 msgstr ""
 
 #. module: lgps
