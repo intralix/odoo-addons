@@ -11,30 +11,6 @@
         </xpath>
 
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-        <page string="Commissions">
-          <group>
-            <group string="Operations">
-              <field name="gps_installation_operation"/>
-              <field name="accessories_installation_operation"/>
-              <field name="temperature_sensor_installation_operation"/>
-              <field name="dvr_installation_operation"/>
-              <field name="fuel_tank_calibration_operation"/>
-              <field name="float_assembly_operation"/>
-            </group>
-            <group string="Services">
-              <field name="gps_installation_service"/>
-              <field name="gps_reinstallation_service"/>
-              <field name="temperature_sensor_installation_service"/>
-              <field name="float_assembly_service"/>
-              <field name="fuel_tank_calibration_service"/>
-              <field name="maintenance_service"/>
-              <field name="unistallation_service"/>
-              <field name="float_disassembly_service"/>
-              <field name="accessories_installation_service"/>
-            </group>
-          </group>
-
-        </page>
           <page string="More Data" name="More Data">
             <group>
               <group>

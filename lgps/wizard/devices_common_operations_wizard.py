@@ -1188,7 +1188,10 @@ class CommonDevicesOperationsWizard(models.TransientModel):
                 subscription_close_stage = default_stage
 
         for subscription in subscriptions:
-            subscription.write({'stage_id': subscription_close_stage.id})
+            subscription.write({
+                'stage_id': subscription_close_stage.id,
+                'recurring_next_date': fields.Datetime.now()
+            })
             if close:
                 if comment:
                     body = 'Se cierra suscripción por motivo de: <br>' + comment

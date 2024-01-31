@@ -1,4 +1,7 @@
 from odoo import api, models, fields, _
+from odoo.exceptions import UserError
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class LgpsFSM(models.Model):
@@ -65,81 +68,6 @@ class LgpsFSM(models.Model):
         tracking=True,
     )
 
-    gps_installation_operation = fields.Boolean(
-        default=False,
-        string=_("Gps installation operation"),
-    )
-
-    accessories_installation_operation = fields.Boolean(
-        default=False,
-        string=_("Accessories installation operation"),
-    )
-
-    temperature_sensor_installation_operation = fields.Boolean(
-        default=False,
-        string=_("Temperature sensor installation operation"),
-    )
-
-    dvr_installation_operation = fields.Boolean(
-        default=False,
-        string=_("Dvr/Cameras installation operation"),
-    )
-
-    fuel_tank_calibration_operation = fields.Boolean(
-        default=False,
-        string=_("Fuel tank calibration operation"),
-    )
-
-    float_assembly_operation = fields.Boolean(
-        default=False,
-        string=_("Float assembly operation"),
-    )
-
-    gps_installation_service = fields.Boolean(
-        default=False,
-        string=_("Gps installation service"),
-    )
-
-    gps_reinstallation_service = fields.Boolean(
-        default=False,
-        string=_("Gps reinstallation service"),
-    )
-
-    temperature_sensor_installation_service = fields.Boolean(
-        default=False,
-        string=_("Temperature sensor installation service"),
-    )
-
-    float_assembly_service = fields.Boolean(
-        default=False,
-        string=_("Float assembly service"),
-    )
-
-    fuel_tank_calibration_service = fields.Boolean(
-        default=False,
-        string=_("Fuel tank calibration service"),
-    )
-
-    maintenance_service = fields.Boolean(
-        default=False,
-        string=_("Maintenance service"),
-    )
-
-    unistallation_service = fields.Boolean(
-        default=False,
-        string=_("Unistallation service"),
-    )
-
-    float_disassembly_service = fields.Boolean(
-        default=False,
-        string=_("Float disassembly service"),
-    )
-
-    accessories_installation_service = fields.Boolean(
-        default=False,
-        string=_("Accessories installation service"),
-    )
-    
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}
@@ -158,6 +86,6 @@ class LgpsFSM(models.Model):
     def name_get(self):
         result = []
         for rec in self:
-            result.append((rec.id, '%s - %s' % (rec.name, rec.project_id.name)))
+            result.append((rec.id,'%s - %s' % (rec.name,rec.project_id.name)))
 
         return result
