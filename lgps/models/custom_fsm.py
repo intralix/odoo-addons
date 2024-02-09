@@ -55,6 +55,10 @@ class LgpsFSM(models.Model):
         default=False
     )
 
+    guarantee_justification = fields.Html(
+        string=_("Guarantee Justification"),
+    )
+
     warranty_list_id = fields.Many2one(
         comodel_name="lgps.fsm_warranties_list",
         string=_("Warranty Reason List"),
