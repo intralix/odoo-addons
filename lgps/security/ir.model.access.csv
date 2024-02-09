@@ -36,3 +36,11 @@ device_log_guest,Device Log guest,model_lgps_device_history,lgps_group_guest,1,0
 device_stage_user,Device Stage User,model_lgps_device_stage,lgps_group_guest,1,0,0,0
 device_stage_manager, Device Stage Manager,model_lgps_device_stage,lgps_group_manager,1,1,1,1
 lgps_create_contacts,Create Contacts,model_res_partner,lgps_group_create_contacts,1,1,1,1
+fsm_services_type_list_manager,Service Type list Manager,model_lgps_fsm_services_type_list,lgps_group_manager,1,1,1,1
+fsm_services_type_list_read_all,Service Type list All,model_lgps_fsm_services_type_list,lgps_group_user,1,1,1,0
+fsm_services_type_list_maintainer,Service Type list Maintainer,model_lgps_fsm_services_type_list,lgps_group_maintainer,1,1,0,0
+fsm_services_type_list_guest,Service Type list Guest,model_lgps_fsm_services_type_list,lgps_group_guest,1,0,0,0
+fsm_warranties_list_manager,Service Warranty list Manager,model_lgps_fsm_warranties_list,lgps_group_manager,1,1,1,1
+fsm_warranties_list_read_all,Service Warranty list All,model_lgps_fsm_warranties_list,lgps_group_user,1,1,1,0
+fsm_warranties_list_maintainer,Service Warranty list Maintainer,model_lgps_fsm_warranties_list,lgps_group_maintainer,1,1,0,0
+fsm_warranties_list_guest,Service Warranty list Guest,model_lgps_fsm_warranties_list,lgps_group_guest,1,0,0,0

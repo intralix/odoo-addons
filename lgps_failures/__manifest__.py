@@ -16,6 +16,9 @@
         'views/failures_menu.xml',
         'views/failures.xml',
         'views/failures_odt.xml',
-        'views/failures_list.xml'
+        'views/failures_list.xml',
+        'views/failures_categories_list.xml',
+        'views/failures_root_problem_list.xml',
+        'views/failures_product.xml',
     ],
 }

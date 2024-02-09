@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class Failures(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.failures'
-    _description = "Failures"
+    _description = _("Failures")
 
     def get_filtered_failures_options(self):
         selection_list = list()
@@ -54,12 +54,27 @@ class Failures(models.Model):
         tracking=True,
     )
 
+    failures_categories_list_id = fields.Many2one(
+        comodel_name="lgps.failures_categories_list",
+        string=_("Failures Categories List"),
+        ondelete="restrict",
+        index=True,
+        # domain=lambda self: [('id', 'in', self.get_filtered_failures_options())]
+    )
+
     failures_list_id = fields.Many2one(
         comodel_name="lgps.failures_list",
         string=_("Failures List"),
         ondelete="restrict",
         index=True,
-        domain=lambda self: [('id', 'in', self.get_filtered_failures_options())]
+        # domain=lambda self: [('id', 'in', self.get_filtered_failures_options())]
+    )
+
+    failures_root_problem_list_id = fields.Many2one(
+        comodel_name="lgps.failure_root_problem_list",
+        string=_("Failures Root Problem List"),
+        ondelete="restrict",
+        index=True,
     )
 
     report_date = fields.Date(
@@ -136,6 +151,55 @@ class Failures(models.Model):
                 list_ids.append(value.id)
 
             domain = {'serial_number_id': [('id', 'in', list_ids)]}
+
+        return {'domain': domain}
+
+    @api.onchange('failures_categories_list_id')
+    def _onchange_failures_categories_list_id(self):
+        domain = {}
+        _logger.warning('failures_categories_list_id: %s', self.failures_categories_list_id)
+        if self.failures_categories_list_id:
+            list_ids = []
+            product_ids = []
+            values = self.env['lgps.failures_list'].search([('failures_categories_list_id', '=', self.failures_categories_list_id.id)])
+            _logger.warning('values: %s', values)
+            for value in values:
+                list_ids.append(value.id)
+
+            products = self.env['product.template'].search([('categories_list_id', '=', self.failures_categories_list_id.id)])
+            for product in products:
+                product_ids.append(product.id)
+
+            self.product_id = []
+            self.failures_list_id = []
+            self.failures_root_problem_list_id = []
+
+            domain = {
+                'failures_list_id': [('id', 'in', list_ids)],
+                'product_id': [('id', 'in', product_ids)],
+            }
+
+        return {'domain': domain}
+
+    @api.onchange('failures_list_id')
+    def _onchange_failures_list_id(self):
+        domain = {}
+        _logger.warning('failures_list_id: %s', self.failures_list_id)
+        if self.failures_list_id:
+            list_ids = []
+            values = self.env['lgps.failure_root_problem_list'].search(
+                [('failures_list_ids', 'in', self.failures_list_id.id)])
+
+            _logger.warning('values: %s', values)
+
+            for value in values:
+                list_ids.append(value.id)
+
+            self.failures_root_problem_list_id = []
+
+            domain = {
+                'failures_root_problem_list_id': [('id', 'in', list_ids)],
+            }
 
         return {'domain': domain}
 

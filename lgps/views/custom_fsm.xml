@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record model="ir.ui.view" id="custom_lmmx_fsm_form_view">
+  <record model="ir.ui.view" id="custom_lgps_fsm_form_view">
     <field name="name">lgps.custom.fsm</field>
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
@@ -8,6 +8,9 @@
         <xpath expr="//field[@name='user_ids']" position="after">
           <field name="device_id"/>
           <field name="nick"/>
+          <field name="service_type_list_id"
+                 options="{'no_quick_create':True,'no_create_edit':True}"
+                 context="{'order_display': 'name asc' }"/>
         </xpath>
 
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
@@ -33,8 +36,7 @@
         <page string="Warranty" name="Warranty" groups="lgps.lgps_group_quality_operations">
           <group>
             <field name="is_warranty"/>
-            <field name="guarantee_justification"
-                   widget="html"
+            <field name="warranty_list_id"
                    attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
           </group>
         </page>
@@ -50,6 +52,43 @@
           </group>
         </page>
         </xpath>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="custom_lgps_fsm_tree_view">
+    <field name="name">lgps.custom.fsm_tree_view</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="industry_fsm.project_task_view_list_fsm"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="nick"/>
+        <field name="device_id"/>
+        <field name="sale_order_id"/>
+      </xpath>
+
+      <xpath expr="//field[@name='project_id']" position="after">
+        <field name="service_type_list_id"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="lgps_custom_fsm_project_task_view_search_inherit" model="ir.ui.view">
+    <field name="name">lgps.custom_fsm_project_task_view_search_inherit</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="industry_fsm.project_task_view_search_fsm"/>
+    <field name="arch" type="xml">
+      <xpath expr="//search" position="inside">
+        <field name="nick"/>
+        <field name="device_id"/>
+        <field name="sale_order_id"/>
+      </xpath>
+
+      <xpath expr="//search/group" position="inside">
+        <separator />
+        <filter string="Device" name="Device" context="{'group_by':'device_id'}"/>
+        <filter string="Nick" name="Nick" context="{'group_by':'nick'}"/>
+        <filter string="Sales Order" name="Sales Order" context="{'group_by':'sale_order_id'}"/>
+      </xpath>
     </field>
   </record>
 </odoo>

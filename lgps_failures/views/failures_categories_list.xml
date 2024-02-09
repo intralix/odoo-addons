@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ 
+  <record id="seq_failures_categories_list" model="ir.sequence">
+    <field name="name">Failures Categories Sequence</field>
+    <field name="code">lgps.failures_categories_list</field>
+    <field name="prefix">SCAT</field>
+    <field name="padding">5</field>
+    <field name="company_id" eval="False"/>
+  </record>
+
+  <record model="ir.ui.view" id="failures_categories_list_form_view">
+    <field name="name">failures_categories_list.form</field>
+    <field name="model">lgps.failures_categories_list</field>
+    <field name="arch" type="xml">
+      <form string="Failures Categories Form">
+        <header>
+
+        </header>
+        <sheet>
+            <group string="List Info">
+              <separator/>
+              <field name="code"/>
+              <field name="name"/>
+            </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="failures_categories_list_search_view">
+    <field name="name">failures_categories_list.search</field>
+    <field name="model">lgps.failures_categories_list</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="code"/>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="failures_categories_list_tree_view">
+    <field name="name">failures_categories_list.tree</field>
+    <field name="model">lgps.failures_categories_list</field>
+    <field name="arch" type="xml">
+      <tree string="Failure Categories List Tree">
+        <field name="code"/>
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="failures_categories_list_action">
+    <field name="name">lgps_failures_categories_list</field>
+    <field name="res_model">lgps.failures_categories_list</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem
+          id="failures_categories_list_menu"
+          sequence="10"
+          name="Failures Categories List"
+          parent="failures_root_conf_menu"
+          action="failures_categories_list_action"/>
+</odoo>

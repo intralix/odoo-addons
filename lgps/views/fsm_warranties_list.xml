@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="fsm_warranties_list_form_view">
+    <field name="name">fsm_warranties_list.form</field>
+    <field name="model">lgps.fsm_warranties_list</field>
+    <field name="arch" type="xml">
+      <form string="FSM Warranties List Form">
+        <sheet>
+          <group>
+            <group string="Warranty Info">
+              <separator/>
+              <field name="name"/>
+              <field name="active"/>
+            </group>
+          </group>
+        </sheet>
+
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+          <field name="activity_ids" widget="mail_activity"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="fsm_warranties_list_search_view">
+    <field name="name">fsm_warranties_list.search</field>
+    <field name="model">lgps.fsm_warranties_list</field>
+    <field name="arch" type="xml">
+      <search>
+        <filter string="Activos" name="active_fsm_warranties_list"  domain="[('active', '=', True)]"/>
+        <separator/>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="fsm_warranties_list_tree_view">
+    <field name="name">fsm_warranties_list.tree</field>
+    <field name="model">lgps.fsm_warranties_list</field>
+    <field name="arch" type="xml">
+      <tree string="fsm_warranties_list List Tree" editable="top">
+        <field name="name"/>
+        <field name="active"/>
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="fsm_warranties_list_action">
+    <field name="name">Fsm Warranties List</field>
+    <field name="res_model">lgps.fsm_warranties_list</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- Menu items -->
+  <menuitem
+          id="fsm_warranties_list_menu"
+          name="Fsm Warranties List"
+          parent="fsm_root_conf_menu"
+          action="fsm_warranties_list_action"/>
+</odoo>

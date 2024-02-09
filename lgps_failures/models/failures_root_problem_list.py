@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-
 from odoo import api, models, fields, _
 
 
-class FailuresList(models.Model):
+class FailuresRootProblemList(models.Model):
 
-    _name = 'lgps.failures_list'
-    _description = "Failures list"
+    _name = 'lgps.failure_root_problem_list'
+    _description = _("Root Problems List")
+    _order = "name asc"
 
     name = fields.Char(
         required=True,
-        string=_("Failure"),
+        string=_("Root Problem"),
     )
 
     code = fields.Char(
@@ -21,16 +21,15 @@ class FailuresList(models.Model):
         default='New'
     )
 
-    failures_categories_list_id = fields.Many2one(
-        comodel_name="lgps.failures_categories_list",
-        string=_("Failures Categories List"),
-        ondelete='restrict',
-        required=True
+    # Si la linea esta ocupada o no
+    invalidate = fields.Boolean(
+        default=False,
+        string=_("Voids Warranty"),
     )
 
-    restricted = fields.Boolean(
-        string=_("Restricted Option"),
-        default=False
+    failures_list_ids = fields.Many2many(
+        comodel_name="lgps.failures_list",
+        string=_("Root Problems Applied to"),
     )
 
     def copy(self, default=None):
@@ -45,10 +44,10 @@ class FailuresList(models.Model):
 
         default['name'] = new_name
 
-        return super(FailuresList, self).copy(default)
+        return super(FailuresRootProblemList, self).copy(default)
 
     @api.model
     def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.failures_list') or _('New')
+        seq = self.env['ir.sequence'].next_by_code('lgps.failure_root_problem_list') or _('New')
         vals['code'] = seq
-        return super(FailuresList, self).create(vals)
+        return super(FailuresRootProblemList, self).create(vals)

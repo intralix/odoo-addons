@@ -13,7 +13,7 @@
     <field name="name">failures_list.form</field>
     <field name="model">lgps.failures_list</field>
     <field name="arch" type="xml">
-      <form string="Symptoms Form">
+      <form string="Failures List Form">
         <header>
 
         </header>
@@ -23,6 +23,7 @@
               <field name="code"/>
               <field name="restricted"/>
               <field name="name"/>
+              <field name="failures_categories_list_id"/>
             </group>
         </sheet>
       </form>
@@ -36,6 +37,7 @@
       <search>
         <field name="code"/>
         <field name="name"/>
+        <field name="failures_categories_list_id"/>
       </search>
     </field>
   </record>
@@ -44,10 +46,11 @@
     <field name="name">failures_list.tree</field>
     <field name="model">lgps.failures_list</field>
     <field name="arch" type="xml">
-      <tree string="Failure symptoms List Tree">
+      <tree string="Failure List Tree">
         <field name="code"/>
         <field name="name"/>
         <field name="restricted"/>
+        <field name="failures_categories_list_id"/>
       </tree>
     </field>
   </record>
@@ -60,6 +63,7 @@
 
   <menuitem
           id="failures_list_menu"
+          sequence="20"
           name="Failures List"
           parent="failures_root_conf_menu"
           action="failures_list_list_action"/>

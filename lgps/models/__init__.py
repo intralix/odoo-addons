@@ -17,3 +17,5 @@ from . import device_history
 from . import custom_help_desk
 from . import custom_stocking
 from . import custom_crm_lead
+from . import fsm_services_type_list
+from . import fsm_warranties_list

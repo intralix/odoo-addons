@@ -22,13 +22,16 @@
           <group>
             <group string="Failure Information">
               <separator/>
-              <field name="product_id"/>
-              <field name="repairs_id"/>
-              <field name="serial_number_id"/>
-              <field name="failures_list_id"/>
+              <field name="failures_categories_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+              <field name="product_id" options="{'no_create':True,'no_create_edit':True}"/>
+              <field name="serial_number_id" options="{'no_create':True,'no_create_edit':True}"/>
+              <field name="failures_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+              <field name="failures_root_problem_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+
             </group>
             <group string="More Information">
               <separator/>
+              <field name="repairs_id" options="{'no_create':True,'no_create_edit':True}"/>
               <field name="client_id" readonly="1"/>
               <field name="report_date" readonly="1"/>
               <field name="manipulation_detected"/>
@@ -68,12 +71,14 @@
     <field name="name">failures.tree</field>
     <field name="model">lgps.failures</field>
     <field name="arch" type="xml">
-      <tree string="failures Tree">
+      <tree string="Failures Tree">
         <field name="name"/>
         <field name="product_id"/>
         <field name="client_id"/>
         <field name="repairs_id"/>
+        <field name="failures_categories_list_id"/>
         <field name="failures_list_id"/>
+        <field name="failures_root_problem_list_id"/>
         <field name="report_date"/>
       </tree>
     </field>
@@ -85,5 +90,9 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-<menuitem id="failures_menu" name="Failures" parent="failures_root_menu" action="failures_list_action"/>
+<menuitem
+        id="failures_menu"
+        name="Failures"
+        parent="failures_root_menu"
+        action="failures_list_action"/>
 </odoo>

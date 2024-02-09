@@ -6,16 +6,17 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Failures">
+                <page string="Related Failures">
                     <field name="failures_ids" context="{
                     'default_client_id': partner_id,
                     'default_repairs_id': active_id
                     }">
-                        <tree string="Failures Tree">
+                        <tree string="Related Failures Tree">
                             <field name="name"/>
                             <field name="product_id"/>
-                            <field name="repairs_id"/>
+                            <field name="serial_number_id"/>
                             <field name="failures_list_id"/>
+                            <field name="failures_root_problem_list_id"/>
                             <field name="report_date"/>
                         </tree>
                     </field>

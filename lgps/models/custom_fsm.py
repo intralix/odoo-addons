@@ -55,8 +55,13 @@ class LgpsFSM(models.Model):
         default=False
     )
 
-    guarantee_justification = fields.Html(
-        string=_("Guarantee Justification"),
+    warranty_list_id = fields.Many2one(
+        comodel_name="lgps.fsm_warranties_list",
+        string=_("Warranty Reason List"),
+        ondelete="set null",
+        index=True,
+        domain=[('active', '=', True)],
+        tracking=True,
     )
 
     repair_id = fields.Many2one(
@@ -65,6 +70,15 @@ class LgpsFSM(models.Model):
         string=_("Repair Order"),
         help=_("When a product it's about treated as warranty, it must have a repair order process associated."),
         index=True,
+        tracking=True,
+    )
+
+    service_type_list_id = fields.Many2one(
+        comodel_name="lgps.fsm_services_type_list",
+        string=_("Service Type List"),
+        ondelete="set null",
+        index=True,
+        domain=[('active', '=', True)],
         tracking=True,
     )
 
@@ -83,9 +97,27 @@ class LgpsFSM(models.Model):
 
             return {'domain': domain}
 
-    def name_get(self):
-        result = []
-        for rec in self:
-            result.append((rec.id,'%s - %s' % (rec.name,rec.project_id.name)))
+    # def name_get(self):
+    #     result = []
+    #     for rec in self:
+    #         result.append((rec.id,'%s - %s' % (rec.name,rec.project_id.name)))
+    #
+    #     return result
 
-        return result
+    @api.model
+    def create(self, values):
+        # _logger.warning('values: %s', values)
+        today_dt = fields.Datetime.context_timestamp(self, fields.Datetime.now())
+        service = self.env['lgps.fsm_services_type_list'].search([['id', '=', values['service_type_list_id']]], limit=1)
+        device_name = ''
+
+        if 'name' in values and values['name']:
+            if 'device_id' in values and values['device_id']:
+                device = self.env['lgps.device'].search([['id', '=', values['device_id']]], limit=1)
+                device_name = device.nick if device.nick else device.name
+
+        values['name'] = service.short_code + '/' + device_name + '/' + today_dt.strftime("%Y/%m/%d/%H%M")
+
+        res = super(LgpsFSM, self).create(values)
+        # here you can do accordingly
+        return res

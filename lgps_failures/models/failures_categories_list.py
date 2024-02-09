@@ -3,14 +3,15 @@
 from odoo import api, models, fields, _
 
 
-class FailuresList(models.Model):
+class FailuresCategoriesList(models.Model):
 
-    _name = 'lgps.failures_list'
-    _description = "Failures list"
+    _name = 'lgps.failures_categories_list'
+    _description = "Failures Categories list"
+    _order = 'name asc'
 
     name = fields.Char(
         required=True,
-        string=_("Failure"),
+        string=_("Failure Category"),
     )
 
     code = fields.Char(
@@ -19,18 +20,6 @@ class FailuresList(models.Model):
         required=True,
         copy=False,
         default='New'
-    )
-
-    failures_categories_list_id = fields.Many2one(
-        comodel_name="lgps.failures_categories_list",
-        string=_("Failures Categories List"),
-        ondelete='restrict',
-        required=True
-    )
-
-    restricted = fields.Boolean(
-        string=_("Restricted Option"),
-        default=False
     )
 
     def copy(self, default=None):
@@ -45,10 +34,10 @@ class FailuresList(models.Model):
 
         default['name'] = new_name
 
-        return super(FailuresList, self).copy(default)
+        return super(FailuresCategoriesList, self).copy(default)
 
     @api.model
     def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.failures_list') or _('New')
+        seq = self.env['ir.sequence'].next_by_code('lgps.failures_categories_list') or _('New')
         vals['code'] = seq
-        return super(FailuresList, self).create(vals)
+        return super(FailuresCategoriesList, self).create(vals)

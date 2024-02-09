@@ -54,5 +54,7 @@
         'views/custom_stocking.xml',
         'views/custom_sale_order.xml',
         'views/custom_crm_lead.xml',
+        'views/fsm_services_type_list.xml',
+        'views/fsm_warranties_list.xml',
     ],
 }
