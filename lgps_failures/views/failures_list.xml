@@ -23,7 +23,7 @@
               <field name="code"/>
               <field name="restricted"/>
               <field name="name"/>
-              <field name="failures_categories_list_id"/>
+              <field name="failures_categories_list_id" options="{'no_open':True,'no_create':True,'no_create_edit':True}"/>
             </group>
         </sheet>
       </form>
