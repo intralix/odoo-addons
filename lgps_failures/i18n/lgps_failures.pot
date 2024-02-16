@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 21:59+0000\n"
-"PO-Revision-Date: 2024-02-08 21:59+0000\n"
+"POT-Creation-Date: 2024-02-16 18:47+0000\n"
+"PO-Revision-Date: 2024-02-16 18:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,11 @@ msgstr ""
 #. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
 msgid "Add internal notes..."
+msgstr ""
+
+#. module: lgps_failures
+#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__invalidate
+msgid "Anula Garantía"
 msgstr ""
 
 #. module: lgps_failures
@@ -101,6 +106,14 @@ msgstr ""
 #: code:addons/lgps_failures/models/failures_list.py:0
 #, python-format
 msgid "Failure"
+msgstr ""
+
+#. module: lgps_failures
+#: code:addons/lgps_failures/models/failure_product.py:0
+#: model:ir.model.fields,field_description:lgps_failures.field_product_product__categories_list_id
+#: model:ir.model.fields,field_description:lgps_failures.field_product_template__categories_list_id
+#, python-format
+msgid "Failure Categories"
 msgstr ""
 
 #. module: lgps_failures
@@ -163,6 +176,11 @@ msgstr ""
 #. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
 msgid "Failures Form"
+msgstr ""
+
+#. module: lgps_failures
+#: model_terms:ir.ui.view,arch_db:lgps_failures.custom_failures_product_form_view
+msgid "Failures Group"
 msgstr ""
 
 #. module: lgps_failures
@@ -281,9 +299,9 @@ msgid "Installed On"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
 #: code:addons/lgps_failures/models/failures_categories_list.py:0
 #: code:addons/lgps_failures/models/failures_list.py:0
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Internal Code"
 msgstr ""
@@ -373,6 +391,7 @@ msgid "Lista de Fallas"
 msgstr ""
 
 #. module: lgps_failures
+#: model:ir.model,name:lgps_failures.model_lgps_failure_root_problem_list
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_root_problem_list_id
 msgid "Lista de Problemas Raíz"
 msgstr ""
@@ -408,10 +427,10 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
 #: code:addons/lgps_failures/models/failures.py:0
 #: code:addons/lgps_failures/models/failures_categories_list.py:0
 #: code:addons/lgps_failures/models/failures_list.py:0
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "New"
 msgstr ""
@@ -501,6 +520,11 @@ msgid "Problemas aplicables a"
 msgstr ""
 
 #. module: lgps_failures
+#: model:ir.model,name:lgps_failures.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: lgps_failures
 #: code:addons/lgps_failures/models/failures.py:0
 #, python-format
 msgid "Product Type"
@@ -539,7 +563,7 @@ msgid "Restricted Option"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Root Problem"
 msgstr ""
@@ -550,7 +574,7 @@ msgid "Root Problem List"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Root Problems Applied to"
 msgstr ""
@@ -561,8 +585,7 @@ msgid "Root Problems Failures Form"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
-#: model:ir.model,name:lgps_failures.model_lgps_failure_root_problem_list
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Root Problems List"
 msgstr ""
@@ -634,8 +657,7 @@ msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_root_problem_list.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__invalidate
+#: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Voids Warranty"
 msgstr ""
