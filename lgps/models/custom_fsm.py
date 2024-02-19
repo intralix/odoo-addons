@@ -115,10 +115,11 @@ class LgpsFSM(models.Model):
         if service:
             short_code = service.short_code
 
-        if 'name' in values and values['name']:
-            if 'device_id' in values and values['device_id']:
-                device = self.env['lgps.device'].search([['id', '=', values['device_id']]], limit=1)
-                if device and device.nick != '':
+        # if 'name' in values and values['name']:
+        if 'device_id' in values and values['device_id']:
+            device = self.env['lgps.device'].search([['id', '=', values['device_id']]], limit=1)
+            if device:
+                if device.nick:
                     device_name = device.nick
                 else:
                     device_name = device.name
