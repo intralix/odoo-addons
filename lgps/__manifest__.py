@@ -31,6 +31,7 @@
         'wizard/devices_common_operations.xml',
         'wizard/assign_accessories_wizard.xml',
         'wizard/cellchip_wizard.xml',
+        'wizard/fsm_uninstalled_material_wizard.xml',
         'data/device_stage.xml',
         'views/main_menu.xml',
         'views/res_config_settings_views.xml',
@@ -56,5 +57,6 @@
         'views/custom_crm_lead.xml',
         'views/fsm_services_type_list.xml',
         'views/fsm_warranties_list.xml',
+        'views/fsm_material_line.xml',
     ],
 }

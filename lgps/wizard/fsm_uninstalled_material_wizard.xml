@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="uninstalled_material_wizard" model="ir.ui.view">
+    <field name="name">Uninstalled Material Wizard</field>
+    <field name="model">lgps.uninstalled_material_wizard</field>
+    <field name="arch" type="xml">
+      <form string="Add Material">
+        <group>
+          <p class="text-primary"> Ingresa el material que vas a regresar al almacén:</p>
+        </group>
+        <group>
+          <field name="stock_move_ids"
+                 widget="one2many"
+                 nolabel="1"
+                 context="{'default_project_task_id': active_id}"/>
+        </group>
+        <footer>
+          <button name="button_process" type="object" string="Assign" class="oe_highlight" default_focus="1"/>
+          <button special="cancel" string="Cancel" class="oe_link"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_view_uninstalled_material_wizard" model="ir.actions.act_window">
+    <field name="name">Set Uninstalled Material</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lgps.uninstalled_material_wizard</field>
+    <field name="view_id" ref="uninstalled_material_wizard"/>
+    <field name="binding_model_id" ref="industry_fsm.model_project_task"/>
+    <field name="target">new</field>
+  </record>
+</odoo>

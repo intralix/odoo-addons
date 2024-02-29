@@ -11,43 +11,48 @@
           <field name="service_type_list_id"
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
+          <field name="has_uninstalled_material"/>
         </xpath>
 
+      <xpath expr="//field[@name='date_last_stage_update']" position="after">
+        <field
+                name="show_timesheet_in_report"
+                string="Show Timesheet in Report"
+                force_save="True"
+                attrs="{}"
+                readonly="1"
+                help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
+        <field
+                name="parent_sales_order_id"
+                options="{&quot;no_create&quot;:true}"
+                help="Pedido de Ventas que Originó la instalación"/>
+      </xpath>
+
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-          <page string="More Data" name="More Data">
-            <group>
-              <group>
-                <field
-                        name="show_timesheet_in_report"
-                        string="Show Timesheet in Report"
-                        force_save="True"
-                        attrs="{}"
-                        readonly="1"
-                        help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
-              </group>
-              <group>
-                <field
-                        name="parent_sales_order_id"
-                        options="{&quot;no_create&quot;:true}"
-                        help="Pedido de Ventas que Originó la instalación"/>
-              </group>
-            </group>
-          </page>
-        <page string="Warranty" name="Warranty" groups="lgps.lgps_group_quality_operations">
+        <page string="Material Removed" name="uninstalled_material"
+              attrs="{'invisible':[('has_uninstalled_material','!=', True)], 'required':[('is_warranty','=', True)]}">
           <group>
-            <field name="is_warranty"/>
-            <field name="warranty_list_id"
-                   attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
+            <field name="fsm_material_ids" nolabel="1" context="{'default_project_task_id': active_id}" readonly="1"/>
           </group>
         </page>
-        <page string="Repair Order" name="Repair Order" attrs="{'invisible':[('is_warranty','!=', True)]}">
+        <page string="Warranty" name="warranty" groups="lgps.lgps_group_quality_operations">
+          <group>
+            <group>
+              <field name="is_warranty"/>
+            </group>
+            <group>
+              <field name="warranty_list_id"
+                   attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
+            </group>
+          </group>
+        </page>
+        <page string="Repair Order" name="repair_orders" attrs="{'invisible':[('is_warranty','!=', True)]}">
           <group>
               <group>
                 <field
                         name="repair_id"
                         options="{'no_create': False, 'no_create_edit':False}"
                         context="{'default_partner_id': partner_id}"/>
-                      <!-- attrs="{'required':[('is_warranty','=', True)]}"-->
               </group>
           </group>
         </page>

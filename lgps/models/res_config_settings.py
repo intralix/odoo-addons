@@ -86,6 +86,12 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='lgps.add_reactivation_device_wizard.default_channel',
     )
 
+    operation_type_in_fsm = fields.Many2one(
+        'stock.picking.type',
+        string=_("Default Operation Type in FSM Records"),
+        config_parameter='lgps.default_fsm_operation',
+    )
+
     def set_values(self):
         super(ResConfigSettings, self).set_values()
 

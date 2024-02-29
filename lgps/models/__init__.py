@@ -19,3 +19,4 @@ from . import custom_stocking
 from . import custom_crm_lead
 from . import fsm_services_type_list
 from . import fsm_warranties_list
+from . import fsm_material_line

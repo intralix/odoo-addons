@@ -44,3 +44,8 @@ fsm_warranties_list_manager,Service Warranty list Manager,model_lgps_fsm_warrant
 fsm_warranties_list_read_all,Service Warranty list All,model_lgps_fsm_warranties_list,lgps_group_user,1,1,1,0
 fsm_warranties_list_maintainer,Service Warranty list Maintainer,model_lgps_fsm_warranties_list,lgps_group_maintainer,1,1,0,0
 fsm_warranties_list_guest,Service Warranty list Guest,model_lgps_fsm_warranties_list,lgps_group_guest,1,0,0,0
+fsm_material_line_manager,Fsm Material Line Manager,model_lgps_fsm_material_line,lgps_group_manager,1,1,1,1
+fsm_material_line_read_all,Fsm Material Line All,model_lgps_fsm_material_line,lgps_group_user,1,1,1,0
+fsm_material_line_maintainer,Fsm Material Line Maintainer,model_lgps_fsm_material_line,lgps_group_maintainer,1,1,0,0
+fsm_material_line_guest,Fsm Material Line Guest,model_lgps_fsm_material_line,lgps_group_guest,1,0,0,0
+fsm_uninstalled_material_wizard, Unistalled Material Wizard Manager,model_lgps_uninstalled_material_wizard,lgps_group_wizard_manager,1,1,1,1

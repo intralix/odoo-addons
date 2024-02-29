@@ -90,6 +90,27 @@ class LgpsFSM(models.Model):
         tracking=True,
     )
 
+    fsm_material_ids = fields.One2many(
+        comodel_name="lgps.fsm_material_line",
+        inverse_name="project_task_id",
+        string=_("Uninstalled Material"),
+        index=True,
+        tracking=True,
+    )
+
+    stock_picking_id = fields.Many2one(
+        comodel_name="stock.picking",
+        string=_("Stock Moves"),
+        ondelete="set null",
+        index=True,
+        tracking=True,
+    )
+
+    has_uninstalled_material = fields.Boolean(
+        default=False,
+        string=_("Has Uninstalled Material"),
+    )
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}
