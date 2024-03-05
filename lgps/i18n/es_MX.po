@@ -2132,13 +2132,13 @@ msgstr "Materiales"
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.fsm_material_line_list_action
 msgid "Fsm Material Lines"
-msgstr "Material Utilizado"
+msgstr "Material Desinstalado"
 
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.fsm_services_type_list_action
 #: model:ir.ui.menu,name:lgps.fsm_services_type_list_menu
 msgid "Fsm Services Type List"
-msgstr ""
+msgstr "Fsm - Tipos de Servicios"
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_material_line.py:0
@@ -2151,7 +2151,7 @@ msgstr "Servicio Externo"
 #: model:ir.actions.act_window,name:lgps.fsm_warranties_list_action
 #: model:ir.ui.menu,name:lgps.fsm_warranties_list_menu
 msgid "Fsm Warranties List"
-msgstr ""
+msgstr "Fsm - Razones de Garantía"
 
 #. module: lgps
 #: code:addons/lgps/models/device.py:0

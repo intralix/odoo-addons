@@ -11,28 +11,29 @@
           <field name="service_type_list_id"
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
-          <field name="has_uninstalled_material"/>
+          <field name="has_uninstalled_material" attrs="{'invisible':True}"/>
         </xpath>
 
-      <xpath expr="//field[@name='date_last_stage_update']" position="after">
-        <field
+        <xpath expr="//field[@name='date_last_stage_update']" position="after">
+          <field
                 name="show_timesheet_in_report"
                 string="Show Timesheet in Report"
                 force_save="True"
                 attrs="{}"
                 readonly="1"
                 help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
-        <field
+          <field
                 name="parent_sales_order_id"
                 options="{&quot;no_create&quot;:true}"
                 help="Pedido de Ventas que Originó la instalación"/>
 
-        <field name="stock_picking_id"/>
-      </xpath>
+          <field name="stock_picking_id"/>
+        </xpath>
 
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-        <page string="Material Removed" name="uninstalled_material"
-              attrs="{'invisible':[('has_uninstalled_material','!=', True)], 'required':[('is_warranty','=', True)]}">
+        <page string="Material Removed"
+              name="uninstalled_material"
+              attrs="{'invisible':[('has_uninstalled_material','!=', True)]}">
           <group>
             <field name="fsm_material_ids" nolabel="1" context="{'default_project_task_id': active_id}" readonly="1"/>
           </group>

@@ -20,15 +20,13 @@ class UninstalledMaterialWizard(models.TransientModel):
 
         active_model = self._context.get('active_model')
         active_record = self.env[active_model].browse(self._context.get('active_ids'))
+        lgps_config = self.sudo().env['ir.config_parameter']
+        default_operation = lgps_config.get_param('lgps.default_fsm_operation')
 
-        # for line in self.stock_move_ids:
-        #     _logger.warning('self.stock_move_ids: %s', line)
-        #     r = self.stock_move_ids.search([
-        #         ('name', '=', line.name),
-        #         ('product_id', '=', line.product_id.id)
-        #          ], limit=1)
-        #     # r = self.stock_move_ids.name_search(name=line.name, args=None, operator='ilike', limit=1)
-        #     _logger.error('searched thing: %s', r)
+        if not default_operation:
+            raise UserError(
+                _('Debes configurar una operación para enviar el material al almacén de revisión correctamente')
+            )
 
         # TODO : Revisar si es necesario primero crear cada registro del mòdulo stock.move y luego relacionar
         # al registro de stock.picking
@@ -38,22 +36,9 @@ class UninstalledMaterialWizard(models.TransientModel):
         # else:
         #     raise UserError(_('active_records %s', active_record.partner_id.name))
         #
-        _logger.warning('self.stock_move_ids: %s', self.stock_move_ids)
-        # if not self.stock_move_ids:
-        #     raise UserError(
-        #         _('No has registrado información')
-        #     )
-        # raise UserError(_('Something here should stop'))
 
-        lgps_config = self.sudo().env['ir.config_parameter']
-        default_operation = lgps_config.get_param('lgps.default_fsm_operation')
-
-        if not default_operation:
-            raise UserError(
-                _('Debes configurar una operación para enviar el material al almacén virtual de revisión correctamente')
-            )
-
-        _logger.warning('default_operation: %s', default_operation)
+        #_logger.warning('self.stock_move_ids: %s', self.stock_move_ids)
+        #_logger.warning('default_operation: %s', default_operation)
 
         default_operation = self.sudo().env['stock.picking.type'].search([('id', '=', default_operation)])
         # _logger.warning('default_operation: %s', default_operation)
@@ -72,7 +57,10 @@ class UninstalledMaterialWizard(models.TransientModel):
 
         # En este punto creamos el Pick
         stock_picking_id = stock_picking.create(stock_picking_values)
-        active_record.write({'stock_picking_id': stock_picking_id.id})
+        active_record.write({
+            'stock_picking_id': stock_picking_id.id,
+            'has_uninstalled_material': True,
+        })
 
         move_ids_without_package = []
         remove = re.compile('<.*?>')
