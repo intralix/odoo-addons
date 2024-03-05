@@ -26,6 +26,8 @@
                 name="parent_sales_order_id"
                 options="{&quot;no_create&quot;:true}"
                 help="Pedido de Ventas que Originó la instalación"/>
+
+        <field name="stock_picking_id"/>
       </xpath>
 
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
@@ -51,7 +53,6 @@
               <group>
                 <field
                         name="repair_id"
-                        options="{'no_create': False, 'no_create_edit':False}"
                         context="{'default_partner_id': partner_id}"/>
               </group>
           </group>

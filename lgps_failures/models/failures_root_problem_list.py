@@ -21,7 +21,6 @@ class FailuresRootProblemList(models.Model):
         default='New'
     )
 
-    # Si la linea esta ocupada o no
     invalidate = fields.Boolean(
         default=False,
         string=_("Voids Warranty"),

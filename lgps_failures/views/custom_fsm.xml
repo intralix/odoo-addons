@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_lgps_fsm_fail_form_view">
+    <field name="name">lgps.custom.fsm.fail</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='has_uninstalled_material']" position="after">
+          <field name="repair_ids"
+                 options="{'no_quick_create':True,'no_create_edit':True}"
+                 context="{'order_display': 'name asc' }"/>
+        </xpath>
+    </field>
+  </record>
+</odoo>

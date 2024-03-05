@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-16 18:46+0000\n"
-"PO-Revision-Date: 2024-02-16 18:46+0000\n"
+"POT-Creation-Date: 2024-03-03 03:39+0000\n"
+"PO-Revision-Date: 2024-03-03 03:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,48 +16,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_needaction
-msgid "Action Needed"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_ids
-msgid "Activities"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_exception_decoration
-msgid "Activity Exception Decoration"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_state
-msgid "Activity State"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_type_icon
-msgid "Activity Type Icon"
-msgstr ""
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
-msgid "Add internal notes..."
-msgstr "Añadir notas internas"
-
-#. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__invalidate
 msgid "Anula Garantía"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_attachment_count
-msgid "Attachment Count"
+#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__name
+msgid "Categoría de Fallas"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__name
-msgid "Categoría de Fallas"
+#: model:ir.model.fields,field_description:lgps_failures.field_product_product__categories_list_id
+#: model:ir.model.fields,field_description:lgps_failures.field_product_template__categories_list_id
+msgid "Categorías de Falla"
 msgstr ""
 
 #. module: lgps_failures
@@ -67,7 +38,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__create_uid
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__create_uid
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__create_uid
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__create_uid
 msgid "Created by"
@@ -75,7 +45,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__create_date
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__create_date
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__create_date
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__create_date
 msgid "Created on"
@@ -92,11 +61,10 @@ msgstr ""
 #: code:addons/lgps_failures/models/failures.py:0
 #, python-format
 msgid "Detected Manipulation"
-msgstr "Manipulación detectada"
+msgstr "Manipulación Detectada"
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__display_name
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__display_name
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__display_name
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__display_name
 msgid "Display Name"
@@ -110,8 +78,6 @@ msgstr "Falla"
 
 #. module: lgps_failures
 #: code:addons/lgps_failures/models/failure_product.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_product_product__categories_list_id
-#: model:ir.model.fields,field_description:lgps_failures.field_product_template__categories_list_id
 #, python-format
 msgid "Failure Categories"
 msgstr "Categorías de Falla"
@@ -128,11 +94,6 @@ msgid "Failure Category"
 msgstr "Categoría de Fallas"
 
 #. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
-msgid "Failure Information"
-msgstr "Información de la falla"
-
-#. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.failures_list_tree_view
 msgid "Failure List Tree"
 msgstr "Listado de fallas"
@@ -143,9 +104,8 @@ msgid "Failure Root Problem List Tree"
 msgstr "Listado de Problemas Raíz"
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_odt.py:0
-#: code:addons/lgps_failures/models/failures.py:0
-#: model:ir.ui.menu,name:lgps_failures.failures_menu
+#: code:addons/lgps_failures/models/failure_repair.py:0
+#: model_terms:ir.ui.view,arch_db:lgps_failures.custom_repairs_form_view
 #, python-format
 msgid "Failures"
 msgstr "Fallas"
@@ -172,11 +132,6 @@ msgstr "Lista de categorías de fallas"
 #: model:ir.ui.menu,name:lgps_failures.failures_root_conf_menu
 msgid "Failures Configuration"
 msgstr "Configuración de Fallas"
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
-msgid "Failures Form"
-msgstr "Formulario de Fallas"
 
 #. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.custom_failures_product_form_view
@@ -207,11 +162,6 @@ msgid "Failures Root Problem List"
 msgstr "Lista de Problemas Raíz"
 
 #. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_tree_view
-msgid "Failures Tree"
-msgstr "Listado de Fallas"
-
-#. module: lgps_failures
 #: model:ir.model,name:lgps_failures.model_lgps_failures_list
 msgid "Failures list"
 msgstr "Lista de Fallas"
@@ -222,81 +172,16 @@ msgid "Falla"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model,name:lgps_failures.model_lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_project_task__failures_ids
+#: model:ir.model.fields,field_description:lgps_failures.field_project_task__repair_ids
 msgid "Fallas"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__report_date
-msgid "Fecha de Reporte"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_follower_ids
-msgid "Followers"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_partner_ids
-msgid "Followers (Partners)"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__activity_type_icon
-msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__has_message
-msgid "Has Message"
-msgstr ""
-
-#. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__id
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__id
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__id
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__id
 msgid "ID"
 msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_exception_icon
-msgid "Icon"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__activity_exception_icon
-msgid "Icon to indicate an exception activity."
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__name
-msgid "Id Interno"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_needaction
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_unread
-msgid "If checked, new messages require your attention."
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_has_error
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_has_sms_error
-msgid "If checked, some messages have a delivery error."
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__client_id
-msgid "Instalado En"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Installed On"
-msgstr "Instalado en"
 
 #. module: lgps_failures
 #: code:addons/lgps_failures/models/failures_categories_list.py:0
@@ -304,28 +189,10 @@ msgstr "Instalado en"
 #: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Internal Code"
-msgstr "Código Interno"
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Internal Id"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Internal Notes"
-msgstr "Notas Internas"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_is_follower
-msgid "Is Follower"
 msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list____last_update
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures____last_update
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list____last_update
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list____last_update
 msgid "Last Modified on"
@@ -333,7 +200,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__write_uid
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__write_uid
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__write_uid
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__write_uid
 msgid "Last Updated by"
@@ -341,7 +207,6 @@ msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failure_root_problem_list__write_date
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__write_date
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_categories_list__write_date
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__write_date
 msgid "Last Updated on"
@@ -380,133 +245,33 @@ msgid "List Info"
 msgstr "Información"
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_categories_list_id
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__failures_categories_list_id
+#: model:ir.model.fields,field_description:lgps_failures.field_repair_order__failures_categories_list_id
 msgid "Lista de Categorías de fallas"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_list_id
+#: model:ir.model.fields,field_description:lgps_failures.field_repair_order__failures_list_id
 msgid "Lista de Fallas"
 msgstr ""
 
 #. module: lgps_failures
 #: model:ir.model,name:lgps_failures.model_lgps_failure_root_problem_list
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__failures_root_problem_list_id
+#: model:ir.model.fields,field_description:lgps_failures.field_repair_order__failures_root_problem_list_id
 msgid "Lista de Problemas Raíz"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__manipulation_detected
+#: model:ir.model.fields,field_description:lgps_failures.field_repair_order__manipulation_detected
 msgid "Manipulación detectada"
 msgstr ""
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_has_error
-msgid "Message Delivery error"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_ids
-msgid "Messages"
-msgstr ""
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
-msgid "More Information"
-msgstr "Más información"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__my_activity_date_deadline
-msgid "My Activity Deadline"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
 #: code:addons/lgps_failures/models/failures_categories_list.py:0
 #: code:addons/lgps_failures/models/failures_list.py:0
 #: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "New"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_calendar_event_id
-msgid "Next Activity Calendar Event"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_date_deadline
-msgid "Next Activity Deadline"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_summary
-msgid "Next Activity Summary"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_type_id
-msgid "Next Activity Type"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__internal_notes
-msgid "Notas internas"
-msgstr ""
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.failures_form_view
-msgid "Notes"
-msgstr "Notas"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_needaction_counter
-msgid "Number of Actions"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_has_error_counter
-msgid "Number of errors"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_has_error_counter
-msgid "Number of messages with delivery error"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__message_unread_counter
-msgid "Number of unread messages"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__serial_number_id
-msgid "Número de serie"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__repairs_id
-#, python-format
-msgid "ODT"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failure_odt.py:0
-#: model:ir.model.fields,field_description:lgps_failures.field_project_task__repairs_count
-#, python-format
-msgid "ODTs"
 msgstr ""
 
 #. module: lgps_failures
@@ -525,31 +290,9 @@ msgid "Product Template"
 msgstr "Plantilla de producto"
 
 #. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Product Type"
-msgstr "Tipo de Producto"
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.custom_failures_odt_form_view
-msgid "Related Failures"
-msgstr "Fallas Relacionadas"
-
-#. module: lgps_failures
-#: model_terms:ir.ui.view,arch_db:lgps_failures.custom_failures_odt_form_view
-msgid "Related Failures Tree"
-msgstr "Listado de Fallas Relacionadas"
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Report Date"
-msgstr "Fecha del Reporte"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__activity_user_id
-msgid "Responsible User"
-msgstr "Usuario Responsable"
+#: model:ir.model,name:lgps_failures.model_repair_order
+msgid "Repair Order"
+msgstr "Orden de reparación"
 
 #. module: lgps_failures
 #: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures_list__restricted
@@ -560,13 +303,13 @@ msgstr ""
 #: code:addons/lgps_failures/models/failures_list.py:0
 #, python-format
 msgid "Restricted Option"
-msgstr "Restringir opción"
+msgstr "Resteingir opción"
 
 #. module: lgps_failures
 #: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Root Problem"
-msgstr ""
+msgstr "Cauza Raíz"
 
 #. module: lgps_failures
 #: model:ir.ui.menu,name:lgps_failures.failure_root_problem_list_menu
@@ -577,7 +320,7 @@ msgstr "Lista de Problemas Raíz"
 #: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Root Problems Applied to"
-msgstr "Problemas Raíz aplicados a"
+msgstr "Problemas aplicados a"
 
 #. module: lgps_failures
 #: model_terms:ir.ui.view,arch_db:lgps_failures.failure_root_problem_list_form_view
@@ -591,96 +334,20 @@ msgid "Root Problems List"
 msgstr "Lista de Problemas Raíz"
 
 #. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Serial Number"
-msgstr "Número de Serie"
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__activity_state
-msgid ""
-"Status based on activities\n"
-"Overdue: Due date is already passed\n"
-"Today: Activity date is today\n"
-"Planned: Future activities."
-msgstr ""
-
-#. module: lgps_failures
 #: model:ir.model,name:lgps_failures.model_project_task
 msgid "Task"
 msgstr "Tarea"
 
 #. module: lgps_failures
-#: model:ir.model.constraint,message:lgps_failures.constraint_lgps_failures_name_unique
-msgid "The failure id must be unique"
-msgstr "El identificador de la falla debe ser único"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__time_spent
-msgid "Tiempo dedicado"
-msgstr ""
-
-#. module: lgps_failures
-#: code:addons/lgps_failures/models/failures.py:0
-#, python-format
-msgid "Time Spent"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__time_spent
-msgid "Time spent in solution to this record"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__product_id
-msgid "Tipo de Producto"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__activity_exception_decoration
-msgid "Type of the exception activity on record."
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_unread
-msgid "Unread Messages"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr ""
-
-#. module: lgps_failures
 #: code:addons/lgps_failures/models/failures_root_problem_list.py:0
 #, python-format
 msgid "Voids Warranty"
-msgstr "Anula la garantía"
-
-#. module: lgps_failures
-#: model:ir.model.fields,field_description:lgps_failures.field_lgps_failures__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: lgps_failures
-#: model:ir.model.fields,help:lgps_failures.field_lgps_failures__website_message_ids
-msgid "Website communication history"
-msgstr ""
+msgstr "Anula Garantía"
 
 #. module: lgps_failures
 #: model:ir.actions.act_window,name:lgps_failures.failure_root_problem_list_action
 msgid "failure_root_problem_list"
 msgstr "Lista de Problemas Raíz"
-
-#. module: lgps_failures
-#: model:ir.actions.act_window,name:lgps_failures.failures_list_action
-msgid "failures"
-msgstr "Fallas"
 
 #. module: lgps_failures
 #: model:ir.actions.act_window,name:lgps_failures.failures_categories_list_action

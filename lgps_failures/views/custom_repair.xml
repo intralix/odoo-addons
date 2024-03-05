@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="custom_repairs_form_view">
+        <field name="name">repair.order.lgps.odt</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form"/>
+        <field name="arch" type="xml">
+
+       <xpath expr="//notebook" position="inside">
+        <page string="Failures">
+            <group>
+                <field name="failures_categories_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+                <field name="failures_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+                <field name="failures_root_problem_list_id" options="{'no_create':True,'no_create_edit':True}"/>
+            </group>
+        </page>
+      </xpath>
+    </field>
+    </record>
+</odoo>

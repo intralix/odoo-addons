@@ -1,8 +1,4 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-failure_manager,Failure manager,model_lgps_failures,lgps_failures_group_manager,1,1,1,1
-failure_read_all,Failure all,model_lgps_failures,lgps_failures_group_user,1,1,1,0
-failure_maintainer,Failure Mantainer,model_lgps_failures,lgps_failures_group_maintainer,1,1,0,0
-failure_guest,Failure Guest,model_lgps_failures,lgps_failures_group_guest,1,0,0,0
 failures_list_manager,Failures List Manager,model_lgps_failures_list,lgps_failures_group_manager,1,1,1,1
 failures_list_read_all,Failures List all,model_lgps_failures_list,lgps_failures_group_user,1,1,1,0
 failures_list_maintainer,Failures List Mantainer,model_lgps_failures_list,lgps_failures_group_maintainer,1,1,0,0
