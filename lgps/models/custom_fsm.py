@@ -7,8 +7,8 @@ _logger = logging.getLogger(__name__)
 class LgpsFSM(models.Model):
     _inherit = 'project.task'
 
-    def _default_service_type_list(self):
-        return self.env['lgps.fsm_services_type_list'].search([('id', '=', 1)], limit=1).id
+    # def _default_service_type_list(self):
+    #     return self.env['lgps.fsm_services_type_list'].search([('id', '=', 1)], limit=1).id
 
     device_id = fields.Many2one(
         comodel_name="lgps.device",
@@ -83,7 +83,7 @@ class LgpsFSM(models.Model):
     service_type_list_id = fields.Many2one(
         comodel_name="lgps.fsm_services_type_list",
         string=_("Service Type List"),
-        default=_default_service_type_list,
+        # default=_default_service_type_list,
         ondelete="set null",
         index=True,
         domain=[('active', '=', True)],

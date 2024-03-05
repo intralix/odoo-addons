@@ -6,7 +6,7 @@
     'application': True,
     'website': 'https://www.intralix.com',
     'category': 'Uncategorized',
-    'version': '0.0.6',
+    'version': '0.0.7',
     'license': 'LGPL-3',
     'depends': [
         'base',
