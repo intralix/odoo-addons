@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="fsm_stype_list_service" model="lgps.fsm_services_type_list">
+        <field name="name">Servicio</field>
+        <field name="short_code">SERV</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_stype_list_new_installation" model="lgps.fsm_services_type_list">
+        <field name="name">Nueva Instalación</field>
+        <field name="short_code">NIN</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_stype_list_migration" model="lgps.fsm_services_type_list">
+        <field name="name">Migración</field>
+        <field name="short_code">MIGR</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_stype_list_uninstallation" model="lgps.fsm_services_type_list">
+        <field name="name">Desintalación</field>
+        <field name="short_code">DINS</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_stype_list_mto" model="lgps.fsm_services_type_list">
+        <field name="name">Manteinimiento Preventivo</field>
+        <field name="short_code">MTOP</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_stype_list_reinstallation" model="lgps.fsm_services_type_list">
+        <field name="name">Reinstalación</field>
+        <field name="short_code">RINS</field>
+        <field name="active">1</field>
+    </record>
+</odoo>

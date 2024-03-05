@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="fsm_wlist_service_defect" model="lgps.fsm_warranties_list">
+        <field name="name">Defecto de fábrica en el producto</field>
+        <field name="active">1</field>
+    </record>
+
+    <record id="fsm_wlist_service_binst" model="lgps.fsm_warranties_list">
+        <field name="name">Mala instalación (defecto en la mano de obra)</field>
+        <field name="active">1</field>
+    </record>
+
+</odoo>

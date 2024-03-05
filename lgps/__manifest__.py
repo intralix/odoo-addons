@@ -23,7 +23,9 @@
         'industry_fsm',
     ],
     'demo':[
-        'data/device_demo.xml'
+        'data/device_demo.xml',
+        'data/fsm_service_type_list.xml',
+        'data/fsm_service_warranty_list',
     ],
     'data': [
         'security/security.xml',

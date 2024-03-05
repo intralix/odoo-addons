@@ -128,7 +128,6 @@ class LgpsFSM(models.Model):
 
     @api.model
     def create(self, values):
-        # _logger.warning('values: %s', values)
         short_code = 'SER'
         device_name = 'NA'
         today_dt = fields.Datetime.context_timestamp(self, fields.Datetime.now())
