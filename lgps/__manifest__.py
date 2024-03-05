@@ -24,8 +24,6 @@
     ],
     'demo':[
         'data/device_demo.xml',
-        'data/fsm_service_type_list.xml',
-        'data/fsm_service_warranty_list',
     ],
     'data': [
         'security/security.xml',
@@ -35,6 +33,8 @@
         'wizard/cellchip_wizard.xml',
         'wizard/fsm_uninstalled_material_wizard.xml',
         'data/device_stage.xml',
+        'data/fsm_service_type_list.xml',
+        'data/fsm_service_warranty_list',
         'views/main_menu.xml',
         'views/res_config_settings_views.xml',
         'reports/subscription_details.xml',
