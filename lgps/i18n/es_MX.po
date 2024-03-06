@@ -3027,7 +3027,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
 msgid "Material Removed"
-msgstr "Material Utlizado"
+msgstr "Material Desinstalado"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.view_fsm_material_line_tree

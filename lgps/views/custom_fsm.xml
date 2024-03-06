@@ -5,6 +5,18 @@
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
+
+      <xpath expr="//header" position="inside">
+        <button
+                name="button_create_stock_picking"
+                type="object"
+                string="Material a Revisión"
+                class="oe_highlight"
+                attrs="{'invisible' : &quot;[('has_uninstalled_material', '=', False)]&quot;}"
+                confirm="¿Estás seguro que desas crear un traslado para el material desinstalado?"
+        />
+      </xpath>
+
         <xpath expr="//field[@name='user_ids']" position="after">
           <field name="device_id"/>
           <field name="nick"/>
@@ -12,6 +24,7 @@
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
           <field name="has_uninstalled_material" attrs="{'invisible':True}"/>
+          <field name="has_material_picking_done" attrs="{'invisible':True}"/>
         </xpath>
 
         <xpath expr="//field[@name='date_last_stage_update']" position="after">
