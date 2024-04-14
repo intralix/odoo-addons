@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models, fields, _
-from odoo.exceptions import UserError
-import logging
-_logger = logging.getLogger(__name__)
-import re
 
 
 class UninstalledMaterialWizard(models.TransientModel):
