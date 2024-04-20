@@ -6,6 +6,7 @@
     'website': 'https://www.intralix.com',
     'category': 'Uncategorized',
     'version': '0.0.5',
+    'license': 'LGPL-3',
     'depends': [
         'base',
         'lgps'        

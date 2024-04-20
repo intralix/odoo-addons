@@ -62,7 +62,7 @@
             </group>
           </group>
         </page>
-        <page string="Repair Order" name="repair_orders" attrs="{'invisible':[('is_warranty','!=', True)]}">
+        <page string="Repair Order" name="repair_orders">
           <group>
               <group>
                 <field

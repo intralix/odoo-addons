@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-03 03:43+0000\n"
-"PO-Revision-Date: 2024-03-03 03:43+0000\n"
+"POT-Creation-Date: 2024-04-16 17:39+0000\n"
+"PO-Revision-Date: 2024-04-16 17:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -545,7 +545,7 @@ msgstr "Emails Adicionales"
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__administration
 #, python-format
 msgid "Administration"
-msgstr ""
+msgstr "Administración"
 
 #. module: lgps
 #: code:addons/lgps/models/custom_partner.py:0
@@ -1284,12 +1284,12 @@ msgstr ""
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_fsm_services_type_list
 msgid "Custom FSM Services Type List Module"
-msgstr ""
+msgstr "Lista de Tipo de Servicios"
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_fsm_warranties_list
 msgid "Custom FSM Warranties List Module"
-msgstr ""
+msgstr "Lista de Motivos de Garantía"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_partner__custom_status
@@ -1327,11 +1327,11 @@ msgid "Deactivation Information"
 msgstr "Información de la Baja"
 
 #. module: lgps
-#: code:addons/lgps/wizard/fsm_uninstalled_material_wizard.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
 #, python-format
 msgid ""
-"Debes configurar una operación para enviar el material al almacén virtual de"
-" revisión correctamente"
+"Debes configurar una operación para enviar el material al almacén de "
+"revisión correctamente"
 msgstr ""
 
 #. module: lgps
@@ -1401,7 +1401,6 @@ msgstr "Plantilla default para suscripción por hibernación"
 
 #. module: lgps
 #: code:addons/lgps/models/res_config_settings.py:0
-#: model:ir.model.fields,field_description:lgps.field_res_config_settings__operation_type_in_fsm
 #, python-format
 msgid "Default Operation Type in FSM Records"
 msgstr "Operación por default en Servicios en Campo"
@@ -2132,17 +2131,16 @@ msgstr "Materiales"
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.fsm_material_line_list_action
 msgid "Fsm Material Lines"
-msgstr "Material Desinstalado"
+msgstr "Material Utilizado"
 
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.fsm_services_type_list_action
 #: model:ir.ui.menu,name:lgps.fsm_services_type_list_menu
 msgid "Fsm Services Type List"
-msgstr "Fsm - Tipos de Servicios"
+msgstr "Tipo de Servicio"
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_material_line.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__project_task_id
 #, python-format
 msgid "Fsm Task"
 msgstr "Servicio Externo"
@@ -2151,7 +2149,7 @@ msgstr "Servicio Externo"
 #: model:ir.actions.act_window,name:lgps.fsm_warranties_list_action
 #: model:ir.ui.menu,name:lgps.fsm_warranties_list_menu
 msgid "Fsm Warranties List"
-msgstr "Fsm - Razones de Garantía"
+msgstr "Motivo de Garantía"
 
 #. module: lgps
 #: code:addons/lgps/models/device.py:0
@@ -2680,6 +2678,11 @@ msgid "Justificación"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_warranties_list__name
+msgid "Justificación de Garantía"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__kanban_state
 msgid "Kanban State"
 msgstr ""
@@ -2908,6 +2911,11 @@ msgid "Lista de Plataformas"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__warranty_list_id
+msgid "Lista de Razones de Garantía"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__cellchips_list
 msgid "Listado de Chips"
 msgstr ""
@@ -2960,7 +2968,6 @@ msgstr "Registros"
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_material_line.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__lot_id
 #, python-format
 msgid "Lot/Serial"
 msgstr "Número de Serie"
@@ -3020,6 +3027,12 @@ msgid "Material"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__stock_move_ids
+#: model:ir.model.fields,field_description:lgps.field_project_task__fsm_material_ids
+msgid "Material Desinstalado"
+msgstr ""
+
+#. module: lgps
 #: model:ir.ui.menu,name:lgps.fsm_material_lines_menu
 msgid "Material Lines"
 msgstr ""
@@ -3027,7 +3040,12 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
 msgid "Material Removed"
-msgstr "Material Desinstalado"
+msgstr "Material Utlizado"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Material a Revisión"
+msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.view_fsm_material_line_tree
@@ -3410,6 +3428,11 @@ msgid "Número de Chip"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__lot_id
+msgid "Número de Serie"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__name
 msgid "Número de línea"
 msgstr ""
@@ -3477,6 +3500,11 @@ msgid "Opening Sensor"
 msgstr "Sensor de apertura"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_res_config_settings__operation_type_in_fsm
+msgid "Operación por default en Servicios en Campo"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__operation_mode
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__operation_mode
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__operation_mode
@@ -3524,7 +3552,7 @@ msgstr "Origen"
 #: code:addons/lgps/models/custom_crm_lead.py:0
 #, python-format
 msgid "Others"
-msgstr "Otros"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__others
@@ -3657,6 +3685,13 @@ msgid "Pick a Hibernate Default Channel"
 msgstr "Seleciona un canal por default para las hibernaciones"
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__has_material_picking_done
+#, python-format
+msgid "Picking already created"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__plan
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Plan"
@@ -3775,7 +3810,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_material_line.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__product_id
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_form_view
 #, python-format
 msgid "Product"
@@ -3790,6 +3824,7 @@ msgid "Product Type"
 msgstr "Tipo de Producto"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__product_id
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
 msgid "Producto"
 msgstr ""
@@ -4262,6 +4297,11 @@ msgid "Services"
 msgstr "Servicios"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__project_task_id
+msgid "Servicio Externo"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_config_settings__subscription_hibernate_product_id
 msgid "Servicio por default para suscripción por hibernación"
 msgstr ""
@@ -4279,7 +4319,7 @@ msgstr ""
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.action_view_uninstalled_material_wizard
 msgid "Set Uninstalled Material"
-msgstr "Material Desinstalado"
+msgstr "Ingresar Material Removido"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
@@ -4360,7 +4400,7 @@ msgstr "Panel Solar"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Sold"
-msgstr "Vendido"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__requested_by
@@ -4493,7 +4533,6 @@ msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__stock_picking_id
 #, python-format
 msgid "Stock Moves"
 msgstr "Traslado Asociado"
@@ -4668,7 +4707,7 @@ msgstr "Términos"
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Tests"
-msgstr "Pruebas"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.constraint,message:lgps.constraint_lgps_accessory_history_name_unique
@@ -4923,6 +4962,11 @@ msgid "Transfer"
 msgstr "Traslado"
 
 #. module: lgps
+#: model:ir.model.fields,field_description:lgps.field_project_task__stock_picking_id
+msgid "Traslado Asociado"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_form_view
 msgid "Travel Details"
 msgstr "Detalles de Monitoreo"
@@ -4987,8 +5031,6 @@ msgstr "Desinstalado"
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
 #: code:addons/lgps/wizard/fsm_uninstalled_material_wizard.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__stock_move_ids
-#: model:ir.model.fields,field_description:lgps.field_project_task__fsm_material_ids
 #, python-format
 msgid "Uninstalled Material"
 msgstr "Material Desinstalado"
@@ -5103,14 +5145,12 @@ msgstr "Información de Garantía"
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_warranties_list.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_warranties_list__name
 #, python-format
 msgid "Warranty Reason"
 msgstr "Justificación de Garantía"
 
 #. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__warranty_list_id
 #, python-format
 msgid "Warranty Reason List"
 msgstr "Lista de Razones de Garantía"
@@ -5182,6 +5222,14 @@ msgid "Work order related"
 msgstr "ODT Relacionada"
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#, python-format
+msgid ""
+"Ya se generó un movimiento de traslado de matrial para esta orden de "
+"servicio"
+msgstr ""
+
+#. module: lgps
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
@@ -5241,6 +5289,12 @@ msgstr ""
 #: model:ir.actions.act_window,name:lgps.tracking_logs_list_action
 msgid "tracking Logs"
 msgstr "Logs de Seguimiento"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid ""
+"¿Estás seguro que desas crear un traslado para el material desinstalado?"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__last_position
