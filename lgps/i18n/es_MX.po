@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-16 17:39+0000\n"
-"PO-Revision-Date: 2024-04-16 17:39+0000\n"
+"POT-Creation-Date: 2024-04-20 03:34+0000\n"
+"PO-Revision-Date: 2024-04-20 03:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -545,7 +545,7 @@ msgstr "Emails Adicionales"
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__administration
 #, python-format
 msgid "Administration"
-msgstr "Administración"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/custom_partner.py:0
@@ -606,6 +606,37 @@ msgid "Applicant"
 msgstr "Solicitante"
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#, python-format
+msgid "Approved"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__blocking_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__fuel_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__ignition_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__magnetic_sensor_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__microphone_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__panic_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__positioning_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__siren_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__smart_card_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__speaker_tests__approved
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__temperature_tests__approved
+msgid "Aprobado"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_search_view
 msgid "Archived"
 msgstr "Archivado"
@@ -636,7 +667,7 @@ msgstr "Assignar"
 #: code:addons/lgps/models/cellchip.py:0
 #, python-format
 msgid "Assigned to"
-msgstr "Asignado a"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_attachment_count
@@ -703,6 +734,13 @@ msgid "Blocker"
 msgstr "Bloqueador"
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__blocking_tests
+#, python-format
+msgid "Blocking"
+msgstr "Bloqueo"
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__blocker
 msgid "Bloqueador"
 msgstr ""
@@ -719,6 +757,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__speaker
+#: model:ir.model.fields,field_description:lgps.field_project_task__speaker_tests
 msgid "Bocina"
 msgstr ""
 
@@ -818,7 +857,7 @@ msgstr ""
 #: code:addons/lgps/models/device_stage.py:0
 #, python-format
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/cellchip.py:0
@@ -826,7 +865,7 @@ msgstr "Cancelado"
 #: code:addons/lgps/models/tracking.py:0
 #, python-format
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/tracking.py:0
@@ -1013,6 +1052,7 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__fuel
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__fuel
+#: model:ir.model.fields,field_description:lgps.field_project_task__fuel_tests
 msgid "Combustible"
 msgstr ""
 
@@ -1059,7 +1099,7 @@ msgstr "Comentario"
 #: code:addons/lgps/wizard/cellchip_wizard.py:0
 #, python-format
 msgid "Comments"
-msgstr "Comentarios"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_device_operations
@@ -1284,12 +1324,12 @@ msgstr ""
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_fsm_services_type_list
 msgid "Custom FSM Services Type List Module"
-msgstr "Lista de Tipo de Servicios"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_lgps_fsm_warranties_list
 msgid "Custom FSM Warranties List Module"
-msgstr "Lista de Motivos de Garantía"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_partner__custom_status
@@ -1628,6 +1668,33 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
 msgid "Dispositivo(s) Seleccionado(s):"
 msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__blocking_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__fuel_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__ignition_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__magnetic_sensor_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__microphone_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__panic_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__positioning_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__siren_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__smart_card_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__speaker_tests__does_not_apply
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__temperature_tests__does_not_apply
+#, python-format
+msgid "Does not apply"
+msgstr "No Aplica"
 
 #. module: lgps
 #: code:addons/lgps/models/tracking.py:0
@@ -2137,7 +2204,7 @@ msgstr "Material Utilizado"
 #: model:ir.actions.act_window,name:lgps.fsm_services_type_list_action
 #: model:ir.ui.menu,name:lgps.fsm_services_type_list_menu
 msgid "Fsm Services Type List"
-msgstr "Tipo de Servicio"
+msgstr ""
 
 #. module: lgps
 #: code:addons/lgps/models/fsm_material_line.py:0
@@ -2149,10 +2216,10 @@ msgstr "Servicio Externo"
 #: model:ir.actions.act_window,name:lgps.fsm_warranties_list_action
 #: model:ir.ui.menu,name:lgps.fsm_warranties_list_menu
 msgid "Fsm Warranties List"
-msgstr "Motivo de Garantía"
+msgstr ""
 
 #. module: lgps
-#: code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Fuel"
@@ -2362,7 +2429,7 @@ msgstr "SIMCARD Histórico"
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Historic Serial Number"
-msgstr "Número de Serie Histórico"
+msgstr "Nùmero de Serie Histórico"
 
 #. module: lgps
 #: model:ir.ui.menu,name:lgps.device_history_menu
@@ -2499,6 +2566,13 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__ignition_tests
+#, python-format
+msgid "Ignition"
+msgstr "Ignición"
+
+#. module: lgps
 #: code:addons/lgps/models/custom_partner.py:0
 #, python-format
 msgid "In Credit Bureau"
@@ -2519,6 +2593,33 @@ msgstr "Inactivo"
 #: model:ir.model.fields.selection,name:lgps.selection__res_partner__custom_status__inactive
 msgid "Inactivo"
 msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__blocking_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__fuel_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__ignition_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__magnetic_sensor_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__microphone_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__panic_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__positioning_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__siren_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__smart_card_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__speaker_tests__incorrect
+#: model:ir.model.fields.selection,name:lgps.selection__project_task__temperature_tests__incorrect
+#, python-format
+msgid "Incorrect"
+msgstr "Incorrecto"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
@@ -2770,7 +2871,7 @@ msgstr "Última posición"
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 #, python-format
 msgid "Last Report"
-msgstr "Último reporte"
+msgstr "Úñtimo reporte"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__write_uid
@@ -2978,6 +3079,13 @@ msgid "Línea(s) Seleccionada(s):"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__magnetic_sensor_tests
+#, python-format
+msgid "Magnetic sensor"
+msgstr "Sensor Magnético"
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_main_attachment_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__message_main_attachment_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__message_main_attachment_id
@@ -3098,13 +3206,14 @@ msgid "Messages"
 msgstr ""
 
 #. module: lgps
-#: code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Microphone"
 msgstr "Micrófono"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__microphone
+#: model:ir.model.fields,field_description:lgps.field_project_task__microphone_tests
 msgid "Micrófono"
 msgstr ""
 
@@ -3143,6 +3252,7 @@ msgstr ""
 #: code:addons/lgps/models/device_history.py:0
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.accessory_history_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_history_form_view
 #, python-format
@@ -3583,6 +3693,13 @@ msgid "Panel Solar"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__panic_tests
+#, python-format
+msgid "Panic"
+msgstr "Pánico"
+
+#. module: lgps
 #: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Parent Sale Order"
@@ -3765,6 +3882,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__platform__position_logic
 msgid "Position Logic"
 msgstr ""
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__positioning_tests
+#, python-format
+msgid "Positioning"
+msgstr "Posicionamiento"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_res_partner__after_sales_executive
@@ -4379,6 +4503,13 @@ msgid "Sin uso, en resguardo con el cliente"
 msgstr ""
 
 #. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__siren_tests
+#, python-format
+msgid "Siren"
+msgstr "Sirena"
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__skywave
 msgid "Skywave"
 msgstr ""
@@ -4388,6 +4519,13 @@ msgstr ""
 #, python-format
 msgid "Smart Blocker"
 msgstr "Bloqueador Inteligente"
+
+#. module: lgps
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__smart_card_tests
+#, python-format
+msgid "Smart card"
+msgstr "Tarjeta inteligente"
 
 #. module: lgps
 #: code:addons/lgps/models/device.py:0
@@ -4451,7 +4589,7 @@ msgid "Sosgps"
 msgstr ""
 
 #. module: lgps
-#: code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #, python-format
 msgid "Speaker"
 msgstr "Bocina"
@@ -4686,11 +4824,12 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__temperature
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__temperature
+#: model:ir.model.fields,field_description:lgps.field_project_task__temperature_tests
 msgid "Temperatura"
 msgstr ""
 
 #. module: lgps
-#: code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
 msgid "Temperature"

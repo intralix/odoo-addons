@@ -71,6 +71,26 @@
               </group>
           </group>
         </page>
+
+        <page string="More Info" name="tests_info" groups="lgps.lgps_group_quality_operations">
+          <group>
+            <group>
+              <field name="fuel_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="temperature_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="smart_card_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="blocking_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="ignition_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="positioning_tests" widget="radio" options="{'horizontal': true}"/>
+            </group>
+            <group>
+              <field name="magnetic_sensor_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="microphone_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="panic_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="siren_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="speaker_tests" widget="radio" options="{'horizontal': true}"/>
+            </group>
+          </group>
+        </page>
         </xpath>
     </field>
   </record>

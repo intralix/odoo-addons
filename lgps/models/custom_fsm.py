@@ -117,6 +117,128 @@ class LgpsFSM(models.Model):
         string=_("Picking already created"),
     )
 
+    # Sección de Pruebas
+    fuel_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Fuel"),
+        tracking=True
+    )
+
+    temperature_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Temperature"),
+        tracking=True
+    )
+
+    smart_card_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Smart card"),
+        tracking=True
+    )
+
+    blocking_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Blocking"),
+        tracking=True
+    )
+
+    ignition_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Ignition"),
+        tracking=True
+    )
+
+    positioning_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Positioning"),
+        tracking=True
+    )
+
+    magnetic_sensor_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Magnetic sensor"),
+        tracking=True
+    )
+
+    microphone_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Microphone"),
+        tracking=True
+    )
+
+    panic_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Panic"),
+        tracking=True
+    )
+
+    siren_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Siren"),
+        tracking=True
+    )
+
+    speaker_tests = fields.Selection(
+        selection=[
+            ("approved", _("Approved")),
+            ("does_not_apply", _("Does not apply")),
+            ("incorrect", _("Incorrect")),
+        ],
+        default="does_not_apply",
+        string=_("Speaker"),
+        tracking=True
+    )
+
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         domain = {}
