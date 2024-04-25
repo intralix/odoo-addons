@@ -122,7 +122,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Fuel"),
@@ -133,7 +132,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Temperature"),
@@ -144,7 +142,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Smart card"),
@@ -155,7 +152,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Blocking"),
@@ -166,7 +162,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Ignition"),
@@ -177,7 +172,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Positioning"),
@@ -188,7 +182,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Magnetic sensor"),
@@ -199,7 +192,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Microphone"),
@@ -210,7 +202,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Panic"),
@@ -221,7 +212,6 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Siren"),
@@ -232,11 +222,14 @@ class LgpsFSM(models.Model):
         selection=[
             ("approved", _("Approved")),
             ("does_not_apply", _("Does not apply")),
-            ("incorrect", _("Incorrect")),
         ],
         default="does_not_apply",
         string=_("Speaker"),
         tracking=True
+    )
+
+    comments = fields.Text(
+        string=_("Comments"),
     )
 
     @api.onchange('partner_id')

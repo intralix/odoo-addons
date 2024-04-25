@@ -81,6 +81,7 @@
               <field name="blocking_tests" widget="radio" options="{'horizontal': true}"/>
               <field name="ignition_tests" widget="radio" options="{'horizontal': true}"/>
               <field name="positioning_tests" widget="radio" options="{'horizontal': true}"/>
+              <field name="comments"/>
             </group>
             <group>
               <field name="magnetic_sensor_tests" widget="radio" options="{'horizontal': true}"/>
