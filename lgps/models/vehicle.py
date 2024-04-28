@@ -108,6 +108,12 @@ class Vehicle(models.Model):
         default=True
     )
 
+    device_ids = fields.One2many(
+        comodel_name="lgps.device",
+        inverse_name="vehicle_id",
+        string=_("Gps Devices Installed")
+    )
+
     def copy(self, default=None):
         default = dict(default or {})
 

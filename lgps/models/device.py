@@ -229,7 +229,7 @@ class Device(models.Model):
     client_id = fields.Many2one(
         comodel_name="res.partner",
         required=True,
-        string=_("Installed On"),
+        string=_("Belongs To"),
         domain=[
             ('active', '=', True),
             ('is_company', '=', True)
@@ -339,6 +339,15 @@ class Device(models.Model):
         ondelete="set null",
         string=_("Parent Sale Order"),
         help=_("Related Sales Order"),
+        index=True,
+        tracking=True,
+    )
+
+    vehicle_id = fields.Many2one(
+        comodel_name="lgps.vehicle",
+        ondelete="set null",
+        string=_("Installed On"),
+        help=_("Vehicle where this device is installed"),
         index=True,
         tracking=True,
     )
