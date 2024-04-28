@@ -40,5 +40,7 @@
         'views/vehicle.xml',
         'views/device_stage.xml',
         'views/platform_list.xml',
+        'views/device.xml',
+        'views/device_kanban_view.xml',
     ],
 }

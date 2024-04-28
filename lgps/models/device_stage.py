@@ -21,13 +21,11 @@ class DeviceStage(models.Model):
     active = fields.Boolean(default=True)
 
     state = fields.Selection([
+        ('new', _("New")),
         ('ready_to_install', _("Ready to Install")),
         ('installed', _("Installed")),
-        ('replacement', _("Replacement")),
         ('hibernated', _("Hibernated")),
-        ('asset_loan', _("Asset loan")),
         ('rma', _("RMA")),
-        ('cancel', _("Canceled")),
         ('uninstalled', _("Uninstalled"))],
         default="ready_to_install"
     )
