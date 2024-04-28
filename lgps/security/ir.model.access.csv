@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+vehicle_type_manager,Vehicle Types Manager,model_lgps_vehicle_type,lgps_group_manager,1,1,1,1
+vehicle_type_read_all,Vehicle All,model_lgps_vehicle_type,lgps_group_user,1,1,1,0
+vehicle_type_maintainer,Vehicle Type Maintainer,model_lgps_vehicle_type,lgps_group_maintainer,1,1,0,0
+vehicle_type_guest,Vehicle Guest,model_lgps_vehicle_type,lgps_group_user,1,0,0,0
+vehicle_manager,Vehicles Manager,model_lgps_vehicle,lgps_group_manager,1,1,1,1
+vehicle_read_all,Vehicles All,model_lgps_vehicle,lgps_group_user,1,1,1,0
+vehicle_maintainer,Vehicles Maintainer,model_lgps_vehicle,lgps_group_maintainer,1,1,0,0
+vehicle_guest,Vehicles Guest,model_lgps_vehicle,lgps_group_guest,1,0,0,0
+vehicle_stage_user,Vehicles Stage User,model_lgps_vehicle_stage,lgps_group_guest,1,0,0,0
+vehicle_stage_manager, Vehicles Stage Manager,model_lgps_vehicle_stage,lgps_group_manager,1,1,1,1
