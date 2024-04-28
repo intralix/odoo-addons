@@ -13,7 +13,7 @@ class VehicleStage(models.Model):
     )
 
     sequence = fields.Integer(
-        default=10
+        default=100
     )
 
     fold = fields.Boolean()

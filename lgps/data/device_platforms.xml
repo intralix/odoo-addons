@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+    <record id="platform_ceiba2" model="lgps.platform_list">
+        <field name="name">Ceiba2</field>
+    </record>
+
+    <record id="platform_cybermapa" model="lgps.platform_list">
+        <field name="name">Cybermapa</field>
+    </record>
+
+    <record id="platform_sin_plataforma" model="lgps.platform_list">
+        <field name="name">Sin Plataforma</field>
+    </record>
+
+    <record id="platform_gurtam" model="lgps.platform_list">
+        <field name="name">Gurtam</field>
+    </record>
+
+    <record id="platform_lkgps" model="lgps.platform_list">
+        <field name="name">Lkgps</field>
+    </record>
+
+    <record id="platform_position_logic" model="lgps.platform_list">
+        <field name="name">Position Logic</field>
+    </record>
+
+    <record id="platform_tracksolid" model="lgps.platform_list">
+        <field name="name">Tracksolid</field>
+    </record>
+
+    <record id="platform_utrax" model="lgps.platform_list">
+        <field name="name">Utrax</field>
+    </record>
+</odoo>

@@ -9,3 +9,9 @@ vehicle_maintainer,Vehicles Maintainer,model_lgps_vehicle,lgps_group_maintainer,
 vehicle_guest,Vehicles Guest,model_lgps_vehicle,lgps_group_guest,1,0,0,0
 vehicle_stage_user,Vehicles Stage User,model_lgps_vehicle_stage,lgps_group_guest,1,0,0,0
 vehicle_stage_manager, Vehicles Stage Manager,model_lgps_vehicle_stage,lgps_group_manager,1,1,1,1
+platform_list_manager,Platform list Manager,model_lgps_platform_list,lgps_group_manager,1,1,1,1
+platform_list_read_all,Platform list All,model_lgps_platform_list,lgps_group_user,1,1,1,0
+platform_list_maintainer,Platform list Maintainer,model_lgps_platform_list,lgps_group_maintainer,1,1,0,0
+platform_list_guest,Platform list Guest,model_lgps_platform_list,lgps_group_guest,1,0,0,0
+device_stage_user,Device Stage User,model_lgps_device_stage,lgps_group_guest,1,0,0,0
+device_stage_manager, Device Stage Manager,model_lgps_device_stage,lgps_group_manager,1,1,1,1

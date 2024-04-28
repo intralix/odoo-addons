@@ -32,9 +32,13 @@
         'views/main_menu.xml',
         'data/vehicle_stage.xml',
         'data/vehicle_types.xml',
+        'data/device_platforms.xml',
+        'data/device_stage.xml',
         'views/vehicle_stage.xml',
         'views/vehicle_types.xml',
         'views/vehicle_kanban_view.xml',
         'views/vehicle.xml',
+        'views/device_stage.xml',
+        'views/platform_list.xml',
     ],
 }
