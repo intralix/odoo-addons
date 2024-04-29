@@ -6,3 +6,5 @@ from . import vehicle
 from . import platform_list
 from . import device_stage
 from . import device
+from . import cellchip
+from . import accessory

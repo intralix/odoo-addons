@@ -111,5 +111,5 @@
             name="Vehicles"
             parent="lgps_menu"
             action="vehicle_list_action"
-            sequence="10"/>
+            sequence="50"/>
 </odoo>

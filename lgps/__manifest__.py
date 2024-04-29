@@ -29,6 +29,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'wizard/assign_accessories_wizard.xml',
         'views/main_menu.xml',
         'data/vehicle_stage.xml',
         'data/vehicle_types.xml',
@@ -42,5 +43,7 @@
         'views/platform_list.xml',
         'views/device.xml',
         'views/device_kanban_view.xml',
+        'views/cellchip.xml',
+        'views/accessory.xml',
     ],
 }

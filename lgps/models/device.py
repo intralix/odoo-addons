@@ -352,6 +352,20 @@ class Device(models.Model):
         tracking=True,
     )
 
+    cell_chip_id = fields.Many2one(
+        comodel_name="lgps.cellchip",
+        string=_("Cellchip Number"),
+        ondelete='set null',
+        required=False,
+        tracking=True
+    )
+
+    accessory_ids = fields.One2many(
+        comodel_name="lgps.accessory",
+        inverse_name="device_id",
+        string=_("Accessories"),
+    )
+
     @api.model
     @api.depends('datetime_gps')
     def _compute_last_report(self):
