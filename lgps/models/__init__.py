@@ -12,3 +12,4 @@ from . import tracking
 from . import tracking_logs
 from . import custom_partner
 from . import custom_crm_lead
+from . import custom_help_desk

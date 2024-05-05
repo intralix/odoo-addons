@@ -21,6 +21,8 @@
         'resource',
         'project',
         'hr',
+        'helpdesk',
+        'industry_fsm',
     ],
     'demo':[
         'data/vehicle_stage.xml',
@@ -50,5 +52,6 @@
         'views/tracking_logs.xml',
         'views/custom_partner.xml',
         'views/custom_crm_lead.xml',
+        'views/custom_help_desk.xml',
     ],
 }
