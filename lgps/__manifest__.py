@@ -30,6 +30,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/assign_accessories_wizard.xml',
+        'wizard/cellchip_wizard.xml',
         'views/main_menu.xml',
         'data/vehicle_stage.xml',
         'data/vehicle_types.xml',
@@ -45,5 +46,9 @@
         'views/device_kanban_view.xml',
         'views/cellchip.xml',
         'views/accessory.xml',
+        'views/tracking.xml',
+        'views/tracking_logs.xml',
+        'views/custom_partner.xml',
+        'views/custom_crm_lead.xml',
     ],
 }

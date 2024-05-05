@@ -6,15 +6,14 @@
     <field name="model">lgps.add_accessories_wizard</field>
     <field name="arch" type="xml">
       <form string="Add Accessories">
-        <group>
+        <sheet>
           <p class="text-primary"> Selecciona los accesorios que deseas vincular al dispositivo:</p>
-        </group>
-        <group>
-          <field name="accessory_ids"/>
-        </group>
+          <field name="accessory_ids" nolabel="1"/>
+        </sheet>
         <footer>
           <button name="assign" type="object" string="Assign" class="oe_highlight" default_focus="1"/>
-          <button special="cancel" string="Cancel" class="oe_link"/>
+          <button special="cancel" data-hotkey="x" string="Cancel" type="object" class="btn btn-secondary oe_inline"/>
+          <button special="cancel" data-hotkey="x" string="Close" type="object" class="btn btn-secondary oe_inline"/>
         </footer>
       </form>
     </field>

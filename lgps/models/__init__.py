@@ -8,3 +8,7 @@ from . import device_stage
 from . import device
 from . import cellchip
 from . import accessory
+from . import tracking
+from . import tracking_logs
+from . import custom_partner
+from . import custom_crm_lead

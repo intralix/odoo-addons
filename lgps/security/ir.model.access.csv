@@ -23,8 +23,16 @@ cellchip_manager,Cellchips Manager,model_lgps_cellchip,lgps_group_manager,1,1,1,
 cellchip_read_all,Cellchips All,model_lgps_cellchip,lgps_group_user,1,1,1,0
 cellchip_maintainer,Cellchips Maintainer,model_lgps_cellchip,lgps_group_maintainer,1,1,0,0
 cellchip_guest,Cellchips Guest,model_lgps_cellchip,lgps_group_guest,1,0,0,0
+cellchip_wizard, Cellchips Wizard Manager,model_lgps_cellchip_wizard,lgps_group_deactivate_cellchips,1,1,1,1
 assign_accessories, Assign Accessories Wizard Manager,model_lgps_add_accessories_wizard,lgps_group_wizard_manager,1,1,1,1
 accessory_manager,Accessories Manager,model_lgps_accessory,lgps_group_manager,1,1,1,1
 accessory_read_all,Accessories All,model_lgps_accessory,lgps_group_user,1,1,1,0
 accessory_maintainer,Accessories Maintainer,model_lgps_accessory,lgps_group_maintainer,1,1,0,0
 accessory_guest,Accessories Guest,model_lgps_accessory,lgps_group_guest,1,0,0,0
+tracking_manager,Tracking manager,model_lgps_tracking,lgps_group_manager,1,1,1,1
+tracking_read_all,Tracking all,model_lgps_tracking,lgps_group_user,1,1,1,0
+tracking_maintainer,Tracking Maintainer,model_lgps_tracking,lgps_group_maintainer,1,1,0,0
+tracking_guest,Tracking guest,model_lgps_tracking,lgps_group_guest,1,0,0,0
+tracking_logs_read_all,Tracking Logs all,model_lgps_tracking_logs,lgps_group_user,1,1,1,0
+tracking_logs_maintainer,Tracking Logs Maintainer,model_lgps_tracking_logs,lgps_group_maintainer,1,1,0,0
+tracking_logs_guest,Tracking Logs guest,model_lgps_tracking_logs,lgps_group_guest,1,0,0,0
