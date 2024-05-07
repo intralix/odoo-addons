@@ -366,6 +366,28 @@ class Device(models.Model):
         string=_("Accessories"),
     )
 
+    helpdesk_tickets_ids = fields.One2many(
+        comodel_name="helpdesk.ticket",
+        inverse_name="device_id",
+        string=_("Tickets"),
+    )
+
+    helpdesk_tickets_count = fields.Integer(
+        string=_("Tickets Count"),
+        compute='_compute_tickets_count',
+        default=0
+    )
+
+    def action_counter_tracking_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('helpdesk.helpdesk_ticket_action_main_my')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
     @api.model
     @api.depends('datetime_gps')
     def _compute_last_report(self):
@@ -407,3 +429,7 @@ class Device(models.Model):
          'UNIQUE(name)',
          "The gps device id must be unique"),
     ]
+
+    def _compute_tickets_count(self):
+        for rec in self:
+            rec.helpdesk_tickets_count = self.env['helpdesk.ticket'].search_count([('device_id', '=', rec.id)])

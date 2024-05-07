@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
   <record model="ir.ui.view" id="device_form_view">
     <field name="name">device.form</field>
     <field name="model">lgps.device</field>
@@ -11,6 +10,15 @@
         </header>
 
         <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button class="oe_stat_button"
+                    type="object"
+                    icon="fa-life-ring"
+                    name="action_counter_tracking_button">
+              <field string="Tickets" name="helpdesk_tickets_count" widget="statinfo"/>
+            </button>
+          </div>
+
           <group>
             <group string="Device Info">
               <separator/>
