@@ -23,6 +23,7 @@
         'hr',
         'helpdesk',
         'industry_fsm',
+        'sale_subscription',
     ],
     'demo':[
         'data/vehicle_stage.xml',
@@ -53,5 +54,6 @@
         'views/custom_partner.xml',
         'views/custom_crm_lead.xml',
         'views/custom_help_desk.xml',
+        'views/custom_subscription.xml',
     ],
 }

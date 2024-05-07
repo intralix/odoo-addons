@@ -378,12 +378,28 @@ class Device(models.Model):
         default=0
     )
 
+    subscriptions_count = fields.Integer(
+        string=_("Subscriptions Count"),
+        compute='_compute_subscriptions_count',
+        default=0
+    )
+
     def action_counter_tracking_button(self):
         self.ensure_one()
         action = self.env['ir.actions.act_window']._for_xml_id('helpdesk.helpdesk_ticket_action_main_my')
         action['context'] = {
             'default_device_id':  self.id,
             'default_partner_id': self.client_id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_subscription_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('sale_subscription.sale_subscription_action')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id.id
         }
         action['domain'] = [('device_id', '=', self.id)]
         return action
@@ -433,3 +449,7 @@ class Device(models.Model):
     def _compute_tickets_count(self):
         for rec in self:
             rec.helpdesk_tickets_count = self.env['helpdesk.ticket'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_subscriptions_count(self):
+        for rec in self:
+            rec.subscriptions_count = self.env['sale.order'].search_count([('device_id', '=', rec.id)])

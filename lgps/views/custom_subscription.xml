@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="custom_lgps_subscription_form_view">
+    <field name="name">sale.subscription.device</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_primary_form_view"/>
+    <field name="priority" eval="50"/>
+    <field name="mode">extension</field>
+    <field name="arch" type="xml">
+      <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+         <page string="Intx Info">
+           <group>
+            <field name="device_id"/>
+            <field name="device_nick"/>
+            <field name="billing_cycle"/>
+           </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="custom_subscription_list_view">
+    <field name="name">sale.subscription.custom.device.list.view</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_view_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="device_nick"/>
+        <field name="billing_cycle"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
+
+
+
+
+
