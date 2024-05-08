@@ -55,5 +55,6 @@
         'views/custom_crm_lead.xml',
         'views/custom_help_desk.xml',
         'views/custom_subscription.xml',
+        'views/device_history.xml',
     ],
 }

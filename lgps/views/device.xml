@@ -12,18 +12,25 @@
         <sheet>
           <div class="oe_button_box" name="button_box">
             <button class="oe_stat_button"
-                    type="object"
-                    icon="fa-life-ring"
-                    name="action_counter_tracking_button">
-              <field string="Tickets" name="helpdesk_tickets_count" widget="statinfo"/>
-            </button>
+                      type="object"
+                      icon="fa-shopping-bag"
+                      name="action_counter_subscription_button">
+                <field string="Subscriptions" name="subscriptions_count" widget="statinfo"/>
+              </button>
 
-            <button class="oe_stat_button"
-                    type="object"
-                    icon="fa-shopping-bag"
-                    name="action_counter_subscription_button">
-              <field string="Subscriptions" name="subscriptions_count" widget="statinfo"/>
-            </button>
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-life-ring"
+                      name="action_counter_tickets_button">
+                <field string="Tickets" name="helpdesk_tickets_count" widget="statinfo"/>
+              </button>
+
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-globe"
+                      name="action_counter_tracking_button">
+                <field string="Tracking" name="tracking_count" widget="statinfo"/>
+              </button>
           </div>
 
           <group>

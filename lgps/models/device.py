@@ -384,7 +384,13 @@ class Device(models.Model):
         default=0
     )
 
-    def action_counter_tracking_button(self):
+    tracking_count = fields.Integer(
+        string=_("Trackings Count"),
+        compute='_compute_tracking_count',
+        default=0
+    )
+
+    def action_counter_tickets_button(self):
         self.ensure_one()
         action = self.env['ir.actions.act_window']._for_xml_id('helpdesk.helpdesk_ticket_action_main_my')
         action['context'] = {
@@ -400,6 +406,16 @@ class Device(models.Model):
         action['context'] = {
             'default_device_id':  self.id,
             'default_partner_id': self.client_id.id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_tracking_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('lgps.tracking_list_action')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_client_id': self.client_id.id
         }
         action['domain'] = [('device_id', '=', self.id)]
         return action
@@ -453,3 +469,7 @@ class Device(models.Model):
     def _compute_subscriptions_count(self):
         for rec in self:
             rec.subscriptions_count = self.env['sale.order'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_tracking_count(self):
+        for rec in self:
+            rec.tracking_count = self.env['lgps.tracking'].search_count([('device_id', '=', rec.id)])
