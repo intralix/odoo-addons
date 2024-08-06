@@ -4,7 +4,7 @@ from odoo import api, models, fields, _
 
 class VehicleStage(models.Model):
     _name = 'lgps.vehicle_stage'
-    _description = 'Vehicle Stages model'
+    _description = _('Vehicle Stages model')
     _order = "sequence"
 
     name = fields.Char(

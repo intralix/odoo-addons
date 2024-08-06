@@ -26,6 +26,7 @@ class DeviceStage(models.Model):
         ('installed', _("Installed")),
         ('hibernated', _("Hibernated")),
         ('rma', _("RMA")),
+        ('disconnected', _("Disconnected")),
         ('uninstalled', _("Uninstalled"))],
         default="ready_to_install"
     )

@@ -8,6 +8,7 @@ class Device(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device'
     _description = _('Intx Internal Management Module')
+    _order = "name, id"
 
     @api.model
     def _default_stage_id(self):
@@ -372,6 +373,12 @@ class Device(models.Model):
         string=_("Tickets"),
     )
 
+    fsm_ids = fields.One2many(
+        comodel_name="project.task",
+        inverse_name="device_id",
+        string=_("Field Services"),
+    )
+
     helpdesk_tickets_count = fields.Integer(
         string=_("Tickets Count"),
         compute='_compute_tickets_count',
@@ -387,6 +394,12 @@ class Device(models.Model):
     tracking_count = fields.Integer(
         string=_("Trackings Count"),
         compute='_compute_tracking_count',
+        default=0
+    )
+
+    fsm_ids_count = fields.Integer(
+        string=_("Services Count"),
+        compute='_compute_fsm_count',
         default=0
     )
 
@@ -416,6 +429,21 @@ class Device(models.Model):
         action['context'] = {
             'default_device_id':  self.id,
             'default_client_id': self.client_id.id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_fsm_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('industry_fsm.project_task_action_fsm')
+        default_project = self.env.ref('industry_fsm.fsm_project')
+
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id.id,
+            'default_project_id': default_project.id,
+            'default_is_fsm': True,
+            'default_fsm_mode': True,
         }
         action['domain'] = [('device_id', '=', self.id)]
         return action
@@ -473,3 +501,7 @@ class Device(models.Model):
     def _compute_tracking_count(self):
         for rec in self:
             rec.tracking_count = self.env['lgps.tracking'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_fsm_count(self):
+        for rec in self:
+            rec.fsm_ids_count = self.env['project.task'].search_count([('device_id', '=', rec.id)])

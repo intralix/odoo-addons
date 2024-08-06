@@ -54,7 +54,8 @@ class DeviceHistory(models.Model):
             ('accsubstitution', _('Sustitución de accesorio por revisión')),
             ('accreplacement', _('Reemplazo de accesorio')),
             ('add_reactivate', _('Alta / Reactivación Equipo')),
-            ('loan_substitution', _('Reemplazo de Comodato'))
+            ('loan_substitution', _('Reemplazo de Comodato')),
+            ('acc_replacement', _('Reemplazo de Accesorio')),
         ],
         default='drop',
     )
@@ -80,6 +81,11 @@ class DeviceHistory(models.Model):
 
     related_odt = fields.Many2one(
         comodel_name='repair.order',
+        string=_("Repair order related"),
+    )
+
+    related_service = fields.Many2one(
+        comodel_name='project.task',
         string=_("Work order related"),
     )
 

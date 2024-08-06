@@ -122,6 +122,20 @@ class Accessory(models.Model):
         tracking=True
     )
 
+    last_assign_date = fields.Date(
+        string=_("Last Assign Date"),
+        tracking=True
+    )
+
+    vehicle_id = fields.Many2one(
+        comodel_name="lgps.vehicle",
+        ondelete="set null",
+        string=_("Installed On"),
+        help=_("Vehicle where this device is installed"),
+        index=True,
+        tracking=True,
+    )
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:

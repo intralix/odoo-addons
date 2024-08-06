@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class TrackingLogs(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.tracking_logs'
-    _description = 'Tracking Details'
+    _description = _('Tracking Details')
 
     name = fields.Char(
         required=True,

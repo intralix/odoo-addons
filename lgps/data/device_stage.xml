@@ -31,9 +31,15 @@
         <field name="state">uninstalled</field>
     </record>
 
+    <record id="stage_disconnected" model="lgps.device_stage">
+        <field name="name">Disconnected</field>
+        <field name="sequence">60</field>
+        <field name="state">disconnected</field>
+    </record>
+
     <record id="stage_rma" model="lgps.device_stage">
         <field name="name">RMA</field>
-        <field name="sequence">60</field>
+        <field name="sequence">70</field>
         <field name="state">rma</field>
     </record>
 

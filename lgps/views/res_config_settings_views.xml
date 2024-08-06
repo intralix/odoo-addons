@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.lgps</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="65"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+
+             <app data-string="Lgps" string="Lgps" name="lgps">
+
+               <block title="Intralix Deactivation Process Settings" name="lgps_deactivation_setting_container">
+                        <setting
+                                id="deactivation_channel"
+                                help="Selecciona el canal de comunicación que será utilizado por default para enviar notificaciones de los equipos que son hibernados / deshibernados.">
+                                <field name="deactivation_channel_id" options="{'no_create': True}"/>
+                        </setting>
+                        <setting
+                                id="deactivation_state"
+                                help="Cuando un equipo sea dado de baja, se colocará en este estatus.">
+                                <field name="deactivation_state" options="{'no_create': True}"/>
+                        </setting>
+               </block>
+
+               <block title="Intralix Hibernation Process Settings" name="lgps_hibernation_setting_container">
+                        <setting
+                                id="hibernate_channel"
+                                help="Selecciona el canal de comunicación que será utilizado por default para enviar notificaciones de los equipos que son hibernados / deshibernados.">
+                                <field name="hibernate_channel_id" options="{'no_create': True}"/>
+                        </setting>
+                        <setting
+                                id="hibernate_closed_state"
+                                help="Cuando un equipo sea hibernado la suscripción se cerrárá en esta etapa.">
+                                <field name="subscription_hibernation_closed_state" options="{'no_create': True}"/>
+                        </setting>
+                        <setting
+                                id="hibernation_new_state"
+                                help="Cuando un equipo sea hibernado la suscripción se creará en esta etapa.">
+                                <field name="subscription_hibernation_state" options="{'no_create': True}"/>
+                        </setting>
+               </block>
+
+               <block title="Intralix Substitution Process Settings" name="lgps_substitution_setting_container">
+                        <setting
+                                id="substitution_channel"
+                                help="Selecciona el canal de comunicación que será utilizado por default para enviar notificaciones de los equipos que son sustituidos.">
+                                <field name="substitution_channel_id" options="{'no_create': True}"/>
+                        </setting>
+
+                        <setting
+                                id="assigned_user_to_repairs_id"
+                                help="Selecciona el usaurio encargado de dar seguimiento a laa reparaciones de los equipos sustituidos.">
+                                <field name="repairs_assigned_user_id" options="{'no_create': True}"/>
+                        </setting>
+
+               </block>
+
+               <block title="Intralix Reactivation Process Settings" name="lgps_sreactivation_setting_container">
+                        <setting
+                                id="reactivation_channel"
+                                help="Selecciona el canal de comunicación que será utilizado por default para enviar notificaciones de los equipos reactivados.">
+                                <field name="reactivation_channel_id" options="{'no_create': True}"/>
+                        </setting>
+               </block>
+           </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Lgps</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'lgps', 'bin_size': False}</field>
+    </record>
+
+    <menuitem id="lgps_settings_menu" name="Settings" parent="lgps_configuration_menu" action="res_config_settings_action"/>
+</odoo>

@@ -52,3 +52,7 @@ class LgpsSubscription(models.Model):
         readonly=True,
         store=True
     )
+
+    # subscription_state = fields.Selection(selection_add=[
+    #     ('25_hibernated', _('Hibernated'))
+    # ])

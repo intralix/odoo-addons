@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Split Record -->
+  <record id="wizard_accessory_operations_form_view" model="ir.ui.view">
+    <field name="name">lgps.accessory_operations.form</field>
+    <field name="model">lgps.accessory_operations</field>
+    <field name="arch" type="xml">
+       <form string="Accesory Operations">
+           <sheet>
+               <p class="text-primary"> Selecciona el proceso a ejecutar en los accesorios seleccionados:</p>
+               <field name="operation_mode"/>
+               <hr/>
+               <p class="text-primary"> Accesorio(s) Seleccionado(s):</p>
+             <field name="accessories_ids" readonly="1" string="Accesorios sustituido">
+                <tree string="Accessories to Process">
+                  <field name="name"/>
+                  <field name="serial_number_id"/>
+                  <field name="purchase_date"/>
+                  <field name="installation_date"/>
+                  <field name="product_id"/>
+                  <field name="device_id"/>
+                </tree>
+            </field>
+
+            <p class="text-primary"> Ingresa la información requerida para el proceso selecionado:</p>
+               <div>
+                   <group>
+                       <field name="requested_by"
+                              invisible="operation_mode in ['substitution','replacement']"
+                              required="operation_mode not in ['substitution','replacement']"
+                       />
+                       <field name="destination_accessories_ids"/>
+                       <field name="related_field_service"/>
+                       <field name="comment" string="Comentario / Falla Presentada"/>
+                   </group>
+
+                     <!-- Insible fields -->
+                   <field name="allowed_field_services_ids" invisible="1"/>
+                   <field name="allowed_accessories_ids" invisible="1"/>
+               </div>
+           </sheet>
+        <footer>
+            <button name="execute_operation" type="object" string="Execute Process" class="oe_highlight" default_focus="1"/>
+            <button special="cancel" string="Cancel" class="oe_link"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+    <record id="action_view_accessory_operations_wizard" model="ir.actions.act_window">
+        <field name="name">Accessory Common Operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lgps.accessory_operations</field>
+        <field name="view_id" ref="wizard_accessory_operations_form_view"/>
+        <field name="binding_model_id" ref="lgps.model_lgps_accessory"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

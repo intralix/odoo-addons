@@ -1,0 +1,91 @@
+from odoo import api, models, fields, _
+from odoo.exceptions import UserError
+import logging
+_logger = logging.getLogger(__name__)
+import re
+
+
+class LgpsFSM(models.Model):
+    _inherit = 'project.task'
+
+    # def _default_service_type_list(self):
+    #     return self.env['lgps.fsm_services_type_list'].search([('id', '=', 1)], limit=1).id
+
+    device_id = fields.Many2one(
+        comodel_name="lgps.device",
+        ondelete="set null",
+        string=_("Device"),
+        help="GPS Device associated with the service.",
+        domain=[('administrative_status', 'in', [
+            "comodato",
+            "courtesy",
+            "demo",
+            "external",
+            "hibernate",
+            "installed",
+            "inventory",
+            "new",
+            "for installing",
+            "borrowed",
+            "replacement",
+            "backup",
+        ])],
+        index=True,
+        tracking=True,
+    )
+
+    nick = fields.Char(
+        string=_('Nick'),
+        related="device_id.nick",
+        store=True
+    )
+
+    service_type_list_id = fields.Many2one(
+        comodel_name="lgps.fsm_services_type_list",
+        string=_("Service Type List"),
+        # default=_default_service_type_list,
+        ondelete="set null",
+        index=True,
+        domain=[('active', '=', True)],
+        tracking=True,
+    )
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        domain = {}
+        if self.partner_id:
+            list_ids = []
+            values = self.env['lgps.device'].search([('client_id', '=', self.partner_id.id)])
+
+            for value in values:
+                list_ids.append(value.id)
+
+            self.device_id = []
+            domain = {'device_id': [('id', 'in', list_ids)]}
+
+            return {'domain': domain}
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for values in vals_list:
+            short_code = 'SER'
+            device_name = 'NA'
+            today_dt = fields.Datetime.context_timestamp(self, fields.Datetime.now())
+            service = self.env['lgps.fsm_services_type_list'].search([['id', '=', values['service_type_list_id']]], limit=1)
+            if service:
+                short_code = service.short_code
+
+            # if 'name' in values and values['name']:
+            if 'device_id' in values and values['device_id']:
+                device = self.env['lgps.device'].search([['id', '=', values['device_id']]], limit=1)
+                if device:
+                    if device.nick:
+                        device_name = device.nick
+                    else:
+                        device_name = device.name
+
+            values['name'] = short_code + '/' + device_name + '/' + today_dt.strftime("%Y/%m/%d%H%M")
+
+            res = super(LgpsFSM, self).create(values)
+        # here you can do accordingly
+        return res

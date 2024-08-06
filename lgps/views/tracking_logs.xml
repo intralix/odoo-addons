@@ -3,8 +3,8 @@
   <record id="seq_tracking_logs" model="ir.sequence">
     <field name="name">Tracking Logs Sequence</field>
     <field name="code">lgps.tracking_logs</field>
-    <field name="prefix">REC</field>
-    <field name="padding">10</field>
+    <field name="prefix">REC/%(year)s/%(month)s/%(woy)s/</field>
+    <field name="padding">5</field>
   </record>
 
   <record model="ir.ui.view" id="tracking_logs_form_view">

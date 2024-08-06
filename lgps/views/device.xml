@@ -31,16 +31,24 @@
                       name="action_counter_tracking_button">
                 <field string="Tracking" name="tracking_count" widget="statinfo"/>
               </button>
+
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-globe"
+                      name="action_counter_fsm_button">
+                <field string="Services" name="fsm_ids_count" widget="statinfo"/>
+              </button>
+
           </div>
 
           <group>
             <group string="Device Info">
               <separator/>
               <field name="name"/>
-              <field name="client_id"/>
               <field name="nick"/>
+              <field name="product_id"/>
               <field name="historic_serial_number" readonly="1"/>
-              <field name="serial_number_id"/>
+              <field name="serial_number_id" domain="[('product_id', '=', product_id)]"/>
               <field name="imei"/>
               <field name="idf"/>
               <field name="device_pin"/>
@@ -48,10 +56,11 @@
             </group>
             <group string="More Info">
               <separator/>
+              <field name="client_id"/>
               <field name="administrative_status"/>
               <field name="stage_id"/>
               <field name="platform_list_id"/>
-              <field name="product_id"/>
+
               <field name="invoice_id"/>
               <field name="cell_chip_id"/>
               <field name="purchase_date"/>
@@ -113,8 +122,8 @@
             </page>
 
             <page string="Accessories">
-              <field name="accessory_ids">
-                <tree>
+              <field name="accessory_ids" readonly="1">
+                <tree create="0" delete="0">
                   <field name="name"/>
                   <field name="client_id"/>
                   <field name="historic_serial_number" readonly="1"/>
