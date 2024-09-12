@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <record id="action_report_subscriptions_details" model="ir.actions.report">
+       <field name="name">Subscription Details</field>
+       <field name="model">sale.order</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">lgps.report_subscriptions_detail_view</field>
+       <field name="report_file">lgps.report_subscriptions_detail_view</field>
+       <field name="binding_model_id" ref="model_sale_order"/>
+       <field name="binding_type">report</field>
+   </record>
+
+    <template id="report_subscriptions_detail_view" name="Custom Subscription Details">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="container" style="font-size:.8em;">
+
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                  <th class="col-3">Económico</th>
+                                  <th class="col-3">Equipo</th>
+                                  <th class="col-6">Servicios Registrados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td class="col-3">
+                                    <t t-if="doc.device_id.nick">
+                                        <span t-field="doc.device_id.nick" />
+                                    </t>
+                                    <t t-if="not doc.device_id.nick">
+                                        <span>~</span>
+                                    </t>
+                                </td>
+                                <td class="col-3">
+                                    <t t-if="doc.device_id.name">
+                                        <span t-field="doc.device_id.name" />
+                                    </t>
+                                    <t t-if="not doc.device_id.name">
+                                        <span>~</span>
+                                    </t>
+                                </td>
+                                <td class="col-6">
+                                    <t t-if="doc.order_line">
+                                        <t t-foreach="doc.order_line" t-as="line">
+                                            <span t-field="line.product_id.name"/>
+                                            <br></br>
+                                        </t>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -69,5 +69,7 @@
         'views/accessory_history.xml',
         'views/fsm_services_type_list.xml',
         'views/custom_fsm.xml',
+
+        'reports/subscription_details.xml',
     ],
 }
