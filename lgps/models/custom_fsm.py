@@ -71,9 +71,10 @@ class LgpsFSM(models.Model):
             short_code = 'SER'
             device_name = 'NA'
             today_dt = fields.Datetime.context_timestamp(self, fields.Datetime.now())
-            service = self.env['lgps.fsm_services_type_list'].search([['id', '=', values['service_type_list_id']]], limit=1)
-            if service:
-                short_code = service.short_code
+            if self.service_type_list_id:
+                service = self.env['lgps.fsm_services_type_list'].search([['id', '=', values['service_type_list_id']]], limit=1)
+                if service:
+                    short_code = service.short_code
 
             # if 'name' in values and values['name']:
             if 'device_id' in values and values['device_id']:
