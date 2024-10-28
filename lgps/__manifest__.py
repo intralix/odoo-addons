@@ -71,5 +71,6 @@
         'views/custom_fsm.xml',
 
         'reports/subscription_details.xml',
+        'reports/field_service_timesheet_inherit.xml',
     ],
 }

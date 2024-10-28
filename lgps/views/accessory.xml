@@ -51,6 +51,18 @@
               </group>
             </page>
 
+            <page string="Más Información">
+              <group>
+                <group string="Sistema">
+                  <separator/>
+                  <field name="odoo_version"/>
+                </group>
+                <group string="Más">
+                  <separator/>
+                  <field name="historic_serial_number"/>
+                </group>
+              </group>
+            </page>
           </notebook>
         </sheet>
 

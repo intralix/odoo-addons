@@ -248,6 +248,7 @@ class Device(models.Model):
 
     historic_serial_number = fields.Char(
         required=False,
+        readonly=True,
         string=_("Historic Serial Number"),
     )
 
@@ -401,6 +402,17 @@ class Device(models.Model):
         string=_("Services Count"),
         compute='_compute_fsm_count',
         default=0
+    )
+
+    odoo_version = fields.Selection(
+        selection=[
+            ("12", _("Odoo v12")),
+            ("15", _("Odoo v15")),
+            ("17", _("Odoo v17")),
+        ],
+        default="17",
+        readonly=True,
+        string=_("Odoo Version"),
     )
 
     def action_counter_tickets_button(self):

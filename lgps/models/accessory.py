@@ -136,6 +136,17 @@ class Accessory(models.Model):
         tracking=True,
     )
 
+    odoo_version = fields.Selection(
+        selection=[
+            ("12", _("Odoo v12")),
+            ("15", _("Odoo v15")),
+            ("17", _("Odoo v17")),
+        ],
+        default="17",
+        readonly=True,
+        string=_("Odoo Version"),
+    )
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:

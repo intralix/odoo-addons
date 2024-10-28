@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-06 23:13+0000\n"
-"PO-Revision-Date: 2024-08-06 23:13+0000\n"
+"POT-Creation-Date: 2024-10-28 03:13+0000\n"
+"PO-Revision-Date: 2024-10-28 03:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -307,6 +307,11 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
 msgid "<span><strong>Nick:</strong></span>"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
+msgid "<span>~</span>"
 msgstr ""
 
 #. module: lgps
@@ -1534,6 +1539,11 @@ msgid "Dropdown menu"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
+msgid "Económico"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
 #: model_terms:ir.ui.view,arch_db:lgps.vehicle_kanban_view
 msgid "Edit"
@@ -1605,6 +1615,11 @@ msgstr ""
 #, python-format
 msgid "End Forced Plan Date"
 msgstr "Fin plan forzoso"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
+msgid "Equipo"
+msgstr ""
 
 #. module: lgps
 #. odoo-python
@@ -2120,6 +2135,14 @@ msgstr "Hibernar"
 #, python-format
 msgid "Hibernated"
 msgstr "Hibernado"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__hide_desire_functions
+#, python-format
+msgid "Hide functions"
+msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__priority__2
@@ -2933,6 +2956,18 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.device_form_view
+msgid "Más"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.device_form_view
+msgid "Más Información"
+msgstr ""
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/cellchip.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__to_deactivate
@@ -3150,6 +3185,42 @@ msgstr "Observaciones"
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_accessory__odoo_version
+#: model:ir.model.fields,field_description:lgps.field_lgps_device__odoo_version
+#, python-format
+msgid "Odoo Version"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__odoo_version__12
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__odoo_version__12
+#, python-format
+msgid "Odoo v12"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__odoo_version__15
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__odoo_version__15
+#, python-format
+msgid "Odoo v15"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__odoo_version__17
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__odoo_version__17
+#, python-format
+msgid "Odoo v17"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/models/custom_crm_lead.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lin_connection__on_campaign
 #, python-format
@@ -3236,11 +3307,17 @@ msgstr "Teclado"
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/custom_fsm.py:0 code:addons/lgps/models/device.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__sales_order_id
+#: model:ir.model.fields,field_description:lgps.field_project_task__parent_sales_order_id
 #, python-format
 msgid "Parent Sale Order"
 msgstr "Orden de Venta Relacionada"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Pedido de Ventas que Originó la instalación"
+msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
@@ -3384,6 +3461,11 @@ msgstr "Tipo de Producto"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
 msgid "Producto"
+msgstr ""
+
+#. module: lgps
+#: model:ir.model.fields,help:lgps.field_project_task__parent_sales_order_id
+msgid "Project Sales Order to work with"
 msgstr ""
 
 #. module: lgps
@@ -3841,6 +3923,11 @@ msgid "Services Count"
 msgstr "Servicios Total"
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
+msgid "Servicios Registrados"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
 msgid "Set as Done"
 msgstr ""
@@ -3867,6 +3954,33 @@ msgid "Short Code"
 msgstr "Código Corto"
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Show Timesheet in Report"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
+#, python-format
+msgid "Show timesheet in Reports"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid ""
+"Si esta activado, no se mostrarán productos ni órdenes de venta directas del"
+" servicio"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid ""
+"Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que "
+"se entrega al cliente final"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__simpacsys
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Simpacsys"
@@ -3880,6 +3994,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__reason__client_warehouse
 #, python-format
 msgid "Sin uso, en resguardo con el cliente"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.accessory_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.device_form_view
+msgid "Sistema"
 msgstr ""
 
 #. module: lgps
@@ -4072,6 +4192,11 @@ msgstr "Suscripción"
 #, python-format
 msgid "Subscription Closed State"
 msgstr "Estatus de Cierre de la Suscripción"
+
+#. module: lgps
+#: model:ir.actions.report,name:lgps.action_report_subscriptions_details
+msgid "Subscription Details"
+msgstr ""
 
 #. module: lgps
 #. odoo-python
@@ -4342,7 +4467,8 @@ msgstr "Tickets Total"
 #. module: lgps
 #: model:ir.model.fields,help:lgps.field_lgps_cellchip__days_suspended
 msgid "Time elapsed since the line was set to suspended expressed in days"
-msgstr "Tiempo transcurrido desde que la línea fu suspendida expresado en días"
+msgstr ""
+"Tiempo transcurrido desde que la línea fu suspendida expresado en días"
 
 #. module: lgps
 #: model:ir.model.fields,help:lgps.field_lgps_device__last_report
@@ -4490,11 +4616,13 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
 #: code:addons/lgps/models/tracking.py:0
 #: code:addons/lgps/wizard/install_in_vehicle_wizard.py:0
 #: model:ir.actions.act_window,name:lgps.vehicle_list_action
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__vehicle_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__vehicle_id
+#: model:ir.model.fields,field_description:lgps.field_project_task__vehicle_id
 #, python-format
 msgid "Vehicle"
 msgstr "Vehículo"
@@ -4611,6 +4739,11 @@ msgstr "Tipos de Vehículos"
 #, python-format
 msgid "Vehicle Year"
 msgstr "Año del Vehículo"
+
+#. module: lgps
+#: model:ir.model.fields,help:lgps.field_project_task__vehicle_id
+msgid "Vehicle associated with the service."
+msgstr ""
 
 #. module: lgps
 #. odoo-python

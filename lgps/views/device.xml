@@ -47,7 +47,6 @@
               <field name="name"/>
               <field name="nick"/>
               <field name="product_id"/>
-              <field name="historic_serial_number" readonly="1"/>
               <field name="serial_number_id" domain="[('product_id', '=', product_id)]"/>
               <field name="imei"/>
               <field name="idf"/>
@@ -150,6 +149,19 @@
                 </group>
               </group>
             </page>
+
+            <page string="Más Información">
+              <group>
+                <group string="Sistema">
+                  <separator/>
+                  <field name="odoo_version"/>
+                </group>
+                <group string="Más">
+                  <separator/>
+                  <field name="historic_serial_number"/>
+                </group>
+              </group>
+            </page>
           </notebook>
         </sheet>
 
@@ -181,7 +193,7 @@
         <field name="administrative_status"/>
         <field name="stage_id"/>
         <field name="cell_chip_id"/>
-        <field name="historic_serial_number" readonly="1"/>
+        <field name="historic_serial_number"/>
         <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>
@@ -219,7 +231,7 @@
         <field name="administrative_status"/>
         <field name="state"/>
         <field name="cell_chip_id"/>
-        <field name="historic_serial_number" readonly="1"/>
+        <field name="historic_serial_number"/>
         <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>
