@@ -7,27 +7,68 @@
     <field name="arch" type="xml">
 
         <xpath expr="//field[@name='user_ids']" position="after">
-            <field name="vehicle_id"/>
-            <field name="device_id"/>
-            <field name="nick"/>
-            <field name="service_type_list_id"
+              <field name="service_type_list_id"
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
+            <field name="device_id"  options="{'no_quick_create':True,'no_create_edit':True}"
+                 context="{'order_display': 'name asc' }"/>
+            <field name="nick"/>
+            <field name="vehicle_id"/>
+            <field
+                name="parent_sales_order_id"
+                options="{'no_create':true}"
+                help="Pedido de Ventas que Originó la instalación"/>
 
         </xpath>
 
-      <xpath expr="//field[@name='service_type_list_id']" position="after">
+      <xpath expr="//field[@name='date_last_stage_update']" position="after">
           <field
                 name="show_timesheet_in_report"
                 string="Show Timesheet in Report"
                 force_save="True"
                 readonly="1"
                 help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
-          <field
-                name="parent_sales_order_id"
-                options="{&quot;no_create&quot;:true}"
-                help="Pedido de Ventas que Originó la instalación"/>
         </xpath>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="custom_lgps_fsm_tree_view">
+    <field name="name">lgps.custom.fsm_tree_view</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="industry_fsm.project_task_view_list_fsm"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="nick"/>
+        <field name="device_id"/>
+          <field name="vehicle_id"/>
+        <field name="parent_sales_order_id"/>
+      </xpath>
+
+      <xpath expr="//field[@name='project_id']" position="after">
+        <field name="service_type_list_id"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="lgps_custom_fsm_project_task_view_search_inherit" model="ir.ui.view">
+    <field name="name">lgps.custom_fsm_project_task_view_search_inherit</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="industry_fsm.project_task_view_search_fsm"/>
+    <field name="arch" type="xml">
+      <xpath expr="//search" position="inside">
+        <field name="nick"/>
+        <field name="device_id"/>
+          <field name="vehicle_id"/>
+        <field name="parent_sales_order_id"/>
+      </xpath>
+
+      <xpath expr="//search/group" position="inside">
+        <separator />
+        <filter string="Device" name="Device" context="{'group_by':'device_id'}"/>
+        <filter string="Nick" name="Nick" context="{'group_by':'nick'}"/>
+        <filter string="Vehicle" name="Vehicle" context="{'group_by':'vehicle_id'}"/>
+        <filter string="Sales Order" name="Sales Order" context="{'group_by':'parent_sales_order_id'}"/>
+      </xpath>
     </field>
   </record>
 </odoo>
