@@ -447,7 +447,7 @@ msgstr "Fecha de Activación"
 #: model:ir.model.fields.selection,name:lgps.selection__res_partner__custom_status__active
 #, python-format
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__activity_ids
@@ -3190,7 +3190,7 @@ msgstr "Observaciones"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__odoo_version
 #, python-format
 msgid "Odoo Version"
-msgstr ""
+msgstr "Versión de Odoo"
 
 #. module: lgps
 #. odoo-python
@@ -3360,7 +3360,7 @@ msgstr "Teléfono(s)"
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__plan
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Plan"
-msgstr ""
+msgstr "Plan"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
@@ -3956,7 +3956,7 @@ msgstr "Código Corto"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
 msgid "Show Timesheet in Report"
-msgstr ""
+msgstr "Mostrar tiempos en reporte"
 
 #. module: lgps
 #. odoo-python
@@ -3964,7 +3964,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_project_task__show_timesheet_in_report
 #, python-format
 msgid "Show timesheet in Reports"
-msgstr ""
+msgstr "Mostrar tiempos en reporte"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
@@ -4743,7 +4743,7 @@ msgstr "Año del Vehículo"
 #. module: lgps
 #: model:ir.model.fields,help:lgps.field_project_task__vehicle_id
 msgid "Vehicle associated with the service."
-msgstr ""
+msgstr "Servicio para el Vehículo"
 
 #. module: lgps
 #. odoo-python

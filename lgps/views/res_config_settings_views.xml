@@ -77,5 +77,9 @@
         <field name="context">{'module' : 'lgps', 'bin_size': False}</field>
     </record>
 
-    <menuitem id="lgps_settings_menu" name="Settings" parent="lgps_configuration_menu" action="res_config_settings_action"/>
+    <menuitem id="lgps_settings_menu"
+              name="Settings"
+              parent="lgps_configuration_menu"
+              action="res_config_settings_action"
+              sequence="10"/>
 </odoo>

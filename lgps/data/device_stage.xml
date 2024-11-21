@@ -2,37 +2,37 @@
 <odoo noupdate="0">
 
     <record id="stage_new" model="lgps.device_stage">
-        <field name="name">New</field>
+        <field name="name">Nuevo</field>
         <field name="sequence">10</field>
         <field name="state">new</field>
     </record>
 
     <record id="stage_ready_to_install" model="lgps.device_stage">
-        <field name="name">Ready to Install</field>
+        <field name="name">Listo para instalar</field>
         <field name="sequence">20</field>
         <field name="state">ready_to_install</field>
     </record>
 
     <record id="stage_installed" model="lgps.device_stage">
-        <field name="name">Installed</field>
+        <field name="name">Instalado</field>
         <field name="sequence">30</field>
         <field name="state">installed</field>
     </record>
 
     <record id="stage_hibernated" model="lgps.device_stage">
-        <field name="name">Hibernated</field>
+        <field name="name">Hibernado</field>
         <field name="sequence">40</field>
         <field name="state">hibernated</field>
     </record>
 
     <record id="stage_uninstalled" model="lgps.device_stage">
-        <field name="name">Uninstalled</field>
+        <field name="name">Desinstalado</field>
         <field name="sequence">50</field>
         <field name="state">uninstalled</field>
     </record>
 
     <record id="stage_disconnected" model="lgps.device_stage">
-        <field name="name">Disconnected</field>
+        <field name="name">Desconectado</field>
         <field name="sequence">60</field>
         <field name="state">disconnected</field>
     </record>

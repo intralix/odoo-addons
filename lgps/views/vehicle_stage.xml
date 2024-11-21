@@ -21,6 +21,6 @@
   <!-- Menu items -->
   <menuitem id="menu_vehicle_stage"
             name="Vehicle Stages"
-            parent="lgps_configuration_menu"
+            parent="vehicles_root_conf_menu"
             action="action_vehicle_stage"/>
 </odoo>

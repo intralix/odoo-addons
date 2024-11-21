@@ -56,6 +56,6 @@
   <!-- Menu items -->
   <menuitem id="vehicle_type_list_menu"
             name="Vehicle Types"
-            parent="lgps_configuration_menu"
+            parent="vehicles_root_conf_menu"
             action="vehicle_type_list_action"/>
 </odoo>

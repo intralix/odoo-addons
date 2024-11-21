@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo noupdate="0">
     <record id="vstage_active" model="lgps.vehicle_stage">
-        <field name="name">Active</field>
+        <field name="name">Activo</field>
         <field name="sequence">10</field>
         <field name="state">active</field>
     </record>
 
     <record id="vstage_inactive" model="lgps.vehicle_stage">
-        <field name="name">Inactive</field>
+        <field name="name">Inactivo</field>
         <field name="sequence">20</field>
         <field name="state">inactive</field>
     </record>
 
     <record id="vstage_in_maintenance" model="lgps.vehicle_stage">
-        <field name="name">Maintenance</field>
+        <field name="name">Mantenimiento</field>
         <field name="sequence">30</field>
         <field name="state">in_maintenance</field>
     </record>
 
     <record id="vstage_damaged" model="lgps.vehicle_stage">
-        <field name="name">Damaged</field>
+        <field name="name">Dañado</field>
         <field name="sequence">40</field>
         <field name="state">damaged</field>
     </record>

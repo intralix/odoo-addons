@@ -21,6 +21,6 @@
   <!-- Menu items -->
   <menuitem id="menu_device_stages"
             name="Device Stages"
-            parent="lgps_configuration_menu"
+            parent="devices_root_conf_menu"
             action="action_device_stage"/>
 </odoo>

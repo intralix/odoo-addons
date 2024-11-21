@@ -7,4 +7,6 @@
   <menuitem id="lgps_configuration_menu" name="Configuration" parent="main_lgps_menu" sequence="80"/>
 
   <menuitem id="fsm_root_conf_menu" name="Fsm Lists" parent="lgps_configuration_menu"/>
+  <menuitem id="devices_root_conf_menu" name="Devices" parent="lgps_configuration_menu"/>
+  <menuitem id="vehicles_root_conf_menu" name="Vehicles" parent="lgps_configuration_menu"/>
 </odoo>
