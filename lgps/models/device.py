@@ -248,7 +248,6 @@ class Device(models.Model):
 
     historic_serial_number = fields.Char(
         required=False,
-        readonly=True,
         string=_("Historic Serial Number"),
     )
 
@@ -411,7 +410,6 @@ class Device(models.Model):
             ("17", _("Odoo v17")),
         ],
         default="17",
-        readonly=True,
         string=_("Odoo Version"),
     )
 
