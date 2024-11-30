@@ -143,7 +143,6 @@ class Accessory(models.Model):
             ("17", _("Odoo v17")),
         ],
         default="17",
-        readonly=True,
         string=_("Odoo Version"),
     )
 
