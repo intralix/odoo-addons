@@ -22,7 +22,6 @@
               <field name="name"/>
               <field name="client_id"/>
               <field name="product_id"/>
-              <field name="historic_serial_number" readonly="1"/>
               <field name="serial_number_id" domain="[('product_id', '=', product_id)]"/>
               <field name="installation_date"/>
             </group>
