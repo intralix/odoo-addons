@@ -11,7 +11,8 @@
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
             <field name="device_id"  options="{'no_quick_create':True,'no_create_edit':True}"
-                 context="{'order_display': 'name asc' }"/>
+                 context="{'order_display': 'name asc' }"
+            domain="[('client_id', '=', partner_id)]"/>
             <field name="nick"/>
             <field name="vehicle_id"/>
             <field

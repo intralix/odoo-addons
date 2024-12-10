@@ -1,5 +1,6 @@
 from odoo import api, models, fields, _
 from odoo.exceptions import UserError
+import json
 import logging
 _logger = logging.getLogger(__name__)
 import re
@@ -72,21 +73,6 @@ class LgpsFSM(models.Model):
         index=True,
         tracking=True,
     )
-
-    @api.onchange('partner_id')
-    def _onchange_partner_id(self):
-        domain = {}
-        if self.partner_id:
-            list_ids = []
-            values = self.env['lgps.device'].search([('client_id', '=', self.partner_id.id)])
-
-            for value in values:
-                list_ids.append(value.id)
-
-            self.device_id = []
-            domain = {'device_id': [('id', 'in', list_ids)]}
-
-            return {'domain': domain}
 
     @api.model_create_multi
     def create(self, vals_list):
