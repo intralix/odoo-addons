@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-28 03:13+0000\n"
-"PO-Revision-Date: 2024-10-28 03:13+0000\n"
+"POT-Creation-Date: 2024-12-16 20:19+0000\n"
+"PO-Revision-Date: 2024-12-16 20:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -363,9 +363,13 @@ msgid "Accessories"
 msgstr "Accesorios"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/vehicle.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__accessory_ids
 #: model_terms:ir.ui.view,arch_db:lgps.vehicle_form_view
+#, python-format
 msgid "Accessories Installed"
-msgstr "Accesorios Instalados"
+msgstr "Dispositivos Instalados"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_accessory_operations_form_view
@@ -414,6 +418,7 @@ msgstr "Información del Accesorio"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_needaction
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_needaction
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_needaction
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_needaction
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_needaction
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_needaction
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_needaction
@@ -457,6 +462,7 @@ msgstr "Activo"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_ids
@@ -472,6 +478,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_exception_decoration
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_exception_decoration
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_exception_decoration
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_exception_decoration
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_exception_decoration
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_exception_decoration
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_exception_decoration
@@ -495,6 +502,7 @@ msgstr "Monitoreo Iniciado en"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_state
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_state
@@ -510,6 +518,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_type_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_type_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_type_icon
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_type_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_type_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_type_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_type_icon
@@ -559,6 +568,11 @@ msgstr "Añadir Accesorios al Dispositivo"
 #, python-format
 msgid "Add Installed devices to Vehicles"
 msgstr "Añadir dispositivos al Vehículo"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
+msgid "Add Material"
+msgstr "Material Desinstalado"
 
 #. module: lgps
 #. odoo-python
@@ -682,6 +696,7 @@ msgstr "Activos"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
+#: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
 msgid "Assign"
 msgstr "Asignar"
 
@@ -709,6 +724,7 @@ msgstr "Asignado A"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_attachment_count
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_attachment_count
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_attachment_count
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_attachment_count
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_attachment_count
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_attachment_count
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_attachment_count
@@ -773,6 +789,7 @@ msgstr "Ciclo de Facturación"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__kanban_state__blocked
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__kanban_state__blocked
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__kanban_state__blocked
 msgid "Blocked"
 msgstr "Bloqeuado"
@@ -833,6 +850,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
+#: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_accessory_operations_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_device_operations_form_view
@@ -1041,6 +1059,7 @@ msgstr "Colectivos"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__color
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__color
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__color
 msgid "Color"
 msgstr ""
@@ -1128,6 +1147,11 @@ msgid "Complementos"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Componentes"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model,name:lgps.model_res_config_settings
 msgid "Config Settings"
 msgstr "Ajustes de configuración"
@@ -1173,11 +1197,14 @@ msgstr "Cortesía"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__create_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__create_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__create_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__create_uid
@@ -1195,11 +1222,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__create_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__create_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__create_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__create_date
@@ -1217,6 +1247,7 @@ msgstr "Credito y Corbanza"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__priority__3
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__priority__3
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__priority__3
 msgid "Critical"
 msgstr "Crítico"
@@ -1351,6 +1382,14 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__observation
+#, python-format
+msgid "Description"
+msgstr "Descripción"
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/models/device_history.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_history__operation_mode__wakeup
 #, python-format
@@ -1363,6 +1402,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__operation_mode__wakeup
 #, python-format
 msgid "Deshibernación de equipos"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Desinstalados"
 msgstr ""
 
 #. module: lgps
@@ -1386,6 +1430,7 @@ msgstr ""
 #: code:addons/lgps/models/custom_fsm.py:0
 #: model:ir.model.fields,field_description:lgps.field_project_task__device_id
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_form_view
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_custom_fsm_project_task_view_search_inherit
 #, python-format
 msgid "Device"
 msgstr "Dipositivo Gps"
@@ -1456,6 +1501,7 @@ msgstr "Estados del dispositivo"
 #. odoo-python
 #: code:addons/lgps/wizard/install_in_vehicle_wizard.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__device_ids
+#: model:ir.ui.menu,name:lgps.devices_root_conf_menu
 #: model_terms:ir.ui.view,arch_db:lgps.custom_partner_form_view
 #, python-format
 msgid "Devices"
@@ -1496,11 +1542,14 @@ msgstr "Sensor de desenganche"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__display_name
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__display_name
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__display_name
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__display_name
@@ -1523,6 +1572,7 @@ msgstr "Condutor"
 #. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__drop
@@ -1597,6 +1647,11 @@ msgstr "Emails a Notificar"
 #, python-format
 msgid "Email sent"
 msgstr "Email enviado"
+
+#. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__state__review
+msgid "En Revisión"
+msgstr ""
 
 #. module: lgps
 #. odoo-python
@@ -1725,12 +1780,12 @@ msgstr "Servicios"
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__filtered_devices_ids
 msgid "Filtered Devices"
-msgstr ""
+msgstr "Dispositivos filtrados"
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__filtered_vehicles_ids
 msgid "Filtered Vehicles"
-msgstr ""
+msgstr "Vehículos filtrados"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
@@ -1804,6 +1859,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_follower_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_follower_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_follower_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_follower_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_follower_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_follower_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_follower_ids
@@ -1819,6 +1875,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_partner_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_partner_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_partner_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_partner_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_partner_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_partner_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_partner_ids
@@ -1834,6 +1891,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__activity_type_icon
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__activity_type_icon
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__activity_type_icon
+#: model:ir.model.fields,help:lgps.field_lgps_revision__activity_type_icon
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__activity_type_icon
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__activity_type_icon
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__activity_type_icon
@@ -1843,7 +1901,9 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__for_installing
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__for_installing
 #, python-format
 msgid "For Installing"
@@ -1909,10 +1969,31 @@ msgid "Fsm Lists"
 msgstr "Lista de Servicio Externo"
 
 #. module: lgps
+#: model:ir.model,name:lgps.model_lgps_fsm_material_line
+msgid "Fsm Material Line (parts)"
+msgstr "Línea de Material de Servicios"
+
+#. module: lgps
+#: model:ir.actions.act_window,name:lgps.action_fsm_material_line_tree
+#: model:ir.actions.act_window,name:lgps.fsm_material_line_list_action
+msgid "Fsm Material Lines"
+msgstr "Líneas de Material de Servicio"
+
+#. module: lgps
 #: model:ir.actions.act_window,name:lgps.fsm_services_type_list_action
 #: model:ir.ui.menu,name:lgps.fsm_services_type_list_menu
 msgid "Fsm Services Type List"
 msgstr "Tipos de Servicio Externo"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__project_task_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__project_task_id
+#, python-format
+msgid "Fsm Task"
+msgstr "Servicio Relacionado"
 
 #. module: lgps
 #. odoo-python
@@ -2041,8 +2122,7 @@ msgstr "Accesorios"
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/vehicle.py:0 code:addons/lgps/models/vehicle.py:0
-#: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__accessory_ids
+#: code:addons/lgps/models/vehicle.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__device_ids
 #: model_terms:ir.ui.view,arch_db:lgps.vehicle_form_view
 #, python-format
@@ -2090,12 +2170,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__has_message
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__has_message
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__has_message
 msgid "Has Message"
 msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__has_uninstalled_material
+#, python-format
+msgid "Has Uninstalled Material"
+msgstr "Tiene material desinstalado"
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_helpdesk_ticket
@@ -2120,9 +2209,10 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/accessory.py:0
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__hibernate
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__hibernate
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__hibernate
 #, python-format
 msgid "Hibernate"
@@ -2137,15 +2227,8 @@ msgid "Hibernated"
 msgstr "Hibernado"
 
 #. module: lgps
-#. odoo-python
-#: code:addons/lgps/models/custom_fsm.py:0
-#: model:ir.model.fields,field_description:lgps.field_project_task__hide_desire_functions
-#, python-format
-msgid "Hide functions"
-msgstr ""
-
-#. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__priority__2
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__priority__2
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__priority__2
 msgid "High"
 msgstr ""
@@ -2191,11 +2274,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__id
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__id
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__id
@@ -2226,6 +2312,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_exception_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_exception_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_exception_icon
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_exception_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_exception_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_exception_icon
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_exception_icon
@@ -2241,6 +2328,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__activity_exception_icon
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__activity_exception_icon
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__activity_exception_icon
+#: model:ir.model.fields,help:lgps.field_lgps_revision__activity_exception_icon
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__activity_exception_icon
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__activity_exception_icon
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__activity_exception_icon
@@ -2256,6 +2344,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__message_needaction
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__message_needaction
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__message_needaction
+#: model:ir.model.fields,help:lgps.field_lgps_revision__message_needaction
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__message_needaction
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__message_needaction
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__message_needaction
@@ -2278,6 +2367,8 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__message_has_sms_error
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__message_has_error
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__message_has_sms_error
+#: model:ir.model.fields,help:lgps.field_lgps_revision__message_has_error
+#: model:ir.model.fields,help:lgps.field_lgps_revision__message_has_sms_error
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__message_has_error
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__message_has_sms_error
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__message_has_error
@@ -2307,6 +2398,7 @@ msgstr "En Mantenimiento"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__kanban_state__normal
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__kanban_state__normal
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__kanban_state__normal
 msgid "In Progress"
 msgstr "En Progreso"
@@ -2320,6 +2412,11 @@ msgstr "En Progreso"
 #, python-format
 msgid "Inactive"
 msgstr "Inactivo"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
+msgid "Ingresa el material que vas a regresar del cliente:"
+msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_accessory_operations_form_view
@@ -2361,10 +2458,11 @@ msgstr "Fecha de instalación"
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/accessory.py:0
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/models/device_stage.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__installed
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__installed
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__installed
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__installed
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_form_view
@@ -2389,10 +2487,13 @@ msgstr "Instalado en"
 #: code:addons/lgps/models/accesory_history.py:0
 #: code:addons/lgps/models/accessory.py:0
 #: code:addons/lgps/models/device_history.py:0
-#: code:addons/lgps/models/vehicle.py:0
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: code:addons/lgps/models/revisions.py:0 code:addons/lgps/models/vehicle.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__name
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__name
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__name
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__name
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__name
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__name
 #, python-format
 msgid "Internal Id"
@@ -2404,6 +2505,14 @@ msgid "Internal Info"
 msgstr "Información Interna"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model,name:lgps.model_lgps_revision
+#, python-format
+msgid "Internal Revisions"
+msgstr "Revisiones Internas"
+
+#. module: lgps
 #: model:ir.ui.menu,name:lgps.main_lgps_menu
 msgid "Intralix"
 msgstr ""
@@ -2411,22 +2520,22 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Deactivation Process Settings"
-msgstr ""
+msgstr "Configuración de proceso de desactivación"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Hibernation Process Settings"
-msgstr ""
+msgstr "Configuración de proceso de deshibernación"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Reactivation Process Settings"
-msgstr ""
+msgstr "Configuración de proceso de reactivación"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Substitution Process Settings"
-msgstr ""
+msgstr "Configuración de proceso de substitución"
 
 #. module: lgps
 #. odoo-python
@@ -2473,8 +2582,14 @@ msgid "Intx Vehicles Type List Module"
 msgstr "Lista de Vehículos"
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Intx info"
+msgstr "Información Intx"
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
+#: code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__inventory
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__inventory
@@ -2491,6 +2606,7 @@ msgstr "Inventario"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_is_follower
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_is_follower
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_is_follower
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_is_follower
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_is_follower
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_is_follower
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_is_follower
@@ -2506,6 +2622,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__kanban_state
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__kanban_state
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__kanban_state
 msgid "Kanban State"
 msgstr ""
@@ -2599,11 +2716,14 @@ msgstr "Último Reporte"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__write_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__write_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__write_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__write_uid
@@ -2621,11 +2741,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_stage__write_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__write_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__write_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_stage__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle_type__write_date
@@ -2695,6 +2818,11 @@ msgstr "Lgps / Usuario"
 #: model:res.groups,name:lgps.lgps_group_wizard_manager
 msgid "Lgps / Wizards "
 msgstr "Lgps / Wizards"
+
+#. module: lgps
+#: model:ir.actions.act_window,name:lgps.lgps_revision_list_action
+msgid "Lgps Revision"
+msgstr ""
 
 #. module: lgps
 #. odoo-python
@@ -2782,6 +2910,16 @@ msgid "Logs"
 msgstr "Intx Logs de Monitoreo"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__lot_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__lot_id
+#, python-format
+msgid "Lot/Serial"
+msgstr "Número de Serie"
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
 msgid "Línea(s) Seleccionada(s):"
 msgstr ""
@@ -2815,6 +2953,26 @@ msgid "Mapaloc"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_fsm_material_line_form
+msgid "Material"
+msgstr ""
+
+#. module: lgps
+#: model:ir.ui.menu,name:lgps.fsm_material_lines_menu
+msgid "Material Lines"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Material Uninstalled"
+msgstr "Material desinstalado"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_fsm_material_line_tree
+msgid "Materials"
+msgstr "Materiales"
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/cellchip.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__major_account
@@ -2830,6 +2988,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__priority__1
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__priority__1
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__priority__1
 msgid "Medium"
 msgstr ""
@@ -2842,6 +3001,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_has_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_has_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_has_error
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_has_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_has_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_has_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_has_error
@@ -2857,6 +3017,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_ids
@@ -2948,6 +3109,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__my_activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__my_activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__my_activity_date_deadline
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__my_activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__my_activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__my_activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__my_activity_date_deadline
@@ -2991,11 +3153,14 @@ msgstr "Negociaciones"
 #: code:addons/lgps/models/accessory.py:0
 #: code:addons/lgps/models/accessory.py:0
 #: code:addons/lgps/models/custom_partner.py:0
+#: code:addons/lgps/models/device.py:0
 #: code:addons/lgps/models/device_history.py:0
 #: code:addons/lgps/models/device_stage.py:0
-#: code:addons/lgps/models/vehicle.py:0
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: code:addons/lgps/models/revisions.py:0 code:addons/lgps/models/vehicle.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__new
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__new
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__new
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__new
 #: model:ir.model.fields.selection,name:lgps.selection__res_partner__client_type__new
@@ -3011,6 +3176,7 @@ msgstr "Nuevo"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_calendar_event_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_calendar_event_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_calendar_event_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_calendar_event_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_calendar_event_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_calendar_event_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_calendar_event_id
@@ -3026,6 +3192,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_date_deadline
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_date_deadline
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_date_deadline
@@ -3041,6 +3208,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_summary
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_summary
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_summary
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_summary
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_summary
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_summary
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_summary
@@ -3056,6 +3224,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_type_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_type_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_type_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_type_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_type_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_type_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_type_id
@@ -3071,6 +3240,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__nick
 #: model:ir.model.fields,field_description:lgps.field_project_task__nick
 #: model:ir.model.fields,field_description:lgps.field_sale_order__device_nick
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_custom_fsm_project_task_view_search_inherit
 #, python-format
 msgid "Nick"
 msgstr ""
@@ -3090,8 +3260,18 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__priority__0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__priority__0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__priority__0
 msgid "Normal"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__notes
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
+#, python-format
+msgid "Notes"
 msgstr ""
 
 #. module: lgps
@@ -3108,6 +3288,11 @@ msgid "Novit"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__state__new
+msgid "Nuevo"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__message_needaction_counter
@@ -3115,6 +3300,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_needaction_counter
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_needaction_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_needaction_counter
@@ -3130,6 +3316,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_has_error_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_has_error_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_has_error_counter
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_has_error_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_has_error_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_has_error_counter
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_has_error_counter
@@ -3145,6 +3332,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__message_needaction_counter
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__message_needaction_counter
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__message_needaction_counter
+#: model:ir.model.fields,help:lgps.field_lgps_revision__message_needaction_counter
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__message_needaction_counter
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__message_needaction_counter
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__message_needaction_counter
@@ -3160,6 +3348,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__message_has_error_counter
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__message_has_error_counter
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__message_has_error_counter
+#: model:ir.model.fields,help:lgps.field_lgps_revision__message_has_error_counter
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__message_has_error_counter
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__message_has_error_counter
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__message_has_error_counter
@@ -3177,7 +3366,9 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/revisions.py:0
 #: code:addons/lgps/models/tracking.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__observations
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__observations
 #, python-format
 msgid "Observations"
@@ -3264,6 +3455,11 @@ msgstr "Operación a Realizar"
 #, python-format
 msgid "Operation Reason"
 msgstr "Comentario"
+
+#. module: lgps
+#: model:ir.ui.menu,name:lgps.lgps_operations_menu
+msgid "Operations"
+msgstr "Operaciones"
 
 #. module: lgps
 #. odoo-python
@@ -3357,10 +3553,18 @@ msgid "Phones"
 msgstr "Teléfono(s)"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__has_material_picking_done
+#, python-format
+msgid "Picking already created"
+msgstr "Movimientos de Inventario hechos"
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__plan
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 msgid "Plan"
-msgstr "Plan"
+msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
@@ -3430,6 +3634,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__priority
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__priority
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__priority
 msgid "Priority"
 msgstr "Prioridad"
@@ -3441,7 +3646,13 @@ msgid "Procesando para"
 msgstr ""
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/fsm_material_line.py:0
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__product_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__product_id
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_form_view
+#, python-format
 msgid "Product"
 msgstr "Producto"
 
@@ -3466,7 +3677,15 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields,help:lgps.field_project_task__parent_sales_order_id
 msgid "Project Sales Order to work with"
-msgstr ""
+msgstr "Pedido de Venta para trabajar"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/wizard/fsm_uninstalled_material_wizard.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__project_task_id
+#, python-format
+msgid "Project Task"
+msgstr "Servicio"
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_cellchip__provider__prossea
@@ -3497,6 +3716,14 @@ msgstr "Información del proveedor"
 #, python-format
 msgid "Provider Invoice"
 msgstr "Factura de Proveedor"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__provider
+#, python-format
+msgid "Provider Warranty"
+msgstr "Garantía con Proveedor"
 
 #. module: lgps
 #. odoo-python
@@ -3539,6 +3766,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__rating_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__rating_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__rating_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__rating_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__rating_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__rating_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__rating_ids
@@ -3548,6 +3776,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device__kanban_state__done
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__kanban_state__done
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__kanban_state__done
 msgid "Ready for next stage"
 msgstr ""
@@ -3567,6 +3796,14 @@ msgstr "Listo para instalar"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__reason
 msgid "Reason"
 msgstr "Razón"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__recycle
+#, python-format
+msgid "Recycle"
+msgstr "Volver a utilizar"
 
 #. module: lgps
 #. odoo-python
@@ -3666,6 +3903,14 @@ msgstr "Servicio relacionado"
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model_terms:ir.ui.view,arch_db:lgps.view_fsm_material_line_form
+#, python-format
+msgid "Removed Material"
+msgstr "Material desinstalado"
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/models/accesory_history.py:0
 #: code:addons/lgps/models/device_history.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__related_odt
@@ -3700,6 +3945,14 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/wizard/fsm_uninstalled_material_wizard.py:0
+#: model:ir.model,name:lgps.model_lgps_uninstalled_material_wizard
+#, python-format
+msgid "Report uninstalled material in fsm"
+msgstr "Ingresar material desinstalado"
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/models/accesory_history.py:0
 #: code:addons/lgps/models/device_history.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
@@ -3713,6 +3966,14 @@ msgid "Requested by"
 msgstr "Solicitado por"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__resolution
+#, python-format
+msgid "Resolution"
+msgstr "Resolución"
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__activity_user_id
@@ -3720,6 +3981,7 @@ msgstr "Solicitado por"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__activity_user_id
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__activity_user_id
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__activity_user_id
@@ -3728,9 +3990,39 @@ msgid "Responsible User"
 msgstr ""
 
 #. module: lgps
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__state__resolution
+msgid "Resuelto"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_form_view
 msgid "Resume Tracking"
 msgstr "Continuar Monitoreo"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
+msgid "Revision Form"
+msgstr "Formulario de Revisión"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__state
+#, python-format
+msgid "Revision Status"
+msgstr "Estado de la Revisión"
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
+msgid "Revision info"
+msgstr "Información de la Revisión"
+
+#. module: lgps
+#: model:ir.actions.act_window,name:lgps.action_lgps_revision_tree
+#: model:ir.ui.menu,name:lgps.lgps_revision_menu
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_tree
+msgid "Revisions"
+msgstr "Revisiones"
 
 #. module: lgps
 #. odoo-python
@@ -3764,6 +4056,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__message_has_sms_error
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__message_has_sms_error
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__message_has_sms_error
@@ -3773,6 +4066,7 @@ msgstr ""
 
 #. module: lgps
 #: model:ir.model,name:lgps.model_sale_order
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_custom_fsm_project_task_view_search_inherit
 msgid "Sales Order"
 msgstr "Orden de venta"
 
@@ -3781,6 +4075,14 @@ msgstr "Orden de venta"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_operations__scanner
 msgid "Scanner"
 msgstr "Escánner"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/revisions.py:0
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__scrap
+#, python-format
+msgid "Scrap"
+msgstr "Desechar"
 
 #. module: lgps
 #. odoo-python
@@ -3835,13 +4137,17 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
-#: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
 msgid "Selecciona los accesorios que deseas vincular al dispositivo:"
 msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
-msgid "Selecciona los dispositivos que deseas vincular al dispositivo:"
+msgid "Selecciona los accesorios que deseas vincular al vehículo:"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
+msgid "Selecciona los dispositivos que deseas vincular al vehículo:"
 msgstr ""
 
 #. module: lgps
@@ -3928,6 +4234,11 @@ msgid "Servicios Registrados"
 msgstr ""
 
 #. module: lgps
+#: model:ir.actions.act_window,name:lgps.action_view_uninstalled_material_wizard
+msgid "Set Uninstalled Material"
+msgstr "Ingresar Material Desinstalado"
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_kanban_view
 msgid "Set as Done"
 msgstr ""
@@ -3965,13 +4276,6 @@ msgstr "Mostrar tiempos en reporte"
 #, python-format
 msgid "Show timesheet in Reports"
 msgstr "Mostrar tiempos en reporte"
-
-#. module: lgps
-#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
-msgid ""
-"Si esta activado, no se mostrarán productos ni órdenes de venta directas del"
-" servicio"
-msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
@@ -4161,6 +4465,7 @@ msgstr "Fecha desde el último estatus"
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__activity_state
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__activity_state
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__activity_state
+#: model:ir.model.fields,help:lgps.field_lgps_revision__activity_state
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__activity_state
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__activity_state
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__activity_state
@@ -4171,6 +4476,14 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__stock_picking_id
+#, python-format
+msgid "Stock Moves"
+msgstr "Movimiento de almacén"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.tracking_form_view
@@ -4196,7 +4509,7 @@ msgstr "Estatus de Cierre de la Suscripción"
 #. module: lgps
 #: model:ir.actions.report,name:lgps.action_report_subscriptions_details
 msgid "Subscription Details"
-msgstr ""
+msgstr "Detalles de la suscripción"
 
 #. module: lgps
 #. odoo-python
@@ -4322,9 +4635,10 @@ msgstr "Términos"
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/accessory.py:0
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__tests
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__tests
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__tests
 #, python-format
 msgid "Tests"
@@ -4381,6 +4695,11 @@ msgid "The id must be unique"
 msgstr "El id debe ser único"
 
 #. module: lgps
+#: model:ir.model.constraint,message:lgps.constraint_lgps_revision_name_unique
+msgid "The revision id must be unique"
+msgstr "El identificador debe ser único"
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
@@ -4434,7 +4753,7 @@ msgstr ""
 msgid ""
 "There is not configuration for default list price in RMA repairs.\n"
 " Configure this option first."
-msgstr ""
+msgstr "No hay configurada una lista de precios por default para las reparaciones"
 
 #. module: lgps
 #. odoo-python
@@ -4572,6 +4891,7 @@ msgstr "Detalles de Monitoreo"
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__activity_exception_decoration
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__activity_exception_decoration
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__activity_exception_decoration
+#: model:ir.model.fields,help:lgps.field_lgps_revision__activity_exception_decoration
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__activity_exception_decoration
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__activity_exception_decoration
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__activity_exception_decoration
@@ -4591,15 +4911,26 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/accessory.py:0
+#: code:addons/lgps/models/accessory.py:0 code:addons/lgps/models/device.py:0
 #: code:addons/lgps/models/device_stage.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_accessory__status__uninstalled
+#: model:ir.model.fields.selection,name:lgps.selection__lgps_device__administrative_status__uninstalled
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_operations__device_status__uninstalled
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_device_stage__state__uninstalled
 #, python-format
 msgid "Uninstalled"
 msgstr "Desinstalado"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: code:addons/lgps/wizard/fsm_uninstalled_material_wizard.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_uninstalled_material_wizard__stock_move_ids
+#: model:ir.model.fields,field_description:lgps.field_project_task__fsm_material_ids
+#, python-format
+msgid "Uninstalled Material"
+msgstr "Material Desinstalado"
 
 #. module: lgps
 #. odoo-python
@@ -4623,6 +4954,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__vehicle_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__vehicle_id
 #: model:ir.model.fields,field_description:lgps.field_project_task__vehicle_id
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_custom_fsm_project_task_view_search_inherit
 #, python-format
 msgid "Vehicle"
 msgstr "Vehículo"
@@ -4756,6 +5088,7 @@ msgstr "Vehículo donde se instaló el dispositivo"
 
 #. module: lgps
 #: model:ir.ui.menu,name:lgps.vehicles_menu
+#: model:ir.ui.menu,name:lgps.vehicles_root_conf_menu
 msgid "Vehicles"
 msgstr "Vehículos"
 
@@ -4834,6 +5167,7 @@ msgstr "Términos de Garantía"
 #: model:ir.model.fields,field_description:lgps.field_lgps_device_history__website_message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__website_message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__website_message_ids
+#: model:ir.model.fields,field_description:lgps.field_lgps_revision__website_message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__website_message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking_logs__website_message_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_vehicle__website_message_ids
@@ -4849,6 +5183,7 @@ msgstr ""
 #: model:ir.model.fields,help:lgps.field_lgps_device_history__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_fsm_services_type_list__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_platform_list__website_message_ids
+#: model:ir.model.fields,help:lgps.field_lgps_revision__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_tracking__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_tracking_logs__website_message_ids
 #: model:ir.model.fields,help:lgps.field_lgps_vehicle__website_message_ids

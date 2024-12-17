@@ -74,7 +74,7 @@ class AccessoryHistory(models.Model):
         string=_("More Info"),
     )
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('lgps.accessory_history') or _('New')
         vals['name'] = seq

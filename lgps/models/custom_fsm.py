@@ -44,7 +44,7 @@ class LgpsFSM(models.Model):
     service_type_list_id = fields.Many2one(
         comodel_name="lgps.fsm_services_type_list",
         string=_("Service Type List"),
-        # default=_default_service_type_list,
+        default=1,
         ondelete="set null",
         index=True,
         domain=[('active', '=', True)],
@@ -74,6 +74,44 @@ class LgpsFSM(models.Model):
         tracking=True,
     )
 
+    fsm_material_ids = fields.One2many(
+        comodel_name="lgps.fsm_material_line",
+        inverse_name="project_task_id",
+        string=_("Uninstalled Material"),
+        index=True,
+        tracking=True,
+    )
+
+    revisions_ids = fields.One2many(
+        comodel_name="lgps.revision",
+        inverse_name="project_task_id",
+        string=_("Revisions"),
+        index=True
+    )
+
+    stock_picking_id = fields.Many2one(
+        comodel_name="stock.picking",
+        string=_("Stock Moves"),
+        ondelete="set null",
+        index=True,
+        tracking=True,
+    )
+
+    has_uninstalled_material = fields.Boolean(
+        default=False,
+        string=_("Has Uninstalled Material"),
+    )
+
+    has_material_picking_done = fields.Boolean(
+        default=False,
+        string=_("Picking already created"),
+    )
+
+    has_revisions_created = fields.Boolean(
+        default=False,
+        string=_("Revisions were already created"),
+    )
+
     @api.model_create_multi
     def create(self, vals_list):
         for values in vals_list:
@@ -85,7 +123,6 @@ class LgpsFSM(models.Model):
                 if service:
                     short_code = service.short_code
 
-            # if 'name' in values and values['name']:
             if 'device_id' in values and values['device_id']:
                 device = self.env['lgps.device'].search([['id', '=', values['device_id']]], limit=1)
                 if device:
@@ -97,5 +134,56 @@ class LgpsFSM(models.Model):
             values['name'] = short_code + '/' + device_name + '/' + today_dt.strftime("%Y/%m/%d%H%M")
 
             res = super(LgpsFSM, self).create(values)
-        # here you can do accordingly
         return res
+
+    def open_uninstalled_material_wizard(self):
+        action = {
+            'type': 'ir.actions.act_window',
+            'name': _('Removed Material'),
+            'res_model': 'lgps.uninstalled_material_wizard',
+            'target': 'new',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'context': {'default_project_task_id': self.id}
+        }
+        return action
+
+    def create_revisions_from_material_lines(self):
+        created_revisions = []
+        if not self.has_revisions_created:
+            for rec in self.fsm_material_ids:
+                #_logger.warning('rec: %s', rec)
+                # We create an empty model
+                new_revision = self.env['lgps.revision']
+                # We get the values dict
+                temp = {
+                    'observations': rec.observation,
+                    'notes': '',
+                    'project_task_id': int(rec.project_task_id.id),
+                    'product_id': int(rec.product_id.id),
+                    'lot_id': int(rec.lot_id.id),
+                    'state': 'new',
+                    'resolution': '',
+                }
+                #_logger.warning('temp: %s', temp)
+                # We append the records to array with the command CREATE,
+                # created_revisions.append((0, 0, temp))
+                #_logger.warning('created_revisions: %s', created_revisions)
+                # temp = {}
+
+                # We Create the record
+                revision = new_revision.create(temp)
+                #_logger.warning('revision: %s', revision)
+                created_revisions.append(int(revision.id))
+                # we must append this records to the model
+
+            #_logger.warning('created_revisions before update: %s', created_revisions)
+            self.write({
+                'revisions_ids': [(6, 0, created_revisions)],
+                'has_revisions_created': True,
+            })
+
+        else:
+            raise UserError(
+                _('Ya se han creado todas las revisiones de este servicio.')
+            )

@@ -19,3 +19,5 @@ from . import device_history
 from . import accesory_history
 from . import fsm_services_type_list
 from . import custom_fsm
+from . import fsm_material_line
+from . import revisions

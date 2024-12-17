@@ -38,7 +38,6 @@
                       name="action_counter_fsm_button">
                 <field string="Services" name="fsm_ids_count" widget="statinfo"/>
               </button>
-
           </div>
 
           <group>

@@ -123,7 +123,7 @@ class Vehicle(models.Model):
     accessory_ids = fields.One2many(
         comodel_name="lgps.accessory",
         inverse_name="vehicle_id",
-        string=_("Gps Devices Installed")
+        string=_("Accessories Installed")
     )
 
     @api.model_create_multi

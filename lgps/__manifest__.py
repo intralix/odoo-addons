@@ -39,6 +39,7 @@
         'wizard/cellchip_wizard.xml',
         'wizard/devices_common_operations.xml',
         'wizard/accessory_common_operations.xml',
+        'wizard/fsm_uninstalled_material_wizard.xml',
 
         'views/main_menu.xml',
 
@@ -69,8 +70,11 @@
         'views/accessory_history.xml',
         'views/fsm_services_type_list.xml',
         'views/custom_fsm.xml',
+        'views/fsm_material_line.xml',
+        'views/revision.xml',
 
         'reports/subscription_details.xml',
         'reports/field_service_timesheet_inherit.xml',
+
     ],
 }

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_lgps_revision" model="ir.sequence">
+            <field name="name">Lgps Revision Sequence</field>
+            <field name="code">lgps.revision</field>
+            <field name="prefix">REV</field>
+            <field name="padding">12</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    <record id="view_lgps_revision_form" model="ir.ui.view">
+        <field name="name">lgps_revision.form</field>
+        <field name="model">lgps.revision</field>
+        <field name="arch" type="xml">
+            <form string="Revision Form">
+               <header>
+                   <field name="state" widget="statusbar" options="{'clickable':False}"/>
+               </header>
+               <sheet string="Revision info">
+                   <div class="oe_title">
+                       <label for="name" string="Número de Revision"/>
+                       <h1>
+                           <div class="d-flex"><field class="text-break" name="name"/></div>
+                       </h1>
+                   </div>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="lot_id"/>
+                            </group>
+                            <group>
+                                <field name="project_task_id"/>
+                                <field name="state"/>
+                                <field name="resolution"/>
+                            </group>
+                        </group>
+
+                    <notebook>
+                        <page string="Observations">
+                            <field name="observations"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_lgps_revision_tree" model="ir.ui.view">
+        <field name="name">lgps.revision.tree</field>
+        <field name="model">lgps.revision</field>
+        <field name="arch" type="xml">
+            <tree string="Revisions">
+                <field name="name"/>
+                <field name="project_task_id"/>
+                <field name="product_id"/>
+                <field name="lot_id" />
+                <field name="state"/>
+                <field name="observations"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="lgps_revision_search_view">
+    <field name="name">lgps_revision.search</field>
+    <field name="model">lgps.revision</field>
+    <field name="arch" type="xml">
+      <search>
+            <field name="name"/>
+            <field name="notes"/>
+            <field name="observations"/>
+            <field name="product_id"/>
+            <field name="lot_id"/>
+            <field name="project_task_id"/>
+
+      </search>
+    </field>
+  </record>
+
+         <record id="action_lgps_revision_tree" model="ir.actions.act_window">
+            <field name="name">Revisions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lgps.revision</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="lgps_revision_search_view"/>
+        </record>
+
+<record model="ir.ui.view" id="lgps_revision_search_view">
+    <field name="name">lgps.revision.search</field>
+    <field name="model">lgps.revision</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="project_task_id"/>
+        <field name="product_id"/>
+        <field name="lot_id"/>
+        <field name="state"/>
+
+        <group expand="1" string="Group By">
+          <filter string="Servicio" name="service" context="{'group_by':'project_task_id'}"/>
+          <filter string="Producto" name="product" context="{'group_by':'product_id'}"/>
+          <filter string="Número de Serie" name="serial_number" context="{'group_by':'lot_id'}"/>
+          <filter string="Estatus" name="status" context="{'group_by':'state'}"/>
+
+        </group>
+      </search>
+    </field>
+  </record>
+
+    <record id="revision_view_kanban" model="ir.ui.view">
+        <field name="name">lgps.revisions.view.kanban</field>
+        <field name="model">lgps.revision</field>
+        <field name="arch" type="xml">
+            <kanban
+                    quick_create="false"
+                    group_create="0"
+                    records_draggable="1"
+                    default_group_by="state"
+                    default_order="state"
+                    class="o_kanban_small_column o_kanban_project_task"
+                    sample="1">
+                <templates>
+                    <div t-name="kanban-box">
+                    <div class="oe_kanban_card oe_kanban_global_click">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_headings">
+                                <strong class="o_kanabn_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <br/>
+                                <span class="fa fa-clock"/>
+                                <span class="muted">
+                                    <field name="create_date" widget="remaining_days"/>
+                                </span>
+                            </div>
+
+                            <div class="o_kanban_record_body">
+                                <field name="product_id"/>
+                                <field name="lot_id"/>
+                                <field name="observations"/>
+                            </div>
+
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="priority" widget="priority"/>
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="kanban_state" widget="state_selection"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="oe_clear"/>
+                </div>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+  <record model="ir.actions.act_window" id="lgps_revision_list_action">
+    <field name="name">Lgps Revision</field>
+    <field name="res_model">lgps.revision</field>
+    <field name="view_mode">tree,form,kanban</field>
+  </record>
+
+  <menuitem id="lgps_revision_menu"
+            name="Revisions"
+            parent="lgps_operations_menu"
+            action="lgps_revision_list_action"
+            sequence="55"/>
+    </data>
+</odoo>

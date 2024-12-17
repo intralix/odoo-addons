@@ -7,10 +7,10 @@
     <field name="arch" type="xml">
       <form string="Install devices">
         <sheet>
-          <p class="text-primary"> Selecciona los dispositivos que deseas vincular al dispositivo:</p>
+          <p class="text-primary"> Selecciona los dispositivos que deseas vincular al vehículo:</p>
           <field name="device_ids" nolabel="1"/>
 
-          <p class="text-primary"> Selecciona los accesorios que deseas vincular al dispositivo:</p>
+          <p class="text-primary"> Selecciona los accesorios que deseas vincular al vehículo:</p>
           <field name="accessory_ids" nolabel="1"/>
         </sheet>
         <footer>

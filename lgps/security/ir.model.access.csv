@@ -51,3 +51,12 @@ accessory_log_manager,Accessory Logs Manager,model_lgps_accessory_history,lgps_g
 accessory_log_read_all,Accessory Log All,model_lgps_accessory_history,lgps_group_user,1,1,1,0
 accessory_log_maintainer,Accessory Log Maintainer,model_lgps_accessory_history,lgps_group_maintainer,1,0,0,0
 accessory_log_guest,Accessory Log Guest,model_lgps_accessory_history,lgps_group_guest,1,0,0,0
+fsm_material_line_manager,Fsm Material Line Manager,model_lgps_fsm_material_line,lgps_group_manager,1,1,1,1
+fsm_material_line_read_all,Fsm Material Line All,model_lgps_fsm_material_line,lgps_group_user,1,1,1,0
+fsm_material_line_maintainer,Fsm Material Line Maintainer,model_lgps_fsm_material_line,lgps_group_maintainer,1,1,0,0
+fsm_material_line_guest,Fsm Material Line Guest,model_lgps_fsm_material_line,lgps_group_guest,1,0,0,0
+fsm_uninstalled_material_wizard, Unistalled Material Wizard Manager,model_lgps_uninstalled_material_wizard,lgps_group_wizard_manager,1,1,1,1
+revisions_manager,Revisions Manager,model_lgps_revision,lgps_group_manager,1,1,1,1
+revisions_read_all,Revisions All,model_lgps_revision,lgps_group_user,1,1,1,0
+revisions_maintainer,Revisions Maintainer,model_lgps_revision,lgps_group_maintainer,1,1,0,0
+revisions_guest,Revisions Guest,model_lgps_revision,lgps_group_guest,1,0,0,0
