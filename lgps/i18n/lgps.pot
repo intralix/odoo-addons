@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 20:19+0000\n"
-"PO-Revision-Date: 2024-12-16 20:19+0000\n"
+"POT-Creation-Date: 2024-12-18 09:52+0000\n"
+"PO-Revision-Date: 2024-12-18 09:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1187,6 +1187,16 @@ msgid "Courtesy"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Crear"
+msgstr ""
+
+#. module: lgps
+#: model:ir.actions.server,name:lgps.action_create_revisions_from_material_lines
+msgid "Create Revisions"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_operations__create_uid
@@ -1715,6 +1725,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_revision_search_view
 msgid "Estatus"
 msgstr ""
 
@@ -2148,6 +2159,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_search_view
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_revision_search_view
 #: model_terms:ir.ui.view,arch_db:lgps.vehicle_search_view
 msgid "Group By"
 msgstr ""
@@ -2415,7 +2427,9 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
-msgid "Ingresa el material que vas a regresar del cliente:"
+msgid ""
+"Ingresa el material que se desinstaló de la unidad del cliente y que "
+"regresará a almacén:"
 msgstr ""
 
 #. module: lgps
@@ -2534,7 +2548,17 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid "Intralix Revision Process Settings"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Substitution Process Settings"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid "Intralix Virtual Location For Revisions Settings"
 msgstr ""
 
 #. module: lgps
@@ -2650,6 +2674,11 @@ msgstr ""
 #. module: lgps
 #: model:res.groups,name:lgps.lgps_group_field_service_operations
 msgid "LGPS / Field Service Details"
+msgstr ""
+
+#. module: lgps
+#: model:res.groups,name:lgps.lgps_group_field_service_material_uninstalled
+msgid "LGPS / Field Service Materials"
 msgstr ""
 
 #. module: lgps
@@ -3357,6 +3386,16 @@ msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
+msgid "Número de Revision"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_revision_search_view
+msgid "Número de Serie"
+msgstr ""
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/custom_crm_lead.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__ops
@@ -3370,6 +3409,7 @@ msgstr ""
 #: code:addons/lgps/models/tracking.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__observations
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__observations
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
 #, python-format
 msgid "Observations"
 msgstr ""
@@ -3671,6 +3711,7 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_revision_search_view
 msgid "Producto"
 msgstr ""
 
@@ -3719,6 +3760,14 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/res_config_settings.py:0
+#: model:ir.model.fields,field_description:lgps.field_res_config_settings__revision_provider_operation_id
+#, python-format
+msgid "Provider Operation in Revisions"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/models/revisions.py:0
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__provider
 #, python-format
@@ -3742,6 +3791,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__lead_job_department__quality
 #, python-format
 msgid "Quality"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Quality Revisions"
 msgstr ""
 
 #. module: lgps
@@ -3803,6 +3857,14 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__recycle
 #, python-format
 msgid "Recycle"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/res_config_settings.py:0
+#: model:ir.model.fields,field_description:lgps.field_res_config_settings__revision_recycle_operation_id
+#, python-format
+msgid "Recyclye Operation in Revisions"
 msgstr ""
 
 #. module: lgps
@@ -4018,10 +4080,27 @@ msgid "Revision info"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid "Revisiones"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
 #: model:ir.actions.act_window,name:lgps.action_lgps_revision_tree
+#: model:ir.model.fields,field_description:lgps.field_project_task__revisions_ids
 #: model:ir.ui.menu,name:lgps.lgps_revision_menu
 #: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_tree
+#, python-format
 msgid "Revisions"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#: model:ir.model.fields,field_description:lgps.field_project_task__has_revisions_created
+#, python-format
+msgid "Revisions were already created"
 msgstr ""
 
 #. module: lgps
@@ -4082,6 +4161,14 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__resolution__scrap
 #, python-format
 msgid "Scrap"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/res_config_settings.py:0
+#: model:ir.model.fields,field_description:lgps.field_res_config_settings__revision_scrap_operation_id
+#, python-format
+msgid "Scrap Operation in Revisions"
 msgstr ""
 
 #. module: lgps
@@ -4229,8 +4316,18 @@ msgid "Services Count"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.lgps_revision_search_view
+msgid "Servicio"
+msgstr ""
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
 msgid "Servicios Registrados"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.view_lgps_revision_form
+msgid "Set Done"
 msgstr ""
 
 #. module: lgps
@@ -4778,6 +4875,34 @@ msgid "Time without reporting in platforms expressed in hours"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid ""
+"Tipo de operación de inventario a utilizar cuando en la revisión se "
+"determine como deshecho."
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid ""
+"Tipo de operación de inventario a utilizar cuando en la revisión se "
+"determine devolución a proveedor."
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid ""
+"Tipo de operación de inventario a utilizar cuando en la revisión se "
+"determine reutilizar el material (pasar a stock de usado)"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
+msgid ""
+"Tipo de operación de inventario a utilizar cuando los productos necesiten "
+"estar en una ubicación virtual antes de ser revisados."
+msgstr ""
+
+#. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/device.py:0
 #: code:addons/lgps/models/tracking_logs.py:0
@@ -5091,6 +5216,14 @@ msgid "Venta de Unidad"
 msgstr ""
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/res_config_settings.py:0
+#: model:ir.model.fields,field_description:lgps.field_res_config_settings__virtual_default_location_id
+#, python-format
+msgid "Virtual Default Location"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__voice
 msgid "Voice"
 msgstr ""
@@ -5198,6 +5331,13 @@ msgstr ""
 
 #. module: lgps
 #. odoo-python
+#: code:addons/lgps/models/custom_fsm.py:0
+#, python-format
+msgid "Ya se han creado todas las revisiones de este servicio."
+msgstr ""
+
+#. module: lgps
+#. odoo-python
 #: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: code:addons/lgps/wizard/devices_common_operations_wizard.py:0
 #, python-format
@@ -5254,4 +5394,10 @@ msgstr ""
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.tracking_logs_list_action
 msgid "tracking Logs"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
+msgid ""
+"¿Estás seguro que desas crear las revisiones para el material desinstalado?"
 msgstr ""

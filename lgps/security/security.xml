@@ -104,7 +104,17 @@
   </record>
 
   <record id="lgps_group_quality_operations" model="res.groups">
-    <field name="name">LGPS / Quality Operations</field>
+      <field name="name">LGPS / Quality Operations</field>
+      <field name="category_id" ref="module_lgps_category"/>
+      <field name="users" eval="[
+            (4, ref('base.user_root')),
+            (4, ref('base.user_admin'))
+        ]"/>
+  </record>
+
+  <record id="lgps_group_field_service_material_uninstalled" model="res.groups">
+    <field name="name">LGPS / Field Service Materials</field>
+      <field name="category_id" ref="module_lgps_category"/>
     <field name="users" eval="[
             (4, ref('base.user_root')),
             (4, ref('base.user_admin'))

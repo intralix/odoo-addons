@@ -56,3 +56,26 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='lgps.add_reactivation_device_wizard.default_channel',
     )
 
+    virtual_default_location_id = fields.Many2one(
+        comodel_name='stock.picking.type',
+        string=_("Virtual Default Location"),
+        config_parameter='lgps.virtual_default_location',
+    )
+
+    revision_recycle_operation_id = fields.Many2one(
+        comodel_name='stock.picking.type',
+        string=_("Recyclye Operation in Revisions"),
+        config_parameter='lgps.revision.default_recycle_operation',
+    )
+
+    revision_provider_operation_id = fields.Many2one(
+        comodel_name='stock.picking.type',
+        string=_("Provider Operation in Revisions"),
+        config_parameter='lgps.revision.default_provider_operation',
+    )
+
+    revision_scrap_operation_id = fields.Many2one(
+        comodel_name='stock.picking.type',
+        string=_("Scrap Operation in Revisions"),
+        config_parameter='lgps.revision.default_scrap_operation',
+    )

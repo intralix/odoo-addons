@@ -15,6 +15,7 @@
         <field name="arch" type="xml">
             <form string="Revision Form">
                <header>
+                   <button name="action_set_done" string="Set Done" type="object" title="Set Done" class="oe_highlight"/>
                    <field name="state" widget="statusbar" options="{'clickable':False}"/>
                </header>
                <sheet string="Revision info">

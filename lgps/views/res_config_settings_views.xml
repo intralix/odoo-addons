@@ -63,6 +63,35 @@
                                 <field name="reactivation_channel_id" options="{'no_create': True}"/>
                         </setting>
                </block>
+
+                  <block title="Intralix Virtual Location For Revisions Settings" name="lgps_virtual_location_setting_container">
+                      <setting
+                                id="virtual_default_location"
+                                help="Tipo de operación de inventario a utilizar cuando los productos necesiten estar en una ubicación virtual antes de ser revisados.">
+                                <field name="virtual_default_location_id" options="{'no_create': True}"/>
+                        </setting>
+                  </block>
+
+
+               <block title="Intralix Revision Process Settings" name="lgps_revisions_setting_container">
+                        <setting
+                                id="revision_recycle_operation"
+                                help="Tipo de operación de inventario a utilizar cuando en la revisión se determine reutilizar el material (pasar a stock de usado)">
+                                <field name="revision_recycle_operation_id" options="{'no_create': True}"/>
+                        </setting>
+
+                        <setting
+                                id="revision_provider_operation"
+                                help="Tipo de operación de inventario a utilizar cuando en la revisión se determine devolución a proveedor.">
+                                <field name="revision_provider_operation_id" options="{'no_create': True}"/>
+                        </setting>
+
+                        <setting
+                                id="revision_scrap_operation"
+                                help="Tipo de operación de inventario a utilizar cuando en la revisión se determine como deshecho.">
+                                <field name="revision_scrap_operation_id" options="{'no_create': True}"/>
+                        </setting>
+               </block>
            </app>
             </xpath>
         </field>

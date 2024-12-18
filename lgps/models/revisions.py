@@ -95,6 +95,12 @@ class Revision(models.Model):
         default['name'] = new_name
         return super(Revision, self).copy(default)
 
+    def action_set_done(self):
+        for record in self:
+            record.write({
+                'state': 'resolution'
+            })
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
