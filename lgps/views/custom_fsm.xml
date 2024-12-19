@@ -24,7 +24,7 @@
                 icon="fa-list-alt"
                 name="create_revisions_from_material_lines"
                 invisible="not has_uninstalled_material"
-                confirm="¿Estás seguro que desas crear las revisiones para el material desinstalado?"
+                confirm="¿Estás seguro que deseas crear las revisiones para el material desinstalado?"
                 groups="lgps.lgps_group_quality_operations">
           <div class="o_stat_info">
             <div class="o_stat_text">Crear</div>
@@ -63,8 +63,9 @@
                       <field name="project_task_id"/>
                       <field name="product_id"/>
                       <field name="lot_id" />
+                      <field name="resolution"/>
                       <field name="observations" optional="hide"/>
-                      <field name="notes"/>
+                      <field name="notes" optional="hide"/>
                 </tree>
           </field>
         </page>
@@ -82,7 +83,7 @@
                   force_save="True"
                   readonly="1"
                   help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
-                <field name="has_uninstalled_material" />
+                <field name="has_uninstalled_material" readonly="1"/>
                 <field name="has_material_picking_done" readonly="1"/>
                 <field name="has_revisions_created" readonly="1"/>
               </group>

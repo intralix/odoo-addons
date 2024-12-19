@@ -131,7 +131,7 @@ class LgpsFSM(models.Model):
                     else:
                         device_name = device.name
 
-            values['name'] = short_code + '/' + device_name + '/' + today_dt.strftime("%Y/%m/%d%H%M")
+            values['name'] = short_code + '/' + today_dt.strftime("%Y/%m/%d%H%M") + '/' + device_name
 
             res = super(LgpsFSM, self).create(values)
         return res
