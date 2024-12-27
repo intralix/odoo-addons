@@ -43,7 +43,7 @@ class LgpsSubscription(models.Model):
             ("30", "30"),
             ("31", "31"),
         ],
-        string="Billing Cycle",
+        string=_("Billing Cycle"),
     )
 
     device_nick = fields.Char(
@@ -52,7 +52,3 @@ class LgpsSubscription(models.Model):
         readonly=True,
         store=True
     )
-
-    # subscription_state = fields.Selection(selection_add=[
-    #     ('25_hibernated', _('Hibernated'))
-    # ])

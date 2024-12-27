@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 09:51+0000\n"
-"PO-Revision-Date: 2024-12-18 09:51+0000\n"
+"POT-Creation-Date: 2024-12-27 04:57+0000\n"
+"PO-Revision-Date: 2024-12-27 04:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -372,6 +372,14 @@ msgid "Accessories Installed"
 msgstr "Dispositivos Instalados"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/accessory.py:0
+#: model:ir.model,name:lgps.model_lgps_accessory
+#, python-format
+msgid "Accessories Module"
+msgstr "Accesorios"
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_accessory_operations_form_view
 msgid "Accessories to Process"
 msgstr "Accesorios a Procesar"
@@ -379,6 +387,7 @@ msgstr "Accesorios a Procesar"
 #. module: lgps
 #. odoo-python
 #: code:addons/lgps/models/accesory_history.py:0
+#: code:addons/lgps/wizard/accessory_common_operations_wizard.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_history__accessory_ids
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_operations__accessories_ids
 #, python-format
@@ -557,7 +566,10 @@ msgid "Add Accessories"
 msgstr "Añadir Accesorios"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/wizard/assign_accessories_wizard.py:0
 #: model:ir.model,name:lgps.model_lgps_add_accessories_wizard
+#, python-format
 msgid "Add Accessories to Devices"
 msgstr "Añadir Accesorios al Dispositivo"
 
@@ -783,7 +795,10 @@ msgid "Belongs To"
 msgstr "Cliente"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_subscriptions.py:0
 #: model:ir.model.fields,field_description:lgps.field_sale_order__billing_cycle
+#, python-format
 msgid "Billing Cycle"
 msgstr "Ciclo de Facturación"
 
@@ -954,7 +969,18 @@ msgid "Cellchips List"
 msgstr "Lista de Chips"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/cellchip.py:0
+#: model:ir.model,name:lgps.model_lgps_cellchip
+#, python-format
+msgid "Cellchips Module"
+msgstr "Chips"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/wizard/cellchip_wizard.py:0
 #: model:ir.model,name:lgps.model_lgps_cellchip_wizard
+#, python-format
 msgid "Cellchips Operations Wizard"
 msgstr "Operaciones con Chips"
 
@@ -962,14 +988,6 @@ msgstr "Operaciones con Chips"
 #: model_terms:ir.ui.view,arch_db:lgps.cellchip_tree_view
 msgid "Cellchips Tree"
 msgstr "Listado de Chips"
-
-#. module: lgps
-#. odoo-python
-#: code:addons/lgps/models/cellchip.py:0
-#: model:ir.model,name:lgps.model_lgps_cellchip
-#, python-format
-msgid "Cellchips model"
-msgstr "Chips"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
@@ -1279,7 +1297,10 @@ msgid "Cuando un equipo sea hibernado la suscripción se creará en esta etapa."
 msgstr ""
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/fsm_services_type_list.py:0
 #: model:ir.model,name:lgps.model_lgps_fsm_services_type_list
+#, python-format
 msgid "Custom FSM Services Type List Module"
 msgstr "Tipos de Servicio Personalizados"
 
@@ -1524,6 +1545,14 @@ msgstr "Dispositivos"
 #, python-format
 msgid "Devices List"
 msgstr "Lista de dispositivos"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/device_history.py:0
+#: model:ir.model,name:lgps.model_lgps_device_history
+#, python-format
+msgid "Devices logs Internal Module"
+msgstr "Intx Logs de Dispositivos Gps"
 
 #. module: lgps
 #. odoo-python
@@ -2117,19 +2146,14 @@ msgid "Gps Device Form"
 msgstr "Formulario del dispositivo Gps"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/custom_partner.py:0
 #: model:ir.model.fields,field_description:lgps.field_res_partner__device_ids
 #: model:ir.model.fields,field_description:lgps.field_res_users__device_ids
 #: model:ir.ui.menu,name:lgps.gps_devices_menu
+#, python-format
 msgid "Gps Devices"
 msgstr "Dispositivos Gps"
-
-#. module: lgps
-#. odoo-python
-#: code:addons/lgps/models/accessory.py:0
-#: model:ir.model,name:lgps.model_lgps_accessory
-#, python-format
-msgid "Gps Devices Accessories"
-msgstr "Accesorios"
 
 #. module: lgps
 #. odoo-python
@@ -2139,6 +2163,14 @@ msgstr "Accesorios"
 #, python-format
 msgid "Gps Devices Installed"
 msgstr "Dispositivos Instalados"
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/device.py:0
+#: model:ir.model,name:lgps.model_lgps_device
+#, python-format
+msgid "Gps Devices Module"
+msgstr "Intx Módulo Interno"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.platform_list_form_view
@@ -2570,14 +2602,6 @@ msgid "Intx Accessories logs Internal Module"
 msgstr "Intx Logs de Accesorios"
 
 #. module: lgps
-#. odoo-python
-#: code:addons/lgps/models/device_history.py:0
-#: model:ir.model,name:lgps.model_lgps_device_history
-#, python-format
-msgid "Intx Devices logs Internal Module"
-msgstr "Intx Logs de Dispositivos Gps"
-
-#. module: lgps
 #: model:ir.model,name:lgps.model_lgps_platform_list
 msgid "Intx Gps Devices Platforms List Module"
 msgstr "Intx Lista de Plataformas"
@@ -2589,21 +2613,11 @@ msgstr "Intx Información"
 
 #. module: lgps
 #. odoo-python
-#: code:addons/lgps/models/device.py:0
-#: model:ir.model,name:lgps.model_lgps_device
-#, python-format
-msgid "Intx Internal Management Module"
-msgstr "Intx Módulo Interno"
-
-#. module: lgps
+#: code:addons/lgps/models/vehicle.py:0
 #: model:ir.model,name:lgps.model_lgps_vehicle
+#, python-format
 msgid "Intx Vehicles Module"
 msgstr "Intx Vehículos"
-
-#. module: lgps
-#: model:ir.model,name:lgps.model_lgps_vehicle_type
-msgid "Intx Vehicles Type List Module"
-msgstr "Lista de Vehículos"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
@@ -2851,7 +2865,7 @@ msgstr "Lgps / Wizards"
 #. module: lgps
 #: model:ir.actions.act_window,name:lgps.lgps_revision_list_action
 msgid "Lgps Revision"
-msgstr ""
+msgstr "Revisiones"
 
 #. module: lgps
 #. odoo-python
@@ -5219,6 +5233,14 @@ msgid "Vehicles"
 msgstr "Vehículos"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/vehicle_type_list.py:0
+#: model:ir.model,name:lgps.model_lgps_vehicle_type
+#, python-format
+msgid "Vehicles Type List Module"
+msgstr "Lista de Vehículos"
+
+#. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.device_search_view
 msgid "Vendidos"
 msgstr ""
@@ -5242,7 +5264,10 @@ msgid "Virtual Default Location"
 msgstr "Ubicación Virtual por Default"
 
 #. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/cellchip.py:0
 #: model:ir.model.fields,field_description:lgps.field_lgps_cellchip__voice
+#, python-format
 msgid "Voice"
 msgstr "Voz"
 
@@ -5417,5 +5442,5 @@ msgstr "Logs de Seguimiento"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.custom_lgps_fsm_form_view
 msgid ""
-"¿Estás seguro que desas crear las revisiones para el material desinstalado?"
+"¿Estás seguro que deseas crear las revisiones para el material desinstalado?"
 msgstr ""

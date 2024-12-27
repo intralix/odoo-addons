@@ -9,8 +9,12 @@ import re
 class LgpsFSM(models.Model):
     _inherit = 'project.task'
 
-    # def _default_service_type_list(self):
-    #     return self.env['lgps.fsm_services_type_list'].search([('id', '=', 1)], limit=1).id
+    def _default_service_type_list(self):
+        value = self.env['lgps.fsm_services_type_list'].search([('id', '=', 1)], limit=1).id
+        if not value:
+            value = None
+
+        return value
 
     device_id = fields.Many2one(
         comodel_name="lgps.device",
@@ -44,7 +48,7 @@ class LgpsFSM(models.Model):
     service_type_list_id = fields.Many2one(
         comodel_name="lgps.fsm_services_type_list",
         string=_("Service Type List"),
-        default=1,
+        default=_default_service_type_list,
         ondelete="set null",
         index=True,
         domain=[('active', '=', True)],
@@ -131,7 +135,7 @@ class LgpsFSM(models.Model):
                     else:
                         device_name = device.name
 
-            values['name'] = short_code + '/' + today_dt.strftime("%Y/%m/%d%H%M") + '/' + device_name
+            values['name'] = short_code + '/' + today_dt.strftime("%Y/%m/%d/%H%M") + '/' + device_name
 
             res = super(LgpsFSM, self).create(values)
         return res
@@ -152,10 +156,8 @@ class LgpsFSM(models.Model):
         created_revisions = []
         if not self.has_revisions_created:
             for rec in self.fsm_material_ids:
-                #_logger.warning('rec: %s', rec)
-                # We create an empty model
                 new_revision = self.env['lgps.revision']
-                # We get the values dict
+
                 temp = {
                     'observations': rec.observation,
                     'notes': '',
@@ -165,19 +167,10 @@ class LgpsFSM(models.Model):
                     'state': 'new',
                     'resolution': '',
                 }
-                #_logger.warning('temp: %s', temp)
-                # We append the records to array with the command CREATE,
-                # created_revisions.append((0, 0, temp))
-                #_logger.warning('created_revisions: %s', created_revisions)
-                # temp = {}
 
-                # We Create the record
                 revision = new_revision.create(temp)
-                #_logger.warning('revision: %s', revision)
                 created_revisions.append(int(revision.id))
-                # we must append this records to the model
 
-            #_logger.warning('created_revisions before update: %s', created_revisions)
             self.write({
                 'revisions_ids': [(6, 0, created_revisions)],
                 'has_revisions_created': True,

@@ -6,7 +6,7 @@
     'application': True,
     'website': 'https://www.intralix.com',
     'category': 'Uncategorized',
-    'version': '1.1.0',
+    'version': '1.0.0',
     'license': 'LGPL-3',
     'depends': [
         'base',
@@ -34,6 +34,12 @@
         'security/security.xml',
         'security/ir.model.access.csv',
 
+        'data/vehicle_stage.xml',
+        'data/vehicle_types.xml',
+        'data/device_platforms.xml',
+        'data/device_stage.xml',
+        'data/fsm_service_type_list.xml',
+
         'wizard/assign_accessories_wizard.xml',
         'wizard/install_in_vehicle_wizard.xml',
         'wizard/cellchip_wizard.xml',
@@ -42,12 +48,6 @@
         'wizard/fsm_uninstalled_material_wizard.xml',
 
         'views/main_menu.xml',
-
-        'data/vehicle_stage.xml',
-        'data/vehicle_types.xml',
-        'data/device_platforms.xml',
-        'data/device_stage.xml',
-        'data/fsm_service_type_list.xml',
 
         'views/res_config_settings_views.xml',
         'views/vehicle_stage.xml',

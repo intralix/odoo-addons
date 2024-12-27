@@ -21,7 +21,7 @@ class CommonOperationsToAccessoriesWizard(models.TransientModel):
 
     accessories_ids = fields.Many2many(
         comodel_name='lgps.accessory',
-        string="Accessory",
+        string=_("Accessory"),
         required=True,
         default=_default_accessories,
     )

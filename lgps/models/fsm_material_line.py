@@ -36,30 +36,6 @@ class FsmMaterialLine(models.Model):
         domain="[('product_id','=', product_id)]",
     )
 
-    # @api.onchange('product_id')
-    # def _onchange_product_id(self):
-    #     domain = {}
-    #     if self.product_id:
-    #         stock_location_id = self.env.ref('stock.stock_location_customers').id
-    #         list_ids = []
-    #
-    #         # values = self.env['stock.production.lot'].search([
-    #         #     ('product_id', '=', self.product_id.id),
-    #         #     ('','', stock_location_id)
-    #         # ])
-    #         values = self.env['stock.quant'].search([
-    #                 ('product_id', '=', self.product_id.id),
-    #                 ('location_id', '=', stock_location_id)
-    #             ])
-    #
-    #         for value in values:
-    #             list_ids.append(value.lot_id.id)
-    #
-    #         self.lot_id = []
-    #         domain = {'lot_id': [('id', 'in', list_ids)]}
-    #
-    #         return {'domain': domain}
-
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:

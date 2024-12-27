@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class FsmServicesTypeList(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.fsm_services_type_list'
-    _description = 'Custom FSM Services Type List Module'
+    _description = _('Custom FSM Services Type List Module')
     _order = 'name asc'
 
     name = fields.Char(

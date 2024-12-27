@@ -7,7 +7,7 @@ import math
 class Device(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device'
-    _description = _('Intx Internal Management Module')
+    _description = _('Gps Devices Module')
     _order = "name, id"
 
     @api.model

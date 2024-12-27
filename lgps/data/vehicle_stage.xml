@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="0">
+<odoo noupdate="1">
     <record id="vstage_active" model="lgps.vehicle_stage">
         <field name="name">Activo</field>
         <field name="sequence">10</field>

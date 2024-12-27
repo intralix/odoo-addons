@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class VehicleTypeList(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.vehicle_type'
-    _description = 'Intx Vehicles Type List Module'
+    _description = _('Vehicles Type List Module')
 
     name = fields.Char(
         required=True,

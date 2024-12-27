@@ -11,7 +11,7 @@ TAG_RE = re.compile(r'<[^>]+>')
 
 class CellchipWizard(models.TransientModel):
     _name = "lgps.cellchip_wizard"
-    _description = "Cellchips Operations Wizard"
+    _description = _("Cellchips Operations Wizard")
 
     def _default_cellchips(self):
         return self.env['lgps.cellchip'].browse(self._context.get('active_ids'))

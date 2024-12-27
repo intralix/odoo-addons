@@ -76,7 +76,7 @@ class LgpsPartner(models.Model):
     device_ids = fields.One2many(
         comodel_name="lgps.device",
         inverse_name="client_id",
-        string="Gps Devices",
+        string=_("Gps Devices"),
         readonly=True,
     )
 

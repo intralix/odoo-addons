@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="0">
+<odoo noupdate="1">
 
     <record id="fsm_stype_list_service" model="lgps.fsm_services_type_list">
         <field name="name">Servicio</field>

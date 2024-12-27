@@ -202,12 +202,6 @@ class Tracking(models.Model):
 
     def button_do_active(self):
         for tracking in self:
-
-            # _logger.warning('self %s', self)
-            # user = self.env['res.users'].search([('name', '=', self.env.user.name)])
-            # _logger.warning('user: %s', user)
-            # _logger.warning('user name: %', user.name)
-            # _logger.warning('user id: %', user.id)
             log_object = self.env['lgps.tracking_logs']
             employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
 
@@ -290,11 +284,6 @@ class Tracking(models.Model):
 
     def button_do_resume(self):
         for tracking in self:
-            # _logger.warning('self %s', self)
-            # user = self.env['res.users'].search([('name', '=', self.env.user.name)])
-            # _logger.warning('user: %s', user)
-            # _logger.warning('user name: %', user.name)
-            # _logger.warning('user id: %', user.id)
             log_object = self.env['lgps.tracking_logs']
             employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
 

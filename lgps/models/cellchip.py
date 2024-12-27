@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class Cellchip(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.cellchip'
-    _description = _('Cellchips model')
+    _description = _('Cellchips Module')
 
     name = fields.Char(
         required=True,
@@ -69,7 +69,7 @@ class Cellchip(models.Model):
     # Si la línea Voz
     voice = fields.Boolean(
         default=False,
-        string="Voice",
+        string=_("Voice"),
     )
     # A quién esta asignado
     cell_chip_owner_id = fields.Many2one(

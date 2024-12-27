@@ -6,7 +6,7 @@ from odoo import api, models, fields, _
 class DeviceHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device_history'
-    _description = _('Intx Devices logs Internal Module')
+    _description = _('Devices logs Internal Module')
 
     name = fields.Char(
         required=True,

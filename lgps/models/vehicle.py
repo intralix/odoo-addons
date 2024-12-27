@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class Vehicle(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.vehicle'
-    _description = 'Intx Vehicles Module'
+    _description = _('Intx Vehicles Module')
 
     @api.model
     def _default_stage_id(self):

@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 class AssignAccessoriesWizard(models.TransientModel):
     _name = "lgps.add_accessories_wizard"
-    _description = "Add Accessories to Devices"
+    _description = _("Add Accessories to Devices")
 
     def _default_gpsdevices(self):
         return self.env['lgps.device'].browse(self._context.get('active_ids'))
