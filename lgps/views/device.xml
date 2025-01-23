@@ -63,6 +63,7 @@
               <field name="cell_chip_id"/>
               <field name="purchase_date"/>
               <field name="installation_date"/>
+              <field name="reinstatement_date"/>
               <field name="sales_order_id"/>
             </group>
           </group>

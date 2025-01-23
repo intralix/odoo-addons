@@ -28,6 +28,7 @@ class Device(models.Model):
 
     nick = fields.Char(
         string=_("Nick"),
+        tracking=True
     )
 
     imei = fields.Char(
@@ -40,10 +41,17 @@ class Device(models.Model):
 
     installation_date = fields.Date(
         string=_("Installation Date"),
+        tracking=True
+    )
+
+    reinstatement_date = fields.Date(
+        string=_("Reinstatement Date"),
+        tracking=True
     )
 
     warranty_start_date = fields.Date(
         string=_("Warranty Start Date"),
+        tracking=True
     )
 
     warranty_end_date = fields.Date(
@@ -233,6 +241,7 @@ class Device(models.Model):
     invoice_id = fields.Char(
         string=_("Provider Invoice"),
         index=True,
+        tracking=True
     )
 
     client_id = fields.Many2one(
@@ -269,7 +278,8 @@ class Device(models.Model):
     state = fields.Selection(
         related="stage_id.state",
         store=True,
-        string=_("Operative Status")
+        string=_("Operative Status"),
+        tracking=True
     )
 
     kanban_state = fields.Selection([
@@ -298,6 +308,7 @@ class Device(models.Model):
     purchase_date = fields.Date(
         default=fields.Date.today,
         string=_("Purchase Date"),
+        tracking=True
     )
 
     fuel_tank_type_one_id = fields.Many2one(

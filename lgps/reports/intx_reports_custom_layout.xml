@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="lgps_inherit_report_layout"
+    inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="style">font-size:.8em;</attribute>
+        </xpath>
+    </template>
+
+     <template id="lgps_inherit_web_address_layout"
+    inherit_id="web.address_layout">
+        <xpath expr="//div[@name='address']" position="attributes">
+            <attribute name="style">font-size:.8em;</attribute>
+        </xpath>
+    </template>
+
+    <template id="lgps_inherit_web_external_layout"
+    inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@class='o_boxed_header']" position="attributes">
+            <attribute name="style">font-size:.8em;</attribute>
+        </xpath>
+    </template>
+</odoo>

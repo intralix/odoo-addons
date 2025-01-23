@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 04:57+0000\n"
-"PO-Revision-Date: 2024-12-27 04:57+0000\n"
+"POT-Creation-Date: 2025-01-23 03:55+0000\n"
+"PO-Revision-Date: 2025-01-23 03:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2581,7 +2581,7 @@ msgstr "Configuración de proceso de reactivación"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Revision Process Settings"
-msgstr ""
+msgstr "Configuración de proceso de revisión"
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
@@ -2591,7 +2591,7 @@ msgstr "Configuración de proceso de substitución"
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.res_config_settings_view_form
 msgid "Intralix Virtual Location For Revisions Settings"
-msgstr ""
+msgstr "Configuración de ubicación virtual para revisiones"
 
 #. module: lgps
 #. odoo-python
@@ -3778,7 +3778,7 @@ msgstr "Factura de Proveedor"
 #: model:ir.model.fields,field_description:lgps.field_res_config_settings__revision_provider_operation_id
 #, python-format
 msgid "Provider Operation in Revisions"
-msgstr ""
+msgstr "Configuración de proveedor en revisiones"
 
 #. module: lgps
 #. odoo-python
@@ -3958,6 +3958,14 @@ msgstr ""
 #, python-format
 msgid "Regresa a Almacén Respaldo/Provisional/Prestado"
 msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/models/device.py:0
+#: model:ir.model.fields,field_description:lgps.field_lgps_device__reinstatement_date
+#, python-format
+msgid "Reinstatement Date"
+msgstr "Fecha de reinstalación"
 
 #. module: lgps
 #. odoo-python
@@ -4336,7 +4344,7 @@ msgstr ""
 
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.report_subscriptions_detail_view
-msgid "Servicios Registrados"
+msgid "Servicios"
 msgstr ""
 
 #. module: lgps

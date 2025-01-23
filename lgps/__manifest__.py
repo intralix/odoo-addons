@@ -75,6 +75,6 @@
 
         'reports/subscription_details.xml',
         'reports/field_service_timesheet_inherit.xml',
-
+        'reports/intx_reports_custom_layout.xml',
     ],
 }
