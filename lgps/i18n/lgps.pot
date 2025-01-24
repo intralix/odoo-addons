@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-23 03:56+0000\n"
-"PO-Revision-Date: 2025-01-23 03:56+0000\n"
+"POT-Creation-Date: 2025-01-24 17:40+0000\n"
+"PO-Revision-Date: 2025-01-24 17:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -622,6 +622,11 @@ msgid "After Sales"
 msgstr ""
 
 #. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.merge_invoice_lines_wizard
+msgid "Agrupar las lineas de Factura"
+msgstr ""
+
+#. module: lgps
 #: model:ir.model.fields,field_description:lgps.field_lgps_accessory_operations__allowed_accessories_ids
 msgid "Allowed Accessories"
 msgstr ""
@@ -865,6 +870,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
+#: model_terms:ir.ui.view,arch_db:lgps.merge_invoice_lines_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_accessory_operations_form_view
 #: model_terms:ir.ui.view,arch_db:lgps.wizard_cellchip_form_view
@@ -1062,6 +1068,7 @@ msgstr ""
 #. module: lgps
 #: model_terms:ir.ui.view,arch_db:lgps.add_accessories_wizard
 #: model_terms:ir.ui.view,arch_db:lgps.install_devices_wizard
+#: model_terms:ir.ui.view,arch_db:lgps.merge_invoice_lines_wizard
 msgid "Close"
 msgstr ""
 
@@ -1228,6 +1235,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__create_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__create_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__create_uid
@@ -1253,6 +1261,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__create_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__create_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__create_date
@@ -1584,6 +1593,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__display_name
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__display_name
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__display_name
@@ -2321,6 +2331,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__id
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__id
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__id
@@ -2346,6 +2357,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_device__imei
 #, python-format
 msgid "IMEI"
+msgstr ""
+
+#. module: lgps
+#: model:ir.actions.act_window,name:lgps.action_view_merge_invoice_lines_wizard
+msgid "INTX: Merge Lines"
 msgstr ""
 
 #. module: lgps
@@ -2461,7 +2477,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:lgps.uninstalled_material_wizard
 msgid ""
 "Ingresa el material que se desinstaló de la unidad del cliente y que "
-"regresará a almacén:"
+"devolverás a almacén:"
 msgstr ""
 
 #. module: lgps
@@ -2762,6 +2778,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__write_uid
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__write_uid
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__write_uid
@@ -2787,6 +2804,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_material_line__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_fsm_services_type_list__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_install_vehicle_wizard__write_date
+#: model:ir.model.fields,field_description:lgps.field_lgps_merge_invoice_lines_wizard__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_platform_list__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_revision__write_date
 #: model:ir.model.fields,field_description:lgps.field_lgps_tracking__write_date
@@ -3034,6 +3052,19 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_revision__priority__1
 #: model:ir.model.fields.selection,name:lgps.selection__lgps_vehicle__priority__1
 msgid "Medium"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/wizard/merge_invoice_lines_wizard.py:0
+#: model:ir.model,name:lgps.model_lgps_merge_invoice_lines_wizard
+#, python-format
+msgid "Merge Invoice Lines Wizard"
+msgstr ""
+
+#. module: lgps
+#: model_terms:ir.ui.view,arch_db:lgps.merge_invoice_lines_wizard
+msgid "Merge Lines"
 msgstr ""
 
 #. module: lgps
@@ -3291,6 +3322,13 @@ msgstr ""
 #. module: lgps
 #: model:ir.model.fields.selection,name:lgps.selection__crm_lead__life_cycle_stage__no_contact
 msgid "No Contact"
+msgstr ""
+
+#. module: lgps
+#. odoo-python
+#: code:addons/lgps/wizard/merge_invoice_lines_wizard.py:0
+#, python-format
+msgid "No puedes hacer esta operación en una factura confirmada o cancelada"
 msgstr ""
 
 #. module: lgps

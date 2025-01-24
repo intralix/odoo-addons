@@ -5,7 +5,7 @@
     <field name="model">lgps.uninstalled_material_wizard</field>
     <field name="arch" type="xml">
       <form string="Add Material" multi_edit="1" sample="1" editable="top">
-        <p class="text-primary"> Ingresa el material que se desinstaló de la unidad del cliente y que regresará a almacén:</p>
+        <p class="text-primary"> Ingresa el material que se desinstaló de la unidad del cliente y que devolverás a almacén:</p>
 
         <field name="project_task_id" invisible="1"/>
         <field name="stock_move_ids"

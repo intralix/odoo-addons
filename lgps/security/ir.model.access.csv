@@ -60,3 +60,4 @@ revisions_manager,Revisions Manager,model_lgps_revision,lgps_group_manager,1,1,1
 revisions_read_all,Revisions All,model_lgps_revision,lgps_group_user,1,1,1,0
 revisions_maintainer,Revisions Maintainer,model_lgps_revision,lgps_group_maintainer,1,1,0,0
 revisions_guest,Revisions Guest,model_lgps_revision,lgps_group_guest,1,0,0,0
+merge_invoice_lines, Merge Invoice Lines,model_lgps_merge_invoice_lines_wizard,lgps_group_invoice_lines_operations,1,1,1,1

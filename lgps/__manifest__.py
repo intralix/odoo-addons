@@ -46,6 +46,7 @@
         'wizard/devices_common_operations.xml',
         'wizard/accessory_common_operations.xml',
         'wizard/fsm_uninstalled_material_wizard.xml',
+        'wizard/merge_invoice_lines_wizard.xml',
 
         'views/main_menu.xml',
 
