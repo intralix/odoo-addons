@@ -80,16 +80,16 @@ class LgpsPartner(models.Model):
         readonly=True,
     )
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        for values in vals_list:
-            if self._check_if_can_create():
-                new_record = super(LgpsPartner, self).create(values)
-            return new_record
-
-    def _check_if_can_create(self):
-        user = self.env.user
-        if not user.has_group('lgps.lgps_group_create_contacts'):
-            raise UserError('Solo personal de Administración y Finanzas puede dar alta de Clientes y Proveedores '
-                            'nuevos.')
-        return True
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for values in vals_list:
+    #         if self._check_if_can_create():
+    #             new_record = super(LgpsPartner, self).create(values)
+    #         return new_record
+    #
+    # def _check_if_can_create(self):
+    #     user = self.env.user
+    #     if not user.has_group('lgps.lgps_group_create_contacts'):
+    #         raise UserError('Solo personal de Administración y Finanzas puede dar alta de Clientes y Proveedores '
+    #                         'nuevos.')
+    #     return True

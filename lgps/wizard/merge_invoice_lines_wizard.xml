@@ -12,8 +12,8 @@
             El criterio para determinar si una linea es igual a otra, esta definido por:
             <ul class="text-dark">
               <li>El servicio es el mismo</li>
-              <li>El precio del servicio servicio es el mismo</li>
-              <li>La descripción del servicio es la misma</li>
+              <li>El precio del servicio es el mismo</li>
+              <li>La descripción del servicio es la misma (para no modificar periodos o prorrateos)</li>
             </ul>
             <br/>
             Si alguna de estas condiciones no se cumple, el servicio se considerará distinto y no se agrupará.
