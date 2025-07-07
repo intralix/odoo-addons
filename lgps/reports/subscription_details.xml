@@ -46,7 +46,7 @@
                                 <td class="col-6">
                                     <t t-if="doc.order_line">
                                         <t t-foreach="doc.order_line" t-as="line">
-                                            <span t-field="line.name"/>
+                                            <span t-field="line.product_id.name"/>
                                             <br></br>
                                         </t>
                                     </t>
