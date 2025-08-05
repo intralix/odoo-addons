@@ -75,10 +75,11 @@ class AccessoryHistory(models.Model):
     )
 
     @api.model_create_multi
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.accessory_history') or _('New')
-        vals['name'] = seq
-        return super(AccessoryHistory, self).create(vals)
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.accessory_history') or _('New')
+            vals['name'] = seq
+            return super(AccessoryHistory, self).create(vals)
 
     def copy(self, default=None):
         default = dict(default or {})
