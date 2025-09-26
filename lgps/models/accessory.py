@@ -169,12 +169,13 @@ class Accessory(models.Model):
     @api.model
     @api.depends('warranty_term', 'warranty_start_date')
     def _compute_end_warranty(self):
-        if not (self.warranty_term and self.warranty_start_date):
-            self.warranty_end_date = None
-        else:
-            months = int(self.warranty_term[:2])
-            start = fields.Date.from_string(self.warranty_start_date)
-            self.warranty_end_date = start + timedelta(months * 365 / 12)
+        for record in self:
+            if not (record.warranty_term and record.warranty_start_date):
+                record.warranty_end_date = None
+            else:
+                months = int(record.warranty_term[:2])
+                start = fields.Date.from_string(record.warranty_start_date)
+                record.warranty_end_date = start + timedelta(months * 365 / 12)
 
     _sql_constraints = [
         ('name_unique',
