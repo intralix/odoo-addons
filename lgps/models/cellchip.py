@@ -85,9 +85,11 @@ class Cellchip(models.Model):
     # Proveedor de la línea
     provider = fields.Selection(
         selection=[
+            ("ABIX", "ABIX"),
             ("ATT", "ATT"),
             ("Cierto", "Cierto"),
             ("CiertoT", "CiertoT"),
+            ("Conexa", "Conexa"),
             ("Iusacell", "Iusacell"),
             ("MazTiempo", "MazTiempo"),
             ("Movistar", "Movistar"),
@@ -95,6 +97,7 @@ class Cellchip(models.Model):
             ("Simpacsys", "Simpacsys"),
             ("Skywave", "Skywave"),
             ("Telcel", "Telcel"),
+            ("Vodafone - WWT", "Vodafone - WWT"),
         ],
         string="Provider",
         tracking=True
