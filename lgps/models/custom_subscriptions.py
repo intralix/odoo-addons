@@ -2,7 +2,7 @@ from odoo import api, models, fields, _
 
 
 class LgpsSubscription(models.Model):
-    _inherit = 'sale.subscription'
+    _inherit = 'sale.order'
 
     device_id = fields.Many2one(
         comodel_name="lgps.device",
@@ -43,7 +43,7 @@ class LgpsSubscription(models.Model):
             ("30", "30"),
             ("31", "31"),
         ],
-        string="Billing Cycle",
+        string=_("Billing Cycle"),
     )
 
     device_nick = fields.Char(

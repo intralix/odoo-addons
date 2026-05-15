@@ -43,7 +43,7 @@
                     <field name="serial_number_id"/>
                     <field name="imei"/>
                     <field name="idf"/>
-                    <field name="status"/>
+                    <field name="state"/>
                     <field name="platform_list_id"/>
                     <field name="installation_date"  string="Installed"/>
                     <field name="product_id"  string="Product"/>
@@ -138,6 +138,11 @@
   </record>
 
 
-  <menuitem id="cell_chips_menu" name="Cellchips" parent="lgps_menu" action="cell_chip_list_action" sequence="30"/>
+  <menuitem
+          id="cell_chips_menu"
+          name="Cellchips"
+          parent="lgps_menu"
+          action="cell_chip_list_action"
+          sequence="30"/>
 
 </odoo>

@@ -11,7 +11,7 @@ TAG_RE = re.compile(r'<[^>]+>')
 
 class CellchipWizard(models.TransientModel):
     _name = "lgps.cellchip_wizard"
-    _description = "Cellchips Operations Wizard"
+    _description = _("Cellchips Operations Wizard")
 
     def _default_cellchips(self):
         return self.env['lgps.cellchip'].browse(self._context.get('active_ids'))
@@ -32,7 +32,7 @@ class CellchipWizard(models.TransientModel):
     )
 
     def execute_operation(self):
-        if len(self._context.get('active_ids')) < 1:
+        if len(self.env.context.get('active_ids')) < 1:
             raise UserError(_('Select at least one record.'))
 
         active_records = self.return_active_records()
@@ -51,7 +51,7 @@ class CellchipWizard(models.TransientModel):
         return {}
 
     def return_active_records(self):
-        active_model = self._context.get('active_model')
+        active_model = self.env.context.get('active_model')
         active_records = self.env[active_model].browse(self._context.get('active_ids'))
 
         return active_records

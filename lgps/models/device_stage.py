@@ -4,7 +4,7 @@ from odoo import api, models, fields, _
 
 class DeviceStage(models.Model):
     _name = 'lgps.device_stage'
-    _description = 'Device Stages model'
+    _description = _('Device Stages model')
     _order = "sequence"
 
     name = fields.Char(
@@ -13,7 +13,7 @@ class DeviceStage(models.Model):
     )
 
     sequence = fields.Integer(
-        default=10
+        default=100
     )
 
     fold = fields.Boolean()
@@ -21,13 +21,12 @@ class DeviceStage(models.Model):
     active = fields.Boolean(default=True)
 
     state = fields.Selection([
+        ('new', _("New")),
         ('ready_to_install', _("Ready to Install")),
         ('installed', _("Installed")),
-        ('replacement', _("Replacement")),
         ('hibernated', _("Hibernated")),
-        ('asset_loan', _("Asset loan")),
         ('rma', _("RMA")),
-        ('cancel', _("Canceled")),
+        ('disconnected', _("Disconnected")),
         ('uninstalled', _("Uninstalled"))],
         default="ready_to_install"
     )

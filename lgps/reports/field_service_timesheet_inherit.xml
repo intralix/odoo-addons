@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="report_industry_fsm_report_inherit" inherit_id="industry_fsm_report.worksheet_custom_page">
-        <xpath expr="/t[1]/div[1]/div[2]" position="attributes">
-            <attribute name="t-if">doc.show_timesheet_in_report is True</attribute>
+        <xpath expr="/t[1]/div[1]/div[@name='worksheet_task_timesheet']" position="attributes">
+            <attribute name="t-if">doc.show_timesheet_in_report == True</attribute>
+        </xpath>
+    </template>
+
+    <template id="report_industry_fsm_sales_report_inherit" inherit_id="industry_fsm_sale_report.worksheet_custom_page">
+        <xpath expr="//div[@name='worksheet_task_timesheet']" position="attributes">
+            <attribute name="t-if">doc.show_timesheet_in_report == True</attribute>
         </xpath>
     </template>
 </odoo>

@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from datetime import timedelta
 from odoo import api, models, fields, _
-from odoo.exceptions import Warning
 
 
 class DeviceHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device_history'
-    _description = 'Intx Devices logs Internal Module'
+    _description = _('Devices logs Internal Module')
 
     name = fields.Char(
         required=True,
@@ -17,7 +15,7 @@ class DeviceHistory(models.Model):
     )
 
     serial_number_id = fields.Many2one(
-        comodel_name="stock.production.lot",
+        comodel_name="stock.lot",
         string=_("Serial Number"),
     )
 
@@ -25,20 +23,19 @@ class DeviceHistory(models.Model):
         comodel_name="res.partner",
         string=_("Client"),
         domain=[
-            ('customer', '=', True),
             ('active', '=', True),
             ('is_company', '=', True)
         ],
     )
 
-    gpsdevice_ids = fields.Many2one(
+    device_ids = fields.Many2one(
         comodel_name='lgps.device',
-        string="Gps Device",
+        string=_("Gps Device"),
         required=True,
         ondelete='cascade'
     )
 
-    destination_gpsdevice_ids = fields.Many2one(
+    destination_device_ids = fields.Many2one(
         comodel_name='lgps.device',
         string=_("Substitute equipment"),
     )
@@ -57,7 +54,8 @@ class DeviceHistory(models.Model):
             ('accsubstitution', _('Sustitución de accesorio por revisión')),
             ('accreplacement', _('Reemplazo de accesorio')),
             ('add_reactivate', _('Alta / Reactivación Equipo')),
-            ('loan_substitution', _('Reemplazo de Comodato'))
+            ('loan_substitution', _('Reemplazo de Comodato')),
+            ('acc_replacement', _('Reemplazo de Accesorio')),
         ],
         default='drop',
     )
@@ -83,6 +81,11 @@ class DeviceHistory(models.Model):
 
     related_odt = fields.Many2one(
         comodel_name='repair.order',
+        string=_("Repair order related"),
+    )
+
+    related_service = fields.Many2one(
+        comodel_name='project.task',
         string=_("Work order related"),
     )
 
@@ -98,11 +101,12 @@ class DeviceHistory(models.Model):
         string=_("More Info"),
     )
 
-    @api.model
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.device_history') or _('New')
-        vals['name'] = seq
-        return super(DeviceHistory, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.device_history') or _('New')
+            vals['name'] = seq
+            return super(DeviceHistory, self).create(vals)
 
     def copy(self, default=None):
         default = dict(default or {})

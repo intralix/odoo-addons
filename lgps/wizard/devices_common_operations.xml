@@ -5,15 +5,15 @@
     <field name="name">lgps.device_operations.form</field>
     <field name="model">lgps.device_operations</field>
     <field name="arch" type="xml">
-       <form string="Drop Process">
-           <group><p class="text-primary"> Selecciona el proceso a ejecutar en los equipos seleccionados:</p></group>
-           <group>
-               <field name="operation_mode"/>
-           </group>
-           <hr/>
-           <group><p class="text-primary"> Dispositivo(s) Seleccionado(s):</p></group>
-        <group>
-             <field name="gpsdevice_ids" readonly="1" string="Procesando para">
+       <form string="Device Operations">
+           <sheet>
+            <p class="text-primary"> Selecciona el proceso a ejecutar en los equipos seleccionados:</p>
+           <field name="operation_mode"/>
+             <hr/>
+
+           <p class="text-primary"> Dispositivo(s) Seleccionado(s):</p>
+
+             <field name="device_ids" readonly="1" string="Procesando para">
                 <tree string="GPS Devices to Process">
                   <field name="name"/>
                   <field name="nick"/>
@@ -23,84 +23,81 @@
                   <field name="serial_number_id"/>
                 </tree>
             </field>
-        </group>
-          <group><p class="text-primary"> Ingresa la información requerida para el proceso selecionado:</p></group>
-           <group>
-               <group>
-                   <field name="requested_by"
-                          attrs="{
-                          'invisible':[('operation_mode', 'in', ['substitution','replacement', 'loan_substitution'])],
-                          'required':[('operation_mode', 'not in', ['substitution','replacement', 'loan_substitution'])]
-                          }"/>
+          <p class="text-primary"> Ingresa la información requerida para el proceso selecionado:</p>
+               <div>
+                   <group>
+                       <group>
+                        <field name="requested_by"
+                               invisible="operation_mode in ['substitution','replacement', 'loan_substitution']"
+                               required="operation_mode not in ['substitution','replacement', 'loan_substitution']"
+                        />
+                       </group>
+                       <group>
+                           <field name="reason" invisible="operation_mode not in  ['drop']"/>
+                       </group>
+                   </group>
+                   <group>
 
-                   <field name="reason" attrs="{
-                   'invisible':[('operation_mode', 'not in', ['drop'])]}"/>
-                   <field name="comment" string="Comentario / Falla Presentada"/>
-               </group>
-               <group>
-                   <field name="destination_gpsdevice_ids"
-                          attrs="{
-                          'invisible':[('operation_mode', 'in', ['drop','hibernation','wakeup','add_reactivate'])],
-                          'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
-                          }"/>
+                       <field name="comment" string="Comentario / Falla Presentada"/>
+                    </group>
+               </div>
+               <div>
+                   <group>
+                    <field name="destination_device_ids"
+                           invisible = "operation_mode in ['drop','hibernation','wakeup','add_reactivate']"
+                           required = "operation_mode not in ['drop','hibernation','wakeup','add_reactivate']"
+                           options="{'no_create': True}"
+                          />
 
                    <field name="related_field_service"
-                          attrs="{
-                          'invisible':[('operation_mode', 'in', ['drop','hibernation','wakeup','add_reactivate'])],
-                          'required':[('operation_mode', 'not in', ['drop','hibernation','wakeup','add_reactivate'])]
-                          }"/>
+                          invisible = "operation_mode in ['drop','hibernation','wakeup','add_reactivate']"
+                          required = "operation_mode not in ['drop','hibernation','wakeup','add_reactivate']"
+                          options="{'no_create': True}"
+                          />
 
-                   <field name="cell_chip_id" attrs="{
-                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
-                          }"
+                   <field name="cell_chip_id"
+                          invisible = "operation_mode not in ['add_reactivate']"
+                          options="{'no_create': True}"
                    />
 
-                   <field name="reactivation_reason" attrs="{
-                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
-                          'required':[('operation_mode', 'in', ['add_reactivate'])]
-                          }"
+                   <field name="reactivation_reason"
+                          invisible = "operation_mode not in ['add_reactivate']"
+                          required = "operation_mode in ['add_reactivate']"
                    />
                     <!-- Insible fields -->
                    <field name="allowed_field_services_ids" invisible="1"/>
                    <field name="allowed_devices_ids" invisible="1"/>
                </group>
+               </div>
 
-           </group>
-
-           <notebook  attrs="{'invisible':[('operation_mode', 'not in', ['wakeup','add_reactivate'])]}">
-           <page string="Services">
-               <group>
-                   <p class="text-primary"> Selecciona los servicios que serán reactivados en los dispositivos</p>
-               </group>
-              <group>
-                  <group>
-                      <field name="tracking"/>
-                      <field name="fuel"/>
-                      <field name="fuel_hall"/>
-                      <field name="fleetrun"/>
-                      <field name="scanner"/>
-                  </group>
-                  <group>
-                      <field name="temperature"/>
-                      <field name="logistic"/>
-                      <field name="collective"/>
-                      <field name="electronics"/>
-                      <field name="device_status"
-                             attrs="{
-                          'invisible':[('operation_mode', 'not in', ['wakeup'])],
-                          'required':[('operation_mode', 'in', ['wakeup'])]
-                          }"/>
-                      <field name="platform_list_id"
-                      attrs="{
-                          'invisible':[('operation_mode', 'not in', ['add_reactivate'])],
-                          'required':[('operation_mode', 'in', ['add_reactivate'])]
-                          }"
-                      />
-                  </group>
-              </group>
-            </page>
+                <notebook  invisible = "operation_mode not in ['wakeup','add_reactivate']">
+                   <page string="Services">
+                       <p class="text-primary"> Selecciona los servicios que serán reactivados en los dispositivos</p>
+                      <group>
+                          <group>
+                              <field name="tracking"/>
+                              <field name="fuel"/>
+                              <field name="fuel_hall"/>
+                              <field name="fleetrun"/>
+                              <field name="scanner"/>
+                          </group>
+                          <group>
+                              <field name="temperature"/>
+                              <field name="logistic"/>
+                              <field name="collective"/>
+                              <field name="electronics"/>
+                              <field name="stage_id"
+                                  invisible = "operation_mode not in ['wakeup']"
+                                  required = "operation_mode in ['wakeup']"/>
+                              <field name="platform_list_id"
+                                    invisible ="operation_mode not in ['add_reactivate']"
+                                    required="operation_mode in ['add_reactivate']"
+                              />
+                          </group>
+                      </group>
+                    </page>
            </notebook>
-
+            </sheet>
         <footer>
           <button name="execute_operation" type="object" string="Execute Process" class="oe_highlight" default_focus="1"/>
           <button special="cancel" string="Cancel" class="oe_link"/>

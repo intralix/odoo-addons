@@ -2,14 +2,13 @@
 from datetime import timedelta
 from odoo import api, models, fields, _
 import math
-import logging
-_logger = logging.getLogger(__name__)
 
 
 class Device(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.device'
-    _description = 'Intx Gps Devices Internal Module'
+    _description = _('Gps Devices Module')
+    _order = "name, id"
 
     @api.model
     def _default_stage_id(self):
@@ -24,11 +23,12 @@ class Device(models.Model):
 
     name = fields.Char(
         required=True,
-        string=_("Dispositivo GPS"),
+        string=_("GPS Device"),
     )
 
     nick = fields.Char(
         string=_("Nick"),
+        tracking=True
     )
 
     imei = fields.Char(
@@ -41,10 +41,17 @@ class Device(models.Model):
 
     installation_date = fields.Date(
         string=_("Installation Date"),
+        tracking=True
+    )
+
+    reinstatement_date = fields.Date(
+        string=_("Reinstatement Date"),
+        tracking=True
     )
 
     warranty_start_date = fields.Date(
         string=_("Warranty Start Date"),
+        tracking=True
     )
 
     warranty_end_date = fields.Date(
@@ -186,29 +193,32 @@ class Device(models.Model):
         help="Time without reporting in platforms expressed in hours",
     )
 
-    status = fields.Selection(
+    administrative_status = fields.Selection(
         selection=[
             ("drop", _("Drop")),
             ("comodato", _("Comodato")),
             ("courtesy", _("Courtesy")),
             ("demo", _("Demo")),
-            ("uninstalled", _("Uninstalled")),
             ("external", _("External")),
+            ("inventory", _("Inventory")),
+            ("foreign_inventory", _("Foreing Inventory")),
+            ("borrowed", _("Borrowed")),
+            ("replacement", _("Replacement")),
+            ("backup", _("Backup")),
+            ("rma", _("RMA")),
+            ("sold", _("Sold")),
+            ("subscription", _("Subscription")),
+            ("drop", _("Drop")),
+            ("uninstalled", _("Uninstalled")),
             ("hibernate", _("Hibernate")),
             ("installed", _("Installed")),
             ("inventory", _("Inventory")),
             ("new", _("New")),
             ("for installing", _("For Installing")),
-            ("borrowed", _("Borrowed")),
             ("tests", _("Tests")),
-            ("replacement", _("Replacement")),
-            ("backup", _("Backup")),
-            ("rma", _("RMA")),
-            ("sold", _("Sold")),
-            ("foreign_inventory", _("Foreing Inventory"))
         ],
         default="inventory",
-        string=_("Status"),
+        string=_("Administrative Status"),
         tracking=True
     )
 
@@ -221,14 +231,6 @@ class Device(models.Model):
         tracking=True,
     )
 
-    cell_chip_id = fields.Many2one(
-        comodel_name="lgps.cellchip",
-        string=_("Cellchip Number"),
-        ondelete='set null',
-        required=False,
-        tracking=True
-    )
-
     product_id = fields.Many2one(
         comodel_name="product.product",
         required=True,
@@ -239,12 +241,13 @@ class Device(models.Model):
     invoice_id = fields.Char(
         string=_("Provider Invoice"),
         index=True,
+        tracking=True
     )
 
     client_id = fields.Many2one(
         comodel_name="res.partner",
         required=True,
-        string=_("Installed On"),
+        string=_("Belongs To"),
         domain=[
             ('active', '=', True),
             ('is_company', '=', True)
@@ -253,15 +256,8 @@ class Device(models.Model):
         tracking=True
     )
 
-    subscription_id = fields.One2many(
-        comodel_name='sale.subscription',
-        inverse_name='device_id',
-        string=_("Subscription"),
-        readonly=True
-    )
-
     serial_number_id = fields.Many2one(
-        comodel_name="stock.production.lot",
+        comodel_name="stock.lot",
         required=False,
         string=_("Serial Number"),
         index=True,
@@ -272,34 +268,18 @@ class Device(models.Model):
         string=_("Historic Serial Number"),
     )
 
-    accessory_ids = fields.One2many(
-        comodel_name="lgps.accessory",
-        inverse_name="device_id",
-        string=_("Accessories"),
-    )
-
-    fsm_ids = fields.One2many(
-        comodel_name="project.task",
-        inverse_name="device_id",
-        string=_("Field Services"),
-    )
-
-    tracking_ids = fields.One2many(
-        comodel_name="lgps.tracking",
-        inverse_name="device_id",
-        string=_("Trackings"),
-    )
-
     stage_id = fields.Many2one(
         "lgps.device_stage",
         default=_default_stage_id,
-        group_expand="_group_expand_stage_id"
+        group_expand="_group_expand_stage_id",
+        tracking=True
     )
 
     state = fields.Selection(
         related="stage_id.state",
         store=True,
-        string=_("Operative Status")
+        string=_("Operative Status"),
+        tracking=True
     )
 
     kanban_state = fields.Selection([
@@ -328,37 +308,7 @@ class Device(models.Model):
     purchase_date = fields.Date(
         default=fields.Date.today,
         string=_("Purchase Date"),
-    )
-
-    helpdesk_tickets_ids = fields.One2many(
-        comodel_name="helpdesk.ticket",
-        inverse_name="device_id",
-        string=_("Tickets"),
-    )
-
-    accessories_count = fields.Integer(
-        string=_("Accessories Count"),
-        compute='_compute_accessories_count',
-    )
-
-    tickets_count = fields.Integer(
-        string=_("Tickets Count"),
-        compute='_compute_tickets_count',
-    )
-
-    trackings_count = fields.Integer(
-        string=_("Trackings Count"),
-        compute='_compute_trackings_count',
-    )
-
-    subscriptions_count = fields.Integer(
-        string=_('Subscriptions'),
-        compute='_compute_subscriptions_count',
-    )
-
-    tasks_count = fields.Integer(
-        string=_('Tasks Count'),
-        compute='_compute_tasks_count',
+        tracking=True
     )
 
     fuel_tank_type_one_id = fields.Many2one(
@@ -408,36 +358,124 @@ class Device(models.Model):
         comodel_name="sale.order",
         ondelete="set null",
         string=_("Parent Sale Order"),
-        help=_("Realted Sales Order"),
+        help=_("Related Sales Order"),
         index=True,
         tracking=True,
     )
 
-    def _compute_accessories_count(self):
-        for rec in self:
-            rec.accessories_count = self.env['lgps.accessory'].search_count(
-                [('device_id', '=', rec.id)]
-            )
+    vehicle_id = fields.Many2one(
+        comodel_name="lgps.vehicle",
+        ondelete="set null",
+        string=_("Installed On"),
+        help=_("Vehicle where this device is installed"),
+        index=True,
+        tracking=True,
+    )
 
-    def _compute_tickets_count(self):
-        for rec in self:
-            rec.tickets_count = self.env['helpdesk.ticket'].search_count(
-                [('device_id', '=', rec.id)])
+    cell_chip_id = fields.Many2one(
+        comodel_name="lgps.cellchip",
+        string=_("Cellchip Number"),
+        ondelete='set null',
+        required=False,
+        tracking=True
+    )
 
-    def _compute_trackings_count(self):
-        for rec in self:
-            rec.trackings_count = self.env['lgps.tracking'].search_count(
-                [('device_id', '=', rec.id)])
+    accessory_ids = fields.One2many(
+        comodel_name="lgps.accessory",
+        inverse_name="device_id",
+        string=_("Accessories"),
+    )
 
-    def _compute_subscriptions_count(self):
-        for rec in self:
-            rec.subscriptions_count = self.env['sale.subscription'].search_count(
-                [('device_id', '=', rec.id)])
+    helpdesk_tickets_ids = fields.One2many(
+        comodel_name="helpdesk.ticket",
+        inverse_name="device_id",
+        string=_("Tickets"),
+    )
 
-    def _compute_tasks_count(self):
-        for rec in self:
-            rec.tasks_count = self.env['project.task'].search_count(
-                [('device_id', '=', rec.id)])
+    fsm_ids = fields.One2many(
+        comodel_name="project.task",
+        inverse_name="device_id",
+        string=_("Field Services"),
+    )
+
+    helpdesk_tickets_count = fields.Integer(
+        string=_("Tickets Count"),
+        compute='_compute_tickets_count',
+        default=0
+    )
+
+    subscriptions_count = fields.Integer(
+        string=_("Subscriptions Count"),
+        compute='_compute_subscriptions_count',
+        default=0
+    )
+
+    tracking_count = fields.Integer(
+        string=_("Trackings Count"),
+        compute='_compute_tracking_count',
+        default=0
+    )
+
+    fsm_ids_count = fields.Integer(
+        string=_("Services Count"),
+        compute='_compute_fsm_count',
+        default=0
+    )
+
+    odoo_version = fields.Selection(
+        selection=[
+            ("12", _("Odoo v12")),
+            ("15", _("Odoo v15")),
+            ("17", _("Odoo v17")),
+        ],
+        default="17",
+        string=_("Odoo Version"),
+    )
+
+    def action_counter_tickets_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('helpdesk.helpdesk_ticket_action_main_my')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_subscription_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('sale_subscription.sale_subscription_action')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id.id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_tracking_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('lgps.tracking_list_action')
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_client_id': self.client_id.id
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
+
+    def action_counter_fsm_button(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id('industry_fsm.project_task_action_fsm')
+        default_project = self.env.ref('industry_fsm.fsm_project')
+
+        action['context'] = {
+            'default_device_id':  self.id,
+            'default_partner_id': self.client_id.id,
+            'default_project_id': default_project.id,
+            'default_is_fsm': True,
+            'default_fsm_mode': True,
+        }
+        action['domain'] = [('device_id', '=', self.id)]
+        return action
 
     @api.model
     @api.depends('datetime_gps')
@@ -480,3 +518,19 @@ class Device(models.Model):
          'UNIQUE(name)',
          "The gps device id must be unique"),
     ]
+
+    def _compute_tickets_count(self):
+        for rec in self:
+            rec.helpdesk_tickets_count = self.env['helpdesk.ticket'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_subscriptions_count(self):
+        for rec in self:
+            rec.subscriptions_count = self.env['sale.order'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_tracking_count(self):
+        for rec in self:
+            rec.tracking_count = self.env['lgps.tracking'].search_count([('device_id', '=', rec.id)])
+
+    def _compute_fsm_count(self):
+        for rec in self:
+            rec.fsm_ids_count = self.env['project.task'].search_count([('device_id', '=', rec.id)])

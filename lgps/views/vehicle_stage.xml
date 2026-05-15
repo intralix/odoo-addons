@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="action_vehicle_stage" model="ir.actions.act_window" >
+    <field name="name">Vehicle Stages</field>
+    <field name="res_model">lgps.vehicle_stage</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+    <record id="action_vehicle_stage_list_tree_view" model="ir.ui.view" >
+    <field name="name">vehicle_stage.tree</field>
+    <field name="model">lgps.vehicle_stage</field>
+    <field name="arch" type="xml">
+      <tree string="Vehicle Stage Tree">
+        <field name="name"/>
+        <field name="active"/>
+        <field name="fold"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Menu items -->
+  <menuitem id="menu_vehicle_stage"
+            name="Vehicle Stages"
+            parent="vehicles_root_conf_menu"
+            action="action_vehicle_stage"/>
+</odoo>

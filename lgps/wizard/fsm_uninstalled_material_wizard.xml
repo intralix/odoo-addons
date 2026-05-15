@@ -4,16 +4,15 @@
     <field name="name">Uninstalled Material Wizard</field>
     <field name="model">lgps.uninstalled_material_wizard</field>
     <field name="arch" type="xml">
-      <form string="Add Material">
-        <group>
-          <p class="text-primary"> Ingresa el material que vas a regresar al almacén:</p>
-        </group>
-        <group>
-          <field name="stock_move_ids"
-                 widget="one2many"
-                 nolabel="1"
-                 context="{'default_project_task_id': active_id}"/>
-        </group>
+      <form string="Add Material" multi_edit="1" sample="1" editable="top">
+        <p class="text-primary"> Ingresa el material que se desinstaló de la unidad del cliente y que devolverás a almacén:</p>
+
+        <field name="project_task_id" invisible="1"/>
+        <field name="stock_move_ids"
+               nolabel="1"
+               widget="one2many_list"
+               domain="[('project_task_id', '=', project_task_id)]"
+               context="{'default_project_task_id': project_task_id}"/>
         <footer>
           <button name="button_process" type="object" string="Assign" class="oe_highlight" default_focus="1"/>
           <button special="cancel" string="Cancel" class="oe_link"/>

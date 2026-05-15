@@ -6,9 +6,18 @@ class UninstalledMaterialWizard(models.TransientModel):
     _name = "lgps.uninstalled_material_wizard"
     _description = _("Report uninstalled material in fsm")
 
+    def _default_project_task(self):
+        return self.env['project.task'].browse(self._context.get('active_ids'))
+
     stock_move_ids = fields.Many2many(
-        comodel_name='lgps.fsm_material_line',
-        string=_("Uninstalled Material")
+        comodel_name = 'lgps.fsm_material_line',
+        string = _("Uninstalled Material"),
+    )
+
+    project_task_id = fields.Many2one(
+        comodel_name = 'project.task',
+        string = _("Project Task"),
+        default=_default_project_task,
     )
 
     def button_process(self):

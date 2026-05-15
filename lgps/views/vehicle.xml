@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="seq_vehicles" model="ir.sequence">
+    <field name="name">Vehicle Sequence</field>
+    <field name="code">lgps.vehicle</field>
+    <field name="prefix">VEH</field>
+    <field name="padding">10</field>
+    <field name="company_id" eval="False"/>
+  </record>
+
+  <record model="ir.ui.view" id="vehicle_form_view">
+    <field name="name">lgps.vehicle.form</field>
+    <field name="model">lgps.vehicle</field>
+    <field name="arch" type="xml">
+      <form string="Vehicle Form">
+        <header>
+          <field name="state" widget="statusbar"/>
+        </header>
+
+        <sheet>
+          <group>
+            <group string="Vehicle Info">
+              <separator/>
+              <field name="name"/>
+              <field name="nick"/>
+              <field name="client_id"/>
+              <field name="brand"/>
+              <field name="model"/>
+              <field name="plates"/>
+              <field name="fuel_performance"/>
+            </group>
+            <group string=".">
+              <separator/>
+              <field name="year"/>
+              <field name="serial_number"/>
+              <field name="vehicle_color"/>
+              <field name="vehicle_type_id"/>
+              <field name="stage_id"/>
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Gps Devices Installed">
+                <field name="device_ids" nolabel="1">
+                  <tree create="0" delete="0">
+                    <field name="name"/>
+                    <field name="administrative_status"/>
+                    <field name="stage_id"/>
+                    <field name="platform_list_id"/>
+                    <field name="product_id"/>
+                    <field name="serial_number_id"/>
+                    <field name="purchase_date"/>
+                    <field name="installation_date"/>
+                    <field name="sales_order_id"/>
+                  </tree>
+                </field>
+            </page>
+            <page string="Accessories Installed">
+                <field name="accessory_ids" nolabel="1">
+                  <tree create="0" delete="0">
+                     <field name="name"/>
+                    <field name="client_id"/>
+                     <field name="installation_date"/>
+                    <field name="product_id"/>
+                    <field name="historic_serial_number" readonly="1"/>
+                    <field name="serial_number_id"/>
+                    <field name="status"/>
+                    <field name="purchase_date"/>
+                  </tree>
+                </field>
+            </page>
+          </notebook>
+        </sheet>
+
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+          <field name="activity_ids" widget="mail_activity"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="vehicle_search_view">
+    <field name="name">lgps.vehicle.search</field>
+    <field name="model">lgps.vehicle</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="plates"/>
+        <field name="client_id"/>
+        <field name="stage_id"/>
+        <field name="brand"/>
+        <field name="model"/>
+        <field name="message_ids" string="Chatter Messages" filter_domain="[('message_ids.body', 'ilike', self)]"/>
+        <group expand="1" string="Group By">
+          <filter string="Client" name="cliente" context="{'group_by':'client_id'}"/>
+          <filter string="Model" name="model" context="{'group_by':'model'}"/>
+          <filter string="Brand" name="brand" context="{'group_by':'brand'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="vehicle_tree_view">
+    <field name="name">lgps.vehicle.tree</field>
+    <field name="model">lgps.vehicle</field>
+    <field name="arch" type="xml">
+      <tree string="Vehicle Tree">
+        <field name="client_id"/>
+        <field name="nick"/>
+        <field name="vehicle_type_id"/>
+        <field name="stage_id"/>
+        <field name="plates"/>
+        <field name="brand"/>
+        <field name="model"/>
+        <field name="year"/>
+        <field name="vehicle_color"/>
+        <field name="serial_number"/>
+
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="vehicle_list_action">
+    <field name="name">Vehicle</field>
+    <field name="res_model">lgps.vehicle</field>
+    <field name="view_mode">tree,form,kanban</field>
+  </record>
+
+  <!-- Menu items -->
+  <menuitem id="vehicles_menu"
+            name="Vehicles"
+            parent="lgps_menu"
+            action="vehicle_list_action"
+            sequence="50"/>
+</odoo>

@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 class TrackingLogs(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.tracking_logs'
-    _description = 'Tracking Details'
+    _description = _('Tracking Details')
 
     name = fields.Char(
         required=True,
@@ -46,8 +46,9 @@ class TrackingLogs(models.Model):
         string=_("Vehicle Location"),
     )
 
-    @api.model
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.tracking_logs') or '/'
-        vals['name'] = seq
-        return super(TrackingLogs, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.tracking_logs') or '/'
+            vals['name'] = seq
+            return super(TrackingLogs, self).create(vals)

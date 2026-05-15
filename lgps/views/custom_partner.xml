@@ -8,11 +8,11 @@
       <notebook position="inside">
         <page string="Devices">
           <group>
-            <field name="gpsdevice_ids">
+            <field name="device_ids">
               <tree string="GpsDevices Tree">
                 <field name="name"/>
                 <field name="nick"/>
-                <field name="status"/>
+                <field name="state"/>
                 <field name="installation_date"/>
                 <field name="platform_list_id"/>
               </tree>

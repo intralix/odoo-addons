@@ -6,7 +6,7 @@ from odoo import api, models, fields, _
 class AccessoryHistory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.accessory_history'
-    _description = 'Intx Accessories logs Internal Module'
+    _description = _('Intx Accessories logs Internal Module')
 
     name = fields.Char(
         required=True,
@@ -15,7 +15,7 @@ class AccessoryHistory(models.Model):
     )
 
     serial_number_id = fields.Many2one(
-        comodel_name="stock.production.lot",
+        comodel_name="stock.lot",
         string=_("Serial Number"),
     )
 
@@ -31,13 +31,13 @@ class AccessoryHistory(models.Model):
 
     accessory_ids = fields.Many2one(
         comodel_name='lgps.accessory',
-        string="Gps Device",
+        string=_("Accessory"),
         required=True,
     )
 
     destination_accessory_ids = fields.Many2one(
         comodel_name='lgps.accessory',
-        string="Substitute equipment",
+        string=_("Substitute equipment"),
     )
 
     product_id = fields.Many2one(
@@ -49,11 +49,16 @@ class AccessoryHistory(models.Model):
             ('replacement', _('Reemplazo de Equipo')),
             ('substitution', _('Sustitución de equipo por revisión')),
         ],
-        default='drop',
+        default='replacement',
     )
 
     related_odt = fields.Many2one(
         comodel_name='repair.order',
+        string=_("Repair order related"),
+    )
+
+    related_service = fields.Many2one(
+        comodel_name='project.task',
         string=_("Work order related"),
     )
 
@@ -65,11 +70,16 @@ class AccessoryHistory(models.Model):
         string=_("Operation Reason"),
     )
 
-    @api.model
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.accessory_history') or _('New')
-        vals['name'] = seq
-        return super(AccessoryHistory, self).create(vals)
+    log_msn = fields.Html(
+        string=_("More Info"),
+    )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.accessory_history') or _('New')
+            vals['name'] = seq
+            return super(AccessoryHistory, self).create(vals)
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -87,5 +97,5 @@ class AccessoryHistory(models.Model):
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
-         "The accessory id must be unique"),
+         "The id must be unique"),
     ]

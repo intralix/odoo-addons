@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-  <record id="add_accessories_wizard" model="ir.ui.view">
+  <record id="install_devices_wizard" model="ir.ui.view">
     <field name="name">lgps.add_accessories_wizard.form</field>
     <field name="model">lgps.add_accessories_wizard</field>
     <field name="arch" type="xml">
-      <form string="Add Accessories">
+      <form string="Install devices">
         <sheet>
-          <p class="text-primary"> Selecciona los accesorios que deseas vincular al dispositivo:</p>
+          <p class="text-primary"> Selecciona los dispositivos que deseas vincular al vehículo:</p>
+          <field name="device_ids" nolabel="1"/>
+
+          <p class="text-primary"> Selecciona los accesorios que deseas vincular al vehículo:</p>
           <field name="accessory_ids" nolabel="1"/>
         </sheet>
         <footer>
@@ -19,12 +22,12 @@
     </field>
   </record>
 
-  <record id="action_view_add_accessories_wizard" model="ir.actions.act_window">
-    <field name="name">Add Accessories</field>
+  <record id="action_view_install_devices_wizard" model="ir.actions.act_window">
+    <field name="name">Install Devices</field>
     <field name="type">ir.actions.act_window</field>
-    <field name="res_model">lgps.add_accessories_wizard</field>
-    <field name="view_id" ref="add_accessories_wizard"/>
-    <field name="binding_model_id" ref="lgps.model_lgps_device"/>
+    <field name="res_model">lgps.install_vehicle_wizard</field>
+    <field name="view_id" ref="install_devices_wizard"/>
+    <field name="binding_model_id" ref="lgps.model_lgps_vehicle"/>
     <field name="target">new</field>
   </record>
 </odoo>

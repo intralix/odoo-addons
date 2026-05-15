@@ -6,17 +6,16 @@
     <field name="model">lgps.cellchip_wizard</field>
     <field name="arch" type="xml">
        <form string="Cellchip Process">
-           <group><p class="text-primary"> Línea(s) Seleccionada(s):</p></group>
-        <group>
-             <field name="cellchips_ids" readonly="1" string="Procesando para"/>
-        </group>
-          <group><p class="text-primary"> Ingresa la información requerida para el proceso:</p></group>
-           <group>
-               <group>
-                   <field name="deactivation_date"/>
-                   <field name="comment" string="Comentarios"/>
+           <sheet>
+               <p class="text-primary"> Línea(s) Seleccionada(s):</p>
+               <field name="cellchips_ids" readonly="1" string="Procesando para"/>
+
+               <separator string="Ingresa la información requerida para el proceso:"/>
+               <group col="2">
+               <field name="deactivation_date"/>
+               <field name="comment" string="Comentarios"/>
                </group>
-           </group>
+           </sheet>
         <footer>
           <button name="execute_operation" type="object" string="Execute Process" class="oe_highlight" default_focus="1"/>
           <button special="cancel" string="Cancel" class="oe_link"/>

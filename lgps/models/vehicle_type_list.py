@@ -2,20 +2,14 @@
 from odoo import api, models, fields, _
 
 
-class FsmServicesTypeList(models.Model):
+class VehicleTypeList(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _name = 'lgps.fsm_services_type_list'
-    _description = _('Custom FSM Services Type List Module')
-    _order = 'name asc'
+    _name = 'lgps.vehicle_type'
+    _description = _('Vehicles Type List Module')
 
     name = fields.Char(
         required=True,
-        string=_("Service Type"),
-    )
-
-    short_code = fields.Char(
-        required=True,
-        string=_("Short Code"),
+        string=_("Vehicle Type"),
     )
 
     active = fields.Boolean(
@@ -34,10 +28,10 @@ class FsmServicesTypeList(models.Model):
 
         default['name'] = new_name
 
-        return super(FsmServicesTypeList, self).copy(default)
+        return super(VehicleTypeList, self).copy(default)
 
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
-         "The service type list name must be unique"),
+         "The vehicle type name must be unique"),
     ]

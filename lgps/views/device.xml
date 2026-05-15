@@ -1,111 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-  <record id="action_counter_subscriptions_button" model="ir.actions.act_window">
-    <field name="name">Subscriptions</field>
-    <field name="res_model">sale.subscription</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('device_id', '=', active_id)]</field>
-  </record>
-
-    <record id="action_counter_tasks_button" model="ir.actions.act_window">
-    <field name="name">Tasks</field>
-    <field name="res_model">project.task</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('device_id', '=', active_id)]</field>
-  </record>
-
-  <record id="action_counter_help_desk_button" model="ir.actions.act_window">
-    <field name="name">Tickets</field>
-    <field name="res_model">helpdesk.ticket</field>
-    <field name="view_mode">tree,form,kanban</field>
-    <field name="domain">[('device_id', '=', active_id)]</field>
-  </record>
-
-  <record id="action_counter_tracking_button" model="ir.actions.act_window">
-    <field name="name">Trackings</field>
-    <field name="res_model">lgps.tracking</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('device_id', '=', active_id)]</field>
-  </record>
-
   <record model="ir.ui.view" id="device_form_view">
     <field name="name">device.form</field>
     <field name="model">lgps.device</field>
     <field name="arch" type="xml">
       <form string="Gps Device Form">
         <header>
-          <field name="state"
-                 widget="statusbar"
-                 options="{'clickable':False}"
-          />
+          <field name="state" widget="statusbar" options="{'clickable':False}"/>
         </header>
 
         <sheet>
-          <div name="button_box" class="oe_button_box">
+          <div class="oe_button_box" name="button_box">
             <button class="oe_stat_button"
-                    icon="fa-shopping-basket"
-                    type="action"
-                    name="%(action_counter_subscriptions_button)d"
-                    context="{'default_device_id': active_id, 'default_partner_id': client_id}">
+                      type="object"
+                      icon="fa-shopping-bag"
+                      name="action_counter_subscription_button">
+                <field string="Subscriptions" name="subscriptions_count" widget="statinfo"/>
+              </button>
 
-              <field string="Subscriptions" name="subscriptions_count" widget="statinfo"/>
-            </button>
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-life-ring"
+                      name="action_counter_tickets_button">
+                <field string="Tickets" name="helpdesk_tickets_count" widget="statinfo"/>
+              </button>
 
-            <button class="oe_stat_button"
-                    icon="fa-wrench"
-                    type="action"
-                    name="%(action_counter_tasks_button)d"
-                    context="{'default_partner_id': client_id,
-                    'default_project_id': %(industry_fsm.fsm_project)d,
-                    'default_device_id': active_id,
-                    'default_name': 'ODT '+current_date+'/'+name,
-                    'default_parent_sales_order_id': sales_order_id}">
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-globe"
+                      name="action_counter_tracking_button">
+                <field string="Tracking" name="tracking_count" widget="statinfo"/>
+              </button>
 
-              <field string="Services" name="tasks_count" widget="statinfo"/>
-            </button>
-
-            <button class="oe_stat_button"
-                    icon="fa-life-ring"
-                    type="action"
-                    name="%(action_counter_help_desk_button)d"
-                    context="{'default_device_id': active_id,'default_partner_id': client_id}">
-
-              <field string="Tickets" name="tickets_count" widget="statinfo"/>
-            </button>
-
-            <button class="oe_stat_button"
-                    icon="fa-globe"
-                    type="action"
-                    name="%(action_counter_tracking_button)d"
-                    context="{'default_device_id': active_id,'default_client_id': client_id}">
-
-              <field string="Trackings" name="trackings_count" widget="statinfo"/>
-            </button>
+              <button class="oe_stat_button"
+                      type="object"
+                      icon="fa-globe"
+                      name="action_counter_fsm_button">
+                <field string="Services" name="fsm_ids_count" widget="statinfo"/>
+              </button>
           </div>
 
           <group>
             <group string="Device Info">
               <separator/>
               <field name="name"/>
-              <field name="client_id"/>
               <field name="nick"/>
-              <field name="historic_serial_number" readonly="1"/>
-              <field name="serial_number_id"/>
+              <field name="product_id"/>
+              <field name="serial_number_id" domain="[('product_id', '=', product_id)]"/>
               <field name="imei"/>
               <field name="idf"/>
               <field name="device_pin"/>
+              <field name="vehicle_id"/>
             </group>
             <group string="More Info">
               <separator/>
-              <field name="status"/>
+              <field name="client_id"/>
+              <field name="administrative_status"/>
               <field name="stage_id"/>
               <field name="platform_list_id"/>
-              <field name="product_id"/>
+
               <field name="invoice_id"/>
               <field name="cell_chip_id"/>
               <field name="purchase_date"/>
               <field name="installation_date"/>
+              <field name="reinstatement_date"/>
               <field name="sales_order_id"/>
             </group>
           </group>
@@ -128,15 +86,19 @@
             <page string="Services">
               <group>
                 <group string="Funciones">
+                  <group>
                   <field name="tracking"/>
                   <field name="fuel"/>
                   <field name="fuel_hall"/>
                   <field name="temperature"/>
                   <field name="collective"/>
-                  <field name="fleetrun"/>
-                  <field name="scanner"/>
-                  <field name="logistic"/>
-                  <field name="electronics"/>
+                </group>
+                  <group>
+                    <field name="fleetrun"/>
+                    <field name="scanner"/>
+                    <field name="logistic"/>
+                    <field name="electronics"/>
+                  </group>
                 </group>
                 <group string="Complementos">
                   <group>
@@ -157,21 +119,22 @@
                 </group>
               </group>
             </page>
+
             <page string="Accessories">
-              <field name="accessory_ids">
-                <field name="name"/>
-                <field name="client_id"/>
-                <field name="historic_serial_number" readonly="1"/>
-                <field name="serial_number_id"/>
-                <field name="installation_date"/>
-                <field name="status"/>
-                <field name="product_id"/>
-                <field name="invoice_id"/>
+              <field name="accessory_ids" readonly="1">
+                <tree create="0" delete="0">
+                  <field name="name"/>
+                  <field name="client_id"/>
+                  <field name="historic_serial_number" readonly="1"/>
+                  <field name="serial_number_id"/>
+                  <field name="installation_date"/>
+                  <field name="status"/>
+                  <field name="product_id"/>
+                </tree>
               </field>
             </page>
-            <page string="Subscriptions" attrs="{'invisible': [('subscriptions_count', '&lt;', 0)]}">
-              <field name="subscription_id" attrs="{'readonly':True}"/>
-            </page>
+
+
             <page string="Posicionamiento">
               <group>
                 <group string="Last Report">
@@ -183,6 +146,19 @@
                   <separator/>
                   <field name="last_position" widget="url" text="See on the Map"/>
                   <field name="last_report"/>
+                </group>
+              </group>
+            </page>
+
+            <page string="Más Información">
+              <group>
+                <group string="Sistema">
+                  <separator/>
+                  <field name="odoo_version" readonly="1"/>
+                </group>
+                <group string="Más">
+                  <separator/>
+                  <field name="historic_serial_number" readonly="1"/>
                 </group>
               </group>
             </page>
@@ -203,21 +179,21 @@
     <field name="model">lgps.device</field>
     <field name="arch" type="xml">
       <search>
-        <filter string="Activos" name="devices_active"  domain="[('platform_list_id', '!=', 'Drop')]"/>
-        <filter string="Baja" name="devices_inactive"  domain="[('platform_list_id', '=', 'Drop')]"/>
+        <filter string="Activos" name="active_devices"  domain="[('state', '!=', 'installed')]"/>
+        <filter string="Baja" name="inactive_devices"  domain="[('administrative_status', '=', 'drop')]"/>
         <separator/>
-        <filter string="Comodatos" name="devices_comodato"  domain="[('status', '=', 'comodato')]"/>
-        <filter string="Demos" name="devices_demo"  domain="[('status', '=', 'demo')]"/>
+        <filter string="Comodatos" name="comodato_devices"  domain="[('administrative_status', '=', 'comodato')]"/>
+        <filter string="Demos" name="demo_devices"  domain="[('administrative_status', '=', 'demo')]"/>
         <separator/>
-        <filter string="RMA" name="devices_rmas"  domain="[('status', '=', 'rma')]"/>
-        <filter string="Vendidos" name="devices_solds"  domain="[('status', '=', 'sold')]"/>
+        <filter string="RMA" name="devices_rmas"  domain="[('administrative_status', '=', 'rma')]"/>
+        <filter string="Vendidos" name="devices_solds"  domain="[('administrative_status', '=', 'sold')]"/>
         <field name="name"/>
         <field name="nick"/>
         <field name="client_id"/>
-        <field name="status"/>
+        <field name="administrative_status"/>
         <field name="stage_id"/>
         <field name="cell_chip_id"/>
-        <field name="historic_serial_number" readonly="1"/>
+        <field name="historic_serial_number"/>
         <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>
@@ -230,7 +206,7 @@
           <filter string="Producto" name="producto" context="{'group_by':'product_id'}"/>
           <separator orientation="vertical" />
           <filter string="Plataforma" name="platform_list_id" context="{'group_by':'platform_list_id'}"/>
-          <filter string="Estatus" name="status" context="{'group_by':'status'}"/>
+          <filter string="Estatus" name="administrative_status" context="{'group_by':'administrative_status'}"/>
           <filter string="Estatus Operativo" name="state" context="{'group_by':'stage_id'}"/>
           <separator orientation="vertical" />
           <filter string="Fecha Instalación" name="installation_date" context="{'group_by':'installation_date'}"/>
@@ -252,10 +228,10 @@
         <field name="name"/>
         <field name="nick"/>
         <field name="client_id"/>
-        <field name="status"/>
+        <field name="administrative_status"/>
         <field name="state"/>
         <field name="cell_chip_id"/>
-        <field name="historic_serial_number" readonly="1"/>
+        <field name="historic_serial_number"/>
         <field name="serial_number_id"/>
         <field name="imei"/>
         <field name="installation_date"/>

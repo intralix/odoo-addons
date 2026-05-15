@@ -2,13 +2,12 @@
 
 from datetime import timedelta
 from odoo import api, models, fields, _
-from odoo.exceptions import Warning
 
 
 class Accessory(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.accessory'
-    _description = 'Gps Devices Accessories'
+    _description = _('Accessories Module')
 
     name = fields.Char(
         required=True,
@@ -17,7 +16,7 @@ class Accessory(models.Model):
     )
 
     serial_number_id = fields.Many2one(
-        comodel_name="stock.production.lot",
+        comodel_name="stock.lot",
         string=_("Serial Number"),
         index=True,
         tracking=True
@@ -115,16 +114,44 @@ class Accessory(models.Model):
         string=_("Warranty Term"),
     )
 
-    assigned_tickets = fields.Integer(
-        string=_("Tickets Count"),
-        compute='_compute_assigned_tickets_count',
+    device_id = fields.Many2one(
+        comodel_name="lgps.device",
+        string=_("GPS Device"),
+        ondelete='set null',
+        required=False,
+        tracking=True
     )
 
-    @api.model
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.accessory') or _('New')
-        vals['name'] = seq
-        return super(Accessory, self).create(vals)
+    last_assign_date = fields.Date(
+        string=_("Last Assign Date"),
+        tracking=True
+    )
+
+    vehicle_id = fields.Many2one(
+        comodel_name="lgps.vehicle",
+        ondelete="set null",
+        string=_("Installed On"),
+        help=_("Vehicle where this device is installed"),
+        index=True,
+        tracking=True,
+    )
+
+    odoo_version = fields.Selection(
+        selection=[
+            ("12", _("Odoo v12")),
+            ("15", _("Odoo v15")),
+            ("17", _("Odoo v17")),
+        ],
+        default="17",
+        string=_("Odoo Version"),
+    )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.accessory') or _('New')
+            vals['name'] = seq
+            return super(Accessory, self).create(vals)
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -142,12 +169,13 @@ class Accessory(models.Model):
     @api.model
     @api.depends('warranty_term', 'warranty_start_date')
     def _compute_end_warranty(self):
-        if not (self.warranty_term and self.warranty_start_date):
-            self.warranty_end_date = None
-        else:
-            months = int(self.warranty_term[:2])
-            start = fields.Date.from_string(self.warranty_start_date)
-            self.warranty_end_date = start + timedelta(months * 365 / 12)
+        for record in self:
+            if not (record.warranty_term and record.warranty_start_date):
+                record.warranty_end_date = None
+            else:
+                months = int(record.warranty_term[:2])
+                start = fields.Date.from_string(record.warranty_start_date)
+                record.warranty_end_date = start + timedelta(months * 365 / 12)
 
     _sql_constraints = [
         ('name_unique',

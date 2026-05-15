@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="merge_invoice_lines_wizard" model="ir.ui.view">
+    <field name="name">lgps.merge_invoice_lines_wizard.form</field>
+    <field name="model">lgps.merge_invoice_lines_wizard</field>
+    <field name="arch" type="xml">
+      <form string="Merge Invoice Lines">
+        <sheet>
+          <p class="text-primary">Es funcionalidad agrupará las lineas de la factura que sean idénticas.</p>
+          <p class="text-primary">
+            El criterio para determinar si una linea es igual a otra, esta definido por:
+            <ul class="text-dark">
+              <li>El servicio es el mismo</li>
+              <li>El precio del servicio es el mismo</li>
+              <li>La descripción del servicio es la misma (para no modificar periodos o prorrateos)</li>
+            </ul>
+            <br/>
+            Si alguna de estas condiciones no se cumple, el servicio se considerará distinto y no se agrupará.
+            </p>
+            <p class="text-danger"><strong>NOTA:</strong> Este proceso no tiene forma de revertirse, ejecutalo solo si estás seguro(a).</p>
+
+        </sheet>
+        <footer>
+          <button name="merge_lines" type="object" string="Merge Lines" class="oe_highlight" default_focus="1"/>
+          <button special="cancel" data-hotkey="x" string="Cancel" type="object" class="btn btn-secondary oe_inline"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_view_merge_invoice_lines_wizard" model="ir.actions.act_window">
+    <field name="name">INTX: Merge Lines</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lgps.merge_invoice_lines_wizard</field>
+    <field name="view_id" ref="merge_invoice_lines_wizard"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="target">new</field>
+  </record>
+</odoo>

@@ -1,100 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
   <record model="ir.ui.view" id="custom_lgps_fsm_form_view">
     <field name="name">lgps.custom.fsm</field>
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
 
-      <xpath expr="//header" position="inside">
-        <button
-                name="button_create_stock_picking"
+      <xpath expr="//span[@id='end_button_box']" position="before">
+        <button class="oe_stat_button"
                 type="object"
-                string="Material a Revisión"
-                class="oe_highlight"
-                attrs="{'invisible' : &quot;[('has_uninstalled_material', '=', False)]&quot;}"
-                confirm="¿Estás seguro que desas crear un traslado para el material desinstalado?"
-        />
+                icon="fa-exchange"
+                name="open_uninstalled_material_wizard"
+                groups="lgps.lgps_group_field_service_material_uninstalled">
+          <div class="o_stat_info">
+            <div class="o_stat_text">Componentes</div>
+            <div class="o_stat_text">Desinstalados</div>
+          </div>
+        </button>
+
+        <button class="oe_highlight"
+                type="object"
+                icon="fa-list-alt"
+                name="create_revisions_from_material_lines"
+                invisible="not has_uninstalled_material"
+                confirm="¿Estás seguro que deseas crear las revisiones para el material desinstalado?"
+                groups="lgps.lgps_group_quality_operations">
+          <div class="o_stat_info">
+            <div class="o_stat_text">Crear</div>
+            <div class="o_stat_text">Revisiones</div>
+          </div>
+        </button>
       </xpath>
 
         <xpath expr="//field[@name='user_ids']" position="after">
-          <field name="device_id"/>
-          <field name="nick"/>
-          <field name="service_type_list_id"
+              <field name="service_type_list_id"
                  options="{'no_quick_create':True,'no_create_edit':True}"
                  context="{'order_display': 'name asc' }"/>
-          <field name="has_uninstalled_material" attrs="{'invisible':True}"/>
-          <field name="has_material_picking_done" attrs="{'invisible':True}"/>
-        </xpath>
-
-        <xpath expr="//field[@name='date_last_stage_update']" position="after">
-          <field
-                name="show_timesheet_in_report"
-                string="Show Timesheet in Report"
-                force_save="True"
-                attrs="{}"
-                readonly="1"
-                help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
+            <field name="device_id"  options="{'no_quick_create':True,'no_create_edit':True}"
+                 context="{'order_display': 'name asc' }"
+                   domain="[('client_id', '=', partner_id)]"/>
+            <field name="nick"/>
           <field
                 name="parent_sales_order_id"
-                options="{&quot;no_create&quot;:true}"
+                options="{'no_create':true}"
+                domain="[('partner_id', '=', partner_id)]"
                 help="Pedido de Ventas que Originó la instalación"/>
-
-          <field name="stock_picking_id"/>
         </xpath>
 
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-        <page string="Material Removed"
-              name="uninstalled_material"
-              attrs="{'invisible':[('has_uninstalled_material','!=', True)]}">
-          <group>
-            <field name="fsm_material_ids" nolabel="1" context="{'default_project_task_id': active_id}" readonly="1"/>
-          </group>
+        <page string="Material Uninstalled" name="uninstalled_material" invisible="not has_uninstalled_material">
+            <field name="fsm_material_ids" nolabel="1" readonly="1"/>
         </page>
-        <page string="Warranty" name="warranty" groups="lgps.lgps_group_quality_operations">
+        <page string="Quality Revisions"
+              name="quality_revisions"
+              groups="lgps.lgps_group_quality_operations"
+              invisible="not has_revisions_created">
+            <field name="revisions_ids" nolabel="1" readonly="1">
+                    <tree create="0" delete="0">
+                      <field name="name"/>
+                      <field name="state"/>
+                      <field name="project_task_id"/>
+                      <field name="product_id"/>
+                      <field name="lot_id" />
+                      <field name="resolution"/>
+                      <field name="observations" optional="hide"/>
+                      <field name="notes" optional="hide"/>
+                </tree>
+          </field>
+        </page>
+
+        <page string="Intx info" name="intx_info">
           <group>
             <group>
-              <field name="is_warranty"/>
+              <field name="stock_picking_id" readonly="1"/>
+              <field name="vehicle_id"/>
             </group>
-            <group>
-              <field name="warranty_list_id"
-                   attrs="{'required':[('is_warranty','=', True)], 'invisible':[('is_warranty','!=', True)]}"/>
-            </group>
-          </group>
-        </page>
-        <page string="Repair Order" name="repair_orders">
-          <group>
               <group>
                 <field
-                        name="repair_id"
-                        context="{'default_partner_id': partner_id}"/>
+                  name="show_timesheet_in_report"
+                  string="Show Timesheet in Report"
+                  force_save="True"
+                  readonly="1"
+                  help="Si esta activado, se mostrará el detalle del tiempo en el reporte PDF  que se entrega al cliente final"/>
+                <field name="has_uninstalled_material" readonly="1"/>
+                <field name="has_material_picking_done" readonly="1"/>
+                <field name="has_revisions_created" readonly="1"/>
               </group>
           </group>
         </page>
-
-        <page string="More Info" name="tests_info" groups="lgps.lgps_group_quality_operations">
-          <group>
-            <group>
-              <field name="fuel_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="temperature_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="smart_card_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="blocking_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="ignition_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="positioning_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="comments"/>
-            </group>
-            <group>
-              <field name="magnetic_sensor_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="microphone_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="panic_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="siren_tests" widget="radio" options="{'horizontal': true}"/>
-              <field name="speaker_tests" widget="radio" options="{'horizontal': true}"/>
-            </group>
-          </group>
-        </page>
-        </xpath>
+      </xpath>
     </field>
   </record>
+
+  <record id="action_create_revisions_from_material_lines" model="ir.actions.server">
+    <field name="name">Create Revisions</field>
+    <field name="model_id" ref="lgps.model_project_task"/>
+    <field name="binding_model_id" ref="lgps.model_project_task"/>
+    <field name="binding_view_types">form, list</field>
+    <field name="state">code</field>
+    <field name="code">
+if records:
+    action = records.create_revisions_from_material_lines()
+    </field>
+  </record>
+
 
   <record model="ir.ui.view" id="custom_lgps_fsm_tree_view">
     <field name="name">lgps.custom.fsm_tree_view</field>
@@ -104,7 +114,8 @@
       <xpath expr="//field[@name='name']" position="after">
         <field name="nick"/>
         <field name="device_id"/>
-        <field name="sale_order_id"/>
+          <field name="vehicle_id"/>
+        <field name="parent_sales_order_id"/>
       </xpath>
 
       <xpath expr="//field[@name='project_id']" position="after">
@@ -121,14 +132,16 @@
       <xpath expr="//search" position="inside">
         <field name="nick"/>
         <field name="device_id"/>
-        <field name="sale_order_id"/>
+        <field name="vehicle_id"/>
+        <field name="parent_sales_order_id"/>
       </xpath>
 
       <xpath expr="//search/group" position="inside">
         <separator />
         <filter string="Device" name="Device" context="{'group_by':'device_id'}"/>
         <filter string="Nick" name="Nick" context="{'group_by':'nick'}"/>
-        <filter string="Sales Order" name="Sales Order" context="{'group_by':'sale_order_id'}"/>
+        <filter string="Vehicle" name="Vehicle" context="{'group_by':'vehicle_id'}"/>
+        <filter string="Sales Order" name="Sales Order" context="{'group_by':'parent_sales_order_id'}"/>
       </xpath>
     </field>
   </record>

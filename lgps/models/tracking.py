@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class Tracking(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.tracking'
-    _description = 'Tracking register'
+    _description = _('Lgps Tracking register')
 
     name = fields.Char(
         required=True,
@@ -31,6 +31,7 @@ class Tracking(models.Model):
         string=_("Gps Device"),
         index=True,
         required=True,
+        domain="[('id', 'in', filtered_devices_ids)]",
     )
 
     applicant = fields.Char(
@@ -154,50 +155,150 @@ class Tracking(models.Model):
 
     active = fields.Boolean(default=True)
 
-    @api.model
-    def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('lgps.tracking') or '/'
-        vals['name'] = seq
-        return super(Tracking, self).create(vals)
+    vehicle_id = fields.Many2one(
+        comodel_name="lgps.vehicle",
+        string=_("Vehicle"),
+        domain="[('id', 'in', filtered_vehicles_ids)]",
+    )
+
+    filtered_vehicles_ids = fields.Many2many(
+        comodel_name="lgps.vehicle",
+        compute="_compute_allowed_vehicle_ids"
+    )
+
+    filtered_devices_ids = fields.Many2many(
+        comodel_name="lgps.device",
+        compute="_compute_allowed_device_ids"
+    )
+
+    @api.depends("client_id")
+    def _compute_allowed_vehicle_ids(self):
+        log = []
+
+        if self.client_id:
+            log = self.env["lgps.vehicle"].search([['client_id', '=', self.client_id.id]])
+
+        self.filtered_vehicles_ids = log
+
+        return log
+
+    @api.depends("client_id")
+    def _compute_allowed_device_ids(self):
+        log = []
+
+        if self.client_id:
+            log = self.env["lgps.device"].search([['client_id', '=', self.client_id.id]])
+
+        self.filtered_devices_ids = log
+
+        return log
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env['ir.sequence'].next_by_code('lgps.tracking') or '/'
+            vals['name'] = seq
+            return super(Tracking, self).create(vals)
 
     def button_do_active(self):
         for tracking in self:
-            # tracking.state = 'active'
-            _logger.warning('self %', self)
-            user = self.env['res.users'].search([('name', '=', self.env.user.name)])
-            _logger.warning('user: %', user)
-            # _logger.warning('user name: %', user.name)
-            # _logger.warning('user id: %', user.id)
-            # log_object = self.env['lgps.tracking_logs']
-            # user.id
-            # employee_id = self.env[''].search()
-            raise UserError('Stop execution')
+            log_object = self.env['lgps.tracking_logs']
+            employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
 
-            # dictionary = {
-            #     'name': 'Automatic Generated',
-            #     'comment': 'Monitoreo Iniciado',
-            #     'comment_date': fields.Datetime.now,
-            #     'employee_id': device.client_id.id,
-            #     'email_sent': device.id,
-            #     'tracking_id': self.destination_gpsdevice_ids.id,
-            #     'vehicle_location': self.operation_mode,
-            # }
-            # device_log = log_object.create(dictionary)
+            dictionary = {
+                'name': 'Automatic Generated',
+                'comment': 'Monitoreo Iniciado',
+                'comment_date': fields.Datetime.now(),
+                'employee_id': employee.id,
+                'email_sent': '',
+                'tracking_id': self.id,
+                'vehicle_location': '',
+            }
+            device_log = log_object.create(dictionary)
+            if device_log:
+                tracking.state = 'active'
+                tracking.start_date = fields.Datetime.now()
 
         return True
 
     def button_do_pause(self):
         for tracking in self:
-            tracking.state = 'paused'
+            log_object = self.env['lgps.tracking_logs']
+            employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
+
+            dictionary = {
+                'name': 'Automatic Generated',
+                'comment': 'Monitoreo Detenido',
+                'comment_date': fields.Datetime.now(),
+                'employee_id': employee.id,
+                'email_sent': '',
+                'tracking_id': self.id,
+                'vehicle_location': '',
+            }
+            device_log = log_object.create(dictionary)
+            if device_log:
+                tracking.state = 'paused'
+
         return True
 
     def button_do_finish(self):
         for tracking in self:
-            tracking.state = 'finished'
+            log_object = self.env['lgps.tracking_logs']
+            employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
+
+            dictionary = {
+                'name': 'Automatic Generated',
+                'comment': 'Monitoreo Finalizado',
+                'comment_date': fields.Datetime.now(),
+                'employee_id': employee.id,
+                'email_sent': '',
+                'tracking_id': self.id,
+                'vehicle_location': '',
+            }
+            device_log = log_object.create(dictionary)
+            if device_log:
+                tracking.state = 'finished'
+                tracking.end_date = fields.Datetime.now()
+
         return True
 
     def button_do_cancel(self):
         for tracking in self:
-            tracking.state = 'cancelled'
-            tracking.active = False
+            log_object = self.env['lgps.tracking_logs']
+            employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
+
+            dictionary = {
+                'name': 'Automatic Generated',
+                'comment': 'Monitoreo Cancelado',
+                'comment_date': fields.Datetime.now(),
+                'employee_id': employee.id,
+                'email_sent': '',
+                'tracking_id': self.id,
+                'vehicle_location': '',
+            }
+            device_log = log_object.create(dictionary)
+            if device_log:
+                tracking.state = 'cancelled'
+                tracking.active = False
         return True
+
+    def button_do_resume(self):
+        for tracking in self:
+            log_object = self.env['lgps.tracking_logs']
+            employee = self.env['hr.employee'].search([('name', '=', self.env.user.name)])
+
+            dictionary = {
+                'name': 'Automatic Generated',
+                'comment': 'Monitoreo Continuado',
+                'comment_date': fields.Datetime.now(),
+                'employee_id': employee.id,
+                'email_sent': '',
+                'tracking_id': self.id,
+                'vehicle_location': '',
+            }
+            device_log = log_object.create(dictionary)
+            if device_log:
+                tracking.state = 'active'
+
+        return True
+

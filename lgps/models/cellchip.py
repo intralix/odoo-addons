@@ -5,9 +5,8 @@ from odoo import api, models, fields, _
 class Cellchip(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _name = 'lgps.cellchip'
-    _description = 'Cellchips model'
+    _description = _('Cellchips Module')
 
-    # Línea Celular
     name = fields.Char(
         required=True,
         string=_("Line Number"),
@@ -57,7 +56,7 @@ class Cellchip(models.Model):
     )
     # Número de Serie
     line_number_id = fields.Many2one(
-        comodel_name="stock.production.lot",
+        comodel_name="stock.lot",
         required=False,
         string=_("SIMCARD"),
         index=True,
@@ -70,7 +69,7 @@ class Cellchip(models.Model):
     # Si la línea Voz
     voice = fields.Boolean(
         default=False,
-        string="Voice",
+        string=_("Voice"),
     )
     # A quién esta asignado
     cell_chip_owner_id = fields.Many2one(
@@ -86,9 +85,11 @@ class Cellchip(models.Model):
     # Proveedor de la línea
     provider = fields.Selection(
         selection=[
+            ("ABIX", "ABIX"),
             ("ATT", "ATT"),
             ("Cierto", "Cierto"),
             ("CiertoT", "CiertoT"),
+            ("Conexa", "Conexa"),
             ("Iusacell", "Iusacell"),
             ("MazTiempo", "MazTiempo"),
             ("Movistar", "Movistar"),
@@ -96,6 +97,7 @@ class Cellchip(models.Model):
             ("Simpacsys", "Simpacsys"),
             ("Skywave", "Skywave"),
             ("Telcel", "Telcel"),
+            ("Vodafone - WWT", "Vodafone - WWT"),
         ],
         string="Provider",
         tracking=True

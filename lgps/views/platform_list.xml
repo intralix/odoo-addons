@@ -54,5 +54,8 @@
   </record>
 
   <!-- Menu items -->
-  <menuitem id="platform_list_menu" name="Platform List" parent="lgps_configuration_menu" action="platform_list_action"/>
+  <menuitem id="platform_list_menu"
+            name="Platform List"
+            parent="devices_root_conf_menu"
+            action="platform_list_action"/>
 </odoo>

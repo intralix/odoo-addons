@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="vtype_car" model="lgps.vehicle_type">
+        <field name="name">Automóvil</field>
+    </record>
+
+    <record id="vtype_chassis" model="lgps.vehicle_type">
+        <field name="name">Chasis</field>
+    </record>
+
+    <record id="vtype_dry_box" model="lgps.vehicle_type">
+        <field name="name">Caja Seca</field>
+    </record>
+
+    <record id="vtype_refrigerated_box" model="lgps.vehicle_type">
+        <field name="name">Caja Refrigerada</field>
+    </record>
+
+    <record id="vtype_van" model="lgps.vehicle_type">
+        <field name="name">Camioneta</field>
+    </record>
+
+    <record id="vtype_position_dolly" model="lgps.vehicle_type">
+        <field name="name">Dolly</field>
+    </record>
+
+    <record id="vtype_lowboy" model="lgps.vehicle_type">
+        <field name="name">Lowboy</field>
+    </record>
+
+    <record id="vtype_platform" model="lgps.vehicle_type">
+        <field name="name">Plancha</field>
+    </record>
+
+    <record id="vtype_tailless" model="lgps.vehicle_type">
+        <field name="name">Rabón</field>
+    </record>
+
+    <record id="vtype_pipe" model="lgps.vehicle_type">
+        <field name="name">Pipa</field>
+    </record>
+
+    <record id="vtype_trailer" model="lgps.vehicle_type">
+        <field name="name">Remolque</field>
+    </record>
+
+    <record id="vtype_tank" model="lgps.vehicle_type">
+        <field name="name">Tanque</field>
+    </record>
+
+    <record id="vtype_torton" model="lgps.vehicle_type">
+        <field name="name">Torton</field>
+    </record>
+
+    <record id="vtype_tractor_truck" model="lgps.vehicle_type">
+        <field name="name">Tractocamión</field>
+    </record>
+</odoo>
